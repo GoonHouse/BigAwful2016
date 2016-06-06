@@ -12,6 +12,6 @@ public class DebugLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 drawTo = target.transform.position - gameObject.transform.position;
-		Debug.DrawRay(gameObject.transform.position, drawTo, Color.green);
+		Debug.DrawRay(gameObject.transform.position, drawTo, Color.white);
 	}
 }
