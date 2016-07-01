@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 55b2221b0067e564bbe56930fadd4bc3
-timeCreated: 1467393286
+timeCreated: 1467400459
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -234,9 +234,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Alpha
       value:
-        scalar[0]: 0.102941155
-        scalar[1]: 0.102941155
-        scalar[2]: 0.102941155
+        scalar[0]: 0.04411763
+        scalar[1]: 0.04411763
+        scalar[2]: 0.04411763
         scalar[3]: 1
         texture: {instanceID: 0}
     - name: $randomseed
@@ -438,9 +438,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Alpha
       value:
-        scalar[0]: 0.19852942
-        scalar[1]: 0.19852942
-        scalar[2]: 0.19852942
+        scalar[0]: 0.125
+        scalar[1]: 0.125
+        scalar[2]: 0.125
         scalar[3]: 1
         texture: {instanceID: 0}
     - name: $randomseed
@@ -642,9 +642,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Alpha
       value:
-        scalar[0]: 0.30147058
-        scalar[1]: 0.30147058
-        scalar[2]: 0.30147058
+        scalar[0]: 0.25
+        scalar[1]: 0.25
+        scalar[2]: 0.25
         scalar[3]: 1
         texture: {instanceID: 0}
     - name: $randomseed
@@ -846,9 +846,9 @@ SubstanceImporter:
         texture: {instanceID: 0}
     - name: Alpha
       value:
-        scalar[0]: 0.41176468
-        scalar[1]: 0.41176468
-        scalar[2]: 0.41176468
+        scalar[0]: 0.36764705
+        scalar[1]: 0.36764705
+        scalar[2]: 0.36764705
         scalar[3]: 1
         texture: {instanceID: 0}
     - name: $randomseed
