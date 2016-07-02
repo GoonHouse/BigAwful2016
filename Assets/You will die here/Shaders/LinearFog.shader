@@ -19,14 +19,16 @@
     struct Input {
       float2 uv_MainTex;
       half fog;
+
     };
 
     void myvert (inout appdata_full v, out Input data) {
       UNITY_INITIALIZE_OUTPUT(Input,data);
-      float pos = distance(float3(0,0,0), v.vertex.xyz);
+      float dist = distance(v.vertex.xyz, float3(0,0,0));
       float diff = unity_FogEnd.x - unity_FogStart.x;
       float invDiff = 1.0f / diff;
-      data.fog = clamp ((unity_FogEnd.x-pos) * invDiff, 0.0, 1.0);
+      dist = clamp (dist, 0.0, unity_FogEnd.x);
+      data.fog = clamp ((unity_FogEnd.x-dist) * invDiff, 0.0, 1.0);
     }
     void mycolor (Input IN, SurfaceOutput o, inout fixed4 color) {
       #ifdef UNITY_PASS_FORWARDADD
