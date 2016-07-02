@@ -4,25 +4,14 @@ using System.Collections;
 public class MoveSucka : MonoBehaviour {
 	
 	public float moveSpeed = 10f;
-	public float turnSpeed = 50f;
-
 
 	void Update ()
 	{
-		if(Input.GetKey(KeyCode.UpArrow))
-			transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
 
-		if(Input.GetKey(KeyCode.DownArrow))
-			transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+		Vector3 direction = new Vector3 (-moveHorizontal, 0.0f, -moveVertical);
 
-		if(Input.GetKey(KeyCode.LeftArrow))
-			//transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-			//transform.RotateAround(Vector3.up, Vector3.up, -turnSpeed * Time.deltaTime);
-			transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-
-		if(Input.GetKey(KeyCode.RightArrow))
-			//transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-			//transform.RotateAround(Vector3.up, Vector3.up, turnSpeed * Time.deltaTime);
-			transform.Translate(-Vector3.right * moveSpeed * Time.deltaTime);
+			transform.Translate(direction * moveSpeed * Time.deltaTime);
 	}
 }
