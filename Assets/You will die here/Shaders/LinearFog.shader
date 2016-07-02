@@ -1,5 +1,6 @@
 ﻿Shader "Custom/LinearFog" {
   Properties {
+	_Color ("Main Color", Color) = (1,1,1,1)
     _MainTex ("Base (RGB)", 2D) = "white" {}
   }
   SubShader {
@@ -11,6 +12,7 @@
     #pragma multi_compile_fog
 
     sampler2D _MainTex;
+    fixed4 _Color;
     uniform half4 unity_FogStart;
     uniform half4 unity_FogEnd;
 
@@ -21,10 +23,10 @@
 
     void myvert (inout appdata_full v, out Input data) {
       UNITY_INITIALIZE_OUTPUT(Input,data);
-      float pos = length(mul (UNITY_MATRIX_MV, v.vertex).xyz);
+      float pos = length(mul (UNITY_MATRIX_T_MV, v.vertex).xyz);
       float diff = unity_FogEnd.x - unity_FogStart.x;
       float invDiff = 1.0f / diff;
-      data.fog = clamp ((unity_FogEnd.x - pos) * invDiff, 0.0, 1.0);
+      data.fog = clamp ((unity_FogEnd.x-pos) * invDiff, 0.0, 1.0);
     }
     void mycolor (Input IN, SurfaceOutput o, inout fixed4 color) {
       #ifdef UNITY_PASS_FORWARDADD
@@ -35,7 +37,7 @@
     }
 
     void surf (Input IN, inout SurfaceOutput o) {
-      half4 c = tex2D (_MainTex, IN.uv_MainTex);
+      half4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
       o.Albedo = c.rgb;
       o.Alpha = c.a;
     }
