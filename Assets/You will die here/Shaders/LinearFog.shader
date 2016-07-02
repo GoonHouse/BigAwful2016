@@ -23,7 +23,7 @@
 
     void myvert (inout appdata_full v, out Input data) {
       UNITY_INITIALIZE_OUTPUT(Input,data);
-      float pos = length(mul (UNITY_MATRIX_T_MV, v.vertex).xyz);
+      float pos = distance(float3(0,0,0), v.vertex.xyz);
       float diff = unity_FogEnd.x - unity_FogStart.x;
       float invDiff = 1.0f / diff;
       data.fog = clamp ((unity_FogEnd.x-pos) * invDiff, 0.0, 1.0);
@@ -37,7 +37,7 @@
     }
 
     void surf (Input IN, inout SurfaceOutput o) {
-      half4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+      float4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
       o.Albedo = c.rgb;
       o.Alpha = c.a;
     }
