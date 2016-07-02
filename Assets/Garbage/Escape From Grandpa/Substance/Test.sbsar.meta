@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 55b2221b0067e564bbe56930fadd4bc3
-timeCreated: 1467400459
+timeCreated: 1467403899
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -65,7 +65,7 @@ SubstanceImporter:
           second:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
+            offset: {x: 0, y: -11.98}
         data:
           first:
             name: _DetailNormalMap
@@ -114,7 +114,7 @@ SubstanceImporter:
           second:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
+            offset: {x: 0, y: -11.98}
       floats:
         data:
           first:
