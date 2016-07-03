@@ -5,8 +5,6 @@ public class TurnSucka : MonoBehaviour {
 
 	public float speed = 0.1F;
 
-	private Vector3 currentAngle;
-
 	public void Start()
 	{
 		
