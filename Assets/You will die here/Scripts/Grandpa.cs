@@ -32,7 +32,7 @@ public class Grandpa : MonoBehaviour {
         m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
 
         if (Input.GetButtonDown("Fire2")) {
-            Camera.main.transform.RotateAround(transform.position, Vector3.up, cameraTurnAmount);
+            //Camera.main.transform.RotateAround(transform.position, Vector3.up, cameraTurnAmount);
             //Camera.main.transform.Rotate(new Vector3(0, cameraTurnAmount, 0));
         }
 

@@ -83,15 +83,55 @@ public class RoomGenerator : MonoBehaviour {
             }
             */
         }
-        
-        if( Input.GetKeyDown(KeyCode.G) ){
-            Debug.Log("honka");
-            //SpawnPart("____", 1, 1);
+        if (Input.GetKeyDown(KeyCode.F)) {
+            var pos = GetGridFromWorldPosition(GameObject.Find("GrampsHolder").transform);
+            Debug.Log("PLAYER AT: " + (pos.x).ToString() + "_" + (pos.y).ToString());
+        }
+        if ( Input.GetKeyDown(KeyCode.G) ){
+            var pos = GetGridFromWorldPosition( GameObject.Find("GrampsHolder").transform );
+
+            MaybeSpawnAt(pos.x - 1, pos.y); // north
+            MaybeSpawnAt(pos.x, pos.y + 1); // east
+            MaybeSpawnAt(pos.x + 1, pos.y); // south
+            MaybeSpawnAt(pos.x, pos.y - 1); // west
+        }
+    }
+
+    public void MaybeSpawnAt(float x, float y) {
+        var probe = ProbeSpot(x, y);
+        if( probe != "no" ){
+            SpawnPart(probe, x, y);
         }
     }
 
     public bool CalcRandomFace() {
         return Random.value <= 0.75f;
+    }
+
+    public Vector2 GetGridFromWorldPosition(Transform pos) {
+        return GetGridFromWorldPosition(pos.localPosition.x, pos.localPosition.y, pos.localPosition.z);
+    }
+
+    public Vector2 GetGridFromWorldPosition(float x, float y, float z) {
+        var roomSize = 10.0f;
+        var dist = roomSize / 2.0f;
+
+        var oX = Mathf.CeilToInt((Mathf.Abs(x) - dist) / roomSize);
+        var oY = Mathf.CeilToInt((Mathf.Abs(z) - dist) / roomSize);
+
+        if( Mathf.Abs(x) <= 5.0f) {
+            oX = 0;
+        }
+        if (Mathf.Abs(z) <= 5.0f) {
+            oY = 0;
+        }
+        if( x < 0.0f ) {
+            oX *= -1;
+        }
+        if (z < 0.0f) {
+            oY *= -1;
+        }
+        return new Vector2(oX, oY);
     }
 
     public string ProbeSpot(float x, float y) {
