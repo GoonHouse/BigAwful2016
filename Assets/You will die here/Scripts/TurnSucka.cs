@@ -24,5 +24,6 @@ public class TurnSucka : MonoBehaviour {
 			transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.LookRotation (direction), step);
 		}
 
+        Shader.SetGlobalVector("_Origin", transform.position);
 	}
 }

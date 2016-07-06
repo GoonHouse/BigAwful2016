@@ -13,6 +13,7 @@
 
     sampler2D _MainTex;
     fixed4 _Color;
+	float4 _Origin;
     uniform half4 unity_FogStart;
     uniform half4 unity_FogEnd;
 
@@ -25,7 +26,7 @@
     void myvert (inout appdata_full v, out Input data) {
       UNITY_INITIALIZE_OUTPUT(Input,data);
       float3 worldPos = mul (_Object2World, v.vertex).xyz;
-      float dist = distance(worldPos.xyz, float3(0,0,0));
+      float dist = distance(worldPos.xyz, _Origin.xyz);
       float diff = unity_FogEnd.x - unity_FogStart.x;
       float invDiff = 1.0f / diff;
       dist = clamp (dist, 0.0, unity_FogEnd.x);
