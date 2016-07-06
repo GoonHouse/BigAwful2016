@@ -110,6 +110,7 @@ public class RoomGenerator : MonoBehaviour {
         var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
         go.transform.SetParent(GameObject.Find("Rooms").transform, true);
         go.transform.localPosition = pos;
+		go.transform.rotation = GameObject.Find ("Rooms").transform.rotation;
 
         rooms.Add( x.ToString() + "_" + y.ToString(), go.GetComponent<RoomObject>() );
 
