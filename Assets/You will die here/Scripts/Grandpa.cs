@@ -18,7 +18,7 @@ public class Grandpa : MonoBehaviour {
     void Start() {
         m_Animator = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
-        character = GameObject.Find("Gramps");
+        character = GameObject.Find("GrandFatherContainmentUnit");
         // If for any reason the player is not at the world origin or the camera isn't facing it, this will break. \o/
         cameraOffset = Camera.main.transform.position;
     }
@@ -50,7 +50,7 @@ public class Grandpa : MonoBehaviour {
                 lookDirection = new Vector3(-moveHorizontal, 0, -moveVertical);
                 float step = turnSpeed * Time.deltaTime;
                 var lookRot = Quaternion.LookRotation(lookDirection.normalized);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, step);
+                character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
             }
         }
 
