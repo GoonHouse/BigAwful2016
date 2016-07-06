@@ -12,13 +12,12 @@ public class MoveSucka : MonoBehaviour {
 
 	}
 
-	void Update ()
-	{
+	void Update (){
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 
-		if(Input.GetButtonDown("Fire2")) // I think maybe we should make 4 gameobjects pointing North South East West and lerp to each one when the button is pressed or something instead of this
-		{
+        // I think maybe we should make 4 gameobjects pointing North South East West and lerp to each one when the button is pressed or something instead of this
+        if (Input.GetButtonDown("Fire2")){
 			transform.RotateAround (Gramps.transform.position, Vector3.up, turnAmount);
 			Gramps.transform.Rotate (new Vector3(0, turnAmount, 0));
 		}

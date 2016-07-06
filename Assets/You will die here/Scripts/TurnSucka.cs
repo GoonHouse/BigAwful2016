@@ -5,7 +5,9 @@ public class TurnSucka : MonoBehaviour {
 
 	public float speed = 0.1F;
 
-	public void Start()
+    private Vector3 moveDirection = Vector3.zero;
+
+    public void Start()
 	{
 		
 	}
@@ -24,6 +26,6 @@ public class TurnSucka : MonoBehaviour {
 			transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.LookRotation (direction), step);
 		}
 
-        Shader.SetGlobalVector("_Origin", transform.position);
+        
 	}
 }

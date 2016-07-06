@@ -19,12 +19,23 @@ public class RoomGenerator : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SpawnPart("NESW", 0, 0);
+        SpawnPart("NESW", -1, 0);
+        SpawnPart("NESW", 1, 0);
+        SpawnPart("NESW", 0, 1);
+        SpawnPart("NESW", -1, 1);
+        SpawnPart("NESW", 1, 1);
+        SpawnPart("NESW", 0, -1);
+        SpawnPart("NESW", -1, -1);
+        SpawnPart("NESW", 1, -1);
+
+        /*
         SpawnPart("NE_W", 1, 0);  // north =  1,  0
         SpawnPart("NES_", 0, -1); // east  =  0, -1
         SpawnPart("_ESW", -1, 0); // south = -1,  0
         SpawnPart("N_SW", 0, 1);  // west  =  0,  1
+        */
 
-		/* //for making a bunch of random blanks spots
+        /* //for making a bunch of random blanks spots
 		for (int i = 0; i < randos; i++) {
 			var rx = Random.Range ((int)(worldMin.x - 1.0f), (int)(worldMax.x + 2.0f));
 			var ry = Random.Range ((int)(worldMin.y - 1.0f), (int)(worldMax.y + 2.0f));
@@ -71,6 +82,11 @@ public class RoomGenerator : MonoBehaviour {
                 }
             }
             */
+        }
+        
+        if( Input.GetKeyDown(KeyCode.G) ){
+            Debug.Log("honka");
+            //SpawnPart("____", 1, 1);
         }
     }
 
