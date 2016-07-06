@@ -7,6 +7,7 @@ public class Grandpa : MonoBehaviour {
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Vector3 cameraOffset = new Vector3(0.0f, 16.0f, -28.0f);
+    public float cameraTurnAmount = 90.0f;
     private Vector3 moveDirection = Vector3.zero;
     public Vector3 lookDirection = Vector3.zero;
 
@@ -30,7 +31,12 @@ public class Grandpa : MonoBehaviour {
         // Are we moving?
         m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
 
-        // 
+        if (Input.GetButtonDown("Fire2")) {
+            Camera.main.transform.RotateAround(transform.position, Vector3.up, cameraTurnAmount);
+            //Camera.main.transform.Rotate(new Vector3(0, cameraTurnAmount, 0));
+        }
+
+        // Handle movement.
         if (controller.isGrounded) {
             moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
             moveDirection = transform.TransformDirection(moveDirection);
@@ -39,42 +45,18 @@ public class Grandpa : MonoBehaviour {
                 moveDirection.y = jumpSpeed;
             }
 
+            // Turn if we need to turn.
             if (moveVertical != 0 || moveHorizontal != 0) {
                 lookDirection = new Vector3(-moveHorizontal, 0, -moveVertical);
                 float step = turnSpeed * Time.deltaTime;
                 var lookRot = Quaternion.LookRotation(lookDirection.normalized);
-                character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, step);
             }
         }
 
         // Cancel gravity, move to position.
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-
-        // Look to correct direction.
-        /*
-        if( moveVertical != 0 || moveHorizontal != 0 ) {
-            lookDirection = character.transform.position;
-
-            lookDirection.x -= moveHorizontal;
-            lookDirection.y = 0.0f;
-            lookDirection.z -= moveVertical;
-
-            float step = turnSpeed * Time.deltaTime;
-            character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, Quaternion.LookRotation(lookDirection), step);
-        }
-        */
-
-        /*
-        Vector3 direction = new Vector3(-moveHorizontal, 0.0f, -moveVertical);
-
-        if (moveVertical == 0 && moveHorizontal == 0) {
-            //direction = new Vector3 (-1, 0, 1);
-        } else {
-            float step = 0.1F * Time.deltaTime;
-            character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, Quaternion.LookRotation(direction), step);
-        }
-        */
 
         // Report location to fog shader.
         Shader.SetGlobalVector("_Origin", transform.position);
