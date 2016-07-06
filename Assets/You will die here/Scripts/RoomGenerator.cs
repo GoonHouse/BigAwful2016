@@ -11,6 +11,7 @@ public class RoomGenerator : MonoBehaviour {
     public Dictionary<string, RoomObject> rooms = new Dictionary<string, RoomObject>();
     public Vector2 worldMin = new Vector2();
     public Vector2 worldMax = new Vector2();
+	//public int randos = 10; // for making a bunch of random blank spots
 
     public float generateFrequency = 3.0f;
     public float generateTimer = 0.0f;
@@ -22,6 +23,19 @@ public class RoomGenerator : MonoBehaviour {
         SpawnPart("NES_", 0, -1); // east  =  0, -1
         SpawnPart("_ESW", -1, 0); // south = -1,  0
         SpawnPart("N_SW", 0, 1);  // west  =  0,  1
+
+		/* //for making a bunch of random blanks spots
+		for (int i = 0; i < randos; i++) {
+			var rx = Random.Range ((int)(worldMin.x - 1.0f), (int)(worldMax.x + 2.0f));
+			var ry = Random.Range ((int)(worldMin.y - 1.0f), (int)(worldMax.y + 2.0f));
+			var part = ProbeSpot(rx, ry);
+			if( part != "no") {
+				SpawnPart("NESW", rx, ry);
+			}
+
+		}
+		*/
+
     }
 	
 	// Update is called once per frame
@@ -136,8 +150,9 @@ public class RoomGenerator : MonoBehaviour {
         var pos = new Vector3(x * 10.0f, 0, y * 10.0f);
         var part = Resources.Load("Rooms/" + partName);
         var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
-        go.transform.SetParent(GameObject.Find("World").transform, true);
+        go.transform.SetParent(GameObject.Find("Rooms").transform, true);
         go.transform.localPosition = pos;
+		go.transform.rotation = GameObject.Find ("Rooms").transform.rotation;
 
         rooms.Add( x.ToString() + "_" + y.ToString(), go.GetComponent<RoomObject>() );
 
