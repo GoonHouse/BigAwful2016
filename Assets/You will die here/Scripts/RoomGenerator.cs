@@ -108,7 +108,7 @@ public class RoomGenerator : MonoBehaviour {
         var pos = new Vector3(x * 10.0f, 0, y * 10.0f);
         var part = Resources.Load("Rooms/" + partName);
         var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
-        go.transform.SetParent(GameObject.Find("World").transform, true);
+        go.transform.SetParent(GameObject.Find("Rooms").transform, true);
         go.transform.localPosition = pos;
 
         rooms.Add( x.ToString() + "_" + y.ToString(), go.GetComponent<RoomObject>() );
