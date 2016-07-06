@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public enum Direction {
+    North, East, South, West,
+}
+
 public class RoomGenerator : MonoBehaviour {
 
     public Dictionary<string, RoomObject> rooms = new Dictionary<string, RoomObject>();
@@ -72,26 +76,50 @@ public class RoomGenerator : MonoBehaviour {
 
         if (rooms.ContainsKey(coordN) || rooms.ContainsKey(coordE) || rooms.ContainsKey(coordS) || rooms.ContainsKey(coordW)) {
             if (!rooms.ContainsKey(coord)) {
-                if (rooms.ContainsKey(coordS) && rooms[coordS].isNorthOpen) {
+                if (rooms.ContainsKey(coordS) && rooms[coordS].isSouthOpen) {
                     str += "N";
+                } else if (!rooms.ContainsKey(coordS)) {
+                    if ( CalcRandomFace()) {
+                        str += "N";
+                    } else {
+                        str += "_";
+                    }
                 } else {
                     str += "_";
                 }
 
-                if (rooms.ContainsKey(coordW) && rooms[coordW].isEastOpen) {
+                if (rooms.ContainsKey(coordW) && rooms[coordW].isWestOpen) {
                     str += "E";
+                } else if (!rooms.ContainsKey(coordW)) {
+                    if (CalcRandomFace()) {
+                        str += "E";
+                    } else {
+                        str += "_";
+                    }
                 } else {
                     str += "_";
                 }
 
-                if (rooms.ContainsKey(coordN) && rooms[coordN].isSouthOpen) {
+                if (rooms.ContainsKey(coordN) && rooms[coordN].isNorthOpen) {
                     str += "S";
+                } else if (!rooms.ContainsKey(coordN)) {
+                    if (CalcRandomFace()) {
+                        str += "S";
+                    } else {
+                        str += "_";
+                    }
                 } else {
                     str += "_";
                 }
 
-                if (rooms.ContainsKey(coordE) && rooms[coordE].isWestOpen) {
+                if (rooms.ContainsKey(coordE) && rooms[coordE].isEastOpen) {
                     str += "W";
+                } else if(!rooms.ContainsKey(coordE)) {
+                    if (CalcRandomFace()) {
+                        str += "W";
+                    } else {
+                        str += "_";
+                    }
                 } else {
                     str += "_";
                 }
