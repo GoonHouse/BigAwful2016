@@ -6,6 +6,7 @@ public class Grandpa : MonoBehaviour {
     public float moveSpeed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
+    public Vector3 cameraOffset = new Vector3(0.0f, 16.0f, -28.0f);
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 lookDirection = Vector3.zero;
 
@@ -17,6 +18,8 @@ public class Grandpa : MonoBehaviour {
         m_Animator = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
         character = GameObject.Find("Gramps");
+        // If for any reason the player is not at the world origin or the camera isn't facing it, this will break. \o/
+        cameraOffset = Camera.main.transform.position;
     }
 
     void Update() {
@@ -50,5 +53,10 @@ public class Grandpa : MonoBehaviour {
 
         // Report location to fog shader.
         Shader.SetGlobalVector("_Origin", transform.position);
+
+        // Set the camera's position.
+        var cpos = transform.position;
+        cpos += cameraOffset;
+        Camera.main.transform.position = cpos;
     }
 }
