@@ -139,16 +139,18 @@ public class RoomGenerator : MonoBehaviour {
 
         var coord = x.ToString() + "_" + y.ToString();
 
-        var coordN = (x + 1).ToString() + "_" + y.ToString();
-        var coordE = x.ToString() + "_" + (y - 1).ToString();
-        var coordS = (x - 1).ToString() + "_" + y.ToString();
-        var coordW = x.ToString() + "_" + (y + 1).ToString();
+        var coordN = (x - 1).ToString() + "_" + y.ToString();
+        var coordE = x.ToString() + "_" + (y + 1).ToString();
+        var coordS = (x + 1).ToString() + "_" + y.ToString();
+        var coordW = x.ToString() + "_" + (y - 1).ToString();
 
         if (rooms.ContainsKey(coordN) || rooms.ContainsKey(coordE) || rooms.ContainsKey(coordS) || rooms.ContainsKey(coordW)) {
             if (!rooms.ContainsKey(coord)) {
-                if (rooms.ContainsKey(coordS) && rooms[coordS].isSouthOpen) {
+                if (rooms.ContainsKey(coordN) && rooms[coordN].isSouthOpen) {
                     str += "N";
-                } else if (!rooms.ContainsKey(coordS)) {
+                } else if (rooms.ContainsKey(coordN) && !rooms[coordN].isSouthOpen) {
+                    return "no";
+                } else if (!rooms.ContainsKey(coordN)) {
                     if ( CalcRandomFace()) {
                         str += "N";
                     } else {
@@ -158,9 +160,11 @@ public class RoomGenerator : MonoBehaviour {
                     str += "_";
                 }
 
-                if (rooms.ContainsKey(coordW) && rooms[coordW].isWestOpen) {
+                if (rooms.ContainsKey(coordE) && rooms[coordE].isWestOpen) {
                     str += "E";
-                } else if (!rooms.ContainsKey(coordW)) {
+                } else if (rooms.ContainsKey(coordE) && !rooms[coordE].isWestOpen) {
+                    return "no";
+                } else if (!rooms.ContainsKey(coordE)) {
                     if (CalcRandomFace()) {
                         str += "E";
                     } else {
@@ -170,9 +174,11 @@ public class RoomGenerator : MonoBehaviour {
                     str += "_";
                 }
 
-                if (rooms.ContainsKey(coordN) && rooms[coordN].isNorthOpen) {
+                if (rooms.ContainsKey(coordS) && rooms[coordS].isNorthOpen) {
                     str += "S";
-                } else if (!rooms.ContainsKey(coordN)) {
+                } else if (rooms.ContainsKey(coordS) && !rooms[coordS].isNorthOpen) {
+                    return "no";
+                } else if (!rooms.ContainsKey(coordS)) {
                     if (CalcRandomFace()) {
                         str += "S";
                     } else {
@@ -182,9 +188,11 @@ public class RoomGenerator : MonoBehaviour {
                     str += "_";
                 }
 
-                if (rooms.ContainsKey(coordE) && rooms[coordE].isEastOpen) {
+                if ( rooms.ContainsKey(coordW) && rooms[coordW].isEastOpen ) {
                     str += "W";
-                } else if(!rooms.ContainsKey(coordE)) {
+                } else if( rooms.ContainsKey(coordW) && !rooms[coordW].isEastOpen ) {
+                    return "no";
+                } else if (!rooms.ContainsKey(coordW)) {
                     if (CalcRandomFace()) {
                         str += "W";
                     } else {
