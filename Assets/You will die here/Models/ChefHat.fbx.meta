@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4d6931f154a7c0445ac27978c1d80e4e
-timeCreated: 1467930763
+guid: 32d889782d0a2184fbb2b076f75e3403
+timeCreated: 1467930358
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Glasses
+    4300000: Chef Hat
   materials:
     importMaterials: 1
     materialName: 0
