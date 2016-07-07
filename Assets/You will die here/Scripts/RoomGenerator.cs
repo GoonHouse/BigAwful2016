@@ -83,13 +83,12 @@ public class RoomGenerator : MonoBehaviour {
             }
             */
         }
+        var pos = GetGridFromWorldPosition(GameObject.Find("GrampsHolder").transform);
+        MaybeSpawnAt(pos.x, pos.y);
         if (Input.GetKeyDown(KeyCode.F)) {
-            var pos = GetGridFromWorldPosition(GameObject.Find("GrampsHolder").transform);
             Debug.Log("PLAYER AT: " + (pos.x).ToString() + "_" + (pos.y).ToString());
         }
         if ( Input.GetKeyDown(KeyCode.G) ){
-            var pos = GetGridFromWorldPosition( GameObject.Find("GrampsHolder").transform );
-
             MaybeSpawnAt(pos.x, pos.y);     // self, just in case
             MaybeSpawnAt(pos.x - 1, pos.y); // north
             MaybeSpawnAt(pos.x, pos.y + 1); // east
