@@ -90,6 +90,7 @@ public class RoomGenerator : MonoBehaviour {
         if ( Input.GetKeyDown(KeyCode.G) ){
             var pos = GetGridFromWorldPosition( GameObject.Find("GrampsHolder").transform );
 
+            MaybeSpawnAt(pos.x, pos.y);     // self, just in case
             MaybeSpawnAt(pos.x - 1, pos.y); // north
             MaybeSpawnAt(pos.x, pos.y + 1); // east
             MaybeSpawnAt(pos.x + 1, pos.y); // south
