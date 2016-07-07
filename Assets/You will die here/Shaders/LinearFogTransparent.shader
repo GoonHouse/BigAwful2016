@@ -37,11 +37,12 @@
       dist = clamp (dist, 0.0, unity_FogEnd.x);
       data.fog = clamp ((unity_FogEnd.x-dist) * invDiff, 0.0, 1.0);
     }
+
     void mycolor (Input IN, SurfaceOutput o, inout fixed4 color) {
       #ifdef UNITY_PASS_FORWARDADD
-        UNITY_APPLY_FOG_COLOR(IN.fog, color, float4(0,0,0,0));
+      UNITY_APPLY_FOG_COLOR(IN.fog, color, float4(0,0,0,0));
       #else
-        UNITY_APPLY_FOG_COLOR(IN.fog, color, unity_FogColor);
+      UNITY_APPLY_FOG_COLOR(IN.fog, color, unity_FogColor);
       #endif
     }
 
