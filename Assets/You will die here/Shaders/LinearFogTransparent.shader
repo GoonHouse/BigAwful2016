@@ -4,11 +4,14 @@
     _MainTex ("Base (RGB)", 2D) = "white" {}
   }
   SubShader {
-    Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+    Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True" "ForceNoShadowCasting" = "True" }
+    ZWrite Off
     Blend SrcAlpha OneMinusSrcAlpha
-    Cull Off
+    Cull Back
+    ZTest Less
+    Offset -1, 10
     LOD 200
-    
+
     CGPROGRAM
     #pragma surface surf Lambert finalcolor:mycolor vertex:myvert alpha:fade
     #pragma multi_compile_fog
@@ -23,7 +26,6 @@
     struct Input {
       float2 uv_MainTex;
       half fog;
-
     };
 
     void myvert (inout appdata_full v, out Input data) {
@@ -44,11 +46,13 @@
     }
 
     void surf (Input IN, inout SurfaceOutput o) {
-      float4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+      fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
       o.Albedo = c.rgb;
       o.Alpha = c.a;
     }
+
     ENDCG
+
   } 
   FallBack "Diffuse"
 }

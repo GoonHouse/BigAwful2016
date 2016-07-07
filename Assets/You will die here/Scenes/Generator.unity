@@ -190,7 +190,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -256,6 +256,9 @@ MonoBehaviour:
   worldMax: {x: 0, y: 0}
   generateFrequency: 3
   generateTimer: 0
+  roomSize: 10
+  playerGenerationRadius: 2
+  chanceOfWall: 0.75
 --- !u!1 &1337392895
 GameObject:
   m_ObjectHideFlags: 0
