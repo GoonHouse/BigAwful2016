@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Wallsbackface
-  m_Shader: {fileID: 4800000, guid: 950e2edfef88a414bbf2f7e9bb1d4d2c, type: 3}
+  m_Shader: {fileID: 4800000, guid: d9b94b58fb25de348a2903e0b43570fd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: ccc87aada8078ab479c482f7ddeaaa74, type: 3}
+          m_Texture: {fileID: 2800000, guid: 564737ca22854a94ab3c1ec4e7352c1e, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -93,6 +93,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _alphaValue
+        second: 4
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -127,10 +131,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _alphaValue
-        second: 4
     m_Colors:
       data:
         first:

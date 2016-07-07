@@ -1,14 +1,16 @@
-﻿Shader "Custom/LinearFog" {
+﻿Shader "Custom/LinearFogTransparent" {
   Properties {
 	_Color ("Main Color", Color) = (1,1,1,1)
     _MainTex ("Base (RGB)", 2D) = "white" {}
   }
   SubShader {
-    Tags { "RenderType" = "Opaque" }
+    Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+    Blend SrcAlpha OneMinusSrcAlpha
+    Cull Off
     LOD 200
     
     CGPROGRAM
-    #pragma surface surf Lambert finalcolor:mycolor vertex:myvert
+    #pragma surface surf Lambert finalcolor:mycolor vertex:myvert alpha:fade
     #pragma multi_compile_fog
 
     sampler2D _MainTex;
@@ -16,6 +18,7 @@
 	float4 _Origin;
     uniform half4 unity_FogStart;
     uniform half4 unity_FogEnd;
+    fixed Alpha;
 
     struct Input {
       float2 uv_MainTex;
