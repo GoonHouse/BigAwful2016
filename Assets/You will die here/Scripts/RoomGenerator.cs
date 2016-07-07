@@ -83,8 +83,10 @@ public class RoomGenerator : MonoBehaviour {
             }
             */
         }
+
         var pos = GetGridFromWorldPosition(GameObject.Find("GrampsHolder").transform);
         MaybeSpawnAt(pos.x, pos.y);
+
         if (Input.GetKeyDown(KeyCode.F)) {
             Debug.Log("PLAYER AT: " + (pos.x).ToString() + "_" + (pos.y).ToString());
         }
@@ -148,8 +150,8 @@ public class RoomGenerator : MonoBehaviour {
             if (!rooms.ContainsKey(coord)) {
                 if (rooms.ContainsKey(coordN) && rooms[coordN].isSouthOpen) {
                     str += "N";
-                } else if (rooms.ContainsKey(coordN) && !rooms[coordN].isSouthOpen) {
-                    return "no";
+                //} else if (rooms.ContainsKey(coordN) && !rooms[coordN].isSouthOpen) {
+                //    return "no";
                 } else if (!rooms.ContainsKey(coordN)) {
                     if ( CalcRandomFace()) {
                         str += "N";
@@ -162,8 +164,8 @@ public class RoomGenerator : MonoBehaviour {
 
                 if (rooms.ContainsKey(coordE) && rooms[coordE].isWestOpen) {
                     str += "E";
-                } else if (rooms.ContainsKey(coordE) && !rooms[coordE].isWestOpen) {
-                    return "no";
+                //} else if (rooms.ContainsKey(coordE) && !rooms[coordE].isWestOpen) {
+                //    return "no";
                 } else if (!rooms.ContainsKey(coordE)) {
                     if (CalcRandomFace()) {
                         str += "E";
@@ -176,8 +178,8 @@ public class RoomGenerator : MonoBehaviour {
 
                 if (rooms.ContainsKey(coordS) && rooms[coordS].isNorthOpen) {
                     str += "S";
-                } else if (rooms.ContainsKey(coordS) && !rooms[coordS].isNorthOpen) {
-                    return "no";
+                //} else if (rooms.ContainsKey(coordS) && !rooms[coordS].isNorthOpen) {
+                //    return "no";
                 } else if (!rooms.ContainsKey(coordS)) {
                     if (CalcRandomFace()) {
                         str += "S";
@@ -190,8 +192,8 @@ public class RoomGenerator : MonoBehaviour {
 
                 if ( rooms.ContainsKey(coordW) && rooms[coordW].isEastOpen ) {
                     str += "W";
-                } else if( rooms.ContainsKey(coordW) && !rooms[coordW].isEastOpen ) {
-                    return "no";
+                //} else if( rooms.ContainsKey(coordW) && !rooms[coordW].isEastOpen ) {
+                //    return "no";
                 } else if (!rooms.ContainsKey(coordW)) {
                     if (CalcRandomFace()) {
                         str += "W";
@@ -206,7 +208,7 @@ public class RoomGenerator : MonoBehaviour {
                 return "no";
             }
         } else {
-            return "no";
+            return "____";
         }
     }
 
