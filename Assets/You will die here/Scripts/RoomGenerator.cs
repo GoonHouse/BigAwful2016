@@ -16,6 +16,10 @@ public class RoomGenerator : MonoBehaviour {
     public float generateFrequency = 3.0f;
     public float generateTimer = 0.0f;
 
+    public float roomSize = 10.0f;
+    public int playerGenerationRadius = 2;
+    public float chanceOfWall = 0.75f;
+
     // Use this for initialization
     void Start () {
         SpawnPart("NESW", 0, 0);
@@ -35,17 +39,20 @@ public class RoomGenerator : MonoBehaviour {
         SpawnPart("N_SW", 0, 1);  // west  =  0,  1
         */
 
-        /* //for making a bunch of random blanks spots
-		for (int i = 0; i < randos; i++) {
-			var rx = Random.Range ((int)(worldMin.x - 1.0f), (int)(worldMax.x + 2.0f));
+        var initGenerateFrequency = generateFrequency;
+        generateFrequency = 0;
+        for (int i = 0; i < 500; i++) {
+            Update();
+			/*
+            var rx = Random.Range ((int)(worldMin.x - 1.0f), (int)(worldMax.x + 2.0f));
 			var ry = Random.Range ((int)(worldMin.y - 1.0f), (int)(worldMax.y + 2.0f));
 			var part = ProbeSpot(rx, ry);
 			if( part != "no") {
 				SpawnPart("NESW", rx, ry);
 			}
-
+            */
 		}
-		*/
+        generateFrequency = initGenerateFrequency;
 
     }
 	
@@ -85,17 +92,16 @@ public class RoomGenerator : MonoBehaviour {
         }
 
         var pos = GetGridFromWorldPosition(GameObject.Find("GrampsHolder").transform);
-        MaybeSpawnAt(pos.x, pos.y);
+
+        // Spawn an area around the player.
+        for (int i = -playerGenerationRadius; i <= playerGenerationRadius; i++) {
+            for (int j = -playerGenerationRadius; j <= playerGenerationRadius; j++) {
+                MaybeSpawnAt(pos.x + i, pos.y + j);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.F)) {
             Debug.Log("PLAYER AT: " + (pos.x).ToString() + "_" + (pos.y).ToString());
-        }
-        if ( Input.GetKeyDown(KeyCode.G) ){
-            MaybeSpawnAt(pos.x, pos.y);     // self, just in case
-            MaybeSpawnAt(pos.x - 1, pos.y); // north
-            MaybeSpawnAt(pos.x, pos.y + 1); // east
-            MaybeSpawnAt(pos.x + 1, pos.y); // south
-            MaybeSpawnAt(pos.x, pos.y - 1); // west
         }
     }
 
@@ -107,7 +113,11 @@ public class RoomGenerator : MonoBehaviour {
     }
 
     public bool CalcRandomFace() {
-        return Random.value <= 0.75f;
+        return Random.value <= chanceOfWall;
+    }
+
+    public bool CalcDudRoom() {
+        return Random.value <= 0.11f;
     }
 
     public Vector2 GetGridFromWorldPosition(Transform pos) {
@@ -115,16 +125,15 @@ public class RoomGenerator : MonoBehaviour {
     }
 
     public Vector2 GetGridFromWorldPosition(float x, float y, float z) {
-        var roomSize = 10.0f;
         var dist = roomSize / 2.0f;
 
         var oX = Mathf.CeilToInt((Mathf.Abs(x) - dist) / roomSize);
         var oY = Mathf.CeilToInt((Mathf.Abs(z) - dist) / roomSize);
 
-        if( Mathf.Abs(x) <= 5.0f) {
+        if( Mathf.Abs(x) <= dist) {
             oX = 0;
         }
-        if (Mathf.Abs(z) <= 5.0f) {
+        if (Mathf.Abs(z) <= dist) {
             oY = 0;
         }
         if( x < 0.0f ) {
@@ -148,6 +157,9 @@ public class RoomGenerator : MonoBehaviour {
 
         if (rooms.ContainsKey(coordN) || rooms.ContainsKey(coordE) || rooms.ContainsKey(coordS) || rooms.ContainsKey(coordW)) {
             if (!rooms.ContainsKey(coord)) {
+                //if( CalcDudRoom() ) {
+                //    return "____";
+                //}
                 if (rooms.ContainsKey(coordN) && rooms[coordN].isSouthOpen) {
                     str += "N";
                 //} else if (rooms.ContainsKey(coordN) && !rooms[coordN].isSouthOpen) {
@@ -213,7 +225,7 @@ public class RoomGenerator : MonoBehaviour {
     }
 
     public GameObject SpawnPart(string partName, float x, float y) {
-        var pos = new Vector3(x * 10.0f, 0, y * 10.0f);
+        var pos = new Vector3(x * roomSize, 0, y * roomSize);
         var part = Resources.Load("Rooms/" + partName);
         var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
         go.transform.SetParent(GameObject.Find("Rooms").transform, true);
