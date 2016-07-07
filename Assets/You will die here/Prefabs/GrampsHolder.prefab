@@ -96,6 +96,7 @@ GameObject:
   - 4: {fileID: 404270}
   - 143: {fileID: 14302576}
   - 114: {fileID: 11410604}
+  - 54: {fileID: 5450466}
   m_Layer: 0
   m_Name: GrampsHolder
   m_TagString: Untagged
@@ -188,10 +189,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.38268346, z: 0, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
   m_Children:
   - {fileID: 477852}
   m_Father: {fileID: 0}
@@ -539,6 +540,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156634}
   m_Mesh: {fileID: 4300000, guid: 3f56e94d241be654f8fca3c543a1956f, type: 3}
+--- !u!54 &5450466
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164728}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!95 &9570806
 Animator:
   serializedVersion: 3
