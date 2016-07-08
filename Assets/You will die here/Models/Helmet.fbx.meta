@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4d6931f154a7c0445ac27978c1d80e4e
-timeCreated: 1467930763
+guid: dc7bcbed5d8810741a3678a3c95f44ef
+timeCreated: 1467931987
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Glasses
+    4300000: Helmet
   materials:
     importMaterials: 1
     materialName: 0
