@@ -290,6 +290,9 @@ MonoBehaviour:
   closeFogTarget: 8
   endFogTarget: 16
   fogSpeed: 1
+  fogColorSpeed: 0.05
+  fogStart: {r: 0, g: 0, b: 0, a: 1}
+  fogEnd: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 1}
 --- !u!1001 &1066743074
 Prefab:
   m_ObjectHideFlags: 0
