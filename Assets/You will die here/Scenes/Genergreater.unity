@@ -136,6 +136,7 @@ GameObject:
   - 114: {fileID: 688424644}
   - 114: {fileID: 688424645}
   - 114: {fileID: 688424643}
+  - 114: {fileID: 688424646}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -273,6 +274,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcfba18c01bac0e4599de46a2857e637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &688424646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688424636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63feb9fa842c720449eda3efe9f1691d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closeFogStart: 0
+  endFogStart: 0
+  closeFogTarget: 8
+  endFogTarget: 16
+  fogSpeed: 1
 --- !u!1001 &1066743074
 Prefab:
   m_ObjectHideFlags: 0
@@ -445,6 +462,10 @@ Prefab:
     - target: {fileID: 404270, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404270, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
