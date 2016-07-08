@@ -131,7 +131,7 @@ Material:
       data:
         first:
           name: _alphaValue
-        second: 4
+        second: 0.5
     m_Colors:
       data:
         first:

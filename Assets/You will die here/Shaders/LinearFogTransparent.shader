@@ -1,5 +1,6 @@
 ﻿Shader "Custom/LinearFogTransparent" {
   Properties {
+  	_alphaValue ("Alpha Value", Range (-1, 1)) = 0
 	_Color ("Main Color", Color) = (1,1,1,1)
     _MainTex ("Base (RGB)", 2D) = "white" {}
   }
@@ -22,6 +23,7 @@
     uniform half4 unity_FogStart;
     uniform half4 unity_FogEnd;
     fixed Alpha;
+    fixed _alphaValue;
 
     struct Input {
       float2 uv_MainTex;
@@ -49,7 +51,7 @@
     void surf (Input IN, inout SurfaceOutput o) {
       fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
       o.Albedo = c.rgb;
-      o.Alpha = c.a;
+      o.Alpha = clamp(c.a-(IN.fog*_alphaValue),0,1);
     }
 
     ENDCG
