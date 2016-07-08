@@ -2,10 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum Direction {
-    North, East, South, West,
-}
-
 public class RoomGenerator : MonoBehaviour {
 
     public Dictionary<string, RoomObject> rooms = new Dictionary<string, RoomObject>();
