@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Photo5
+  m_Name: Photo6
   m_Shader: {fileID: 4800000, guid: 950e2edfef88a414bbf2f7e9bb1d4d2c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 2fa3adf60a594a44b8fb0c4941683d05, type: 3}
+          m_Texture: {fileID: 2800000, guid: fe00971969c4bad4ab933c1c77f93bfb, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
