@@ -19,6 +19,8 @@ public class FloorMaker : MonoBehaviour {
     public float chanceToClone = 0.05f;
     public float chanceToCloneDecay = 0.50f;
 
+    public float chanceOfBlackRoom = 0.10f;
+
     private RoomGenergreater rg;
 
     void Clone(Vector2 loc) {
@@ -54,6 +56,8 @@ public class FloorMaker : MonoBehaviour {
         fm.chanceToTurnLeft = chanceToTurnLeft;
         fm.chanceToTurnAround = chanceToTurnAround;
         fm.chanceToTurnRight = chanceToTurnRight;
+
+        fm.chanceOfBlackRoom = chanceOfBlackRoom;
     }
 
     // Use this for initialization
@@ -96,10 +100,19 @@ public class FloorMaker : MonoBehaviour {
         if (Random.value <= chanceToTurnAround && !turning) {
             turning = true;
             writeDirection = writeDirection.Rotate(180);
+            OnTurnAround();
         }
         if (Random.value <= chanceToTurnRight && !turning) {
             turning = true;
             writeDirection = writeDirection.Rotate(90);
+        }
+    }
+
+    public void OnTurnAround() {
+        var oldDirection = writeDirection.Rotate(180);
+        var dropSpot = (writeHead + oldDirection).Round(0);
+        if( Random.value <= chanceOfBlackRoom ){
+            rg.SpawnPart("BlackRoom", dropSpot);
         }
     }
     

@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472962}
+  - 114: {fileID: 11406372}
   m_Layer: 0
   m_Name: BlackRoom
   m_TagString: Untagged
@@ -93,6 +94,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173858}
   m_Mesh: {fileID: 4300000, guid: b8e9ccd71e09b084290b8e7a80431297, type: 3}
+--- !u!114 &11406372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6baefdfa4b38cf438f76b4be2de5120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNorthOpen: 0
+  isEastOpen: 0
+  isSouthOpen: 0
+  isWestOpen: 0
+  pos: {x: 0, y: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
