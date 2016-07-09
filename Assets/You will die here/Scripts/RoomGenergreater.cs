@@ -31,18 +31,21 @@ public class RoomGenergreater : MonoBehaviour {
     public void TimeForWalls() {
         foreach (KeyValuePair<string, RoomObject> item in rooms) {
             var room = item.Value;
-            if( IsFree(room.pos + God.WEST) ){
-                SpawnWall("WallsHolder", room.pos, "W");
-            }
-            if (IsFree(room.pos + God.EAST)){
-                SpawnWall("WallsHolder", room.pos + God.EAST, "W");
-            }
 
-            if (IsFree(room.pos + God.SOUTH)) {
-                SpawnWall("WallsHolder", room.pos, "S");
-            }
-            if (IsFree(room.pos + God.NORTH)) {
-                SpawnWall("WallsHolder", room.pos + God.NORTH, "S");
+            if( room.isWalkable ) {
+                if (IsFree(room.pos + God.WEST)) {
+                    SpawnWall("WallsHolder", room.pos, "W");
+                }
+                if (IsFree(room.pos + God.EAST)) {
+                    SpawnWall("WallsHolder", room.pos + God.EAST, "W");
+                }
+
+                if (IsFree(room.pos + God.SOUTH)) {
+                    SpawnWall("WallsHolder", room.pos, "S");
+                }
+                if (IsFree(room.pos + God.NORTH)) {
+                    SpawnWall("WallsHolder", room.pos + God.NORTH, "S");
+                }
             }
         }
     }
@@ -50,7 +53,14 @@ public class RoomGenergreater : MonoBehaviour {
     public bool IsFree(Vector2 loc) {
         var coord = God.Key(loc);
 
-        return !rooms.ContainsKey(coord);
+        RoomObject room;
+        rooms.TryGetValue(coord, out room);
+
+        if( room != null) {
+            return !room.isWalkable;
+        } else {
+            return true;
+        }
     }
 
     public GameObject SpawnWall(string partName, Vector2 loc, string dir) {

@@ -109,6 +109,7 @@ MonoBehaviour:
   isEastOpen: 0
   isSouthOpen: 0
   isWestOpen: 0
+  isWalkable: 0
   pos: {x: 0, y: 0}
 --- !u!1001 &100100000
 Prefab:
