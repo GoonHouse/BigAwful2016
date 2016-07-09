@@ -112,8 +112,8 @@ public class FloorMaker : MonoBehaviour {
         if (tilesLeft > 0) {
             tilesLeft--;
             rg.SpawnPart("Floor", writeHead);
-            Debug.Log("GREATOR HAS: " + rg.rooms.Count);
         } else {
+            Debug.Log("GREATOR HAS: " + rg.rooms.Count);
             Destroy(gameObject);
         }
     }

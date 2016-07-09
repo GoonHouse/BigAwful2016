@@ -133,9 +133,6 @@ GameObject:
   - 124: {fileID: 688424638}
   - 81: {fileID: 688424637}
   - 114: {fileID: 688424642}
-  - 114: {fileID: 688424644}
-  - 114: {fileID: 688424645}
-  - 114: {fileID: 688424643}
   - 114: {fileID: 688424646}
   m_Layer: 0
   m_Name: Main Camera
@@ -229,52 +226,6 @@ MonoBehaviour:
   maxBlurSize: 10
   downsample: 0
   tiltShiftShader: {fileID: 4800000, guid: bf34d2a25450349699e8ae6456fa7ca9, type: 3}
---- !u!114 &688424643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 688424636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7362897db877d4289aac3ddad0b325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldMin: {x: 0, y: 0}
-  worldMax: {x: 0, y: 0}
-  roomSize: 10
-  playerGenerationRadius: 2
-  tileRunners: 0
---- !u!114 &688424644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 688424636}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bce0c6ee5a83804b87507aa93d8db63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldMin: {x: 0, y: 0}
-  worldMax: {x: 0, y: 0}
-  generateFrequency: 3
-  generateTimer: 0
-  roomSize: 10
-  playerGenerationRadius: 2
-  chanceOfWall: 0.75
-  chanceOfDudRoom: 0.1
---- !u!114 &688424645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 688424636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcfba18c01bac0e4599de46a2857e637, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &688424646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +325,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1583674798}
+  - 114: {fileID: 1583674799}
+  - 114: {fileID: 1583674800}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -395,6 +348,33 @@ Transform:
   - {fileID: 688424641}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1583674799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583674797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcfba18c01bac0e4599de46a2857e637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1583674800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583674797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7362897db877d4289aac3ddad0b325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldMin: {x: 0, y: 0}
+  worldMax: {x: 0, y: 0}
+  roomSize: 10
+  playerGenerationRadius: 2
+  tileRunners: 0
 --- !u!1 &1640950272
 GameObject:
   m_ObjectHideFlags: 0

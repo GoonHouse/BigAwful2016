@@ -61,15 +61,13 @@ public class RoomGenergreater : MonoBehaviour {
         loc = loc.Round(0);
         var coord = God.Key(loc) + "_" + dir;
 
-        Debug.LogWarning(partName + " YEAH " + loc + " Z " + dir);
-
         if (walls.ContainsKey(coord) || partName == null) {
             Debug.LogWarning("EITHER " + coord + " ALREADY EXISTS OR " + partName + " ISN'T A PART!");
             return null;
         }
 
         var pos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
-        var rot = GameObject.Find("Rooms").transform.rotation;
+        var rot = GameObject.Find("World/Rooms").transform.rotation;
 
         if (dir == "W") {
             var d = God.WEST * (roomSize / 2.0f);
@@ -83,9 +81,9 @@ public class RoomGenergreater : MonoBehaviour {
 
         var part = Resources.Load("RoomParts/" + partName);
         var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
-        go.transform.SetParent(GameObject.Find("Rooms").transform, true);
+        go.transform.SetParent(GameObject.Find("World/Rooms").transform, true);
         go.transform.localPosition = pos;
-        go.transform.rotation = GameObject.Find("Rooms").transform.rotation;
+        go.transform.rotation = GameObject.Find("World/Rooms").transform.rotation;
 
         if (dir == "S") {
             var r = go.transform.rotation;
