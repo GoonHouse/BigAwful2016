@@ -90,17 +90,14 @@ public class FloorMaker : MonoBehaviour {
     public void ConsiderTurning() {
         var turning = false;
         if (Random.value <= chanceToTurnLeft && !turning) {
-            Debug.Log("GETTING TURNT: LEFT");
             turning = true;
             writeDirection = writeDirection.Rotate(90);
         }
         if (Random.value <= chanceToTurnAround && !turning) {
-            Debug.Log("GETTING TURNT: AROUND");
             turning = true;
             writeDirection = writeDirection.Rotate(180);
         }
         if (Random.value <= chanceToTurnRight && !turning) {
-            Debug.Log("GETTING TURNT: RIGHT");
             turning = true;
             writeDirection = writeDirection.Rotate(90);
         }

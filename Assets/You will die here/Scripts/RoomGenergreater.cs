@@ -16,39 +16,34 @@ public class RoomGenergreater : MonoBehaviour {
 
     public void NewTileRunner() {
         tileRunners++;
-        Debug.Log("NEW TILE RUNNER, COUNT: " + tileRunners);
     }
 
     public void LessTileRunner() {
         if( tileRunners > 0) {
             tileRunners--;
-            Debug.Log("LESS TILE RUNNER, COUNT: " + tileRunners);
         }
         if ( tileRunners <= 0 ) {
-            Debug.Log("NO MORE TILE RUNNERS, COUNT: " + tileRunners);
             tileRunners = 0;
             TimeForWalls();
         }
     }
 
     public void TimeForWalls() {
-        Debug.Log("YEAH BITCH I FUCKIN LOVE WALLS");
         foreach (KeyValuePair<string, RoomObject> item in rooms) {
             var room = item.Value;
             if( IsFree(room.pos + God.WEST) ){
                 SpawnWall("WallsHolder", room.pos, "W");
-            } else if(IsFree(room.pos + God.EAST)){
+            }
+            if (IsFree(room.pos + God.EAST)){
                 SpawnWall("WallsHolder", room.pos + God.EAST, "W");
             }
 
             if (IsFree(room.pos + God.SOUTH)) {
                 SpawnWall("WallsHolder", room.pos, "S");
-            } else if (IsFree(room.pos + God.NORTH)) {
+            }
+            if (IsFree(room.pos + God.NORTH)) {
                 SpawnWall("WallsHolder", room.pos + God.NORTH, "S");
             }
-            //if( !rooms.ContainsKey( God.Key(room.pos) )) {
-            //
-            //}
         }
     }
 
@@ -84,7 +79,6 @@ public class RoomGenergreater : MonoBehaviour {
         if (dir == "S") {
             var d = God.SOUTH * (roomSize / 2.0f);
             pos += new Vector3(d.x, 0, d.y);
-            rot.y = 135.0f;
         }
 
         var part = Resources.Load("RoomParts/" + partName);
@@ -95,8 +89,7 @@ public class RoomGenergreater : MonoBehaviour {
 
         if (dir == "S") {
             var r = go.transform.rotation;
-            r.y += 45.0f;
-            go.transform.rotation = r;
+            go.transform.RotateAround(go.transform.position, Vector3.up, 270);
         }
 
         go.name = coord + " " + partName;
