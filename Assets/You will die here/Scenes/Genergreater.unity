@@ -244,6 +244,7 @@ MonoBehaviour:
   worldMax: {x: 0, y: 0}
   roomSize: 10
   playerGenerationRadius: 2
+  tileRunners: 0
 --- !u!114 &688424644
 MonoBehaviour:
   m_ObjectHideFlags: 0

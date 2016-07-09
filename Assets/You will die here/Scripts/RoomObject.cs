@@ -8,6 +8,8 @@ public class RoomObject : MonoBehaviour {
     public bool isSouthOpen = false;
     public bool isWestOpen = false;
 
+    public Vector2 pos;
+
     // Use this for initialization
     void Start() {
 

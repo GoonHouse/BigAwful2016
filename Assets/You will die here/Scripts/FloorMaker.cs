@@ -60,6 +60,7 @@ public class FloorMaker : MonoBehaviour {
     void Start () {
         writeDirection = God.NORTH;
         rg = God.main.GetComponent<RoomGenergreater>();
+        rg.NewTileRunner();
     }
 	
 	// Update is called once per frame
@@ -118,5 +119,9 @@ public class FloorMaker : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
+    }
+
+    public void OnDestroy() {
+        rg.LessTileRunner();
     }
 }

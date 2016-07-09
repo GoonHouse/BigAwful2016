@@ -3,8 +3,11 @@ using System.Collections;
 
 public class WallObject : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public Vector2 pos;
+    public string dir;
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
