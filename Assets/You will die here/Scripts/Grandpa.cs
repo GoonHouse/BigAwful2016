@@ -43,7 +43,6 @@ public class Grandpa : MonoBehaviour {
 			if(cameraTargetDirection > 359f){
 				cameraTargetDirection = 0f;
 			}
-			print (cameraTargetDirection);
         }
 
         // Handle movement.

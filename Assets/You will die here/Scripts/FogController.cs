@@ -13,11 +13,11 @@ public class FogController : MonoBehaviour {
 
 	private float diff = 0;
 
-	Camera camera;
+	//Camera camera;
 
 	// Use this for initialization
 	void Start () {
-		camera = GetComponent<Camera> ();
+		//camera = GetComponent<Camera> ();
 		diff = endFogTarget - closeFogTarget;
 		closeFogStart -= diff;
 	}
@@ -31,6 +31,6 @@ public class FogController : MonoBehaviour {
 			RenderSettings.fogStartDistance = closeFogStart += (fogSpeed * Time.deltaTime);
 		}
 		RenderSettings.fogColor = Color.Lerp (fogStart, fogEnd, fogColorSpeed * Time.time);
-		camera.backgroundColor = Color.Lerp (fogStart, fogEnd, fogColorSpeed * Time.time);
+		Camera.main.backgroundColor = Color.Lerp (fogStart, fogEnd, fogColorSpeed * Time.time);
 	}
 }
