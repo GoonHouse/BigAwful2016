@@ -10,6 +10,7 @@ public class RoomObject : MonoBehaviour {
 
     public bool isWalkable = true;
     public Vector2 pos;
+    public bool isDarkRoom = false;
 
     // Use this for initialization
     void Start() {

@@ -14,6 +14,8 @@ public class RoomGenergreater : MonoBehaviour {
 
     public int tileRunners = 0;
 
+    public bool isDone = false;
+
     public void NewTileRunner() {
         tileRunners++;
     }
@@ -24,7 +26,34 @@ public class RoomGenergreater : MonoBehaviour {
         }
         if ( tileRunners <= 0 ) {
             tileRunners = 0;
+            TimeForDoors();
             TimeForWalls();
+        }
+    }
+
+    public void OnDone() {
+
+    }
+
+    public void TimeForDoors() {
+        foreach (KeyValuePair<string, RoomObject> item in rooms) {
+            var room = item.Value;
+
+            if (room.isDarkRoom) {
+                if (!IsFree(room.pos + God.WEST)) {
+                    //SpawnDoor("DoorFrame", room.pos, "W");
+                }
+                if (!IsFree(room.pos + God.EAST)) {
+                    //SpawnDoor("DoorFrame", room.pos + God.EAST, "W");
+                }
+
+                if (!IsFree(room.pos + God.SOUTH)) {
+                    //SpawnDoor("DoorFrame", room.pos, "S");
+                }
+                if (!IsFree(room.pos + God.NORTH)) {
+                    //SpawnDoor("DoorFrame", room.pos + God.NORTH, "S");
+                }
+            }
         }
     }
 
@@ -63,6 +92,66 @@ public class RoomGenergreater : MonoBehaviour {
         }
     }
 
+    /*
+    public GameObject SpawnItem(string partPath, GameObject childToSpawn, Vector2 loc, ) {
+        if( childToSpawn == null) {
+            childToSpawn = GameObject.Find("World/Rooms");
+        }
+        var rpos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
+        var pos = childToSpawn.transform.position + rpos;
+
+        var part = Resources.Load("RoomParts/" + partPath);
+        var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
+
+        go.transform.SetParent(childToSpawn.transform, true);
+        go.transform.localPosition = pos;
+        go.transform.rotation = childToSpawn.transform.rotation;
+    }
+    public GameObject SpawnItem(string partPath, Vector2 loc, string dir = null) {
+        if (partPath == null) {
+            partPath = "WallsHolder";
+        }
+
+        loc = loc.Round(0);
+        var coord = God.Key(loc) + "_" + dir;
+
+        //if (walls.ContainsKey(coord) || partName == null) {
+        //Debug.LogWarning("EITHER " + coord + " ALREADY EXISTS OR " + partName + " ISN'T A PART!");
+        //return null;
+        //}
+
+        var pos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
+        var rot = GameObject.Find("World/Rooms").transform.rotation;
+
+        if (dir == "W") {
+            var d = God.WEST * (roomSize / 2.0f);
+            pos += new Vector3(d.x, 0, d.y);
+        }
+
+        if (dir == "S") {
+            var d = God.SOUTH * (roomSize / 2.0f);
+            pos += new Vector3(d.x, 0, d.y);
+        }
+
+        
+
+        if (dir == "S") {
+            var r = go.transform.rotation;
+            go.transform.RotateAround(go.transform.position, Vector3.up, 270);
+        }
+
+        go.name = coord + " " + partName;
+
+        //var wo = go.GetComponent<WallObject>();
+
+        //wo.pos = loc;
+        //wo.dir = dir;
+
+        //walls.Add(coord, wo);
+
+        return go;
+    }
+    */
     public GameObject SpawnWall(string partName, Vector2 loc, string dir) {
         if( partName == null) {
             partName = "WallsHolder";
@@ -153,8 +242,8 @@ public class RoomGenergreater : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
-	}
+        SpawnPart("BlackRoom", God.NORTH);
+    }
 	
 	// Update is called once per frame
 	void Update () {
