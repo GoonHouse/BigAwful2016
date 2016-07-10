@@ -445,7 +445,7 @@ public class RoomGenergreater : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        SpawnPart("BlackRoom", God.NORTH);
+        
     }
 	
 	// Update is called once per frame
