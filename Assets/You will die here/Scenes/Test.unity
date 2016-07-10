@@ -230,6 +230,10 @@ Prefab:
       propertyPath: m_Name
       value: PictureFrame (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2382206, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5908dd524281b048b9c11efe5863b75, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   m_IsPrefabParent: 0
@@ -276,6 +280,10 @@ Prefab:
       propertyPath: m_Name
       value: PictureFrame (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2382206, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0eb3186e286f05c4fbf2517909f6d17d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   m_IsPrefabParent: 0
@@ -621,6 +629,10 @@ Prefab:
       propertyPath: m_Name
       value: PictureFrame (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2382206, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 820b8671a35f2384d8981bdffe47533d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   m_IsPrefabParent: 0
@@ -671,6 +683,10 @@ Prefab:
       propertyPath: m_Name
       value: PictureFrame (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2382206, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a30c148b1b12fb6428e979be8f88b24f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   m_IsPrefabParent: 0
@@ -1606,6 +1622,10 @@ Prefab:
       propertyPath: m_Name
       value: PictureFrame (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2382206, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ff5de301ce11444380c3d1f8e6cdef6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   m_IsPrefabParent: 0
