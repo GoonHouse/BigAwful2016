@@ -36,10 +36,12 @@ public class RoomGenergreater : MonoBehaviour {
     }
 
     public void TimeForDoors() {
+        Debug.LogWarning("OKAY TOM I'M MAKING DOORS NOW");
         foreach (KeyValuePair<string, RoomObject> item in rooms) {
             var room = item.Value;
 
             if (room.isDarkRoom) {
+                Debug.LogWarning("CONSIDERING PLANTING A DOOR NEAR " + room.pos);
                 Vector2 i = God.RandomDirection();
                 while ( IsFree(room.pos + i) ) {
                     i = God.RandomDirection();
@@ -47,12 +49,18 @@ public class RoomGenergreater : MonoBehaviour {
                 
                 if( i == God.WEST && !IsFree(room.pos + God.WEST) ) {
                     SpawnThing("DoorFrame", room.pos + God.WEST, "E");
+                    Debug.LogWarning("I PICKED WEST!");
                 } else if ( i == God.EAST && !IsFree(room.pos + God.EAST) ) {
                     SpawnThing("DoorFrame", room.pos + God.EAST, "W");
+                    Debug.LogWarning("I PICKED EAST!");
                 } else if ( i == God.SOUTH && !IsFree(room.pos + God.SOUTH) ) {
                     SpawnThing("DoorFrame", room.pos + God.SOUTH, "N");
+                    Debug.LogWarning("I PICKED SOUTH!");
                 } else if ( i == God.NORTH && !IsFree(room.pos + God.NORTH)) {
                     SpawnThing("DoorFrame", room.pos + God.NORTH, "S");
+                    Debug.LogWarning("I PICKED NORTH!");
+                } else {
+                    Debug.LogWarning("JACK SHIT HAPPENED!");
                 }
             }
         }
