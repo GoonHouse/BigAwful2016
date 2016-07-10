@@ -121,6 +121,30 @@ public class RoomGenergreater : MonoBehaviour {
         }
     }
 
+    public void EmergencyDoor(RoomObject room) {
+        Debug.LogWarning("EMERGENCY STATE: ATTEMPTING TO DETECT");
+        var doors = 0;
+        if (!IsFree(room.pos + God.WEST)) {
+            SpawnThing("DoorFrame", room.pos + God.WEST, "E");
+            doors++;
+        }
+        if (!IsFree(room.pos + God.EAST)) {
+            SpawnThing("DoorFrame", room.pos + God.EAST, "W");
+            doors++;
+        }
+        if (!IsFree(room.pos + God.SOUTH)) {
+            SpawnThing("DoorFrame", room.pos + God.SOUTH, "N");
+            doors++;
+        }
+        if (!IsFree(room.pos + God.NORTH)) {
+            SpawnThing("DoorFrame", room.pos + God.NORTH, "S");
+            doors++;
+        }
+        if( doors <= 0 ){
+            Debug.LogWarning("EMERGENCY FAILED I'M SORRY");
+        }
+    }
+
     public void TimeForDoors() {
         foreach (KeyValuePair<string, RoomObject> item in rooms) {
             var room = item.Value;
@@ -146,7 +170,7 @@ public class RoomGenergreater : MonoBehaviour {
                 } else if ( i == God.NORTH && !IsFree(room.pos + God.NORTH)) {
                     SpawnThing("DoorFrame", room.pos + God.NORTH, "S");
                 } else {
-                    Debug.LogError("JACK SHIT HAPPENED!");
+                    EmergencyDoor(room);
                 }
             }
         }
