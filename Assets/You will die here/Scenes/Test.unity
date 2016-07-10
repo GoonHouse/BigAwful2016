@@ -3565,9 +3565,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1856741987}
   - 20: {fileID: 1856741991}
-  - 124: {fileID: 1856741990}
-  - 92: {fileID: 1856741989}
-  - 81: {fileID: 1856741988}
   m_Layer: 0
   m_Name: TVCamera
   m_TagString: Untagged
@@ -3588,27 +3585,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2054210044}
   m_RootOrder: 1
---- !u!81 &1856741988
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1856741986}
-  m_Enabled: 1
---- !u!92 &1856741989
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1856741986}
-  m_Enabled: 1
---- !u!124 &1856741990
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1856741986}
-  m_Enabled: 1
 --- !u!20 &1856741991
 Camera:
   m_ObjectHideFlags: 0
@@ -3625,8 +3601,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
