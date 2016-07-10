@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18384da7bb53d1f4887425a44efd839a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 1
+  turnSpeed: 2
   thingToLookAt: {fileID: 478376}
   eyeTarget: {fileID: 478376}
   grampsHead: {fileID: 487210}
