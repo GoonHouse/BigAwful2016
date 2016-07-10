@@ -397,6 +397,7 @@ MonoBehaviour:
   decorationOversize:
   - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
   - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
+  - {fileID: 189586, guid: 0dbf680fcc263774d970d0114ad84adc, type: 2}
 --- !u!1 &1640950272
 GameObject:
   m_ObjectHideFlags: 0
