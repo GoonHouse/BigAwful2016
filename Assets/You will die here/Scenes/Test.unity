@@ -721,13 +721,13 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 50
+    maxNumParticles: 25
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
     enabled: 1
     type: 10
-    radius: 4
+    radius: 3.5
     angle: 25
     length: 5
     boxX: 1
