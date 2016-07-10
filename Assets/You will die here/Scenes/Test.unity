@@ -1052,19 +1052,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 458714, guid: 6beada394ef71424d81118ea8d0257bb, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 411552, guid: 6beada394ef71424d81118ea8d0257bb, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 495276, guid: 6beada394ef71424d81118ea8d0257bb, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 480298, guid: 6beada394ef71424d81118ea8d0257bb, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 447104, guid: 6beada394ef71424d81118ea8d0257bb, type: 2}
       propertyPath: m_RootOrder
