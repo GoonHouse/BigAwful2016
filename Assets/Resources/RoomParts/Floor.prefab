@@ -241,6 +241,13 @@ MonoBehaviour:
   isWalkable: 1
   pos: {x: 0, y: 0}
   isDarkRoom: 0
+  floorAnchors:
+  - {fileID: 178154}
+  - {fileID: 144636}
+  - {fileID: 151580}
+  - {fileID: 169316}
+  oversizeAnchors:
+  - {fileID: 130344}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

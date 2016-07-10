@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RoomObject : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class RoomObject : MonoBehaviour {
     public bool isWalkable = true;
     public Vector2 pos;
     public bool isDarkRoom = false;
+
+    public List<GameObject> floorAnchors;
+    public List<GameObject> oversizeAnchors;
 
     // Use this for initialization
     void Start() {

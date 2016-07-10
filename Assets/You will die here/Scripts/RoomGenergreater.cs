@@ -16,6 +16,15 @@ public class RoomGenergreater : MonoBehaviour {
 
     public bool isDone = false;
 
+    public float chanceOfPhoto = 0.25f;
+    public float chanceOfWallFloor = 0.33f;
+    public float chanceOfFloor = 0.07f;
+    public float chanceOfOversize = 0.03f;
+
+    public List<GameObject> decorationPhotos;
+    public List<GameObject> decorationFloor;
+    public List<GameObject> decorationOversize;
+
     public void NewTileRunner() {
         tileRunners++;
     }
@@ -28,11 +37,88 @@ public class RoomGenergreater : MonoBehaviour {
             tileRunners = 0;
             TimeForDoors();
             TimeForWalls();
+            TimeForDecoration();
         }
     }
 
     public void OnDone() {
 
+    }
+
+    public void TimeForDecoration() {
+        foreach (KeyValuePair<string, RoomObject> item in rooms) {
+            var room = item.Value;
+
+            if (room.isWalkable) {
+                foreach (GameObject fa in room.floorAnchors) {
+                    if (Random.value <= chanceOfFloor) {
+                        var i = Random.Range(0, decorationFloor.Count);
+                        SpawnFurniture(decorationFloor[i], fa);
+                    }
+                }
+                foreach (GameObject oa in room.oversizeAnchors) {
+                    if (Random.value <= chanceOfOversize) {
+                        var i = Random.Range(0, decorationOversize.Count);
+                        SpawnFurniture(decorationOversize[i], oa);
+                    }
+                }
+            }
+        }
+        foreach (KeyValuePair<string, WallObject> item in walls) {
+            var wall = item.Value;
+            var loc = wall.pos.Round(0);
+
+            var inside = false;
+            var outside = false;
+
+            if( wall.dir == "W") {
+                if( !IsFree( loc + God.WEST ) ){
+                    inside = true;
+                }
+                if( !IsFree( loc ) ){
+                    outside = true;
+                }
+            }
+
+            if (wall.dir == "S") {
+                if (!IsFree(loc + God.SOUTH)) {
+                    inside = true;
+                }
+                if (!IsFree(loc)) {
+                    outside = true;
+                }
+            }
+
+            if (inside) {
+                foreach (GameObject ipa in wall.insidePhotoAnchors) {
+                    if (Random.value <= chanceOfPhoto) {
+                        var i = Random.Range(0, decorationPhotos.Count);
+                        SpawnFurniture(decorationPhotos[i], ipa);
+                    }
+                }
+                foreach (GameObject ifa in wall.insideFloorAnchors) {
+                    if (Random.value <= chanceOfWallFloor) {
+                        var i = Random.Range(0, decorationFloor.Count);
+                        SpawnFurniture(decorationFloor[i], ifa);
+                    }
+                }
+            }
+
+            if (outside) {
+                foreach (GameObject opa in wall.outsidePhotoAnchors) {
+                    if (Random.value <= chanceOfPhoto) {
+                        var i = Random.Range(0, decorationPhotos.Count);
+                        SpawnFurniture(decorationPhotos[i], opa);
+                    }
+                }
+                foreach (GameObject ofa in wall.outsideFloorAnchors) {
+                    if (Random.value <= chanceOfWallFloor) {
+                        var i = Random.Range(0, decorationFloor.Count);
+                        SpawnFurniture(decorationFloor[i], ofa);
+                    }
+                }
+            }
+        }
     }
 
     public void TimeForDoors() {
@@ -99,6 +185,18 @@ public class RoomGenergreater : MonoBehaviour {
         } else {
             return true;
         }
+    }
+
+    public GameObject SpawnFurniture(GameObject prefab, GameObject parent) {
+        // Actually spawn the object.
+        var go = Instantiate(prefab, parent.transform.position, parent.transform.rotation) as GameObject;
+        go.transform.SetParent(parent.transform, true);
+        //go.transform.localPosition = pos;
+        //go.transform.rotation = GameObject.Find("World/Rooms").transform.rotation;
+
+        //go.name = coord + " " + partPath;
+
+        return go;
     }
 
     public GameObject SpawnThing(string partPath, Vector2 loc, string dir = null) {

@@ -375,6 +375,22 @@ MonoBehaviour:
   roomSize: 10
   playerGenerationRadius: 2
   tileRunners: 0
+  isDone: 0
+  chanceOfPhoto: 0.25
+  chanceOfWallFloor: 0.33
+  chanceOfFloor: 0.07
+  chanceOfOversize: 0.03
+  decorationPhotos:
+  - {fileID: 197848, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
+  decorationFloor:
+  - {fileID: 145792, guid: 6308b33b4a7e3ae4b92b349be990ca32, type: 2}
+  - {fileID: 103396, guid: cb297cca257e59844a2557319f5494bb, type: 2}
+  - {fileID: 138210, guid: f608ffc46bb34934aa6a111ce3016e9f, type: 2}
+  - {fileID: 196988, guid: 26669e84fdfc23d4491ef9d354d70691, type: 2}
+  - {fileID: 100554, guid: cc1562718b0d3d14086a2487eef65683, type: 2}
+  decorationOversize:
+  - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
+  - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
 --- !u!1 &1640950272
 GameObject:
   m_ObjectHideFlags: 0
