@@ -25,6 +25,10 @@ public class RoomGenergreater : MonoBehaviour {
     public List<GameObject> decorationFloor;
     public List<GameObject> decorationOversize;
 
+    public List<GameObject> crazyDecorationPhotos;
+    public List<GameObject> crazyDecorationFloor;
+    public List<GameObject> crazyDecorationOversize;
+
     public void NewTileRunner() {
         tileRunners++;
     }
