@@ -40,18 +40,19 @@ public class RoomGenergreater : MonoBehaviour {
             var room = item.Value;
 
             if (room.isDarkRoom) {
-                if (!IsFree(room.pos + God.WEST)) {
-                    //SpawnDoor("DoorFrame", room.pos, "W");
+                Vector2 i = God.RandomDirection();
+                while ( IsFree(room.pos + i) ) {
+                    i = God.RandomDirection();
                 }
-                if (!IsFree(room.pos + God.EAST)) {
-                    //SpawnDoor("DoorFrame", room.pos + God.EAST, "W");
-                }
-
-                if (!IsFree(room.pos + God.SOUTH)) {
-                    //SpawnDoor("DoorFrame", room.pos, "S");
-                }
-                if (!IsFree(room.pos + God.NORTH)) {
-                    //SpawnDoor("DoorFrame", room.pos + God.NORTH, "S");
+                
+                if( i == God.WEST && !IsFree(room.pos + God.WEST) ) {
+                    SpawnThing("DoorFrame", room.pos + God.WEST, "E");
+                } else if ( i == God.EAST && !IsFree(room.pos + God.EAST) ) {
+                    SpawnThing("DoorFrame", room.pos + God.EAST, "W");
+                } else if ( i == God.SOUTH && !IsFree(room.pos + God.SOUTH) ) {
+                    SpawnThing("DoorFrame", room.pos + God.SOUTH, "N");
+                } else if ( i == God.NORTH && !IsFree(room.pos + God.NORTH)) {
+                    SpawnThing("DoorFrame", room.pos + God.NORTH, "S");
                 }
             }
         }
@@ -90,6 +91,102 @@ public class RoomGenergreater : MonoBehaviour {
         } else {
             return true;
         }
+    }
+
+    public GameObject SpawnThing(string partPath, Vector2 loc, string dir = null) {
+        loc = loc.Round(0);
+        var coord = God.Key(loc);
+
+        var isWall = false;
+        var isFloor = false;
+
+        var pos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
+        var rot = GameObject.Find("World/Rooms").transform.rotation;
+
+        if ( dir != null) {
+            coord += "_" + dir;
+            isWall = true;
+            isFloor = false;
+
+            Vector2 d = Vector2.zero;
+            if (dir == "N") {
+                d = God.NORTH;
+            } else if (dir == "E") {
+                d = God.EAST;
+            } else if (dir == "S") {
+                d = God.SOUTH;
+            } else if (dir == "W") {
+                d = God.WEST;
+            } else {
+                isWall = false;
+            }
+            
+            d = d * (roomSize / 2.0f);
+            pos += new Vector3(d.x, 0, d.y);
+        } else {
+            isWall = false;
+            isFloor = true;
+        }
+
+        if( ( isWall && walls.ContainsKey(coord) ) || ( isFloor && rooms.ContainsKey(coord) )){
+            return null;
+        }
+
+        // Actually spawn the object.
+        var part = Resources.Load("RoomParts/" + partPath);
+        var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
+        go.transform.SetParent(GameObject.Find("World/Rooms").transform, true);
+        go.transform.localPosition = pos;
+        go.transform.rotation = GameObject.Find("World/Rooms").transform.rotation;
+
+        go.name = coord + " " + partPath;
+        if( dir != null) {
+            if (dir == "N") {
+                var r = go.transform.rotation;
+                go.transform.RotateAround(go.transform.position, Vector3.up, 90);
+            } else if (dir == "S") {
+                var r = go.transform.rotation;
+                go.transform.RotateAround(go.transform.position, Vector3.up, 270);
+            } else if (dir == "E") {
+                var r = go.transform.rotation;
+                go.transform.RotateAround(go.transform.position, Vector3.up, 180);
+            } else {
+                Debug.Log("I hope i didn't mess up");
+            }
+        }
+
+        if ( isWall ){
+            var wo = go.GetComponent<WallObject>();
+
+            if( wo != null ) {
+                wo.pos = loc;
+                wo.dir = dir;
+
+                walls.Add(coord, wo);
+            }
+        } else if( isFloor ){
+            var ro = go.GetComponent<RoomObject>();
+
+            if (ro != null) {
+                ro.pos = loc;
+
+                rooms.Add(coord, ro);
+
+                if (loc.x < worldMin.x) {
+                    worldMin.x = loc.x;
+                } else if (loc.x > worldMax.x) {
+                    worldMax.x = loc.x;
+                }
+
+                if (loc.y < worldMin.y) {
+                    worldMin.y = loc.y;
+                } else if (loc.y > worldMax.y) {
+                    worldMax.y = loc.y;
+                }
+            }
+        }
+        
+        return go;
     }
 
     /*
