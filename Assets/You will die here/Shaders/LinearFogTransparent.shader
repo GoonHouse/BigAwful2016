@@ -5,7 +5,7 @@
     _MainTex ("Base (RGB)", 2D) = "white" {}
   }
   SubShader {
-    Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True" "ForceNoShadowCasting" = "True" }
+    Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True" "ForceNoShadowCasting" = "False" }
     ZWrite Off
     Blend SrcAlpha OneMinusSrcAlpha
     Cull Back
