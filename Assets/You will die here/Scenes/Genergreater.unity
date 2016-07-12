@@ -241,9 +241,9 @@ MonoBehaviour:
   endFogStart: 0
   closeFogTarget: 8
   endFogTarget: 16
-  fogSpeed: 1
-  fogColorSpeed: 0.05
-  fogStart: {r: 0, g: 0, b: 0, a: 1}
+  fogSpeed: 2
+  fogColorSpeed: 0.1
+  fogStart: {r: 1, g: 1, b: 1, a: 1}
   fogEnd: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 1}
 --- !u!1001 &1066743074
 Prefab:
