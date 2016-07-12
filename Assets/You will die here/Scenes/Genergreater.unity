@@ -441,6 +441,8 @@ MonoBehaviour:
   - {fileID: 131764, guid: 763b8dcef3dd17843adce108e799591d, type: 2}
   - {fileID: 173192, guid: c8eb4f1188b3cb544a0bc8ca15936954, type: 2}
   - {fileID: 152530, guid: 7fff4159502fe24499788c33509c1401, type: 2}
+  - {fileID: 145072, guid: eb587fc090ec31a49ae163ebe56ea20a, type: 2}
+  - {fileID: 107516, guid: e725689da325f1f46a252113121b13f0, type: 2}
   decorationOversize:
   - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
   - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
