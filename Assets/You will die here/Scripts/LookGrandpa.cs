@@ -32,7 +32,7 @@ public class LookGrandpa : MonoBehaviour {
             timeOnMind = 0.0f;
             didCommitYet = false;
         }
-        if( thingToLookAt != eyeTarget && timeOnMind > timeToCommit && !didCommitYet){
+        if( thingToLookAt != eyeTarget && timeOnMind >= timeToCommit && !didCommitYet ){
             didCommitYet = true;
             targets.Add(thingToLookAt.gameObject.GetComponent<LookTarget>());
         }
@@ -56,7 +56,7 @@ public class LookGrandpa : MonoBehaviour {
 		diff = Mathf.Abs (diff);
 		if (diff > maxAngle) {
 			grampsHead.transform.rotation = Quaternion.Slerp (grampsHead.transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
-            if( !didCommitYet) {
+            if( thingToLookAt != eyeTarget && timeOnMind < timeToCommit && !didCommitYet ) {
                 timeOnMind += Time.deltaTime;
             }
 		} else {
