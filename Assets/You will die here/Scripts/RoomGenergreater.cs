@@ -165,7 +165,7 @@ public class RoomGenergreater : MonoBehaviour {
                     i = God.RandomDirection();
                     numAttempts--;
                     if( numAttempts <= 0) {
-                        Debug.LogError("GAVE UP PLACING DOOR ON BLACKCUBE AT " + room.pos);
+                        Debug.LogWarning("GAVE UP PLACING DOOR ON BLACKCUBE AT " + room.pos);
                         break;
                     }
                 }
