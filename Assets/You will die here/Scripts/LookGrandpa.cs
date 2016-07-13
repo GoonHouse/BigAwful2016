@@ -12,19 +12,16 @@ public class LookGrandpa : MonoBehaviour {
 	public float maxAngle = 0.75f;
 
     public float timeOnMind = 0.0f;
-    public float timeToCommit = 3.0f;
+    public float timeToCommit = 0.33f;
     public bool didCommitYet = false;
 
-    public List<LookTarget> targets = new List<LookTarget>();
-    public List<EmotionFragment> emotions = new List<EmotionFragment>();
-    public List<NeedFragment> needs = new List<NeedFragment>();
-
-
+    private EmotionProcessor epu;
 
     // Use this for initialization
     void Start () {
         thingToLookAt = null;
         thinkText.text = "";
+        epu = GetComponent<EmotionProcessor>();
 	}
 		
 	// Update is called once per frame
@@ -53,10 +50,11 @@ public class LookGrandpa : MonoBehaviour {
     void Remember(GameObject go) {
         didCommitYet = true;
         var lt = go.GetComponentInChildren<LookTarget>();
-        if( lt != null && lt.thoughts.Count > 0) {
-            var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
-            Think(lt, thought);
-            targets.Add(lt);
+        if( lt != null && epu.Commit(lt) ) {
+            if (lt.thoughts.Count > 0) {
+                var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
+                Think(lt, thought);
+            }
         }
     }
 

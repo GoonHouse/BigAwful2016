@@ -195,6 +195,7 @@ GameObject:
   - 23: {fileID: 2317528}
   - 54: {fileID: 5487700}
   - 114: {fileID: 11477056}
+  - 114: {fileID: 11469848}
   m_Layer: 9
   m_Name: GrampsLooker
   m_TagString: Untagged
@@ -903,6 +904,20 @@ MonoBehaviour:
   gravity: 20
   cameraTurnAmount: 90
   lookDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &11469848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45311c990bc99fe45913edeaf2d4be7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  emotions: []
+  needs: []
 --- !u!114 &11477056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -918,7 +933,12 @@ MonoBehaviour:
   thingToLookAt: {fileID: 478376}
   eyeTarget: {fileID: 478376}
   grampsHead: {fileID: 487210}
+  thinkText: {fileID: 0}
+  tooFar: 10
   maxAngle: 0.75
+  timeOnMind: 0
+  timeToCommit: 0.33
+  didCommitYet: 0
 --- !u!143 &14302576
 CharacterController:
   m_ObjectHideFlags: 1
