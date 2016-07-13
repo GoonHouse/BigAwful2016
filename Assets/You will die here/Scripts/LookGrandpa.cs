@@ -59,7 +59,7 @@ public class LookGrandpa : MonoBehaviour {
     }
 
     void Forget(GameObject go) {
-		thingToLookAt = eyeTarget;
+        thingToLookAt = null;
         timeOnMind = 0.0f;
         didCommitYet = false;
     }
