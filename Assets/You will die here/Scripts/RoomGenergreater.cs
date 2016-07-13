@@ -16,6 +16,11 @@ public class RoomGenergreater : MonoBehaviour {
 
     public bool isDone = false;
 
+    public int minDarkRooms = 3;
+
+    public float minDarkRoomRadius = 30.0f;
+    public float maxDarkRoomRadius = 100.0f;
+
     public float chanceOfPhoto = 0.25f;
     public float chanceOfWallFloor = 0.33f;
     public float chanceOfFloor = 0.07f;
@@ -284,8 +289,6 @@ public class RoomGenergreater : MonoBehaviour {
             } else if (dir == "E") {
                 var r = go.transform.rotation;
                 go.transform.RotateAround(go.transform.position, Vector3.up, 180);
-            } else {
-                Debug.Log("I hope i didn't mess up");
             }
         }
 
