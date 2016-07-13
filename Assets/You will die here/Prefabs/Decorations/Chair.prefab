@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 411758}
   - 135: {fileID: 13568864}
+  - 114: {fileID: 11495766}
   m_Layer: 9
   m_Name: LookTarget
   m_TagString: Untagged
@@ -106,6 +107,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5000004, y: 1.2249346, z: 1.2500006}
   m_Center: {x: 0, y: 0.6124673, z: -0.12499988}
+--- !u!114 &11495766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propName: Comfortable Chair
+  emotions:
+  - name: content
+    major: 5
+    strength: 1
+  needs:
+  - name: family
+    need: 3
+    strength: 1
 --- !u!135 &13568864
 SphereCollider:
   m_ObjectHideFlags: 1

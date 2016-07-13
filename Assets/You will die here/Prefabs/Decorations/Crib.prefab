@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 464010}
   - 135: {fileID: 13562258}
+  - 114: {fileID: 11436924}
   m_Layer: 9
   m_Name: LookTarget
   m_TagString: Untagged
@@ -107,6 +108,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5000005, y: 1, z: 1.0000002}
   m_Center: {x: -0.000000029802322, y: 0.49999997, z: 0.000000029802322}
+--- !u!114 &11436924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propName: Baby's Crib
+  emotions:
+  - name: playful
+    major: 3
+    strength: 1
+  - name: anxious
+    major: 2
+    strength: 0.5
+  - name: loving
+    major: 5
+    strength: 1
+  - name: sentimental
+    major: 5
+    strength: 0.5
+  needs:
+  - name: family
+    need: 3
+    strength: 1
+  - name: family
+    need: 2
+    strength: 1
 --- !u!135 &13562258
 SphereCollider:
   m_ObjectHideFlags: 1

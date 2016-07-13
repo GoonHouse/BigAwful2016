@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 473170}
   - 135: {fileID: 13515152}
+  - 114: {fileID: 11471538}
   m_Layer: 9
   m_Name: LookTarget
   m_TagString: Untagged
@@ -158,6 +159,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183872}
   m_Mesh: {fileID: 4300000, guid: 78cc1efbe44ac4842bb04c3da37eefe1, type: 3}
+--- !u!114 &11471538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propName: Fishing Boat
+  emotions:
+  - name: stimulating
+    major: 3
+    strength: 1
+  - name: relaxed
+    major: 5
+    strength: 1
+  needs:
+  - name: problem_solving
+    need: 5
+    strength: 1
+  - name: food
+    need: 1
+    strength: 1
 --- !u!120 &12059136
 LineRenderer:
   m_ObjectHideFlags: 1
