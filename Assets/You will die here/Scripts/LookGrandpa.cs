@@ -37,6 +37,13 @@ public class LookGrandpa : MonoBehaviour {
         }
 	}
 
+    void Think(LookTarget lt, Thought t) {
+        if (lt != null && lt.thoughts.Count > 0) {
+            var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
+            thinkText.text = thought.text;
+        }
+    }
+
     void Notice(GameObject go) {
         thingToLookAt = go.transform;
         timeOnMind = 0.0f;
@@ -48,9 +55,9 @@ public class LookGrandpa : MonoBehaviour {
         var lt = go.GetComponentInChildren<LookTarget>();
         if( lt != null && lt.thoughts.Count > 0) {
             var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
-            thinkText.text = thought.text;
+            Think(lt, thought);
+            targets.Add(lt);
         }
-        targets.Add(lt);
     }
 
     void Forget(GameObject go) {
