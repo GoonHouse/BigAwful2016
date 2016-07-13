@@ -6,6 +6,7 @@ public class LookGrandpa : MonoBehaviour {
 	public Transform thingToLookAt;
 	public Transform eyeTarget;
 	public Transform grampsHead;
+	public float tooFar = 10f;
 	public float maxAngle = 0.75f;
 
 	// Use this for initialization
@@ -15,7 +16,11 @@ public class LookGrandpa : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
-		
+		float dist = Vector3.Distance (thingToLookAt.transform.position, grampsHead.transform.position); //this makes grandpa forget when things get too far away
+		if (dist > tooFar) {
+			thingToLookAt = eyeTarget;
+			//print ("Too Far!");
+		}
 	}
 
 	void LateUpdate () {

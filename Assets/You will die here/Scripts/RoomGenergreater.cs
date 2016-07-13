@@ -240,7 +240,6 @@ public class RoomGenergreater : MonoBehaviour {
         var isFloor = false;
 
         var pos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
-        var rot = GameObject.Find("World/Rooms").transform.rotation;
 
         if ( dir != null) {
             coord += "_" + dir;
@@ -281,13 +280,10 @@ public class RoomGenergreater : MonoBehaviour {
         go.name = coord + " " + partPath;
         if( dir != null) {
             if (dir == "N") {
-                var r = go.transform.rotation;
                 go.transform.RotateAround(go.transform.position, Vector3.up, 90);
             } else if (dir == "S") {
-                var r = go.transform.rotation;
                 go.transform.RotateAround(go.transform.position, Vector3.up, 270);
             } else if (dir == "E") {
-                var r = go.transform.rotation;
                 go.transform.RotateAround(go.transform.position, Vector3.up, 180);
             }
         }
@@ -400,7 +396,6 @@ public class RoomGenergreater : MonoBehaviour {
         }
 
         var pos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
-        var rot = GameObject.Find("World/Rooms").transform.rotation;
 
         if (dir == "W") {
             var d = God.WEST * (roomSize / 2.0f);
@@ -419,7 +414,6 @@ public class RoomGenergreater : MonoBehaviour {
         go.transform.rotation = GameObject.Find("World/Rooms").transform.rotation;
 
         if (dir == "S") {
-            var r = go.transform.rotation;
             go.transform.RotateAround(go.transform.position, Vector3.up, 270);
         }
 
