@@ -44,9 +44,18 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A70D920A-54FB-408E-B935-41A4D09E79C7}'
-    m_lastTimePsrt1: -231129536
-    m_lastTimePart2: -1999394114
-    List: []
+    m_lastTimePsrt1: -1424035874
+    m_lastTimePart2: -1999394106
+    List:
+    - Name: Main
+      Path: Default Work Unit\Main
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main
+        ObjectType: 7
+      ID: -1133058374
+      Guid: 60632d7d70c8ff4eba72e9094dae6c3a
   ExpandedItems:
   - /WwiseGrandpa
   m_lastPopulateTimePsrt1: 0
