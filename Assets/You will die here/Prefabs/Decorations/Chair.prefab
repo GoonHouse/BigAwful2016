@@ -127,6 +127,9 @@ MonoBehaviour:
   - name: family
     need: 3
     strength: 1
+  thoughts:
+  - text: I'm going to sit in you. With my ass.
+    sound: {fileID: 0}
 --- !u!135 &13568864
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -7,6 +7,7 @@ public class LookGrandpa : MonoBehaviour {
 	public Transform thingToLookAt;
 	public Transform eyeTarget;
 	public Transform grampsHead;
+    public UnityEngine.UI.Text thinkText;
 	public float tooFar = 10f;
 	public float maxAngle = 0.75f;
 
@@ -18,35 +19,66 @@ public class LookGrandpa : MonoBehaviour {
     public List<EmotionFragment> emotions = new List<EmotionFragment>();
     public List<NeedFragment> needs = new List<NeedFragment>();
 
+
+
     // Use this for initialization
     void Start () {
-	
+        thingToLookAt = null;
+        thinkText.text = "";
 	}
 		
 	// Update is called once per frame
 	void Update () {
-		float dist = Vector3.Distance (thingToLookAt.transform.position, grampsHead.transform.position); //this makes grandpa forget when things get too far away
-		if (dist > tooFar) {
-			thingToLookAt = eyeTarget;
-            //print ("Too Far!");
-            timeOnMind = 0.0f;
-            didCommitYet = false;
-        }
-        if( thingToLookAt != eyeTarget && timeOnMind >= timeToCommit && !didCommitYet ){
-            didCommitYet = true;
-            targets.Add(thingToLookAt.gameObject.GetComponent<LookTarget>());
+        if( thingToLookAt != null) {
+            float dist = Vector3.Distance(thingToLookAt.transform.position, grampsHead.transform.position); //this makes grandpa forget when things get too far away
+            if (dist > tooFar) {
+                Forget( thingToLookAt.gameObject );
+            }
         }
 	}
 
+    void Notice(GameObject go) {
+        thingToLookAt = go.transform;
+        timeOnMind = 0.0f;
+        didCommitYet = false;
+    }
+
+    void Remember(GameObject go) {
+        didCommitYet = true;
+        var lt = go.GetComponentInChildren<LookTarget>();
+        if( lt != null && lt.thoughts.Count > 0) {
+            var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
+            thinkText.text = thought.text;
+        }
+        targets.Add(lt);
+    }
+
+    void Forget(GameObject go) {
+        thingToLookAt = null;
+        timeOnMind = 0.0f;
+        didCommitYet = false;
+    }
+
+    void Ponder() {
+        if( timeOnMind < timeToCommit && !didCommitYet ){
+            timeOnMind += Time.deltaTime;
+            if ( timeOnMind >= timeToCommit && !didCommitYet ){
+                Remember(thingToLookAt.gameObject);
+            }
+        }
+    }
+
 	void LateUpdate () {
-		rotateTowards (thingToLookAt.transform.position, eyeTarget.transform.position);
+        if( thingToLookAt != null) {
+            rotateTowards(thingToLookAt.transform.position, eyeTarget.transform.position);
+        }
 		//transform.LookAt(thingToLookAt);
 	}
 
 	void OnCollisionEnter(Collision collision){
-		thingToLookAt = collision.gameObject.transform;
-        timeOnMind = 0.0f;
-        didCommitYet = false;
+        if( collision.gameObject.GetComponentInChildren<LookTarget>() != null ) {
+            Notice(collision.gameObject);
+        }
     }
 
 	protected void rotateTowards(Vector3 to, Vector3 eyes) {
@@ -56,9 +88,7 @@ public class LookGrandpa : MonoBehaviour {
 		diff = Mathf.Abs (diff);
 		if (diff > maxAngle) {
 			grampsHead.transform.rotation = Quaternion.Slerp (grampsHead.transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
-            if( thingToLookAt != eyeTarget && timeOnMind < timeToCommit && !didCommitYet ) {
-                timeOnMind += Time.deltaTime;
-            }
+            Ponder();
 		} else {
 			grampsHead.transform.rotation = Quaternion.Slerp (grampsHead.transform.rotation, ahead, Time.deltaTime * turnSpeed);
 		}

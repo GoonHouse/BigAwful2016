@@ -185,6 +185,9 @@ MonoBehaviour:
   - name: food
     need: 1
     strength: 1
+  thoughts:
+  - text: I fucking love fishing. Hell yeah.
+    sound: {fileID: 0}
 --- !u!120 &12059136
 LineRenderer:
   m_ObjectHideFlags: 1
