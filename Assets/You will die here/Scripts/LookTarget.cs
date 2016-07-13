@@ -35,11 +35,17 @@ public class NeedFragment : System.Object {
     public float strength = 1.0f;
 }
 
+[System.Serializable]
+public class Thought : System.Object {
+    public string text;
+    public AudioClip sound;
+}
+
 public class LookTarget : MonoBehaviour {
     public string propName;
     public List<EmotionFragment> emotions = new List<EmotionFragment>();
     public List<NeedFragment> needs = new List<NeedFragment>();
-
+    public List<Thought> thoughts = new List<Thought>();
 
     // Use this for initialization
     void Start () {
