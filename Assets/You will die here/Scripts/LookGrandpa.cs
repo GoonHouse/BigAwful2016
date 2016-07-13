@@ -65,9 +65,9 @@ public class LookGrandpa : MonoBehaviour {
     }
 
     void Ponder() {
-        if( timeOnMind < timeToCommit && !didCommitYet ){
+        if( timeOnMind < timeToCommit && !didCommitYet && thingToLookAt != null ){
             timeOnMind += Time.deltaTime;
-            if ( timeOnMind >= timeToCommit && !didCommitYet ){
+            if ( timeOnMind >= timeToCommit && !didCommitYet && thingToLookAt != null ) {
                 Remember(thingToLookAt.gameObject);
             }
         }
@@ -76,6 +76,8 @@ public class LookGrandpa : MonoBehaviour {
 	void LateUpdate () {
         if( thingToLookAt != null) {
             rotateTowards(thingToLookAt.transform.position, eyeTarget.transform.position);
+        } else {
+            rotateTowards(eyeTarget.transform.position, eyeTarget.transform.position);
         }
 		//transform.LookAt(thingToLookAt);
 	}

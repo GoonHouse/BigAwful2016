@@ -16,10 +16,10 @@ public class RoomGenergreater : MonoBehaviour {
 
     public bool isDone = false;
 
-    public int minDarkRooms = 3;
+    public int minDarkRooms = 1;
 
-    public float minDarkRoomRadius = 30.0f;
-    public float maxDarkRoomRadius = 100.0f;
+    public float minDarkRoomRadius = 10.0f;
+    public float maxDarkRoomRadius = 80.0f;
 
     public float chanceOfPhoto = 0.25f;
     public float chanceOfWallFloor = 0.33f;
@@ -44,6 +44,7 @@ public class RoomGenergreater : MonoBehaviour {
         }
         if ( tileRunners <= 0 ) {
             tileRunners = 0;
+            EnforceDarkRooms();
             TimeForDoors();
             TimeForWalls();
             TimeForDecoration();
@@ -52,6 +53,48 @@ public class RoomGenergreater : MonoBehaviour {
 
     public void OnDone() {
 
+    }
+
+    public void DestroyRoomAt(Vector2 pos) {
+        var coord = God.Key(pos);
+
+        Destroy(rooms[coord].gameObject);
+        rooms.Remove(coord);
+    }
+
+    public void EnforceDarkRooms() {
+        int numDarkRooms = 0;
+        List<Vector2> badPoints = new List<Vector2>();
+        foreach (KeyValuePair<string, RoomObject> item in rooms) {
+            var room = item.Value;
+
+            if (room.isDarkRoom) {
+                var dist = Vector2.Distance(room.pos, Vector2.zero);
+                if ( dist > maxDarkRoomRadius || dist < minDarkRoomRadius ){
+                    Debug.LogWarning("ROOM OUT OF RANGE, " + room.pos);
+                    badPoints.Add(room.pos);
+                } else {
+                    numDarkRooms++;
+                }
+            }
+        }
+        foreach( Vector2 pos in badPoints) {
+            DestroyRoomAt( pos );
+        }
+        while( numDarkRooms < minDarkRooms ) {
+            var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
+            var rad = Random.insideUnitCircle * mag;
+            var dist = Vector2.Distance(rad, Vector2.zero);
+
+            if (dist > maxDarkRoomRadius || dist < minDarkRoomRadius) {
+                Debug.LogWarning("WOW I'M RETARDED! " + mag + ", " + rad + ", " + dist);
+            }
+
+            if( IsFree(rad) && HasNeighbor(rad) ) {
+                SpawnPart("BlackRoom", rad);
+                numDarkRooms++;
+            }
+        }
     }
 
     public void TimeForDecoration() {
@@ -205,6 +248,10 @@ public class RoomGenergreater : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public bool HasNeighbor(Vector2 loc) {
+        return !IsFree(loc + God.NORTH) || !IsFree(loc + God.EAST) || !IsFree(loc + God.SOUTH) || !IsFree(loc + God.WEST);
     }
 
     public bool IsFree(Vector2 loc) {

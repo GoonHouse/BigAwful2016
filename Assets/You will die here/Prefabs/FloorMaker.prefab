@@ -91,7 +91,7 @@ MonoBehaviour:
   moreOfMe: {fileID: 195200}
   writeHead: {x: 0, y: 0}
   writeDirection: {x: 0, y: 0}
-  tilesLeft: 900
+  tilesLeft: 110
   operationRate: 0.01
   operationTimer: 0
   chanceToTurnLeft: 0.1
@@ -99,6 +99,7 @@ MonoBehaviour:
   chanceToTurnRight: 0.1
   chanceToClone: 0.05
   chanceToCloneDecay: 0.5
+  chanceOfBlackRoom: 0.1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -349,6 +349,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11405058, guid: 290b28acb4fd90a4f9b38fd1823ad395, type: 2}
+      propertyPath: tilesLeft
+      value: 110
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 290b28acb4fd90a4f9b38fd1823ad395, type: 2}
   m_IsPrefabParent: 0
@@ -581,8 +585,8 @@ MonoBehaviour:
   tileRunners: 0
   isDone: 0
   minDarkRooms: 3
-  minDarkRoomRadius: 30
-  maxDarkRoomRadius: 100
+  minDarkRoomRadius: 10
+  maxDarkRoomRadius: 15
   chanceOfPhoto: 0.25
   chanceOfWallFloor: 0.33
   chanceOfFloor: 0.07
