@@ -483,6 +483,9 @@ MonoBehaviour:
   playerGenerationRadius: 2
   tileRunners: 0
   isDone: 0
+  minDarkRooms: 3
+  minDarkRoomRadius: 30
+  maxDarkRoomRadius: 100
   chanceOfPhoto: 0.25
   chanceOfWallFloor: 0.33
   chanceOfFloor: 0.07
