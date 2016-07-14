@@ -68,8 +68,10 @@ public class AkInitializer : MonoBehaviour
     {
 #if UNITY_EDITOR
         return WwiseSettings.LoadSettings().SoundbankPath;
+
 #else
         return ms_Instance.basePath;
+
 #endif
     }
 
@@ -142,6 +144,7 @@ public class AkInitializer : MonoBehaviour
 #if UNITY_5
 #if UNITY_EDITOR
         AkSoundEngine.SetGameName(Application.productName + " (Editor)");
+
 #else
 		AkSoundEngine.SetGameName(Application.productName);
 #endif
@@ -205,6 +208,7 @@ public class AkInitializer : MonoBehaviour
 
 #if UNITY_EDITOR
         EditorApplication.playmodeStateChanged += OnEditorPlaymodeStateChanged;
+
 #endif
     }
 
@@ -331,15 +335,23 @@ public class AkInitializer : MonoBehaviour
     {
         if (ms_Instance != null)
         {
-            if (EditorApplication.isPaused)
-            {
-                AkSoundEngine.Suspend();
-            }
-            else
+            if (!EditorApplication.isPlayingOrWillChangePlaymode && EditorApplication.isPlaying)
             {
                 AkSoundEngine.WakeupFromSuspend();
             }
+            else
+            {
+                if (EditorApplication.isPaused)
+                {
+                    AkSoundEngine.Suspend();
+                }
+                else
+                {
+                    AkSoundEngine.WakeupFromSuspend();
+                }
+            }
 
+            AkCallbackManager.PostCallbacks();
             AkSoundEngine.RenderAudio();
         }
     }
