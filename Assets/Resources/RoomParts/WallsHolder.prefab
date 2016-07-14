@@ -75,6 +75,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &118962
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474614}
+  m_Layer: 0
+  m_Name: AnchorFloor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &126340
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +117,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409636}
   m_Layer: 0
-  m_Name: AnchorFloor
+  m_Name: AnchorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +132,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 498628}
   m_Layer: 0
-  m_Name: AnchorFloor
+  m_Name: AnchorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,6 +178,21 @@ GameObject:
   - 4: {fileID: 450214}
   m_Layer: 0
   m_Name: AnchorPhoto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &156236
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 425678}
+  m_Layer: 0
+  m_Name: AnchorFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,9 +367,10 @@ Transform:
   - {fileID: 484904}
   - {fileID: 494236}
   - {fileID: 421268}
-  - {fileID: 498628}
+  - {fileID: 474614}
   - {fileID: 438494}
   - {fileID: 487538}
+  - {fileID: 498628}
   m_Father: {fileID: 485306}
   m_RootOrder: 1
 --- !u!4 &409636
@@ -349,12 +380,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126950}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 468034}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!4 &410212
 Transform:
   m_ObjectHideFlags: 1
@@ -407,6 +438,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 468034}
   m_RootOrder: 7
+--- !u!4 &425678
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156236}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_Children: []
+  m_Father: {fileID: 468034}
+  m_RootOrder: 5
 --- !u!4 &429770
 Transform:
   m_ObjectHideFlags: 1
@@ -502,9 +546,10 @@ Transform:
   - {fileID: 470756}
   - {fileID: 410212}
   - {fileID: 429770}
-  - {fileID: 409636}
+  - {fileID: 425678}
   - {fileID: 447902}
   - {fileID: 425654}
+  - {fileID: 409636}
   m_Father: {fileID: 485306}
   m_RootOrder: 2
 --- !u!4 &470756
@@ -520,6 +565,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 468034}
   m_RootOrder: 2
+--- !u!4 &474614
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118962}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_Children: []
+  m_Father: {fileID: 404128}
+  m_RootOrder: 5
 --- !u!4 &484904
 Transform:
   m_ObjectHideFlags: 1
@@ -608,12 +666,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141818}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 404128}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!23 &2365956
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -712,9 +770,13 @@ MonoBehaviour:
   - {fileID: 149972}
   - {fileID: 168340}
   insideFloorAnchors:
-  - {fileID: 141818}
+  - {fileID: 118962}
   - {fileID: 116910}
   - {fileID: 146864}
+  insideBlockedByDoor:
+  - {fileID: 118962}
+  - {fileID: 115890}
+  insideDoor: {fileID: 141818}
   outsidePhotoAnchors:
   - {fileID: 171468}
   - {fileID: 155770}
@@ -722,9 +784,13 @@ MonoBehaviour:
   - {fileID: 109714}
   - {fileID: 178208}
   outsideFloorAnchors:
-  - {fileID: 126950}
+  - {fileID: 156236}
   - {fileID: 193536}
   - {fileID: 169670}
+  outsideBlockedByDoor:
+  - {fileID: 156236}
+  - {fileID: 171468}
+  outsideDoor: {fileID: 126950}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
