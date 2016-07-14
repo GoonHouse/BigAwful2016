@@ -9,8 +9,10 @@ public class WallObject : MonoBehaviour {
 
     public List<GameObject> insidePhotoAnchors;
     public List<GameObject> insideFloorAnchors;
+    public List<GameObject> insideBlockedByDoor;
     public List<GameObject> outsidePhotoAnchors;
     public List<GameObject> outsideFloorAnchors;
+    public List<GameObject> outsideBlockedByDoor;
 
     // Use this for initialization
     void Start () {
