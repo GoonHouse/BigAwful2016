@@ -81,6 +81,7 @@ public class RoomGenergreater : MonoBehaviour {
         foreach( Vector2 pos in badPoints) {
             DestroyRoomAt( pos );
         }
+        var attempts = 300;
         while( numDarkRooms < minDarkRooms ) {
             var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
             var rad = Vector2.zero.RandomCircle( mag );
@@ -95,6 +96,11 @@ public class RoomGenergreater : MonoBehaviour {
                 numDarkRooms++;
             } else {
                 Debug.LogWarning("ATTEMPTED " + rad.Round(0) + " FAILED");
+            }
+            attempts--;
+            if( attempts <= 0) {
+                Debug.LogWarning("GAVE UP PLACING DARK ROOMS. YOU MIGHT NOT HAVE ANY.");
+                break;
             }
         }
     }
@@ -204,27 +210,51 @@ public class RoomGenergreater : MonoBehaviour {
             var room = item.Value;
 
             if (room.isDarkRoom) {
-                Vector2 i = God.RandomDirection();
-                var numAttempts = 16;
-                while ( IsFree(room.pos + i) ) {
-                    i = God.RandomDirection();
-                    numAttempts--;
-                    if( numAttempts <= 0) {
-                        Debug.LogWarning("GAVE UP PLACING DOOR ON BLACKCUBE AT " + room.pos);
-                        break;
+                var dirs = new List<Vector2>{ God.NORTH, God.EAST, God.SOUTH, God.WEST };
+                dirs.Shuffle();
+                var door = Resources.Load("RoomParts/" + "DoorFrame") as GameObject;
+                var didSpawn = false;
+                foreach ( Vector2 dir in dirs) {
+                    if( !IsFree(room.pos + dir) ){
+                        var inside = true;
+                        var wallPos = room.pos;
+                        var face = "W";
+
+                        if( dir == God.NORTH || dir == God.EAST) {
+                            wallPos += dir;
+                            inside = false;
+                        }
+
+                        if( dir == God.NORTH || dir == God.SOUTH) {
+                            face = "S";
+                        }
+
+                        var coord = God.Key(wallPos) + "_" + face;
+                        GameObject goToSpawnOn = null;
+                        if ( walls.ContainsKey(coord)) {
+                            if( inside) {
+                                goToSpawnOn = walls[coord].insideDoor;
+                                foreach(GameObject go in walls[coord].insideBlockedByDoor) {
+                                    Destroy(go);
+                                }
+                            } else {
+                                goToSpawnOn = walls[coord].outsideDoor;
+                                foreach (GameObject go in walls[coord].outsideBlockedByDoor) {
+                                    Destroy(go);
+                                }
+                            }
+                            SpawnFurniture(door, goToSpawnOn);
+                            didSpawn = true;
+
+                            // We spawned at least one door, so break.
+                            break;
+                        } else {
+                            Debug.LogError("THERE WAS NO FUCKING WALL AT " + coord);
+                        }
                     }
                 }
-                
-                if( i == God.WEST && !IsFree(room.pos + God.WEST) ) {
-                    SpawnThing("DoorFrame", room.pos + God.WEST, "E");
-                } else if ( i == God.EAST && !IsFree(room.pos + God.EAST) ) {
-                    SpawnThing("DoorFrame", room.pos + God.EAST, "W");
-                } else if ( i == God.SOUTH && !IsFree(room.pos + God.SOUTH) ) {
-                    SpawnThing("DoorFrame", room.pos + God.SOUTH, "N");
-                } else if ( i == God.NORTH && !IsFree(room.pos + God.NORTH)) {
-                    SpawnThing("DoorFrame", room.pos + God.NORTH, "S");
-                } else {
-                    EmergencyDoor(room);
+                if( !didSpawn ) {
+                    Debug.LogError("COULDN'T FUCKIN PUT A DOOR ON " + God.Key(room.pos));
                 }
             }
         }
@@ -270,6 +300,11 @@ public class RoomGenergreater : MonoBehaviour {
     }
 
     public GameObject SpawnFurniture(GameObject prefab, GameObject parent) {
+        // Ensure we got an object.
+        if (prefab == null) {
+            return null;
+        }
+
         // Actually spawn the object.
         var go = Instantiate(prefab, parent.transform.position, parent.transform.rotation) as GameObject;
         go.transform.SetParent(parent.transform, true);
@@ -371,66 +406,6 @@ public class RoomGenergreater : MonoBehaviour {
         return go;
     }
 
-    /*
-    public GameObject SpawnItem(string partPath, GameObject childToSpawn, Vector2 loc, ) {
-        if( childToSpawn == null) {
-            childToSpawn = GameObject.Find("World/Rooms");
-        }
-        var rpos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
-        var pos = childToSpawn.transform.position + rpos;
-
-        var part = Resources.Load("RoomParts/" + partPath);
-        var go = Instantiate(part, pos, Quaternion.identity) as GameObject;
-
-        go.transform.SetParent(childToSpawn.transform, true);
-        go.transform.localPosition = pos;
-        go.transform.rotation = childToSpawn.transform.rotation;
-    }
-    public GameObject SpawnItem(string partPath, Vector2 loc, string dir = null) {
-        if (partPath == null) {
-            partPath = "WallsHolder";
-        }
-
-        loc = loc.Round(0);
-        var coord = God.Key(loc) + "_" + dir;
-
-        //if (walls.ContainsKey(coord) || partName == null) {
-        //Debug.LogWarning("EITHER " + coord + " ALREADY EXISTS OR " + partName + " ISN'T A PART!");
-        //return null;
-        //}
-
-        var pos = new Vector3(loc.x * roomSize, 0, loc.y * roomSize);
-        var rot = GameObject.Find("World/Rooms").transform.rotation;
-
-        if (dir == "W") {
-            var d = God.WEST * (roomSize / 2.0f);
-            pos += new Vector3(d.x, 0, d.y);
-        }
-
-        if (dir == "S") {
-            var d = God.SOUTH * (roomSize / 2.0f);
-            pos += new Vector3(d.x, 0, d.y);
-        }
-
-        
-
-        if (dir == "S") {
-            var r = go.transform.rotation;
-            go.transform.RotateAround(go.transform.position, Vector3.up, 270);
-        }
-
-        go.name = coord + " " + partName;
-
-        //var wo = go.GetComponent<WallObject>();
-
-        //wo.pos = loc;
-        //wo.dir = dir;
-
-        //walls.Add(coord, wo);
-
-        return go;
-    }
-    */
     public GameObject SpawnWall(string partName, Vector2 loc, string dir) {
         if( partName == null) {
             partName = "WallsHolder";

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Flags]
 public enum Direction {
@@ -29,6 +30,20 @@ public class God : MonoBehaviour {
             return SOUTH;
         } else {
             return WEST;
+        }
+    }
+
+    public static string VectorToInvertedSignal(Vector2 pos) {
+        if (pos == NORTH) {
+            return "S";
+        } else if (pos == EAST) {
+            return "W";
+        } else if (pos == SOUTH) {
+            return "N";
+        } else if (pos == WEST) {
+            return "E";
+        } else {
+            return "?";
         }
     }
 
@@ -73,6 +88,17 @@ public static class BeeCoExtensions {
 
     public static float Scale(this float valueIn, float baseMin, float baseMax, float limitMin, float limitMax) {
         return ((limitMax - limitMin) * (valueIn - baseMin) / (baseMax - baseMin)) + limitMin;
+    }
+
+    public static void Shuffle<T>(this IList<T> list) {
+        int n = list.Count;
+        while (n > 1) {
+            n--;
+            int k = Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 
     public static float Round(this float value, int digits = 2) {
