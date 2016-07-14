@@ -83,16 +83,18 @@ public class RoomGenergreater : MonoBehaviour {
         }
         while( numDarkRooms < minDarkRooms ) {
             var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
-            var rad = Random.insideUnitCircle * mag;
+            var rad = Vector2.zero.RandomCircle( mag );
             var dist = Vector2.Distance(rad, Vector2.zero);
 
             if (dist > maxDarkRoomRadius || dist < minDarkRoomRadius) {
                 Debug.LogWarning("WOW I'M RETARDED! " + mag + ", " + rad + ", " + dist);
             }
 
-            if( IsFree(rad) && HasNeighbor(rad) ) {
+            if (!rooms.ContainsKey(God.Key(rad)) && HasNeighbor(rad) ) {
                 SpawnPart("BlackRoom", rad);
                 numDarkRooms++;
+            } else {
+                Debug.LogWarning("ATTEMPTED " + rad.Round(0) + " FAILED");
             }
         }
     }
