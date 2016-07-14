@@ -45,8 +45,8 @@ public class RoomGenergreater : MonoBehaviour {
         if ( tileRunners <= 0 ) {
             tileRunners = 0;
             EnforceDarkRooms();
-            TimeForDoors();
             TimeForWalls();
+            TimeForDoors();
             TimeForDecoration();
         }
     }
@@ -81,26 +81,44 @@ public class RoomGenergreater : MonoBehaviour {
         foreach( Vector2 pos in badPoints) {
             DestroyRoomAt( pos );
         }
-        var attempts = 300;
-        while( numDarkRooms < minDarkRooms ) {
-            var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
-            var rad = Vector2.zero.RandomCircle( mag );
-            var dist = Vector2.Distance(rad, Vector2.zero);
-
-            if (dist > maxDarkRoomRadius || dist < minDarkRoomRadius) {
-                Debug.LogWarning("WOW I'M RETARDED! " + mag + ", " + rad + ", " + dist);
+        Dictionary<string, Vector2> candidates = new Dictionary<string, Vector2>();
+        if( numDarkRooms < minDarkRooms) {
+            for( int d = 0; d <= 360; d++ ){
+                for( float i = minDarkRoomRadius; i < maxDarkRoomRadius; i++) {
+                    var loc = Vector2.zero.PointOnCircle(i, d);
+                    var coord = God.Key(loc);
+                    if (!candidates.ContainsKey(coord) && !rooms.ContainsKey(coord) && HasNeighbor(loc)) {
+                        candidates[coord] = loc;
+                    }
+                }
             }
+            List<Vector2> possible = new List<Vector2>(candidates.Values);
+            possible.Shuffle();
 
-            if (!rooms.ContainsKey(God.Key(rad)) && HasNeighbor(rad) ) {
-                SpawnPart("BlackRoom", rad);
+            var roomsLeft = minDarkRooms - numDarkRooms;
+            var emergencyRooms = roomsLeft - possible.Count;
+            
+            foreach( Vector2 pos in possible ) {
+                SpawnPart("BlackRoom", pos);
                 numDarkRooms++;
-            } else {
-                Debug.LogWarning("ATTEMPTED " + rad.Round(0) + " FAILED");
+                if ( numDarkRooms >= minDarkRooms ) {
+                    break;
+                }
             }
-            attempts--;
-            if( attempts <= 0) {
-                Debug.LogWarning("GAVE UP PLACING DARK ROOMS. YOU MIGHT NOT HAVE ANY.");
-                break;
+
+            while( emergencyRooms > 0) {
+                Debug.LogWarning("CREATING EMERGENCY ROOMS");
+                var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
+                var rad = Vector2.zero.RandomCircle(mag);
+                var dist = Vector2.Distance(rad, Vector2.zero);
+
+                var coord = God.Key(rad);
+
+                if( rooms.ContainsKey(God.Key(rad)) && !rooms[coord].isDarkRoom ){
+                    DestroyRoomAt(rad);
+                    SpawnPart("BlackRoom", rad);
+                    emergencyRooms--;
+                }
             }
         }
     }

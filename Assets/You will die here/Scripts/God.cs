@@ -106,6 +106,13 @@ public static class BeeCoExtensions {
         return Mathf.Round(value * mult) / mult;
     }
 
+    public static Vector2 PointOnCircle(this Vector2 center, float radius, float ang) {
+        Vector2 pos;
+        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+        pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+        return pos;
+    }
+
     public static Vector2 RandomCircle(this Vector2 center, float radius) {
         float ang = Random.value * 360;
         Vector2 pos;
