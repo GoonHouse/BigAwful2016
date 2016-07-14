@@ -69,9 +69,23 @@ public class God : MonoBehaviour {
 
 
 public static class BeeCoExtensions {
+
+
+    public static float Scale(this float valueIn, float baseMin, float baseMax, float limitMin, float limitMax) {
+        return ((limitMax - limitMin) * (valueIn - baseMin) / (baseMax - baseMin)) + limitMin;
+    }
+
     public static float Round(this float value, int digits = 2) {
         float mult = Mathf.Pow(10.0f, (float)digits);
         return Mathf.Round(value * mult) / mult;
+    }
+
+    public static Vector2 RandomCircle(this Vector2 center, float radius) {
+        float ang = Random.value * 360;
+        Vector2 pos;
+        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
+        pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+        return pos;
     }
 
     public static Vector2 Round(this Vector2 v, int digits) {
