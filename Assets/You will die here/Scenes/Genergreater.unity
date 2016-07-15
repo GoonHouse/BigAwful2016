@@ -302,14 +302,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63feb9fa842c720449eda3efe9f1691d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeFogStart: 0
-  endFogStart: 0
-  closeFogTarget: 8
-  endFogTarget: 16
-  fogSpeed: 2
-  fogColorSpeed: 0.1
-  fogStart: {r: 1, g: 1, b: 1, a: 1}
-  fogEnd: {r: 0.74264705, g: 0.74264705, b: 0.74264705, a: 1}
+  thisSnapshot:
+    startDistance: 0
+    endDistance: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
+  targetSnapshot:
+    startDistance: 8
+    endDistance: 16
+    color: {r: 1, g: 1, b: 1, a: 0}
+  timeToStopFog: 0
+  timeToChangeFog: 1
+  timeToStopColor: 0
+  timeToChangeColor: 1
 --- !u!1001 &1066743074
 Prefab:
   m_ObjectHideFlags: 0
