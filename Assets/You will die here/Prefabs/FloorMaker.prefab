@@ -92,7 +92,7 @@ MonoBehaviour:
   writeHead: {x: 0, y: 0}
   writeDirection: {x: 0, y: 0}
   tilesLeft: 110
-  operationRate: 0.01
+  operationRate: 0
   operationTimer: 0
   chanceToTurnLeft: 0.1
   chanceToTurnAround: 0.05

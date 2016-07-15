@@ -353,6 +353,10 @@ Prefab:
       propertyPath: tilesLeft
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 11405058, guid: 290b28acb4fd90a4f9b38fd1823ad395, type: 2}
+      propertyPath: operationRate
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 290b28acb4fd90a4f9b38fd1823ad395, type: 2}
   m_IsPrefabParent: 0
