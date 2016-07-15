@@ -12,6 +12,12 @@ public class Grandpa : MonoBehaviour {
     public Vector3 lookDirection = Vector3.zero;
 	private float cameraTargetDirection = 0;
 
+    public float cameraTurnRate = 2.0f;
+
+    private float cameraTurnStopTime;
+    private float targetCameraDirection;
+    private float initCameraDirection;
+
     public bool inControl = true;
     public Transform moveTarget;
 
@@ -29,6 +35,7 @@ public class Grandpa : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         character = GameObject.Find("GrandFatherContainmentUnit");
 		cameraHolder = GameObject.Find ("CameraHolder");
+        cameraTurnStopTime = Time.fixedTime-1.0f;
 
         // If for any reason the player is not at the world origin or the camera isn't facing it, this will break. \o/
         //cameraOffset = Camera.main.transform.position;
@@ -48,13 +55,17 @@ public class Grandpa : MonoBehaviour {
                 fc.Change(fs, 4.0f, 20.0f);
             }
 
-            if (Input.GetButtonDown("Fire2")) {
-                //Camera.main.transform.RotateAround(transform.position, Vector3.up, cameraTurnAmount);
-                //Camera.main.transform.Rotate(new Vector3(0, cameraTurnAmount, 0));
-                cameraHolder.transform.RotateAround(transform.position, Vector3.up, cameraTurnAmount);
-                cameraTargetDirection += cameraTurnAmount;
-                if (cameraTargetDirection > 359f) {
-                    cameraTargetDirection = 0f;
+            if( Time.fixedTime <= cameraTurnStopTime ){
+                var amountToSpin = Mathf.Lerp(initCameraDirection, cameraTargetDirection, Time.fixedTime / cameraTurnStopTime);
+                cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
+            } else {
+                if (Input.GetButtonDown("Fire2")) {
+                    cameraTurnStopTime = Time.fixedTime + cameraTurnRate;
+                    initCameraDirection = cameraTargetDirection;
+                    cameraTargetDirection += cameraTurnAmount;
+                    if (cameraTargetDirection > 359f) {
+                        cameraTargetDirection = 0f;
+                    }
                 }
             }
 
