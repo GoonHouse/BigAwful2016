@@ -4,7 +4,7 @@ using System.Collections;
 public class NavLine : MonoBehaviour {
 	private GameObject gramps;
     private Vector3 grampsHeight = new Vector3(0.0f, 4.5f, 0.0f);
-    public float grampsLerp = 1.0f;
+    public float grampsLerp = 0.91f;
 	// Use this for initialization
 	void Start () {
 		gramps = GameObject.Find("GrampsHolder");

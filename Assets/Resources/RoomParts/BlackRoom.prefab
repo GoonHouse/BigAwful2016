@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f62c416051da743b5b62973ee7a033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grampsLerp: 0.91
 --- !u!120 &12067804
 LineRenderer:
   m_ObjectHideFlags: 1

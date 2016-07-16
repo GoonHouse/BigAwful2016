@@ -19,12 +19,22 @@ public class Grandpa : MonoBehaviour {
     private float initCameraDirection;
 
     public bool inControl = true;
+    public bool doneMove = true;
     public Transform moveTarget;
+    public float moveTime = 1.0f;
+    public float moveTimeSpent = 0.0f;
 
     private Animator m_Animator;
     private CharacterController controller;
     private GameObject character;
 	private GameObject cameraHolder;
+
+    public void SetTarget(Transform target) {
+        inControl = false;
+        doneMove = false;
+        moveTarget = target;
+        moveTimeSpent = 0.0f;
+    }
 
     public void OnInMoveTarget() {
 
@@ -94,8 +104,19 @@ public class Grandpa : MonoBehaviour {
             controller.Move(moveDirection * Time.deltaTime);
         } else {
             // player not in control, lerp to position
-            m_Animator.SetBool("Walking", !inControl);
-
+            if ( moveTimeSpent <= moveTime && !doneMove ) {
+                m_Animator.SetBool("Walking", !inControl);
+                moveTimeSpent += Time.deltaTime;
+                transform.position = Vector3.Lerp(transform.position, moveTarget.position, moveTimeSpent / moveTime);
+                //transform.rotation = Quaternion.Lerp(transform.rotation, moveTarget.rotation, moveTimeSpent / moveTime);
+                if( moveTimeSpent >= moveTime) {
+                    doneMove = true;
+                    transform.rotation = moveTarget.rotation;
+                }
+            } else {
+                transform.position = moveTarget.position;
+                m_Animator.SetBool("Walking", false);
+            }
         }
 
         // Report location to fog shader.

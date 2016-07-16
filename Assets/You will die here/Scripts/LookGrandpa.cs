@@ -50,6 +50,12 @@ public class LookGrandpa : MonoBehaviour {
     void Remember(GameObject go) {
         didCommitYet = true;
         var lt = go.GetComponentInChildren<LookTarget>();
+        var knob = go.GetComponentInChildren<Knob>();
+        if( knob != null && !epu.targets.Contains(lt)) {
+            var grampsH = GameObject.Find("GrampsHolder");
+            var grandpa = grampsH.GetComponent<Grandpa>();
+            grandpa.SetTarget(knob.walkFromTarget);
+        }
         if( lt != null && epu.Commit(lt) ) {
             if (lt.thoughts.Count > 0) {
                 var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
