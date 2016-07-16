@@ -137,6 +137,8 @@ public class Grandpa : MonoBehaviour {
 
         grandpa.isWalking = false;
 
+        grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
+
         grandpa.whenDoneDo = null;
     }
 
