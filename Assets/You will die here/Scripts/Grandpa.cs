@@ -53,7 +53,6 @@ public class Grandpa : MonoBehaviour {
             float moveVertical = Input.GetAxis("Vertical");
 
             // Are we moving?
-            Debug.Log("BOINGA");
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
 
             if( Input.GetKeyDown(KeyCode.F)) {
@@ -121,9 +120,10 @@ public class Grandpa : MonoBehaviour {
                     m_Animator.SetBool("Walking", true);
                 }
             } else {
+                // enforce our local position because now that our character controller is disabled
+                // we will go straight through the gat dang floor
                 transform.position = moveTarget.position;
                 transform.localRotation = moveTarget.localRotation;
-                // jack and shit
             }
         }
 
