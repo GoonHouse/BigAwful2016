@@ -590,7 +590,7 @@ MonoBehaviour:
   chanceOfPhoto: 0.25
   chanceOfWallFloor: 0.33
   chanceOfFloor: 0.07
-  chanceOfOversize: 0.03
+  chanceOfOversize: 0.1
   decorationPhotos:
   - {fileID: 197848, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   - {fileID: 107700, guid: 5f22c4e5cd50a014fbdaf1860563a0fc, type: 2}
@@ -615,6 +615,8 @@ MonoBehaviour:
   - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
   - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
   - {fileID: 189586, guid: 0dbf680fcc263774d970d0114ad84adc, type: 2}
+  - {fileID: 112736, guid: 4a07b46b96e5a6f418447502becba8d9, type: 2}
+  - {fileID: 172456, guid: 7b9ca7c54302b564aaea361529746579, type: 2}
   crazyDecorationPhotos: []
   crazyDecorationFloor: []
   crazyDecorationOversize: []

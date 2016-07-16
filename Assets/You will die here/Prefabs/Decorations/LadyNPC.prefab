@@ -95,6 +95,7 @@ GameObject:
   - 4: {fileID: 425280}
   - 33: {fileID: 3365804}
   - 23: {fileID: 2317080}
+  - 65: {fileID: 6542876}
   m_Layer: 0
   m_Name: LadyBody
   m_TagString: Untagged
@@ -696,6 +697,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126354}
   m_Mesh: {fileID: 4300000, guid: 4d6931f154a7c0445ac27978c1d80e4e, type: 3}
+--- !u!65 &6542876
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000004, y: 1.5, z: 0.75000024}
+  m_Center: {x: 0.000000059604645, y: 0.75, z: -0.00000010430813}
 --- !u!95 &9543780
 Animator:
   serializedVersion: 3

@@ -109,7 +109,9 @@ MonoBehaviour:
   propName: Table Lamp
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: I love lamp
+    sound: {fileID: 0}
 --- !u!135 &13518500
 SphereCollider:
   m_ObjectHideFlags: 1
