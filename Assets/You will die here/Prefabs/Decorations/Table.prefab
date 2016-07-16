@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: 185054, guid: 63e7c57e725674842a5788d522e87ef1, type: 2}
   - {fileID: 138210, guid: f608ffc46bb34934aa6a111ce3016e9f, type: 2}
   - {fileID: 162424, guid: 140a9aee0609abd4c89d74c1b6af1f9e, type: 2}
+  - {fileID: 114302, guid: 3c38aecc5bc751c4399a54d888793987, type: 2}
   chanceOfSpawn: 1
 --- !u!135 &13565680
 SphereCollider:
