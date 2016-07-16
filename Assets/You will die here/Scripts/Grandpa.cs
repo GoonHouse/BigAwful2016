@@ -8,6 +8,7 @@ public class Grandpa : MonoBehaviour {
     public float gravity = 20.0f;
     //public Vector3 cameraOffset = new Vector3(0.0f, 16.0f, -28.0f);
     public float cameraTurnAmount = 90.0f;
+    public int cameraTurnDirection = 1;
     private Vector3 moveDirection = Vector3.zero;
     public Vector3 lookDirection = Vector3.zero;
 	private float cameraTargetDirection = 0;
@@ -30,16 +31,6 @@ public class Grandpa : MonoBehaviour {
     private CharacterController controller;
     private GameObject character;
 	private GameObject cameraHolder;
-
-    public void SetTarget(Transform target) {
-        //controller.enabled = false;
-        startPos = transform.position;
-        startRot = transform.rotation;
-        inControl = false;
-        doneMove = false;
-        moveTarget = target;
-        moveTimeSpent = 0.0f;
-    }
 
     public void OnInMoveTarget() {
 
@@ -73,14 +64,23 @@ public class Grandpa : MonoBehaviour {
 
             if( Time.fixedTime <= cameraTurnStopTime ){
                 var amountToSpin = Mathf.Lerp(initCameraDirection, cameraTargetDirection, Time.fixedTime / cameraTurnStopTime);
-                cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
+                cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnDirection * cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
             } else {
                 if (Input.GetButtonDown("Fire2")) {
                     cameraTurnStopTime = Time.fixedTime + cameraTurnRate;
                     initCameraDirection = cameraTargetDirection;
                     cameraTargetDirection += cameraTurnAmount;
+                    cameraTurnDirection = 1;
                     if (cameraTargetDirection > 359f) {
                         cameraTargetDirection = 0f;
+                    }
+                } else if ( Input.GetButtonDown("Fire1")) {
+                    cameraTurnStopTime = Time.fixedTime + cameraTurnRate;
+                    initCameraDirection = cameraTargetDirection;
+                    cameraTargetDirection -= cameraTurnAmount;
+                    cameraTurnDirection = -1;
+                    if (cameraTargetDirection < 0.0f) {
+                        cameraTargetDirection = 359f;
                     }
                 }
             }
@@ -114,15 +114,15 @@ public class Grandpa : MonoBehaviour {
                 m_Animator.SetBool("Walking", false);
                 moveTimeSpent += Time.deltaTime;
                 transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
-                //transform.rotation = Quaternion.Lerp(transform.rotation, moveTarget.rotation, moveTimeSpent / moveTime);
+                transform.localRotation = Quaternion.Lerp(startRot, moveTarget.localRotation, moveTimeSpent / moveTime);
                 if( moveTimeSpent >= moveTime) {
                     Debug.Log("FUCK YOU I WONT DO WHAT YA TOLD ME");
                     doneMove = true;
-                    transform.rotation = moveTarget.rotation;
-                    transform.position = moveTarget.position;
                     m_Animator.SetBool("Walking", true);
                 }
             } else {
+                transform.position = moveTarget.position;
+                transform.localRotation = moveTarget.localRotation;
                 // jack and shit
             }
         }
@@ -135,5 +135,18 @@ public class Grandpa : MonoBehaviour {
         //cpos += cameraOffset;
         //Camera.main.transform.position = cpos;
 		cameraHolder.transform.position = cpos;
+    }
+
+    public void SetTarget(Transform target) {
+        controller.enabled = false;
+        var rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = false;
+        startPos = transform.position;
+        startRot = transform.localRotation;
+        inControl = false;
+        doneMove = false;
+        moveTarget = target;
+        moveTimeSpent = 0.0f;
     }
 }

@@ -904,6 +904,14 @@ MonoBehaviour:
   gravity: 20
   cameraTurnAmount: 90
   lookDirection: {x: 0, y: 0, z: 0}
+  cameraTurnRate: 1
+  inControl: 1
+  doneMove: 1
+  startPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
+  moveTarget: {fileID: 0}
+  moveTime: 1
+  moveTimeSpent: 0
 --- !u!114 &11469848
 MonoBehaviour:
   m_ObjectHideFlags: 1
