@@ -38,14 +38,11 @@ public class Grandpa : MonoBehaviour {
 
     private Knob focusKnob;
     private OnDoneTarget whenDoneDo;
-    private int knobStage = 0;
-    //private IEnumerator currentCor;
-    //private IEnumerator nextCor;
 
     // How rude
     public void FocusOnKnob(Knob knob) {
         focusKnob = knob;
-        whenDoneDo = KnobStage1;
+        whenDoneDo = KnobStage_AnticipateDoor;
         moveTime = 2.0f;
 
         var timeToShit = 2.0f;
@@ -62,16 +59,15 @@ public class Grandpa : MonoBehaviour {
     }
 
     /* KNOB STAGES AND YOU:
-     * 0 = approaching door
-     * 1 = anticipation
-     * 2 = door opens, wait
-     * 3 = enter door, fade
-     * 4 = sexual backgammon; door close, world ends
+     * KnobStage_AnticipateDoor
+     * KnobStage_UnlockDoor
+     * KnobStage_OpenDoorAndWait
+     * KnobStage_EnterDoor
+     * KnobStage_InsideDoor
      */
 
-    public static void KnobStage1(Grandpa grandpa) {
-        grandpa.knobStage = 1;
-        Debug.LogWarning("ANTICIPATING!");
+    public static void KnobStage_AnticipateDoor(Grandpa grandpa) {
+        Debug.LogWarning("ANTICIPATING DOOR!");
 
         grandpa.isWalking = false;
 
@@ -84,22 +80,22 @@ public class Grandpa : MonoBehaviour {
 
         grandpa.SetTarget(grandpa.focusKnob.walkFromTarget);
 
-        grandpa.whenDoneDo = KnobStage2;
+        grandpa.whenDoneDo = KnobStage_UnlockDoor;
     }
 
-    public static void KnobStage2(Grandpa grandpa) {
-        grandpa.knobStage = 2;
-        Debug.LogWarning("DOOR OPENING, NOT MOVING");
+    public static void KnobStage_UnlockDoor(Grandpa grandpa) {
+        Debug.LogWarning("UNLOCKING DOOR.");
         grandpa.focusKnob.Unlock();
 
         grandpa.moveTime = 1.0f;
         grandpa.moveTimeSpent = 0.0f;
         grandpa.doneMove = false;
 
-        grandpa.whenDoneDo = KnobStage3;
+        grandpa.whenDoneDo = KnobStage_OpenDoorAndWait;
     }
 
-    public static void KnobStage3(Grandpa grandpa) {
+    public static void KnobStage_OpenDoorAndWait(Grandpa grandpa) {
+        Debug.LogWarning("OPENING DOOR. WAITING.");
         grandpa.focusKnob.OpenDoor();
         
         
@@ -109,31 +105,25 @@ public class Grandpa : MonoBehaviour {
         grandpa.doneMove = false;
         //grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
         //grandpa.SetTarget(grandpa.focusKnob.walkFromTarget);
-        grandpa.whenDoneDo = KnobStage4;
+        grandpa.whenDoneDo = KnobStage_EnterDoor;
     }
 
-    public static void KnobStage4(Grandpa grandpa) {
-        var timeToShit = 3.0f;
-        grandpa.knobStage = 4;
+    public static void KnobStage_EnterDoor(Grandpa grandpa) {
+        Debug.LogWarning("ENTERING DOOR.");
 
         grandpa.isWalking = true;
-        Debug.LogWarning("MOVING IN, FADING FOG!");
         
-        grandpa.whenDoneDo = KnobStage3;
-
-        grandpa.moveTime = timeToShit;
+        grandpa.moveTime = 3.0f;
 
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
-        grandpa.whenDoneDo = KnobStage5;
+        grandpa.whenDoneDo = KnobStage_InsideDoor;
     }
 
-    public static void KnobStage5(Grandpa grandpa) {
-        grandpa.knobStage = 5;
-        Debug.LogWarning("JACK SHIT!");
+    public static void KnobStage_InsideDoor(Grandpa grandpa) {
+        Debug.LogWarning("I'M GOING INSIDE! WAIT. I'M ALREADY THERE.");
+        
         // reset the movetime to get a wait out of this
         grandpa.moveTime = 0.1f;
-        grandpa.moveTimeSpent = 0.0f;
-        grandpa.doneMove = false;
 
         grandpa.isWalking = false;
 
