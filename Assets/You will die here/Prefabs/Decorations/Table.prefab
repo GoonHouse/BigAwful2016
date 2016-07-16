@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &192008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 499396}
+  - 114: {fileID: 11430692}
+  m_Layer: 0
+  m_Name: SpawnAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &196988
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,8 +75,22 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 439658}
+  - {fileID: 499396}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &499396
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 457688}
+  m_RootOrder: 1
 --- !u!23 &2391194
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -106,6 +136,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1, z: 1.0000005}
   m_Center: {x: -0.00000020861626, y: 0.5, z: 0.00000008940697}
+--- !u!114 &11430692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe61b547f74a7a44b03afcdb97b570a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleSpawns:
+  - {fileID: 100554, guid: cc1562718b0d3d14086a2487eef65683, type: 2}
+  - {fileID: 118628, guid: 93ae505fdf331db439080de6144c5412, type: 2}
+  - {fileID: 178822, guid: 05549b8c65a22fb4fada2a0ac089ee29, type: 2}
+  - {fileID: 135972, guid: d1cbeb6a59223ad46b5cd426ccc3b93b, type: 2}
+  - {fileID: 185054, guid: 63e7c57e725674842a5788d522e87ef1, type: 2}
+  - {fileID: 138210, guid: f608ffc46bb34934aa6a111ce3016e9f, type: 2}
+  - {fileID: 162424, guid: 140a9aee0609abd4c89d74c1b6af1f9e, type: 2}
+  chanceOfSpawn: 1
 --- !u!135 &13565680
 SphereCollider:
   m_ObjectHideFlags: 1
