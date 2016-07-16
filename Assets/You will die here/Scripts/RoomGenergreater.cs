@@ -45,6 +45,8 @@ public class RoomGenergreater : MonoBehaviour {
         if ( tileRunners <= 0 ) {
             tileRunners = 0;
             EnforceDarkRooms();
+            DestroyRoomAt(God.NORTH + God.NORTH);
+            SpawnPart("BlackRoom", God.NORTH + God.NORTH);
             TimeForWalls();
             TimeForDoors();
             TimeForDecoration();
@@ -58,8 +60,10 @@ public class RoomGenergreater : MonoBehaviour {
     public void DestroyRoomAt(Vector2 pos) {
         var coord = God.Key(pos);
 
-        Destroy(rooms[coord].gameObject);
-        rooms.Remove(coord);
+        if( rooms.ContainsKey(coord)) {
+            Destroy(rooms[coord].gameObject);
+            rooms.Remove(coord);
+        }
     }
 
     public void EnforceDarkRooms() {
@@ -134,10 +138,14 @@ public class RoomGenergreater : MonoBehaviour {
                         SpawnFurniture(decorationFloor[i], fa);
                     }
                 }
-                foreach (GameObject oa in room.oversizeAnchors) {
-                    if (Random.value <= chanceOfOversize) {
-                        var i = Random.Range(0, decorationOversize.Count);
-                        SpawnFurniture(decorationOversize[i], oa);
+
+                // No huge props at spawn coordinates.
+                if( room.pos != Vector2.zero) {
+                    foreach (GameObject oa in room.oversizeAnchors) {
+                        if (Random.value <= chanceOfOversize) {
+                            var i = Random.Range(0, decorationOversize.Count);
+                            SpawnFurniture(decorationOversize[i], oa);
+                        }
                     }
                 }
             }

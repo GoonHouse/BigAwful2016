@@ -18,7 +18,7 @@ public class LookGrandpa : MonoBehaviour {
     private EmotionProcessor epu;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         thingToLookAt = null;
         thinkText.text = "";
         epu = GetComponent<EmotionProcessor>();
@@ -89,7 +89,7 @@ public class LookGrandpa : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-        if( collision.gameObject.GetComponentInChildren<LookTarget>() != null ) {
+        if( collision.gameObject.GetComponentInChildren<LookTarget>() != null && thingToLookAt != collision.gameObject) {
             Notice(collision.gameObject);
         }
     }

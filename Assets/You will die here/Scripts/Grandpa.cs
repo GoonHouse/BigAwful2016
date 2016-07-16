@@ -20,6 +20,8 @@ public class Grandpa : MonoBehaviour {
 
     public bool inControl = true;
     public bool doneMove = true;
+    public Vector3 startPos;
+    public Quaternion startRot;
     public Transform moveTarget;
     public float moveTime = 1.0f;
     public float moveTimeSpent = 0.0f;
@@ -30,6 +32,9 @@ public class Grandpa : MonoBehaviour {
 	private GameObject cameraHolder;
 
     public void SetTarget(Transform target) {
+        //controller.enabled = false;
+        startPos = transform.position;
+        startRot = transform.rotation;
         inControl = false;
         doneMove = false;
         moveTarget = target;
@@ -57,6 +62,7 @@ public class Grandpa : MonoBehaviour {
             float moveVertical = Input.GetAxis("Vertical");
 
             // Are we moving?
+            Debug.Log("BOINGA");
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
 
             if( Input.GetKeyDown(KeyCode.F)) {
@@ -105,17 +111,19 @@ public class Grandpa : MonoBehaviour {
         } else {
             // player not in control, lerp to position
             if ( moveTimeSpent <= moveTime && !doneMove ) {
-                m_Animator.SetBool("Walking", !inControl);
+                m_Animator.SetBool("Walking", false);
                 moveTimeSpent += Time.deltaTime;
-                transform.position = Vector3.Lerp(transform.position, moveTarget.position, moveTimeSpent / moveTime);
+                transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
                 //transform.rotation = Quaternion.Lerp(transform.rotation, moveTarget.rotation, moveTimeSpent / moveTime);
                 if( moveTimeSpent >= moveTime) {
+                    Debug.Log("FUCK YOU I WONT DO WHAT YA TOLD ME");
                     doneMove = true;
                     transform.rotation = moveTarget.rotation;
+                    transform.position = moveTarget.position;
+                    m_Animator.SetBool("Walking", true);
                 }
             } else {
-                transform.position = moveTarget.position;
-                m_Animator.SetBool("Walking", false);
+                // jack and shit
             }
         }
 
