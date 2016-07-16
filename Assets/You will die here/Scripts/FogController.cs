@@ -34,21 +34,21 @@ public class FogController : MonoBehaviour {
         targetSnapshot = snap;
 
         timeToChangeFog = timeFog;
-        timeToStopFog = Time.fixedTime + timeToChangeFog;
+        timeToStopFog = Time.time + timeToChangeFog;
 
         timeToChangeColor = timeColor;
-        timeToStopColor = Time.fixedTime + timeToChangeColor;
+        timeToStopColor = Time.time + timeToChangeColor;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if( Time.fixedTime <= timeToStopFog ) {
-            RenderSettings.fogStartDistance = Mathf.Lerp(thisSnapshot.startDistance, targetSnapshot.startDistance, Time.fixedTime / timeToStopFog );
-            RenderSettings.fogEndDistance = Mathf.Lerp(thisSnapshot.endDistance, targetSnapshot.endDistance, Time.fixedTime / timeToStopFog );
+            RenderSettings.fogStartDistance = Mathf.Lerp(thisSnapshot.startDistance, targetSnapshot.startDistance, Time.time / timeToStopFog );
+            RenderSettings.fogEndDistance = Mathf.Lerp(thisSnapshot.endDistance, targetSnapshot.endDistance, Time.time / timeToStopFog );
         }
 
         if( Time.fixedTime <= timeToStopColor) {
-            RenderSettings.fogColor = Color.Lerp(thisSnapshot.color, targetSnapshot.color, Time.fixedTime / timeToStopFog);
+            RenderSettings.fogColor = Color.Lerp(thisSnapshot.color, targetSnapshot.color, Time.time / timeToStopFog);
             Camera.main.backgroundColor = RenderSettings.fogColor;
         }
 	}

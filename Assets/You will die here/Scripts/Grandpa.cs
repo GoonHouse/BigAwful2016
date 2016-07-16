@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void OnDoneTarget(Grandpa grandpa);
+
 public class Grandpa : MonoBehaviour {
     public float turnSpeed = 180.0f;
     public float moveSpeed = 6.0f;
@@ -19,6 +21,8 @@ public class Grandpa : MonoBehaviour {
     private float targetCameraDirection;
     private float initCameraDirection;
 
+    public bool isWalking = false;
+
     public bool inControl = true;
     public bool doneMove = true;
     public Vector3 startPos;
@@ -31,6 +35,110 @@ public class Grandpa : MonoBehaviour {
     private CharacterController controller;
     private GameObject character;
 	private GameObject cameraHolder;
+
+    private Knob focusKnob;
+    private OnDoneTarget whenDoneDo;
+    private int knobStage = 0;
+    //private IEnumerator currentCor;
+    //private IEnumerator nextCor;
+
+    // How rude
+    public void FocusOnKnob(Knob knob) {
+        focusKnob = knob;
+        whenDoneDo = KnobStage1;
+        moveTime = 2.0f;
+
+        var timeToShit = 2.0f;
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        snap.color = Color.black;
+        snap.startDistance = 1.0f;
+        snap.endDistance = 4.0f;
+        fc.Change(snap, timeToShit, timeToShit);
+
+        isWalking = true;
+
+        SetTarget(knob.walkFromTarget);
+    }
+
+    /* KNOB STAGES AND YOU:
+     * 0 = approaching door
+     * 1 = anticipation
+     * 2 = door opens, wait
+     * 3 = enter door, fade
+     * 4 = sexual backgammon; door close, world ends
+     */
+
+    public static void KnobStage1(Grandpa grandpa) {
+        grandpa.knobStage = 1;
+        Debug.LogWarning("ANTICIPATING!");
+
+        grandpa.isWalking = false;
+
+        grandpa.focusKnob.Buildup();
+
+        // reset the movetime to get a wait out of this
+        grandpa.moveTime = 3.0f;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+
+        grandpa.SetTarget(grandpa.focusKnob.walkFromTarget);
+
+        grandpa.whenDoneDo = KnobStage2;
+    }
+
+    public static void KnobStage2(Grandpa grandpa) {
+        grandpa.knobStage = 2;
+        Debug.LogWarning("DOOR OPENING, NOT MOVING");
+        grandpa.focusKnob.Unlock();
+
+        grandpa.moveTime = 1.0f;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+
+        grandpa.whenDoneDo = KnobStage3;
+    }
+
+    public static void KnobStage3(Grandpa grandpa) {
+        grandpa.focusKnob.OpenDoor();
+        
+        
+        // reset the movetime to get a wait out of this
+        grandpa.moveTime = 2.0f;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+        //grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
+        //grandpa.SetTarget(grandpa.focusKnob.walkFromTarget);
+        grandpa.whenDoneDo = KnobStage4;
+    }
+
+    public static void KnobStage4(Grandpa grandpa) {
+        var timeToShit = 3.0f;
+        grandpa.knobStage = 4;
+
+        grandpa.isWalking = true;
+        Debug.LogWarning("MOVING IN, FADING FOG!");
+        
+        grandpa.whenDoneDo = KnobStage3;
+
+        grandpa.moveTime = timeToShit;
+
+        grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
+        grandpa.whenDoneDo = KnobStage5;
+    }
+
+    public static void KnobStage5(Grandpa grandpa) {
+        grandpa.knobStage = 5;
+        Debug.LogWarning("JACK SHIT!");
+        // reset the movetime to get a wait out of this
+        grandpa.moveTime = 0.1f;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+
+        grandpa.isWalking = false;
+
+        grandpa.whenDoneDo = null;
+    }
 
     public void OnInMoveTarget() {
 
@@ -108,16 +216,18 @@ public class Grandpa : MonoBehaviour {
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection * Time.deltaTime);
         } else {
+            m_Animator.SetBool("Walking", !isWalking);
             // player not in control, lerp to position
             if ( moveTimeSpent <= moveTime && !doneMove ) {
-                m_Animator.SetBool("Walking", false);
                 moveTimeSpent += Time.deltaTime;
                 transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
                 transform.localRotation = Quaternion.Lerp(startRot, moveTarget.localRotation, moveTimeSpent / moveTime);
                 if( moveTimeSpent >= moveTime) {
                     Debug.Log("FUCK YOU I WONT DO WHAT YA TOLD ME");
                     doneMove = true;
-                    m_Animator.SetBool("Walking", true);
+                    if( whenDoneDo != null) {
+                        whenDoneDo(this);
+                    }
                 }
             } else {
                 // enforce our local position because now that our character controller is disabled

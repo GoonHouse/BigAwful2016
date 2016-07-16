@@ -247,6 +247,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 477222}
   - 20: {fileID: 2053314}
+  - 81: {fileID: 8156092}
+  - 114: {fileID: 11445994}
   m_Layer: 0
   m_Name: TVCamera
   m_TagString: Untagged
@@ -836,6 +838,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!81 &8156092
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199590}
+  m_Enabled: 1
 --- !u!95 &9509146
 Animator:
   serializedVersion: 3
@@ -903,6 +912,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravity: 20
   cameraTurnAmount: 90
+  cameraTurnDirection: 1
   lookDirection: {x: 0, y: 0, z: 0}
   cameraTurnRate: 1
   inControl: 1
@@ -912,6 +922,18 @@ MonoBehaviour:
   moveTarget: {fileID: 0}
   moveTime: 1
   moveTimeSpent: 0
+--- !u!114 &11445994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114d92aaa16179b4a94a4819657f03d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!114 &11469848
 MonoBehaviour:
   m_ObjectHideFlags: 1

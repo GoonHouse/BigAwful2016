@@ -54,7 +54,7 @@ public class LookGrandpa : MonoBehaviour {
         if( knob != null && !epu.targets.Contains(lt)) {
             var grampsH = GameObject.Find("GrampsHolder");
             var grandpa = grampsH.GetComponent<Grandpa>();
-            grandpa.SetTarget(knob.walkFromTarget);
+            grandpa.FocusOnKnob(knob);
         }
         if( lt != null && epu.Commit(lt) ) {
             if (lt.thoughts.Count > 0) {
