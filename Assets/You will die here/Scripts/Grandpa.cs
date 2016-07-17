@@ -187,7 +187,7 @@ public class Grandpa : MonoBehaviour {
                     cameraTargetDirection -= cameraTurnAmount;
                     cameraTurnDirection = -1;
                     if (cameraTargetDirection < 0.0f) {
-                        cameraTargetDirection = 359f;
+                        cameraTargetDirection = 360.0f - cameraTurnAmount;
                     }
                 }
             }
