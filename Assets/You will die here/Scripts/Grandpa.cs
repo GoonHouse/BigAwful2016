@@ -221,7 +221,7 @@ public class Grandpa : MonoBehaviour {
             if ( moveTimeSpent <= moveTime && !doneMove ) {
                 moveTimeSpent += Time.deltaTime;
                 transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
-                transform.localRotation = Quaternion.Lerp(startRot, moveTarget.localRotation, moveTimeSpent / moveTime);
+                character.transform.rotation = Quaternion.Lerp(startRot, moveTarget.rotation, moveTimeSpent / moveTime);
                 if( moveTimeSpent >= moveTime) {
                     Debug.Log("FUCK YOU I WONT DO WHAT YA TOLD ME");
                     doneMove = true;
@@ -233,7 +233,7 @@ public class Grandpa : MonoBehaviour {
                 // enforce our local position because now that our character controller is disabled
                 // we will go straight through the gat dang floor
                 transform.position = moveTarget.position;
-                transform.localRotation = moveTarget.localRotation;
+                character.transform.rotation = moveTarget.rotation;
             }
         }
 
@@ -253,7 +253,7 @@ public class Grandpa : MonoBehaviour {
         rb.useGravity = false;
         rb.isKinematic = false;
         startPos = transform.position;
-        startRot = transform.localRotation;
+        startRot = character.transform.rotation;
         inControl = false;
         doneMove = false;
         moveTarget = target;
