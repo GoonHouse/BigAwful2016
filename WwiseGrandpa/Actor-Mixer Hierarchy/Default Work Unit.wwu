@@ -81,6 +81,50 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Footstep" ID="{41BE45E0-0DA9-4D8E-815F-EF55C51BA8A3}" ShortID="104509050">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{82EE5EB1-A18C-4E43-A4D6-CA79FCAE30B5}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EBE9FEA5-3852-4324-BB8A-FFDCA89FF5E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656" ID="{80FE6D52-7F0A-4C4B-9F7E-143F0C724D84}" ShortID="465413246" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{82EE5EB1-A18C-4E43-A4D6-CA79FCAE30B5}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EBE9FEA5-3852-4324-BB8A-FFDCA89FF5E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656" ID="{0868D4BC-6569-405A-AABE-E92876C32202}" ShortID="141767909">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="1.94765650487549E-03"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="3.89531300975099E-03"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.494704752238373"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.713816109036865"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656" ID="{0868D4BC-6569-405A-AABE-E92876C32202}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

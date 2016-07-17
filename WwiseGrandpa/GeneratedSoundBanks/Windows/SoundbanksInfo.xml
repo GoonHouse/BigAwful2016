@@ -22,9 +22,14 @@
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
 				<Event Id="3296733765" Name="buildupSound" ObjectPath="\Events\Default Work Unit\buildupSound"/>
+				<Event Id="1001282154" Name="grandpaStep" ObjectPath="\Events\Default Work Unit\grandpaStep"/>
 				<Event Id="513729050" Name="unlockSound" ObjectPath="\Events\Default Work Unit\unlockSound"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="141767909" Language="SFX">
+					<ShortName>Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656.wav</ShortName>
+					<Path>SFX\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656_C3E96754.wem</Path>
+				</File>
 				<File Id="238404047" Language="SFX">
 					<ShortName>door_buildup.wav</ShortName>
 					<Path>SFX\door_buildup_9E69E797.wem</Path>
