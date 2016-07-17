@@ -406,7 +406,9 @@ MonoBehaviour:
   propName: Doorknob
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: I don't want to die here
+    sound: {fileID: 0}
 --- !u!135 &13593942
 SphereCollider:
   m_ObjectHideFlags: 1
