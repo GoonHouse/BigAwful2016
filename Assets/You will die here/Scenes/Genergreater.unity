@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530d961de3769e3458f5d5f7adff3e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePath: Audio\GeneratedSoundBanks
-  language: English(US)
+  basePath: 417564696f5c47656e657261746564536f756e6442616e6b73
+  language: 456e676c69736828555329
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024
@@ -330,9 +330,11 @@ MonoBehaviour:
     startDistance: 8
     endDistance: 16
     color: {r: 1, g: 1, b: 1, a: 0}
-  timeToStopFog: 0
+  isChangeFog: 0
+  currentTimeToChangeFog: 0
   timeToChangeFog: 1
-  timeToStopColor: 0
+  isChangeColor: 0
+  currentTimeToChangeColor: 0
   timeToChangeColor: 1
 --- !u!1001 &1066743074
 Prefab:
@@ -375,6 +377,56 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 290b28acb4fd90a4f9b38fd1823ad395, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1327547842
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11483606, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: thoughts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 478854, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483606, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
+      propertyPath: thoughts.Array.data[0].text
+      value: I don't want to die here
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 10bf301d03a87a040b44220c4331fedd, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1337392895
 GameObject:
