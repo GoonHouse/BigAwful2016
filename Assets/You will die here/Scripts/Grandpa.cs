@@ -114,7 +114,7 @@ public class Grandpa : MonoBehaviour {
         grandpa.isWalking = true;
 
         var timeToShit = 2.0f;
-        var fuckMult = 5.0f;
+        var fuckMult = 1.0f;
         var fc = Camera.main.GetComponent<FogController>();
         var snap = fc.GetFogSnapshot();
         Debug.Log(snap.startDistance + " _ " + snap.endDistance + " _ " + snap.color);

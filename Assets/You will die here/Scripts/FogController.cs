@@ -18,10 +18,12 @@ public class FogController : MonoBehaviour {
     public FogSnapshot thisSnapshot;
     public FogSnapshot targetSnapshot;
 
-    public float timeToStopFog;
+    public bool isChangeFog = false;
+    public float currentTimeToChangeFog;
     public float timeToChangeFog = 1.0f;
 
-    public float timeToStopColor;
+    public bool isChangeColor = false;
+    public float currentTimeToChangeColor;
     public float timeToChangeColor = 1.0f;
 
     // Use this for initialization
@@ -33,24 +35,42 @@ public class FogController : MonoBehaviour {
         thisSnapshot = GetFogSnapshot();
         targetSnapshot = snap;
 
-        timeToChangeFog = timeFog;
-        timeToStopFog = Time.time + timeToChangeFog;
+        isChangeFog = true;
+        isChangeColor = true;
 
+        currentTimeToChangeFog = 0.0f;
+        currentTimeToChangeColor = 0.0f;
+
+        timeToChangeFog = timeFog;
         timeToChangeColor = timeColor;
-        timeToStopColor = Time.time + timeToChangeColor;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if( Time.time <= timeToStopFog ) {
-            RenderSettings.fogStartDistance = Mathf.Lerp(thisSnapshot.startDistance, targetSnapshot.startDistance, Time.time / timeToStopFog );
-            RenderSettings.fogEndDistance = Mathf.Lerp(thisSnapshot.endDistance, targetSnapshot.endDistance, Time.time / timeToStopFog );
+        if( isChangeFog ) {
+            currentTimeToChangeFog += Time.deltaTime;
+            RenderSettings.fogStartDistance = Mathf.LerpUnclamped(thisSnapshot.startDistance, targetSnapshot.startDistance, currentTimeToChangeFog / timeToChangeFog);
+            RenderSettings.fogEndDistance = Mathf.LerpUnclamped(thisSnapshot.endDistance, targetSnapshot.endDistance, currentTimeToChangeFog / timeToChangeFog);
+            if( currentTimeToChangeFog >= timeToChangeFog ){
+                currentTimeToChangeFog = 0.0f;
+                isChangeFog = false;
+                RenderSettings.fogStartDistance = targetSnapshot.startDistance;
+                RenderSettings.fogEndDistance = targetSnapshot.endDistance;
+            }
         }
 
-        if( Time.time <= timeToStopColor) {
-            RenderSettings.fogColor = Color.Lerp(thisSnapshot.color, targetSnapshot.color, Time.time / timeToStopFog);
+        if( isChangeColor ){
+            currentTimeToChangeColor += Time.deltaTime;
+            RenderSettings.fogColor = Color.LerpUnclamped(thisSnapshot.color, targetSnapshot.color, currentTimeToChangeFog / timeToChangeFog);
             Camera.main.backgroundColor = RenderSettings.fogColor;
+            if( currentTimeToChangeColor >= timeToChangeColor ){
+                currentTimeToChangeColor = 0.0f;
+                isChangeColor = false;
+                RenderSettings.fogColor = targetSnapshot.color;
+                Camera.main.backgroundColor = targetSnapshot.color;
+            }
         }
+        
 	}
 
     public FogSnapshot GetFogSnapshot() {
