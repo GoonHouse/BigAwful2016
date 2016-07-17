@@ -28,7 +28,7 @@ public class FogController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Change(targetSnapshot, timeToChangeFog, timeToChangeColor);
+        //Change(targetSnapshot, timeToChangeFog, timeToChangeColor);
 	}
 
     public void Change(FogSnapshot snap, float timeFog, float timeColor) {
@@ -40,6 +40,13 @@ public class FogController : MonoBehaviour {
 
         currentTimeToChangeFog = 0.0f;
         currentTimeToChangeColor = 0.0f;
+
+        if( timeFog == 0.0f) {
+            timeFog = timeToChangeFog;
+        }
+        if (timeColor == 0.0f) {
+            timeColor = timeToChangeColor;
+        }
 
         timeToChangeFog = timeFog;
         timeToChangeColor = timeColor;
