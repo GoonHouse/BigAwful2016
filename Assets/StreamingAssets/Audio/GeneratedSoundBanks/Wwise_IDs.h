@@ -11,6 +11,12 @@
 
 namespace AK
 {
+    namespace EVENTS
+    {
+        static const AkUniqueID BUILDUPSOUND = 3296733765U;
+        static const AkUniqueID UNLOCKSOUND = 513729050U;
+    } // namespace EVENTS
+
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID SS_AIR_FEAR = 1351367891U;

@@ -20,6 +20,20 @@
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3296733765" Name="buildupSound" ObjectPath="\Events\Default Work Unit\buildupSound"/>
+				<Event Id="513729050" Name="unlockSound" ObjectPath="\Events\Default Work Unit\unlockSound"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="238404047" Language="SFX">
+					<ShortName>door_buildup.wav</ShortName>
+					<Path>SFX\door_buildup_9E69E797.wem</Path>
+				</File>
+				<File Id="1018976445" Language="SFX">
+					<ShortName>door_unlock.wav</ShortName>
+					<Path>SFX\door_unlock_9E69E797.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

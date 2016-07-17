@@ -16,36 +16,56 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{DA2153F1-1D93-44C4-BA92-268A8EB27EDA}'
-    m_lastTimePsrt1: 1503332255
-    m_lastTimePart2: -1999394006
-    List: []
+    m_lastTimePsrt1: 599536079
+    m_lastTimePart2: -1999393323
+    List:
+    - Name: buildupSound
+      Path: Default Work Unit\buildupSound
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: buildupSound
+        ObjectType: 3
+      ID: -998233531
+      Guid: 7ffc2bfe55279d469ac0ef3d3eece81d
+      maxAttenuation: 0
+    - Name: unlockSound
+      Path: Default Work Unit\unlockSound
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: unlockSound
+        ObjectType: 3
+      ID: 513729050
+      Guid: d0bc355b7bd8a646bab65d057b6b654f
+      maxAttenuation: 0
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{EBE9FEA5-3852-4324-BB8A-FFDCA89FF5E3}'
-    m_lastTimePsrt1: 1503602675
-    m_lastTimePart2: -1999394006
+    m_lastTimePsrt1: -231079565
+    m_lastTimePart2: -1999394114
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{C21737FF-1669-4156-AD3C-94F56BACBABB}'
-    m_lastTimePsrt1: 1503827870
-    m_lastTimePart2: -1999394006
+    m_lastTimePsrt1: -231149664
+    m_lastTimePart2: -1999394114
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{DA6FB595-8419-41D7-B8E1-57162D896824}'
-    m_lastTimePsrt1: 1503857913
-    m_lastTimePart2: -1999394006
+    m_lastTimePsrt1: -231109471
+    m_lastTimePart2: -1999394114
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A70D920A-54FB-408E-B935-41A4D09E79C7}'
-    m_lastTimePsrt1: 1503777814
-    m_lastTimePart2: -1999394006
+    m_lastTimePsrt1: -1424035874
+    m_lastTimePart2: -1999394106
     List:
     - Name: Main
       Path: Default Work Unit\Main
@@ -60,8 +80,8 @@ MonoBehaviour:
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
-  basePath: Audio\GeneratedSoundBanks
-  language: English(US)
+  basePath: 417564696f5c47656e657261746564536f756e6442616e6b73
+  language: 456e676c69736828555329
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024

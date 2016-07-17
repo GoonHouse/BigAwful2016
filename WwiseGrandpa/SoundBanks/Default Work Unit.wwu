@@ -4,7 +4,10 @@
 		<WorkUnit Name="Default Work Unit" ID="{A70D920A-54FB-408E-B935-41A4D09E79C7}" PersistMode="Standalone">
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{7D2D6360-C870-4EFF-BA72-E9094DAE6C3A}">
-					<ObjectInclusionList/>
+					<ObjectInclusionList>
+						<ObjectRef Name="buildupSound" ID="{FE2BFC7F-2755-469D-9AC0-EF3D3EECE81D}" WorkUnitID="{DA2153F1-1D93-44C4-BA92-268A8EB27EDA}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="unlockSound" ID="{5B35BCD0-D87B-46A6-BAB6-5D057B6B654F}" WorkUnitID="{DA2153F1-1D93-44C4-BA92-268A8EB27EDA}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
