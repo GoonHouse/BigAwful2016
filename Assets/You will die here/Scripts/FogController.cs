@@ -74,6 +74,10 @@ public class FogController : MonoBehaviour {
 	}
 
     public FogSnapshot GetFogSnapshot() {
-        return new FogSnapshot(RenderSettings.fogStartDistance, RenderSettings.fogEndDistance, RenderSettings.fogColor);
+        return new FogSnapshot(
+            RenderSettings.fogStartDistance,
+            RenderSettings.fogEndDistance,
+            RenderSettings.fogColor
+        );
     }
 }
