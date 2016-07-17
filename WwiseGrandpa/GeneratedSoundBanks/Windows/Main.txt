@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	513729050	unlockSound			\Default Work Unit\unlockSound	
+	1001282154	grandpaStep			\Default Work Unit\grandpaStep	
 	3296733765	buildupSound			\Default Work Unit\buildupSound	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	141767909	Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656	C:\Users\Topher\Documents\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656_C3E96754.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Footstep\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656		38716
 	238404047	door_buildup	C:\Users\Topher\Documents\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\door_buildup_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Door Buildup\door_buildup		505920
 	1018976445	door_unlock	C:\Users\Topher\Documents\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\door_unlock_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Door Unlock\door_unlock		153664
 

@@ -25,6 +25,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="grandpaStep" ID="{3D260E1D-A869-486D-8F99-73C8ABB9DE95}">
+					<ChildrenList>
+						<Action Name="Play" ID="{3E399E2C-AB35-4AB7-82A2-E01983B1215A}" ShortID="176368720" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{3E63C41A-9D71-4CE0-8A8D-D2DD60DF5E7D}" Global="false">
+									<ObjectRef Name="Footstep" ID="{41BE45E0-0DA9-4D8E-815F-EF55C51BA8A3}" WorkUnitID="{964187A4-63FF-4218-B52D-F3E45CA707D4}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

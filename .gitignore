@@ -39,3 +39,4 @@ Assets/Wwise/Deployment/Plugins/Windows_new/x86_64/Profile.meta
 Assets/Wwise/Deployment/Plugins/Windows_new/x86_64/Release.meta
 Assets/Wwise/Editor/ProjectData/AkWwiseProjectData 1.asset
 Assets/Wwise/Editor/ProjectData/AkWwiseProjectData 1.asset.meta
+*.prof

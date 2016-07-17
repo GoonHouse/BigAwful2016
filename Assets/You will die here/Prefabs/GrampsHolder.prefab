@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 490100}
   - 95: {fileID: 9516922}
+  - 114: {fileID: 11440234}
   m_Layer: 0
   m_Name: Gramps
   m_TagString: Untagged
@@ -915,6 +916,7 @@ MonoBehaviour:
   cameraTurnDirection: 1
   lookDirection: {x: 0, y: 0, z: 0}
   cameraTurnRate: 1
+  isWalking: 0
   inControl: 1
   doneMove: 1
   startPos: {x: 0, y: 0, z: 0}
@@ -922,6 +924,18 @@ MonoBehaviour:
   moveTarget: {fileID: 0}
   moveTime: 1
   moveTimeSpent: 0
+--- !u!114 &11440234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce099f7c3e9dab4fa7725bdef7818a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStepping: 0
 --- !u!114 &11445994
 MonoBehaviour:
   m_ObjectHideFlags: 1

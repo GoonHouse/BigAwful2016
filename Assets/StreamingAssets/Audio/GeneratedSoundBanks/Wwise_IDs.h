@@ -14,6 +14,7 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID BUILDUPSOUND = 3296733765U;
+        static const AkUniqueID GRANDPASTEP = 1001282154U;
         static const AkUniqueID UNLOCKSOUND = 513729050U;
     } // namespace EVENTS
 
