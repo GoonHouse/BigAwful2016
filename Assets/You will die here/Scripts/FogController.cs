@@ -42,12 +42,12 @@ public class FogController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if( Time.fixedTime <= timeToStopFog ) {
+        if( Time.time <= timeToStopFog ) {
             RenderSettings.fogStartDistance = Mathf.Lerp(thisSnapshot.startDistance, targetSnapshot.startDistance, Time.time / timeToStopFog );
             RenderSettings.fogEndDistance = Mathf.Lerp(thisSnapshot.endDistance, targetSnapshot.endDistance, Time.time / timeToStopFog );
         }
 
-        if( Time.fixedTime <= timeToStopColor) {
+        if( Time.time <= timeToStopColor) {
             RenderSettings.fogColor = Color.Lerp(thisSnapshot.color, targetSnapshot.color, Time.time / timeToStopFog);
             Camera.main.backgroundColor = RenderSettings.fogColor;
         }

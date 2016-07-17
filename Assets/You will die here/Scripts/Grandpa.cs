@@ -112,8 +112,18 @@ public class Grandpa : MonoBehaviour {
         Debug.LogWarning("ENTERING DOOR.");
 
         grandpa.isWalking = true;
-        
-        grandpa.moveTime = 3.0f;
+
+        var timeToShit = 2.0f;
+        var fuckMult = 5.0f;
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        Debug.Log(snap.startDistance + " _ " + snap.endDistance + " _ " + snap.color);
+        snap.color = Color.black;
+        snap.startDistance = 0.1f;
+        snap.endDistance = 0.4f;
+        fc.Change(snap, timeToShit * fuckMult, timeToShit * fuckMult);
+
+        grandpa.moveTime = timeToShit;
 
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
         grandpa.whenDoneDo = KnobStage_InsideDoor;
@@ -123,10 +133,8 @@ public class Grandpa : MonoBehaviour {
         Debug.LogWarning("I'M GOING INSIDE! WAIT. I'M ALREADY THERE.");
         
         // reset the movetime to get a wait out of this
-        grandpa.moveTime = 0.1f;
-
         grandpa.isWalking = false;
-
+        grandpa.moveTime = 0.1f;
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
 
         grandpa.whenDoneDo = null;
