@@ -238,7 +238,7 @@ public class Grandpa : MonoBehaviour {
         }
 
         // Report location to fog shader.
-        Shader.SetGlobalVector("_Origin", transform.position);
+		Shader.SetGlobalVector("_Origin", transform.position + (Vector3.up * 2f));
 
         // Set the camera's position.
         var cpos = transform.position;
