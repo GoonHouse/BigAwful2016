@@ -31,6 +31,8 @@ public class Grandpa : MonoBehaviour {
     public float moveTime = 1.0f;
     public float moveTimeSpent = 0.0f;
 
+    public float mitigation = 1.0f;
+
     private Animator m_Animator;
     private CharacterController controller;
     private GameObject character;
@@ -157,8 +159,8 @@ public class Grandpa : MonoBehaviour {
 
     void Update() {
         if( inControl ){
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+            float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
+            float moveVertical = Input.GetAxis("Vertical") * mitigation;
 
             // Are we moving?
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));

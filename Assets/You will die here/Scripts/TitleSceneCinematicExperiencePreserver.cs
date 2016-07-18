@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
-
-    public float mitigationStart = 0.5f;
+    public float mitigationStart = 0.0f;
     public float mitigationEnd = 1.0f;
 
     public bool  isChanging = true;
@@ -18,7 +17,10 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
 	void Start () {
         navs = new List<NavLine>( GameObject.Find("Rooms").GetComponentsInChildren<NavLine>() );
         grandpa = GameObject.Find("Rooms").GetComponentInChildren<Grandpa>();
-        grandpa.inControl = false;
+        grandpa.mitigation = mitigationStart;
+        foreach (NavLine nav in navs) {
+            nav.mitigation = mitigationStart;
+        }
     }
 	
 	// Update is called once per frame
@@ -28,13 +30,14 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
             foreach( NavLine nav in navs) {
                 nav.mitigation = Mathf.LerpUnclamped(mitigationStart, mitigationEnd, currentTimeToChange / timeToChange);
             }
+            grandpa.mitigation = Mathf.LerpUnclamped(mitigationStart, mitigationEnd, currentTimeToChange / timeToChange);
             if (currentTimeToChange >= timeToChange) {
                 currentTimeToChange = 0.0f;
                 isChanging = false;
                 foreach (NavLine nav in navs) {
                     nav.mitigation = mitigationEnd;
                 }
-                grandpa.inControl = true;
+                grandpa.mitigation = mitigationEnd;
                 Debug.Log("YOU CAN MOVE NOW, YOU OLD COOT!");
             }
         }
