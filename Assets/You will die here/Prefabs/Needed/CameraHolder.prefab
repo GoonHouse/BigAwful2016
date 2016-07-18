@@ -221,6 +221,7 @@ MonoBehaviour:
   - {fileID: 189586, guid: 0dbf680fcc263774d970d0114ad84adc, type: 2}
   - {fileID: 112736, guid: 4a07b46b96e5a6f418447502becba8d9, type: 2}
   - {fileID: 172456, guid: 7b9ca7c54302b564aaea361529746579, type: 2}
+  - {fileID: 122872, guid: a3f0e4b837c46a544bfa58f23c360c00, type: 2}
   crazyDecorationPhotos: []
   crazyDecorationFloor: []
   crazyDecorationOversize: []
