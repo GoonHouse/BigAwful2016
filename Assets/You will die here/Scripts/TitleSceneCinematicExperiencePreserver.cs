@@ -12,10 +12,13 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
     public float currentTimeToChange = 0.0f;
 
     private List<NavLine> navs;
+    private Grandpa grandpa;
 
 	// Use this for initialization
 	void Start () {
         navs = new List<NavLine>( GameObject.Find("Rooms").GetComponentsInChildren<NavLine>() );
+        grandpa = GameObject.Find("Rooms").GetComponentInChildren<Grandpa>();
+        grandpa.inControl = false;
     }
 	
 	// Update is called once per frame
@@ -31,6 +34,8 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
                 foreach (NavLine nav in navs) {
                     nav.mitigation = mitigationEnd;
                 }
+                grandpa.inControl = true;
+                Debug.Log("YOU CAN MOVE NOW, YOU OLD COOT!");
             }
         }
 	}
