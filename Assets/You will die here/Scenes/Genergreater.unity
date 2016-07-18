@@ -129,10 +129,6 @@ Prefab:
       propertyPath: thinkText
       value: 
       objectReference: {fileID: 2130171862}
-    - target: {fileID: 14323348, guid: 9a4826a4ee2c2ae4f9a6796d1309ca7f, type: 2}
-      propertyPath: m_SkinWidth
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a4826a4ee2c2ae4f9a6796d1309ca7f, type: 2}
   m_IsPrefabParent: 0
