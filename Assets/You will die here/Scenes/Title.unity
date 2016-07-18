@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91792601fa36774e9a8773db483531b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mitigationStart: 0.5
+  mitigationStart: 0
   mitigationEnd: 1
   isChanging: 1
   timeToChange: 16
@@ -1303,6 +1303,10 @@ Prefab:
       propertyPath: thinkText
       value: 
       objectReference: {fileID: 501999723}
+    - target: {fileID: 11410604, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
+      propertyPath: mitigation
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
   m_IsPrefabParent: 0
