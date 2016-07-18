@@ -624,7 +624,7 @@ MonoBehaviour:
   - {fileID: 159760, guid: 9df625c3f81d6264eaa0d46480a41220, type: 2}
   - {fileID: 159760, guid: 050d563dce98c3a42a397d2dfc1b57ad, type: 2}
   - {fileID: 159760, guid: d5c60aa7196994944ac04856758b8e3b, type: 2}
-  chanceOfSpawn: 0.9
+  chanceOfSpawn: 1
 --- !u!135 &13584152
 SphereCollider:
   m_ObjectHideFlags: 1
