@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public delegate void OnDoneTarget(Grandpa grandpa);
 
@@ -138,6 +140,12 @@ public class Grandpa : MonoBehaviour {
         grandpa.isWalking = false;
         grandpa.moveTime = 0.1f;
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
+
+        var w = GameObject.FindObjectOfType<RoomGenergreater>();
+        w.rooms = new Dictionary<string, RoomObject>();
+        w.walls = new Dictionary<string, WallObject>();
+
+        SceneManager.LoadScene(w.nextSceneName);
 
         grandpa.whenDoneDo = null;
     }

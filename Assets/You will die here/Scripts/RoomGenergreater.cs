@@ -26,6 +26,8 @@ public class RoomGenergreater : MonoBehaviour {
     public float chanceOfFloor = 0.07f;
     public float chanceOfOversize = 0.03f;
 
+    public string nextSceneName;
+
     public List<GameObject> decorationPhotos;
     public List<GameObject> decorationFloor;
     public List<GameObject> decorationOversize;
@@ -60,7 +62,7 @@ public class RoomGenergreater : MonoBehaviour {
     public void DestroyRoomAt(Vector2 pos) {
         var coord = God.Key(pos);
 
-        if( rooms.ContainsKey(coord)) {
+        if( rooms.ContainsKey(coord) ) {
             Destroy(rooms[coord].gameObject);
             rooms.Remove(coord);
         }
