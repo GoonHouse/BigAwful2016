@@ -36,6 +36,15 @@ public class RoomGenergreater : MonoBehaviour {
     public List<GameObject> crazyDecorationFloor;
     public List<GameObject> crazyDecorationOversize;
 
+    void OnLevelWasLoaded() {
+        rooms = new Dictionary<string, RoomObject>();
+        walls = new Dictionary<string, WallObject>();
+        worldMin = new Vector2();
+        worldMax = new Vector2();
+        tileRunners = 0;
+        isDone = false;
+    }
+
     public void NewTileRunner() {
         tileRunners++;
     }
@@ -47,16 +56,18 @@ public class RoomGenergreater : MonoBehaviour {
         if ( tileRunners <= 0 ) {
             tileRunners = 0;
             EnforceDarkRooms();
-            DestroyRoomAt(God.NORTH + God.NORTH);
-            SpawnPart("BlackRoom", God.NORTH + God.NORTH);
+            //DestroyRoomAt(God.NORTH + God.NORTH);
+            //SpawnPart("BlackRoom", God.NORTH + God.NORTH);
             TimeForWalls();
             TimeForDoors();
             TimeForDecoration();
+            OnDone();
         }
     }
 
     public void OnDone() {
-
+        var gramps = GameObject.Find("GrampsHolder").GetComponent<Grandpa>();
+        gramps.UnFreeze();
     }
 
     public void DestroyRoomAt(Vector2 pos) {

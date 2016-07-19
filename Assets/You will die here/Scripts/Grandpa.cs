@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public delegate void OnDoneTarget(Grandpa grandpa);
 
 public class Grandpa : MonoBehaviour {
+    public static Grandpa main;
+
     public float turnSpeed = 180.0f;
     public float moveSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -42,6 +44,37 @@ public class Grandpa : MonoBehaviour {
 
     private Knob focusKnob;
     private OnDoneTarget whenDoneDo;
+
+    public Vector3 spawnPos = new Vector3(0, 50.0f, 0);
+    public bool isFrozen = false;
+
+    public void Freeze() {
+        isFrozen = true;
+        controller.enabled = false;
+        var rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = false;
+        inControl = false;
+        doneMove = true;
+        moveTarget = null;
+    }
+
+    public void UnFreeze() {
+        isFrozen = false;
+        controller.enabled = true;
+        var rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.isKinematic = true;
+        inControl = true;
+        doneMove = true;
+        moveTarget = null;
+    }
+
+    void OnLevelWasLoaded() {
+        Debug.Log("I'M IN A NEW SCENE YEHAW");
+        Freeze();
+        transform.position = spawnPos;
+    }
 
     // How rude
     public void FocusOnKnob(Knob knob) {
@@ -142,8 +175,6 @@ public class Grandpa : MonoBehaviour {
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
 
         var w = GameObject.FindObjectOfType<RoomGenergreater>();
-        w.rooms = new Dictionary<string, RoomObject>();
-        w.walls = new Dictionary<string, WallObject>();
 
         SceneManager.LoadScene(w.nextSceneName);
 
@@ -152,6 +183,16 @@ public class Grandpa : MonoBehaviour {
 
     public void OnInMoveTarget() {
 
+    }
+
+    void Awake() {
+        if (main == null) {
+            DontDestroyOnLoad(gameObject);
+            main = this;
+        } else if (main != this) {
+            Debug.LogWarning("KILLED GRANDPA TO MAKE ROOM");
+            DestroyImmediate(gameObject);
+        }
     }
 
     void Start() {
@@ -239,11 +280,13 @@ public class Grandpa : MonoBehaviour {
                         whenDoneDo(this);
                     }
                 }
-            } else {
+            } else if( !isFrozen ){
                 // enforce our local position because now that our character controller is disabled
                 // we will go straight through the gat dang floor
                 transform.position = moveTarget.position;
                 character.transform.rotation = moveTarget.rotation;
+            } else if( isFrozen ){
+                transform.position = spawnPos;
             }
         }
 

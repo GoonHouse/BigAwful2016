@@ -17,10 +17,22 @@ public class LookGrandpa : MonoBehaviour {
 
     private EmotionProcessor epu;
 
-    // Use this for initialization
+    void OnLevelWasLoaded() {
+        thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
+        // you can't forget yourself, grandpa!
+        // like hell I can't
+        Forget(gameObject);
+    }
+
+        // Use this for initialization
     void Awake () {
         thingToLookAt = null;
-        thinkText.text = "";
+        if( thinkText != null) {
+            thinkText.text = "";
+        } else {
+            thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
+            thinkText.text = "";
+        }
         epu = GetComponent<EmotionProcessor>();
 	}
 		
