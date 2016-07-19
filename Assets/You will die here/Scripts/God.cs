@@ -63,6 +63,9 @@ public class God : MonoBehaviour {
     }
 
     void Awake() {
+        // appease JonTerp
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (main == null) {
             DontDestroyOnLoad(gameObject);
             main = this;
@@ -78,7 +81,14 @@ public class God : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        // appease JonTerp
+	    if( Input.GetKeyDown(KeyCode.F11) || Input.GetKeyDown(KeyCode.Escape)){
+            if( Cursor.lockState == CursorLockMode.Locked) {
+                Cursor.lockState = CursorLockMode.None;
+            } else if( Cursor.lockState == CursorLockMode.None) {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
 	}
 }
 
