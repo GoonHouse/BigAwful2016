@@ -68,6 +68,12 @@ public class RoomGenergreater : MonoBehaviour {
     public void OnDone() {
         var gramps = GameObject.Find("GrampsHolder").GetComponent<Grandpa>();
         gramps.UnFreeze();
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        snap.color = (Color)(new Color32(189, 189, 189, 255));
+        snap.startDistance = 8.0f;
+        snap.endDistance = 16.0f;
+        fc.Change(snap, 2.0f, 2.0f);
     }
 
     public void DestroyRoomAt(Vector2 pos) {

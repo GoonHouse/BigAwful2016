@@ -50,7 +50,7 @@ public class Grandpa : MonoBehaviour {
 
     public void Freeze() {
         isFrozen = true;
-        controller.enabled = false;
+        //controller.enabled = false;
         var rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = false;
@@ -61,7 +61,7 @@ public class Grandpa : MonoBehaviour {
 
     public void UnFreeze() {
         isFrozen = false;
-        controller.enabled = true;
+        //controller.enabled = true;
         var rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
         rb.isKinematic = true;
@@ -74,6 +74,15 @@ public class Grandpa : MonoBehaviour {
         Debug.Log("I'M IN A NEW SCENE YEHAW");
         Freeze();
         transform.position = spawnPos;
+        Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
+        /*
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        snap.color = Color.black;
+        snap.startDistance = 0.0f;
+        snap.endDistance = 0.0f;
+        fc.Change(snap, 0.0f, 0.0f);
+        */
     }
 
     // How rude
@@ -288,6 +297,9 @@ public class Grandpa : MonoBehaviour {
             } else if( isFrozen ){
                 transform.position = spawnPos;
             }
+            moveDirection = Vector3.zero;
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection * Time.deltaTime);
         }
 
         // Report location to fog shader.
@@ -301,7 +313,7 @@ public class Grandpa : MonoBehaviour {
     }
 
     public void SetTarget(Transform target) {
-        controller.enabled = false;
+        //controller.enabled = false;
         var rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = false;
