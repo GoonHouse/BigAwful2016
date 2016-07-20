@@ -27,6 +27,7 @@ GameObject:
   - 4: {fileID: 426686}
   - 33: {fileID: 3307970}
   - 23: {fileID: 2329746}
+  - 114: {fileID: 11408496}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -112,6 +113,7 @@ GameObject:
   - 4: {fileID: 402836}
   - 33: {fileID: 3390920}
   - 23: {fileID: 2316038}
+  - 136: {fileID: 13693416}
   m_Layer: 0
   m_Name: Baby
   m_TagString: Untagged
@@ -139,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -416,6 +418,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11408496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propName: baby
+  emotions: []
+  needs: []
+  thoughts: []
 --- !u!114 &11435338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -428,10 +445,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propName: Baby
-  emotions: []
-  needs: []
+  emotions:
+  - name: proud
+    major: 4
+    strength: 1
+  - name: nurturing
+    major: 5
+    strength: 1
+  - name: loving
+    major: 5
+    strength: 1
+  needs:
+  - name: family
+    need: 3
+    strength: 1
   thoughts:
-  - text: Babies are complex and fill me with many emotions
+  - text: What a nice baby.  I bet you're a bouncy one.
+    sound: {fileID: 0}
+  - text: I haven't seen a baby this cute since my son was born.
+    sound: {fileID: 0}
+  - text: What a cute rubber baby.
+    sound: {fileID: 0}
+  - text: What's a bouncy baby boy like you doing in bouncy baby jail?
+    sound: {fileID: 0}
+  - text: I got your nose! Ho-ho, just kidding. Beach balls don't have noses.
+    sound: {fileID: 0}
+  - text: Coochie-coo! Oh ... I'd better be careful not to pop the beach ball.
+    sound: {fileID: 0}
+  - text: How did you get so rubbery, baby? Did you commit a rubbery?!
+    sound: {fileID: 0}
+  - text: It's a good thing you're in there and I'm out here.
+    sound: {fileID: 0}
+  - text: Why do we buy baby bouncers when I can bounce babies myself?
+    sound: {fileID: 0}
+  - text: Have you met my son? He's such a cute baby just like you!
     sound: {fileID: 0}
 --- !u!135 &13552672
 SphereCollider:
@@ -445,6 +492,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &13693416
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.375
+  m_Height: 1.125
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5625, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
