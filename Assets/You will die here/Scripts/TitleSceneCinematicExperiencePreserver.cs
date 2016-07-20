@@ -14,7 +14,7 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
     private Grandpa grandpa;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         navs = new List<NavLine>( GameObject.Find("Rooms").GetComponentsInChildren<NavLine>() );
         grandpa = GameObject.Find("GrampsHolder").GetComponentInChildren<Grandpa>();
         grandpa.mitigation = mitigationStart;

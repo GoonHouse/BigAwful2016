@@ -61,7 +61,7 @@ public class Grandpa : MonoBehaviour {
 
     public void UnFreeze() {
         isFrozen = false;
-        //controller.enabled = true;
+        controller.enabled = true;
         var rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
         rb.isKinematic = true;
@@ -313,7 +313,7 @@ public class Grandpa : MonoBehaviour {
     }
 
     public void SetTarget(Transform target) {
-        //controller.enabled = false;
+        controller.enabled = false;
         var rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = false;
