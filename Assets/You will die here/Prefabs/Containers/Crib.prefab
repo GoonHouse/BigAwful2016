@@ -120,6 +120,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSpawns:
   - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 162424, guid: 140a9aee0609abd4c89d74c1b6af1f9e, type: 2}
   chanceOfSpawn: 0.5
 --- !u!1001 &100100000
 Prefab:
