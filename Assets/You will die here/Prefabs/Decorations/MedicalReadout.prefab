@@ -11,7 +11,7 @@ GameObject:
   - 135: {fileID: 13537126}
   - 114: {fileID: 11489556}
   m_Layer: 9
-  m_Name: LookTarget (1)
+  m_Name: LookTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 402884}
   - 135: {fileID: 13581804}
+  - 114: {fileID: 11462618}
   m_Layer: 9
   m_Name: LookTarget
   m_TagString: Untagged
@@ -93,6 +94,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101324}
   m_Mesh: {fileID: 4300000, guid: 91a3a2a1b920f904e9a44dec60737e21, type: 3}
+--- !u!114 &11462618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  propName: 
+  emotions: []
+  needs: []
+  thoughts: []
 --- !u!135 &13581804
 SphereCollider:
   m_ObjectHideFlags: 1
