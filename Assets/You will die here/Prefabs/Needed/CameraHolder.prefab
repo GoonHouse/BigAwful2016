@@ -21,6 +21,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &108342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 445684}
+  - 114: {fileID: 11418630}
+  - 114: {fileID: 11478292}
+  - 114: {fileID: 11419138}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &186172
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,8 +67,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 445684}
   - {fileID: 453980}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &445684
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 432486}
   m_RootOrder: 0
 --- !u!4 &453980
 Transform:
@@ -64,7 +96,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 432486}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!20 &2032262
 Camera:
   m_ObjectHideFlags: 1
@@ -131,6 +163,36 @@ MonoBehaviour:
   isChangeColor: 0
   currentTimeToChangeColor: 0
   timeToChangeColor: 1
+--- !u!114 &11418630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5007f9c259675429738982f43113ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11419138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1cbbbc9cdfe284e9802a4f9e401915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 60632d7d70c8ff4eba72e9094dae6c3a
+  bankName: Main
+  loadAsynchronous: 0
+  decodeBank: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
 --- !u!114 &11431418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +257,7 @@ MonoBehaviour:
   chanceOfWallFloor: 0.33
   chanceOfFloor: 0.07
   chanceOfOversize: 0.1
+  nextSceneName: Genergreater2
   decorationPhotos:
   - {fileID: 197848, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   - {fileID: 107700, guid: 5f22c4e5cd50a014fbdaf1860563a0fc, type: 2}
@@ -222,9 +285,29 @@ MonoBehaviour:
   - {fileID: 112736, guid: 4a07b46b96e5a6f418447502becba8d9, type: 2}
   - {fileID: 172456, guid: 7b9ca7c54302b564aaea361529746579, type: 2}
   - {fileID: 122872, guid: a3f0e4b837c46a544bfa58f23c360c00, type: 2}
+  - {fileID: 167520, guid: b636f1d723ae0c24ca8b8a9b39416816, type: 2}
   crazyDecorationPhotos: []
   crazyDecorationFloor: []
   crazyDecorationOversize: []
+--- !u!114 &11478292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530d961de3769e3458f5d5f7adff3e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: 417564696f5c47656e657261746564536f756e6442616e6b73
+  language: 456e676c69736828555329
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  preparePoolSize: 0
+  memoryCutoffThreshold: 0.95
+  engineLogging: 1
 --- !u!124 &12442316
 Behaviour:
   m_ObjectHideFlags: 1
