@@ -265,6 +265,7 @@ MonoBehaviour:
   - {fileID: 190494, guid: 15bea38a99ff3654c8ca7feafac1f251, type: 2}
   - {fileID: 148896, guid: 0cbe9976501b1514c925ea94a857587f, type: 2}
   - {fileID: 185924, guid: 8dd94a0ffd52d944faef9738288031bf, type: 2}
+  - {fileID: 145596, guid: 34102269ffadddd4eb0554d1d62aa83a, type: 2}
   decorationFloor:
   - {fileID: 145792, guid: 6308b33b4a7e3ae4b92b349be990ca32, type: 2}
   - {fileID: 103396, guid: cb297cca257e59844a2557319f5494bb, type: 2}
