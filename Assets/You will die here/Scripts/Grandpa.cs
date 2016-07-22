@@ -74,15 +74,15 @@ public class Grandpa : MonoBehaviour {
         Debug.Log("I'M IN A NEW SCENE YEHAW");
         Freeze();
         transform.position = spawnPos;
-        Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
-        /*
+        //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
+        
         var fc = Camera.main.GetComponent<FogController>();
-        var snap = fc.GetFogSnapshot();
-        snap.color = Color.black;
-        snap.startDistance = 0.0f;
-        snap.endDistance = 0.0f;
-        fc.Change(snap, 0.0f, 0.0f);
-        */
+		var snap = fc.GetFogSnapshot();
+		snap.color = (Color)(new Color32(189, 189, 189, 255));
+		snap.startDistance = 8.0f;
+		snap.endDistance = 16.0f;
+		fc.Change(snap, 3.0f, 3.0f);
+        
     }
 
     // How rude
@@ -216,6 +216,10 @@ public class Grandpa : MonoBehaviour {
     }
 
     void Update() {
+		//maybe I can catch when gramps falls through the world.
+		if (transform.position.y < 0f) {
+			transform.position.Set (transform.position.x, 10f, transform.position.z);
+		}
         if( inControl ){
             float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
             float moveVertical = Input.GetAxis("Vertical") * mitigation;
