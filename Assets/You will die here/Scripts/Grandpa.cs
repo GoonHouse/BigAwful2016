@@ -27,6 +27,7 @@ public class Grandpa : MonoBehaviour {
 
     public bool isWalking = false;
 
+    public bool isAlive = true;
     public bool inControl = true;
     public bool doneMove = true;
     public Vector3 startPos;
@@ -306,14 +307,16 @@ public class Grandpa : MonoBehaviour {
             controller.Move(moveDirection * Time.deltaTime);
         }
 
-        // Report location to fog shader.
-		Shader.SetGlobalVector("_Origin", transform.position + (Vector3.up * 2f));
+        if( isAlive) {
+            // Report location to fog shader.
+            Shader.SetGlobalVector("_Origin", transform.position + (Vector3.up * 2f));
 
-        // Set the camera's position.
-        var cpos = transform.position;
-        //cpos += cameraOffset;
-        //Camera.main.transform.position = cpos;
-		cameraHolder.transform.position = cpos;
+            // Set the camera's position.
+            var cpos = transform.position;
+            //cpos += cameraOffset;
+            //Camera.main.transform.position = cpos;
+            cameraHolder.transform.position = cpos;
+        }
     }
 
     public void SetTarget(Transform target) {
