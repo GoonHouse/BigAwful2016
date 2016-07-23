@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -64,7 +64,7 @@ public class God : MonoBehaviour {
 
     void Awake() {
         // appease JonTerp
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         if (main == null) {
             DontDestroyOnLoad(gameObject);
