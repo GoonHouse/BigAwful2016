@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f551c95285a85a2468525c4c7d9751d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doCorrupt: 0
   corruptFactor: 0.01
   corruptTime: 1
   corruption: 0
@@ -302,6 +303,7 @@ MonoBehaviour:
   - {fileID: 172456, guid: 7b9ca7c54302b564aaea361529746579, type: 2}
   - {fileID: 122872, guid: a3f0e4b837c46a544bfa58f23c360c00, type: 2}
   - {fileID: 167520, guid: b636f1d723ae0c24ca8b8a9b39416816, type: 2}
+  - {fileID: 116488, guid: f1862929407e8ae4abd9368f3ecdc8d4, type: 2}
   crazyDecorationPhotos: []
   crazyDecorationFloor: []
   crazyDecorationOversize: []
