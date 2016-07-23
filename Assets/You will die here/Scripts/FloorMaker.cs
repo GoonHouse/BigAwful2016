@@ -130,6 +130,8 @@ public class FloorMaker : MonoBehaviour {
     }
 
     public void OnDestroy() {
-        rg.LessTileRunner();
+        if( rg ) {
+            rg.LessTileRunner();
+        }
     }
 }
