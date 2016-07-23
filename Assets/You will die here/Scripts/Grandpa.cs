@@ -17,7 +17,7 @@ public class Grandpa : MonoBehaviour {
     public int cameraTurnDirection = 1;
     private Vector3 moveDirection = Vector3.zero;
     public Vector3 lookDirection = Vector3.zero;
-	private float cameraTargetDirection = 0;
+	public float cameraTargetDirection = 0;
 
     public float cameraTurnRate = 2.0f;
 

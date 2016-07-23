@@ -55,9 +55,12 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         snap2.endDistance = 8.0f;
         fc.Change(snap2, 3.0f, 3.0f);
 
+        // reset the camera & grandpa's movement direction
         var rot = cameraHolder.transform.localRotation;
         rot.y = 0.0f;
         cameraHolder.transform.localRotation = rot;
+
+        grandpa.cameraTargetDirection = 0.0f;
     }
         // Use this for initialization
     void Awake () {
