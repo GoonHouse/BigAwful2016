@@ -31,6 +31,13 @@ public class FogController : MonoBehaviour {
         //Change(targetSnapshot, timeToChangeFog, timeToChangeColor);
 	}
 
+    public void SetNow(FogSnapshot snap) {
+        RenderSettings.fogStartDistance = snap.startDistance;
+        RenderSettings.fogEndDistance = snap.endDistance;
+        RenderSettings.fogColor = snap.color;
+        Camera.main.backgroundColor = snap.color;
+    }
+
     public void Change(FogSnapshot snap, float timeFog, float timeColor) {
         thisSnapshot = GetFogSnapshot();
         targetSnapshot = snap;
