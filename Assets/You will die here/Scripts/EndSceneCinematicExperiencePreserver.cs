@@ -19,6 +19,10 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         title = GameObject.Find("Title");
         titleAnchor = GameObject.Find("TitleAnchor");
         grandpa.isAlive = false;
+        //var cap = grandpa.GetComponent<CapsuleCollider>();
+        //cap.enabled = false;
+        var rigid = grandpa.GetComponent<Rigidbody>();
+        rigid.constraints = RigidbodyConstraints.FreezePositionY;
 
         var meshRenderers = grandpa.gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach( MeshRenderer mr in meshRenderers) {

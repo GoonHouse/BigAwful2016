@@ -263,7 +263,7 @@ public class Grandpa : MonoBehaviour {
                 moveDirection = Quaternion.AngleAxis(cameraTargetDirection, Vector3.up) * moveDirection;
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= moveSpeed;
-                if (Input.GetButton("Jump")) {
+                if (Input.GetButton("Jump") && isAlive) {
                     moveDirection.y = jumpSpeed;
                 }
 
