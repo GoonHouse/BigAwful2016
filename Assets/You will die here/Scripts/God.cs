@@ -116,6 +116,11 @@ public static class BeeCoExtensions {
         return Mathf.Round(value * mult) / mult;
     }
 
+    public static string FormatTime(this float time) {
+        System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(time);
+        return string.Format("{0:D2}:{1:D2}.{2:D3}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
+    }
+
     public static Vector2 PointOnCircle(this Vector2 center, float radius, float ang) {
         Vector2 pos;
         pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);

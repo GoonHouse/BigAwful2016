@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -133,7 +133,7 @@ public class RoomGenergreater : MonoBehaviour {
                 Debug.LogWarning("CREATING EMERGENCY ROOMS");
                 var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
                 var rad = Vector2.zero.RandomCircle(mag);
-                var dist = Vector2.Distance(rad, Vector2.zero);
+                // var dist = Vector2.Distance(rad, Vector2.zero);
 
                 var coord = God.Key(rad);
 
@@ -528,7 +528,7 @@ public class RoomGenergreater : MonoBehaviour {
             worldMax.x = loc.x;
         }
 
-        if (loc.y < worldMin.y) {
+        if (loc.y < worldMin.y) { 
             worldMin.y = loc.y;
         } else if (loc.y > worldMax.y) {
             worldMax.y = loc.y;

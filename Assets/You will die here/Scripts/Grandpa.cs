@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -23,7 +23,6 @@ public class Grandpa : MonoBehaviour {
 
     private float cameraTurnStopTime;
     private float targetCameraDirection;
-    private float initCameraDirection;
 
     public bool isWalking = false;
 
@@ -75,6 +74,7 @@ public class Grandpa : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         Debug.Log("I'M IN A NEW SCENE YEHAW");
+        moveTarget = null;
         if( skipFreeze ){
             Freeze();
             transform.position = spawnPos;
@@ -87,8 +87,6 @@ public class Grandpa : MonoBehaviour {
             fc.Change(snap, 3.0f, 3.0f);
         }
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
-        
-        
     }
 
     // How rude
@@ -240,12 +238,10 @@ public class Grandpa : MonoBehaviour {
             }
 
             if( Time.fixedTime <= cameraTurnStopTime ){
-                var amountToSpin = Mathf.Lerp(initCameraDirection, cameraTargetDirection, Time.fixedTime / cameraTurnStopTime);
                 cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnDirection * cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
             } else {
                 if (Input.GetButtonDown("Fire2")) {
                     cameraTurnStopTime = Time.fixedTime + cameraTurnRate;
-                    initCameraDirection = cameraTargetDirection;
                     cameraTargetDirection += cameraTurnAmount;
                     cameraTurnDirection = 1;
                     if (cameraTargetDirection > 359f) {
@@ -253,7 +249,6 @@ public class Grandpa : MonoBehaviour {
                     }
                 } else if ( Input.GetButtonDown("Fire1")) {
                     cameraTurnStopTime = Time.fixedTime + cameraTurnRate;
-                    initCameraDirection = cameraTargetDirection;
                     cameraTargetDirection -= cameraTurnAmount;
                     cameraTurnDirection = -1;
                     if (cameraTargetDirection < 0.0f) {
@@ -293,8 +288,10 @@ public class Grandpa : MonoBehaviour {
             // player not in control, lerp to position
             if ( moveTimeSpent <= moveTime && !doneMove ) {
                 moveTimeSpent += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
-                character.transform.rotation = Quaternion.Lerp(startRot, moveTarget.rotation, moveTimeSpent / moveTime);
+                if( moveTarget) {
+                    transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
+                    character.transform.rotation = Quaternion.Lerp(startRot, moveTarget.rotation, moveTimeSpent / moveTime);
+                }
                 if( moveTimeSpent >= moveTime) {
                     Debug.Log("FUCK YOU I WONT DO WHAT YA TOLD ME");
                     doneMove = true;
@@ -302,7 +299,7 @@ public class Grandpa : MonoBehaviour {
                         whenDoneDo(this);
                     }
                 }
-            } else if( !isFrozen ){
+            } else if( !isFrozen && moveTarget ){
                 // enforce our local position because now that our character controller is disabled
                 // we will go straight through the gat dang floor
                 transform.position = moveTarget.position;
