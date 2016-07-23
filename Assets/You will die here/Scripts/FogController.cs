@@ -1,17 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
 public class FogSnapshot : System.Object {
-    public FogSnapshot(float startDistance, float endDistance, Color color) {
+    public FogSnapshot(float startDistance, float endDistance, Color color, float fov) {
         this.startDistance = startDistance;
         this.endDistance = endDistance;
         this.color = color;
+        this.fov = fov;
     }
 
     public float startDistance;
     public float endDistance;
     public Color color;
+    public float fov;
 }
 
 public class FogController : MonoBehaviour {
@@ -36,6 +38,7 @@ public class FogController : MonoBehaviour {
         RenderSettings.fogEndDistance = snap.endDistance;
         RenderSettings.fogColor = snap.color;
         Camera.main.backgroundColor = snap.color;
+        Camera.main.fieldOfView = snap.fov;
     }
 
     public void Change(FogSnapshot snap, float timeFog, float timeColor) {
@@ -65,11 +68,13 @@ public class FogController : MonoBehaviour {
             currentTimeToChangeFog += Time.deltaTime;
             RenderSettings.fogStartDistance = Mathf.LerpUnclamped(thisSnapshot.startDistance, targetSnapshot.startDistance, currentTimeToChangeFog / timeToChangeFog);
             RenderSettings.fogEndDistance = Mathf.LerpUnclamped(thisSnapshot.endDistance, targetSnapshot.endDistance, currentTimeToChangeFog / timeToChangeFog);
-            if( currentTimeToChangeFog >= timeToChangeFog ){
+            Camera.main.fieldOfView = Mathf.LerpUnclamped(thisSnapshot.fov, targetSnapshot.fov, currentTimeToChangeFog / timeToChangeFog);
+            if ( currentTimeToChangeFog >= timeToChangeFog ){
                 currentTimeToChangeFog = 0.0f;
                 isChangeFog = false;
                 RenderSettings.fogStartDistance = targetSnapshot.startDistance;
                 RenderSettings.fogEndDistance = targetSnapshot.endDistance;
+                Camera.main.fieldOfView = targetSnapshot.fov;
             }
         }
 
@@ -84,14 +89,25 @@ public class FogController : MonoBehaviour {
                 Camera.main.backgroundColor = targetSnapshot.color;
             }
         }
-        
 	}
+
+    public FogSnapshot GetDarkness() {
+        var color = Color.black;
+        color.a = 0.0f;
+        return new FogSnapshot(
+            0.0f,
+            0.0f,
+            color,
+            30.0f
+        );
+    }
 
     public FogSnapshot GetFogSnapshot() {
         return new FogSnapshot(
             RenderSettings.fogStartDistance,
             RenderSettings.fogEndDistance,
-            RenderSettings.fogColor
+            RenderSettings.fogColor,
+            Camera.main.fieldOfView
         );
     }
 }

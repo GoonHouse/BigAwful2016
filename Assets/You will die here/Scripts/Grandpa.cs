@@ -74,16 +74,22 @@ public class Grandpa : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         Debug.Log("I'M IN A NEW SCENE YEHAW");
-        moveTarget = null;
+        
         if( skipFreeze ){
+            Debug.Log("I was told to skip freezing so I did.");
+        } else {
+            moveTarget = null;
             Freeze();
             transform.position = spawnPos;
 
             var fc = Camera.main.GetComponent<FogController>();
+            fc.SetNow(fc.GetDarkness());
+
             var snap = fc.GetFogSnapshot();
             snap.color = (Color)(new Color32(189, 189, 189, 255));
             snap.startDistance = 8.0f;
             snap.endDistance = 16.0f;
+            snap.fov = 30.0f;
             fc.Change(snap, 3.0f, 3.0f);
         }
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
@@ -101,6 +107,7 @@ public class Grandpa : MonoBehaviour {
         snap.color = Color.black;
         snap.startDistance = 1.0f;
         snap.endDistance = 4.0f;
+        snap.fov = 17.0f;
         fc.Change(snap, timeToShit, timeToShit);
 
         isWalking = true;
@@ -231,10 +238,10 @@ public class Grandpa : MonoBehaviour {
             // Are we moving?
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
 
+
+            var moveSpeed = this.moveSpeed;
             if( Input.GetKeyDown(KeyCode.F)) {
-                var fc = Camera.main.GetComponent<FogController>();
-                var fs = new FogSnapshot(2.0f, 8.0f, new Color(1.0f, 0.0f, 1.0f, 1.0f));
-                fc.Change(fs, 4.0f, 20.0f);
+                moveSpeed *= 4;
             }
 
             if( Time.fixedTime <= cameraTurnStopTime ){
