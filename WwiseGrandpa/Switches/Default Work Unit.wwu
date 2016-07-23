@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{DA6FB595-8419-41D7-B8E1-57162D896824}" SchemaVersion="72">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{DA6FB595-8419-41D7-B8E1-57162D896824}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{DA6FB595-8419-41D7-B8E1-57162D896824}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Props" ID="{CF16DBD5-91BF-40EF-A3AD-FA8D8E36677F}">
+					<ChildrenList>
+						<Switch Name="Baby" ID="{A4801B70-3D83-4292-8BDF-C953A7ADFB6C}"/>
+						<Switch Name="Boat" ID="{B3A58860-4A0B-4E76-912E-15C7F0F5DA74}"/>
+						<Switch Name="Chair" ID="{B0527A6A-F093-4C5C-989E-CE9D002F3FEE}"/>
+						<Switch Name="Lamp" ID="{80E8C678-F312-4029-93FC-83FF7FDA9995}"/>
+						<Switch Name="MedicalMachine" ID="{B4E999FB-46F1-493D-ACE1-1679F00DF66A}"/>
+						<Switch Name="MedicalStand" ID="{E9AEF047-6C32-4BB6-AF46-CB2FE0F453CF}"/>
+						<Switch Name="PictureFrame" ID="{AE1BD22A-C93C-4F86-8C83-7656AA770244}"/>
+						<Switch Name="PictureFrame2" ID="{18D49986-33D1-4790-B8CE-8DAA8644A70A}"/>
+						<Switch Name="PictureFrame3" ID="{57981659-B565-478C-94CE-580E180A1A3C}"/>
+						<Switch Name="PictureFrame4" ID="{78D2723E-D178-48F2-8A2D-17847C7331B0}"/>
+						<Switch Name="PictureFrame5" ID="{7C525404-8275-47CD-B27F-8063DE652606}"/>
+						<Switch Name="Plant" ID="{4EB89BAC-D42B-43F4-966A-487A1E48734D}"/>
+						<Switch Name="Stool" ID="{A7C5A698-3424-4F2F-8969-BB3E85E46E61}"/>
+						<Switch Name="TableLamp" ID="{00F5DF5E-6F8A-43BA-B1C4-A74DEC96F962}"/>
+						<Switch Name="TombStone" ID="{EE0A530A-8873-4BB2-9A8A-6377C5BE2716}"/>
+						<Switch Name="TV" ID="{36B66073-A897-4C70-80C1-03E3AE186DD1}"/>
+						<Switch Name="TV2" ID="{46956A70-DD68-450A-BF3E-A501A57AFF37}"/>
+						<Switch Name="WaterCooler" ID="{FA2F61BC-4EDC-4532-B148-E7723C187025}"/>
+						<Switch Name="WaterPlants" ID="{20CDCAA7-7392-4DCE-91BB-2890A2D46A44}"/>
+						<Switch Name="WheelChair" ID="{0C1B6DC6-F169-4FA0-A5DF-9A5000DE72F4}"/>
+						<Switch Name="DateLadyNPC" ID="{8E1CB012-3B7B-4B10-A243-CA42E7E6A31D}"/>
+						<Switch Name="LadyNPC" ID="{AC7ACD7C-0383-4A39-A93B-2235603C0754}"/>
+						<Switch Name="BedThoughts" ID="{1757511F-7A99-4022-AE2B-5F813E562853}"/>
+						<Switch Name="BookEdge" ID="{13026786-95FF-42E0-AC14-DE3EE253A617}"/>
+						<Switch Name="BookShelfthoughts" ID="{AC87912F-5DF1-4751-9AAD-C0E9E3C49EFA}"/>
+						<Switch Name="HappyBook" ID="{A9E1A5F1-2851-4426-B99E-F94EA6F08EC2}"/>
+						<Switch Name="Kknob" ID="{B899E917-2F78-4999-9261-025D4EBE3B3A}"/>
+						<Switch Name="Letter" ID="{5CE9F6D7-6516-4559-BE9A-FD33B6F8774F}"/>
+						<Switch Name="RecordPlayer" ID="{275857AE-C022-40C8-ADB6-339320930A13}"/>
+						<Switch Name="Urn" ID="{A7D2A5BA-B20F-4F1A-A1AE-E8536F84F3E1}"/>
+						<Switch Name="Watch" ID="{08121F03-5758-4637-96C0-FD05D3E1A13D}"/>
+						<Switch Name="Chef" ID="{621FAFC3-8B93-4B09-9F80-08C9853DC150}"/>
+						<Switch Name="ManNPC" ID="{F50D0ED0-FFA6-4563-A1A6-6932F1D74C46}"/>
+						<Switch Name="ManNPCGroom" ID="{1A01D35C-3682-4B46-879A-9FA405540A15}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>
