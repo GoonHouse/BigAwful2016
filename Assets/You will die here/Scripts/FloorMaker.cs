@@ -62,7 +62,7 @@ public class FloorMaker : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        writeDirection = God.NORTH;
+        writeDirection = God.RandomDirection();
         rg = God.main.GetComponent<RoomGenergreater>();
         rg.NewTileRunner();
     }
@@ -98,9 +98,9 @@ public class FloorMaker : MonoBehaviour {
             writeDirection = writeDirection.Rotate(90);
         }
         if (Random.value <= chanceToTurnAround && !turning) {
+            OnTurnAround();
             turning = true;
             writeDirection = writeDirection.Rotate(180);
-            OnTurnAround();
         }
         if (Random.value <= chanceToTurnRight && !turning) {
             turning = true;
@@ -109,10 +109,8 @@ public class FloorMaker : MonoBehaviour {
     }
 
     public void OnTurnAround() {
-        var oldDirection = writeDirection.Rotate(180);
-        var dropSpot = (writeHead + oldDirection).Round(0);
         if( Random.value <= chanceOfBlackRoom ){
-            rg.SpawnPart("BlackRoom", dropSpot);
+            rg.SpawnPart("BlackRoom", writeHead);
         }
     }
     
