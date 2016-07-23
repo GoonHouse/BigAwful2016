@@ -697,7 +697,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleSpawns:
+  - {fileID: 106224, guid: 89ef715da17719e4aae3e1022b751bb6, type: 2}
   - {fileID: 192296, guid: 31b89a2d3c6925c44bbfc8b44e97777a, type: 2}
+  - {fileID: 100000, guid: 27e1f80289d3b174b9646b81dc863390, type: 3}
+  - {fileID: 100534, guid: 642aa8cb4ab24f9429ad2940c3857c0c, type: 2}
   chanceOfSpawn: 0.5
 --- !u!114 &11457844
 MonoBehaviour:
