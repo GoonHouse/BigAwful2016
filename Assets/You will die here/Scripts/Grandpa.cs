@@ -11,7 +11,7 @@ public class Grandpa : MonoBehaviour {
     public float turnSpeed = 180.0f;
     public float moveSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
+    //public float gravity = 20.0f;
     //public Vector3 cameraOffset = new Vector3(0.0f, 16.0f, -28.0f);
     public float cameraTurnAmount = 90.0f;
     public int cameraTurnDirection = 1;
@@ -54,9 +54,9 @@ public class Grandpa : MonoBehaviour {
     public void Freeze() {
         isFrozen = true;
         //controller.enabled = false;
-        var rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.isKinematic = false;
+        //var rb = GetComponent<Rigidbody>();
+        //rb.useGravity = false;
+        //rb.isKinematic = false;
         inControl = false;
         doneMove = true;
         moveTarget = null;
@@ -65,9 +65,9 @@ public class Grandpa : MonoBehaviour {
     public void UnFreeze() {
         isFrozen = false;
         controller.enabled = true;
-        var rb = GetComponent<Rigidbody>();
-        rb.useGravity = true;
-        rb.isKinematic = true;
+        //var rb = GetComponent<Rigidbody>();
+        //rb.useGravity = true;
+        //rb.isKinematic = true;
         inControl = true;
         doneMove = true;
         moveTarget = null;
@@ -263,14 +263,15 @@ public class Grandpa : MonoBehaviour {
             }
 
             // Handle movement.
+            if(Input.GetButton("Jump") && !controller.isGrounded) {
+                Debug.Log("COULDN'T JUMP MY FEET DON'T TOUCH, IDIOT");
+            }
+
             if (controller.isGrounded) {
                 moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
                 moveDirection = Quaternion.AngleAxis(cameraTargetDirection, Vector3.up) * moveDirection;
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= moveSpeed;
-                if (Input.GetButton("Jump") && isAlive) {
-                    moveDirection.y = jumpSpeed;
-                }
 
                 // Turn if we need to turn.
                 if (moveVertical != 0 || moveHorizontal != 0) {
@@ -281,10 +282,12 @@ public class Grandpa : MonoBehaviour {
                     character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
                 }
             }
+            //} else {
+            //    moveDirection = Vector3.zero;
 
             // Cancel gravity, move to position.
-            moveDirection.y -= gravity * Time.deltaTime;
-            controller.Move(moveDirection * Time.deltaTime);
+            //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
+            controller.SimpleMove(moveDirection * Time.deltaTime);
         } else {
             m_Animator.SetBool("Walking", !isWalking);
             // player not in control, lerp to position
@@ -307,9 +310,12 @@ public class Grandpa : MonoBehaviour {
             } else if( isFrozen ){
                 transform.position = spawnPos;
             }
-            moveDirection = Vector3.zero;
-            moveDirection.y -= gravity * Time.deltaTime;
-            controller.Move(moveDirection * Time.deltaTime);
+
+            if( controller.enabled) {
+                moveDirection = Vector3.zero;
+                //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
+                controller.Move(moveDirection * Time.deltaTime);
+            }
         }
 
         if( isAlive) {
@@ -317,18 +323,23 @@ public class Grandpa : MonoBehaviour {
             Shader.SetGlobalVector("_Origin", transform.position + (Vector3.up * 2f));
 
             // Set the camera's position.
-            var cpos = transform.position;
-            //cpos += cameraOffset;
-            //Camera.main.transform.position = cpos;
-            cameraHolder.transform.position = cpos;
+            cameraHolder.transform.position = transform.position;
+        }
+
+        // No more floor grandpas.
+        var pos =  transform.position;
+        if( pos.y < 0.0f) {
+            Debug.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos);
+            pos.y += Mathf.Abs(pos.y);
+            transform.position = pos;
         }
     }
 
     public void SetTarget(Transform target) {
         controller.enabled = false;
-        var rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.isKinematic = false;
+        //var rb = GetComponent<Rigidbody>();
+        //rb.useGravity = false;
+        //rb.isKinematic = false;
         startPos = transform.position;
         startRot = character.transform.rotation;
         inControl = false;
