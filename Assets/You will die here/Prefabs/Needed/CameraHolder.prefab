@@ -213,7 +213,7 @@ MonoBehaviour:
   chanceOfWallFloor: 0.33
   chanceOfFloor: 0.07
   chanceOfOversize: 0.1
-  nextSceneName: Genergreater2
+  nextSceneName: TheEnd
   decorationPhotos:
   - {fileID: 197848, guid: f6283474995e867438cfe31e4b3dc9bf, type: 2}
   - {fileID: 107700, guid: 5f22c4e5cd50a014fbdaf1860563a0fc, type: 2}
@@ -235,6 +235,7 @@ MonoBehaviour:
   - {fileID: 196952, guid: 9b618052e053ab84e9ae5fc4577e1ae3, type: 2}
   - {fileID: 139444, guid: 0a4c3a95bb7eae34aa4072e7a4c2d631, type: 2}
   - {fileID: 178308, guid: ad19653a087f79041bd1de879bbf2a57, type: 2}
+  - {fileID: 166248, guid: e5d7999fa7f95604ab86b164d242508e, type: 2}
   decorationOversize:
   - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
   - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
