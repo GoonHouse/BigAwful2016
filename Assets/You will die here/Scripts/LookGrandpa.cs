@@ -137,9 +137,9 @@ public class LookGrandpa : MonoBehaviour {
     }
 
     void Ponder() {
-        if( timeOnMind < timeToCommit && !didCommitYet && thingToLookAt != null ){
+        if( timeOnMind < timeToCommit && !didCommitYet && thingToLookAt != null && !hasThought ){
             timeOnMind += Time.deltaTime;
-            if ( timeOnMind >= timeToCommit && !didCommitYet && thingToLookAt != null ) {
+            if ( timeOnMind >= timeToCommit && !didCommitYet && thingToLookAt != null && !hasThought ) {
                 Remember(thingToLookAt.gameObject);
             }
         }
