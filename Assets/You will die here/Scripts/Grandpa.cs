@@ -45,6 +45,10 @@ public class Grandpa : MonoBehaviour {
     private Knob focusKnob;
     private OnDoneTarget whenDoneDo;
 
+    private Vector3 lastGoodPos;
+    public int timesToSnapY = 100;
+    public int timesSnappedY = 0;
+
     public Vector3 spawnPos = new Vector3(0, 50.0f, 0);
     public bool isFrozen = false;
 
@@ -52,7 +56,7 @@ public class Grandpa : MonoBehaviour {
 
     public void Freeze() {
         isFrozen = true;
-        //controller.enabled = false;
+        controller.enabled = false;
         //var rb = GetComponent<Rigidbody>();
         //rb.useGravity = false;
         //rb.isKinematic = false;
@@ -91,6 +95,7 @@ public class Grandpa : MonoBehaviour {
             snap.endDistance = 16.0f;
             snap.fov = 30.0f;
             fc.Change(snap, 3.0f, 3.0f);
+            lastGoodPos = spawnPos;
         }
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
     }
@@ -124,8 +129,6 @@ public class Grandpa : MonoBehaviour {
      */
 
     public static void KnobStage_AnticipateDoor(Grandpa grandpa) {
-        Debug.LogWarning("ANTICIPATING DOOR!");
-
         grandpa.isWalking = false;
 
         grandpa.focusKnob.Buildup();
@@ -141,7 +144,6 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void KnobStage_UnlockDoor(Grandpa grandpa) {
-        Debug.LogWarning("UNLOCKING DOOR.");
         grandpa.focusKnob.Unlock();
 
         grandpa.moveTime = 1.0f;
@@ -152,7 +154,6 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void KnobStage_OpenDoorAndWait(Grandpa grandpa) {
-        Debug.LogWarning("OPENING DOOR. WAITING.");
         grandpa.focusKnob.OpenDoor();
         
         
@@ -166,15 +167,13 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void KnobStage_EnterDoor(Grandpa grandpa) {
-        Debug.LogWarning("ENTERING DOOR.");
-
+        grandpa.controller.enabled = false;
         grandpa.isWalking = true;
 
         var timeToShit = 2.0f;
         var fuckMult = 1.0f;
         var fc = Camera.main.GetComponent<FogController>();
         var snap = fc.GetFogSnapshot();
-        Debug.Log(snap.startDistance + " _ " + snap.endDistance + " _ " + snap.color);
         snap.color = Color.black;
         snap.startDistance = 0.1f;
         snap.endDistance = 0.4f;
@@ -187,9 +186,9 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void KnobStage_InsideDoor(Grandpa grandpa) {
-        Debug.LogWarning("I'M GOING INSIDE! WAIT. I'M ALREADY THERE.");
-        
+
         // reset the movetime to get a wait out of this
+        grandpa.controller.enabled = true;
         grandpa.isWalking = false;
         grandpa.moveTime = 0.1f;
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
@@ -221,28 +220,18 @@ public class Grandpa : MonoBehaviour {
         character = GameObject.Find("GrandFatherContainmentUnit");
 		cameraHolder = GameObject.Find ("CameraHolder");
         cameraTurnStopTime = Time.fixedTime-1.0f;
-
+        lastGoodPos = transform.position;
         // If for any reason the player is not at the world origin or the camera isn't facing it, this will break. \o/
         //cameraOffset = Camera.main.transform.position;
     }
 
     void Update() {
-		//maybe I can catch when gramps falls through the world.
-		if (transform.position.y < 0f) {
-			transform.position.Set (transform.position.x, 10f, transform.position.z);
-		}
-        if( inControl ){
+        if ( inControl ){
             float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
             float moveVertical = Input.GetAxis("Vertical") * mitigation;
 
             // Are we moving?
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
-
-
-            var moveSpeed = this.moveSpeed;
-            if( Input.GetKeyDown(KeyCode.F)) {
-                moveSpeed *= 4;
-            }
 
             if( Time.fixedTime <= cameraTurnStopTime ){
                 cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnDirection * cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
@@ -264,11 +253,6 @@ public class Grandpa : MonoBehaviour {
                 }
             }
 
-            // Handle movement.
-            if(Input.GetButton("Jump") && !controller.isGrounded) {
-                Debug.Log("COULDN'T JUMP MY FEET DON'T TOUCH, IDIOT");
-            }
-
             if (controller.isGrounded) {
                 moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
                 moveDirection = Quaternion.AngleAxis(cameraTargetDirection, Vector3.up) * moveDirection;
@@ -283,9 +267,9 @@ public class Grandpa : MonoBehaviour {
                     var lookRot = Quaternion.LookRotation(lookDirection.normalized);
                     character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
                 }
+            } else {
+                moveDirection = Vector3.zero;
             }
-            //} else {
-            //    moveDirection = Vector3.zero;
 
             // Cancel gravity, move to position.
             //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
@@ -300,7 +284,6 @@ public class Grandpa : MonoBehaviour {
                     character.transform.rotation = Quaternion.Lerp(startRot, moveTarget.rotation, moveTimeSpent / moveTime);
                 }
                 if( moveTimeSpent >= moveTime) {
-                    Debug.Log("FUCK YOU I WONT DO WHAT YA TOLD ME");
                     doneMove = true;
                     if( whenDoneDo != null) {
                         whenDoneDo(this);
@@ -318,7 +301,7 @@ public class Grandpa : MonoBehaviour {
             if( controller.enabled) {
                 moveDirection = Vector3.zero;
                 //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
-                controller.Move(moveDirection * Time.deltaTime);
+                controller.SimpleMove(moveDirection * Time.deltaTime);
             }
         }
 
@@ -336,11 +319,18 @@ public class Grandpa : MonoBehaviour {
             Debug.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos);
             pos.y += Mathf.Abs(pos.y);
             transform.position = pos;
+            timesSnappedY++;
+            if( timesSnappedY >= timesToSnapY) {
+                transform.position = lastGoodPos;
+            }
+        } else if( controller.isGrounded ) {
+            timesSnappedY = 0;
+            lastGoodPos = pos;
         }
     }
 
     public void SetTarget(Transform target) {
-        controller.enabled = false;
+        //controller.enabled = false;
         //var rb = GetComponent<Rigidbody>();
         //rb.useGravity = false;
         //rb.isKinematic = false;

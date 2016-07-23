@@ -67,9 +67,158 @@ MonoBehaviour:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{DA6FB595-8419-41D7-B8E1-57162D896824}'
-    m_lastTimePsrt1: 1503857913
-    m_lastTimePart2: -1999394006
-    List: []
+    m_lastTimePsrt1: 1340490737
+    m_lastTimePart2: -1999391955
+    List:
+    - Name: Props
+      Path: Default Work Unit\Props
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Props
+        ObjectType: 11
+      ID: 968010305
+      Guid: d5db16cfbf91ef40a3adfa8d8e36677f
+      values:
+      - Baby
+      - BedThoughts
+      - Boat
+      - BookEdge
+      - BookShelfthoughts
+      - Chair
+      - Chef
+      - DateLadyNPC
+      - HappyBook
+      - Kknob
+      - LadyNPC
+      - Lamp
+      - Letter
+      - ManNPC
+      - ManNPCGroom
+      - MedicalMachine
+      - MedicalStand
+      - PictureFrame
+      - PictureFrame2
+      - PictureFrame3
+      - PictureFrame4
+      - PictureFrame5
+      - Plant
+      - RecordPlayer
+      - Stool
+      - TableLamp
+      - TombStone
+      - TV
+      - TV2
+      - Urn
+      - Watch
+      - WaterCooler
+      - WaterPlants
+      - WheelChair
+      ValueIcons:
+      - ElementName: Baby
+        ObjectType: 10
+      - ElementName: BedThoughts
+        ObjectType: 10
+      - ElementName: Boat
+        ObjectType: 10
+      - ElementName: BookEdge
+        ObjectType: 10
+      - ElementName: BookShelfthoughts
+        ObjectType: 10
+      - ElementName: Chair
+        ObjectType: 10
+      - ElementName: Chef
+        ObjectType: 10
+      - ElementName: DateLadyNPC
+        ObjectType: 10
+      - ElementName: HappyBook
+        ObjectType: 10
+      - ElementName: Kknob
+        ObjectType: 10
+      - ElementName: LadyNPC
+        ObjectType: 10
+      - ElementName: Lamp
+        ObjectType: 10
+      - ElementName: Letter
+        ObjectType: 10
+      - ElementName: ManNPC
+        ObjectType: 10
+      - ElementName: ManNPCGroom
+        ObjectType: 10
+      - ElementName: MedicalMachine
+        ObjectType: 10
+      - ElementName: MedicalStand
+        ObjectType: 10
+      - ElementName: PictureFrame
+        ObjectType: 10
+      - ElementName: PictureFrame2
+        ObjectType: 10
+      - ElementName: PictureFrame3
+        ObjectType: 10
+      - ElementName: PictureFrame4
+        ObjectType: 10
+      - ElementName: PictureFrame5
+        ObjectType: 10
+      - ElementName: Plant
+        ObjectType: 10
+      - ElementName: RecordPlayer
+        ObjectType: 10
+      - ElementName: Stool
+        ObjectType: 10
+      - ElementName: TableLamp
+        ObjectType: 10
+      - ElementName: TombStone
+        ObjectType: 10
+      - ElementName: TV
+        ObjectType: 10
+      - ElementName: TV2
+        ObjectType: 10
+      - ElementName: Urn
+        ObjectType: 10
+      - ElementName: Watch
+        ObjectType: 10
+      - ElementName: WaterCooler
+        ObjectType: 10
+      - ElementName: WaterPlants
+        ObjectType: 10
+      - ElementName: WheelChair
+        ObjectType: 10
+      valueIDs: e9cdf95be4c1479e2f62fe6ae11d2a03087a79298044e202c500c8f2a6e0d91cbedc66d2688b82dd72ca3c973f643427193e5ecd94b559e12a6e1c50c5ee284eae28867fb48454c86ee70c116fe70c1168e70c1169e70c118cc4d506c5f5282e8a6b89477daae50dce85d16f070f775d37a86c29aa856a3b92463ca498b8cb33402a736ccd5701c6
+      ValueGuids:
+      - bytes: 701b80a4833d92428bdfc953a7adfb6c
+      - bytes: 1f515717997a2240ae2b5f813e562853
+      - bytes: 6088a5b30b4a764e912e15c7f0f5da74
+      - bytes: 86670213ff95e042ac14de3ee253a617
+      - bytes: 2f9187acf15d51479aadc0e9e3c49efa
+      - bytes: 6a7a52b093f05c4c989ece9d002f3fee
+      - bytes: c3af1f62938b094b9f8008c9853dc150
+      - bytes: 12b01c8e7b3b104ba243ca42e7e6a31d
+      - bytes: f1a5e1a951282644b99ef94ea6f08ec2
+      - bytes: 17e999b8782f99499261025d4ebe3b3a
+      - bytes: 7ccd7aac8303394aa93b2235603c0754
+      - bytes: 78c6e88012f3294093fc83ff7fda9995
+      - bytes: d7f6e95c16655945be9afd33b6f8774f
+      - bytes: d00e0df5a6ff6345a1a66932f1d74c46
+      - bytes: 5cd3011a8236464b879a9fa405540a15
+      - bytes: fb99e9b4f1463d49ace11679f00df66a
+      - bytes: 47f0aee9326cb64baf46cb2fe0f453cf
+      - bytes: 2ad21bae3cc9864f8c837656aa770244
+      - bytes: 8699d418d1339047b8ce8daa8644a70a
+      - bytes: 5916985765b58c4794ce580e180a1a3c
+      - bytes: 3e72d27878d1f2488a2d17847c7331b0
+      - bytes: 0454527c7582cd47b27f8063de652606
+      - bytes: ac9bb84e2bd4f443966a487a1e48734d
+      - bytes: ae57582722c0c840adb6339320930a13
+      - bytes: 98a6c5a724342f4f8969bb3e85e46e61
+      - bytes: 5edff5008a6fba43b1c4a74dec96f962
+      - bytes: 0a530aee7388b24b9a8a6377c5be2716
+      - bytes: 7360b63697a8704c80c103e3ae186dd1
+      - bytes: 706a954668dd0a45bf3ea501a57aff37
+      - bytes: baa5d2a70fb21a4fa1aee8536f84f3e1
+      - bytes: 031f12085857374696c0fd05d3e1a13d
+      - bytes: bc612ffadc4e3245b148e7723c187025
+      - bytes: a7cacd209273ce4d91bb2890a2d46a44
+      - bytes: c66d1b0c69f1a04fa5df9a5000de72f4
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 

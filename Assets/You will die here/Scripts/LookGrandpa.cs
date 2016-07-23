@@ -85,6 +85,7 @@ public class LookGrandpa : MonoBehaviour {
         noAlpha.a = 0.0f;
         withAlpha = initColor;
         withAlpha.a = 1.0f;
+        thinkText.color = noAlpha;
         // you can't forget yourself, grandpa!
         // like hell I can't
         Forget(gameObject);
@@ -103,6 +104,7 @@ public class LookGrandpa : MonoBehaviour {
             noAlpha.a = 0.0f;
             withAlpha = initColor;
             withAlpha.a = 1.0f;
+            thinkText.color = noAlpha;
         }
         epu = GetComponent<EmotionProcessor>();
 	}

@@ -1354,6 +1354,10 @@ Prefab:
       propertyPath: thinkText
       value: 
       objectReference: {fileID: 501999723}
+    - target: {fileID: 14302576, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
+      propertyPath: m_StepOffset
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
   m_IsPrefabParent: 0
