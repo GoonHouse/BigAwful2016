@@ -11,8 +11,12 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
     private GameObject title;
     private GameObject titleAnchor;
 
-    // Use this for initialization
-    void Awake () {
+    void OnLevelWasLoaded() {
+        Debug.Log("Got here through natural means. Neat.");
+        ThinkYeah();
+    }
+
+    void ThinkYeah() {
         deadGrandpa = GameObject.Find("DeadGrandpa");
         grandpa = GameObject.Find("GrampsHolder").GetComponent<Grandpa>();
         cameraHolder = GameObject.Find("CameraHolder");
@@ -21,17 +25,47 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         grandpa.isAlive = false;
         //var cap = grandpa.GetComponent<CapsuleCollider>();
         //cap.enabled = false;
-        var rigid = grandpa.GetComponent<Rigidbody>();
-        rigid.constraints = RigidbodyConstraints.FreezePositionY;
+        //var rigid = grandpa.GetComponent<Rigidbody>();
+        //rigid.constraints = RigidbodyConstraints.FreezePositionY;
+        grandpa.skipFreeze = true;
+        grandpa.UnFreeze();
+        grandpa.transform.position = new Vector3(12.0f, 1.0f, 9.0f);
 
         var meshRenderers = grandpa.gameObject.GetComponentsInChildren<MeshRenderer>();
-        foreach( MeshRenderer mr in meshRenderers) {
+        foreach (MeshRenderer mr in meshRenderers) {
             var b = mr.materials;
-            for( int i = 0; i < b.Length; i++) {
+            for (int i = 0; i < b.Length; i++) {
                 b[i] = toApplyToPlayer;
             }
             mr.materials = b;
         }
+
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        snap.color = Color.black;
+        snap.color.a = 0.0f;
+        snap.startDistance = 0.0f;
+        snap.endDistance = 0.0f;
+        fc.SetNow(snap);
+
+        var snap2 = fc.GetFogSnapshot();
+        snap2.color = Color.black;
+        snap2.color.a = 0.5f;
+        snap2.startDistance = 1.0f;
+        snap2.endDistance = 8.0f;
+        fc.Change(snap2, 3.0f, 3.0f);
+
+        var rot = cameraHolder.transform.localRotation;
+        rot.y = 0.0f;
+        cameraHolder.transform.localRotation = rot;
+    }
+        // Use this for initialization
+    void Awake () {
+        ThinkYeah();
+    }
+
+    void Start() {
+        ThinkYeah();
     }
 	
 	// Update is called once per frame
@@ -42,8 +76,6 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
 
         // Set the camera's position.
         var cpos = deadGrandpa.transform.position;
-        //cpos += cameraOffset;
-        //Camera.main.transform.position = cpos;
         cameraHolder.transform.position = cpos;
     }
 }

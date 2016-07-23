@@ -49,6 +49,8 @@ public class Grandpa : MonoBehaviour {
     public Vector3 spawnPos = new Vector3(0, 50.0f, 0);
     public bool isFrozen = false;
 
+    public bool skipFreeze = false;
+
     public void Freeze() {
         isFrozen = true;
         //controller.enabled = false;
@@ -73,16 +75,19 @@ public class Grandpa : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         Debug.Log("I'M IN A NEW SCENE YEHAW");
-        Freeze();
-        transform.position = spawnPos;
+        if( skipFreeze ){
+            Freeze();
+            transform.position = spawnPos;
+
+            var fc = Camera.main.GetComponent<FogController>();
+            var snap = fc.GetFogSnapshot();
+            snap.color = (Color)(new Color32(189, 189, 189, 255));
+            snap.startDistance = 8.0f;
+            snap.endDistance = 16.0f;
+            fc.Change(snap, 3.0f, 3.0f);
+        }
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
         
-        var fc = Camera.main.GetComponent<FogController>();
-		var snap = fc.GetFogSnapshot();
-		snap.color = (Color)(new Color32(189, 189, 189, 255));
-		snap.startDistance = 8.0f;
-		snap.endDistance = 16.0f;
-		fc.Change(snap, 3.0f, 3.0f);
         
     }
 

@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/You will die here/Scenes/Genergreater.unity
   - enabled: 1
     path: Assets/You will die here/Scenes/Genergreater2.unity
+  - enabled: 1
+    path: Assets/You will die here/Scenes/TheEnd.unity

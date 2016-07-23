@@ -19,6 +19,7 @@ public class LookGrandpa : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
+        thinkText.text = "";
         // you can't forget yourself, grandpa!
         // like hell I can't
         Forget(gameObject);
