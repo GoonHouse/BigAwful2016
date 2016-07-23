@@ -1,10 +1,10 @@
 ﻿Shader "Custom/LinearFogTransparent" {
   Properties {
   	_alphaValue ("Alpha Value", Range (-1, 1)) = 0
-	_Color ("Main Color", Color) = (1,1,1,1)
+	_ColorT ("Main Color", Color) = (1,1,1,1)
     _MainTex ("Base (RGB)", 2D) = "white" {}
     _AltTex ("Base (RGB)", 2D) = "white" {}
-    _AltValue ("Alt Value", Range (0, 1)) = 0
+    // _AltValue ("Alt Value", Range (0, 1)) = 0
   }
   SubShader {
     Tags { "RenderType" = "Transparent" "Queue" = "Transparent" "IgnoreProjector" = "True" "ForceNoShadowCasting" = "False" }
@@ -21,7 +21,7 @@
 
     sampler2D _MainTex;
     sampler2D _AltTex;
-    fixed4 _Color;
+    fixed4 _ColorT;
 	float4 _Origin;
     uniform half4 unity_FogStart;
     uniform half4 unity_FogEnd;
@@ -55,9 +55,9 @@
     void surf (Input IN, inout SurfaceOutput o) {
       fixed4 mainCol = tex2D(_MainTex, IN.uv_MainTex);
       fixed4 texTwoCol = tex2D(_AltTex, IN.uv_MainTex);
-      fixed4 c = lerp(mainCol, texTwoCol, _AltValue) * _Color;
+      fixed4 c = lerp(mainCol, texTwoCol, _AltValue) * _ColorT;
 
-      //fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+      //fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _ColorT;
       o.Albedo = c.rgb;
       o.Alpha = clamp(c.a-(IN.fog*_alphaValue),0,1);
     }
