@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 401914}
   - 135: {fileID: 13535336}
-  - 114: {fileID: 11430600}
+  - 114: {fileID: 11431738}
   m_Layer: 9
   m_Name: LookTarget
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1.0000005, z: 0.10000014}
   m_Center: {x: 0.0000002682209, y: -0.00000011920929, z: 0.049999535}
---- !u!114 &11430600
+--- !u!114 &11431738
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -119,8 +119,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propName: WaterCooler
-  emotions: []
-  needs: []
+  emotions:
+  - name: proud
+    major: 4
+    strength: 1
+  - name: worthwhile
+    major: 4
+    strength: 1
+  - name: valuable
+    major: 4
+    strength: 1
+  needs:
+  - name: family
+    need: 3
+    strength: 1
   thoughts: []
 --- !u!135 &13535336
 SphereCollider:

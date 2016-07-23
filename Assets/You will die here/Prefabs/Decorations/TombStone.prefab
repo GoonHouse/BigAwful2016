@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 421340}
   - 33: {fileID: 3365212}
   - 23: {fileID: 2368090}
+  - 65: {fileID: 6593680}
   m_Layer: 0
   m_Name: TombStone
   m_TagString: Untagged
@@ -94,6 +95,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101324}
   m_Mesh: {fileID: 4300000, guid: 91a3a2a1b920f904e9a44dec60737e21, type: 3}
+--- !u!65 &6593680
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.5, z: 0.50000024}
+  m_Center: {x: 0.000000029802322, y: 0.75, z: 0}
 --- !u!114 &11462618
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422930}
+  - 65: {fileID: 6575660}
   m_Layer: 0
   m_Name: MedicalStand
   m_TagString: Untagged
@@ -315,6 +316,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124670}
   m_Mesh: {fileID: 4300004, guid: 23fe961861685a6408904dd3b051e7d9, type: 3}
+--- !u!65 &6575660
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!114 &11423412
 MonoBehaviour:
   m_ObjectHideFlags: 1

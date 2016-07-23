@@ -27,6 +27,7 @@ GameObject:
   - 4: {fileID: 467968}
   - 33: {fileID: 3336436}
   - 23: {fileID: 2310502}
+  - 65: {fileID: 6547320}
   m_Layer: 0
   m_Name: TV2
   m_TagString: Untagged
@@ -95,6 +96,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162424}
   m_Mesh: {fileID: 4300000, guid: 27e1f80289d3b174b9646b81dc863390, type: 3}
+--- !u!65 &6547320
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1, z: 1.0000005}
+  m_Center: {x: 0.00000010430813, y: 0.5, z: 0.00000008940697}
 --- !u!114 &11421714
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -119,8 +119,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   propName: WaterCooler
-  emotions: []
-  needs: []
+  emotions:
+  - name: proud
+    major: 4
+    strength: 1
+  - name: worthwhile
+    major: 4
+    strength: 1
+  - name: valuable
+    major: 4
+    strength: 1
+  needs:
+  - name: family
+    need: 3
+    strength: 1
   thoughts: []
 --- !u!135 &13513734
 SphereCollider:

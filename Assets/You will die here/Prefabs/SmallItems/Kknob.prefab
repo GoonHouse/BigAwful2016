@@ -28,6 +28,7 @@ GameObject:
   - 4: {fileID: 406180}
   - 33: {fileID: 3322082}
   - 23: {fileID: 2378966}
+  - 65: {fileID: 6527972}
   m_Layer: 0
   m_Name: Kknob
   m_TagString: Untagged
@@ -42,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185054}
   m_LocalRotation: {x: -0.70707995, y: -0.0061705927, z: -0.0061705937, w: 0.7070798}
-  m_LocalPosition: {x: -1.426, y: 1.501, z: 0.019}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: -90, y: -1, z: 0}
   m_Children:
@@ -96,6 +97,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185054}
   m_Mesh: {fileID: 4300000, guid: 94d039b8ab12268428697ce14de514a7, type: 3}
+--- !u!65 &6527972
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26539263, y: 0.07256118, z: 0.26539272}
+  m_Center: {x: 0, y: 0.036280584, z: 4.511308e-13}
 --- !u!114 &11447570
 MonoBehaviour:
   m_ObjectHideFlags: 1

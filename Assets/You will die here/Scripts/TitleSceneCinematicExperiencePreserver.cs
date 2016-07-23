@@ -12,15 +12,22 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
 
     private List<NavLine> navs;
     private Grandpa grandpa;
+    private Corrupt corrupt;
 
-	// Use this for initialization
-	void Awake () {
+    void OnLevelWasLoaded() {
+        corrupt.doCorrupt = true;
+    }
+
+        // Use this for initialization
+    void Awake () {
         navs = new List<NavLine>( GameObject.Find("Rooms").GetComponentsInChildren<NavLine>() );
         grandpa = GameObject.Find("GrampsHolder").GetComponentInChildren<Grandpa>();
         grandpa.mitigation = mitigationStart;
         foreach (NavLine nav in navs) {
             nav.mitigation = mitigationStart;
         }
+        corrupt = Camera.main.GetComponent<Corrupt>();
+        corrupt.doCorrupt = false;
     }
 	
 	// Update is called once per frame
