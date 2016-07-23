@@ -127,7 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f62c416051da743b5b62973ee7a033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grampsLerp: 0.91
+  grampsLerp: 1
+  mitigation: 1
+  maxDistDelta: 8
 --- !u!120 &12067804
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -162,10 +164,10 @@ LineRenderer:
     endWidth: 0
     m_StartColor:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190335
     m_EndColor:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4294534684
   m_UseWorldSpace: 1
 --- !u!1001 &100100000
 Prefab:
