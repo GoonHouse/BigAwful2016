@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,16 +16,81 @@ public class LookGrandpa : MonoBehaviour {
     public bool didCommitYet = false;
 
     private EmotionProcessor epu;
+    private bool hasThought = false;
+    private bool fadeDone = false;
+    private float timeToFadeIn = 0.5f;
+    private float currentFadeTime = 0.0f;
+    private float timeToExpose = 4.0f;
+    private float currentExposeTime = 0.0f;
+    private Color initColor;
+    private Color noAlpha;
+    private Color withAlpha;
+
+    void Think(LookTarget lt, Thought t) {
+        if( lt != null && lt.thoughts.Count > 0 && !hasThought ) {
+            hasThought = true;
+            fadeDone = false;
+            currentFadeTime = 0.0f;
+            var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
+            thinkText.text = thought.text;
+        } else {
+            Debug.LogError("YOU GOT ME ALL FUCKED UP. HOLD ON.");
+        }
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (thingToLookAt != null) {
+            float dist = Vector3.Distance(thingToLookAt.transform.position, grampsHead.transform.position); //this makes grandpa forget when things get too far away
+            if (dist > tooFar) {
+                Forget(thingToLookAt.gameObject);
+            }
+        }
+
+        if (hasThought) {
+            if (!fadeDone) {
+                currentFadeTime += Time.deltaTime;
+                if (currentFadeTime <= timeToFadeIn) {
+                    thinkText.color = Color.Lerp(noAlpha, withAlpha, currentFadeTime / timeToFadeIn);
+                } else {
+                    thinkText.color = withAlpha;
+                    currentExposeTime += Time.deltaTime;
+                    if (currentExposeTime <= timeToExpose) {
+                        // i love you
+                    } else {
+                        fadeDone = true;
+                        currentFadeTime = 0.0f;
+                        currentExposeTime = 0.0f;
+                    }
+                }
+            } else {
+                currentFadeTime += Time.deltaTime;
+                if (currentFadeTime <= timeToFadeIn) {
+                    thinkText.color = Color.Lerp(withAlpha, noAlpha, currentFadeTime / timeToFadeIn);
+                } else {
+                    thinkText.color = noAlpha;
+                    thinkText.text = "";
+                    hasThought = false;
+                    fadeDone = false;
+                }
+            }
+        }
+    }
 
     void OnLevelWasLoaded() {
         thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
         thinkText.text = "";
+        initColor = thinkText.color;
+        noAlpha = initColor;
+        noAlpha.a = 0.0f;
+        withAlpha = initColor;
+        withAlpha.a = 1.0f;
         // you can't forget yourself, grandpa!
         // like hell I can't
         Forget(gameObject);
     }
 
-        // Use this for initialization
+    // Use this for initialization
     void Awake () {
         thingToLookAt = null;
         if( thinkText != null) {
@@ -33,26 +98,14 @@ public class LookGrandpa : MonoBehaviour {
         } else {
             thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
             thinkText.text = "";
+            initColor = thinkText.color;
+            noAlpha = initColor;
+            noAlpha.a = 0.0f;
+            withAlpha = initColor;
+            withAlpha.a = 1.0f;
         }
         epu = GetComponent<EmotionProcessor>();
 	}
-		
-	// Update is called once per frame
-	void Update () {
-        if( thingToLookAt != null) {
-            float dist = Vector3.Distance(thingToLookAt.transform.position, grampsHead.transform.position); //this makes grandpa forget when things get too far away
-            if (dist > tooFar) {
-                Forget( thingToLookAt.gameObject );
-            }
-        }
-	}
-
-    void Think(LookTarget lt, Thought t) {
-        if (lt != null && lt.thoughts.Count > 0) {
-            var thought = lt.thoughts[Random.Range(0, lt.thoughts.Count)];
-            thinkText.text = thought.text;
-        }
-    }
 
     void Notice(GameObject go) {
         thingToLookAt = go.transform;
