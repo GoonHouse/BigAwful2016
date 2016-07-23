@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propName: Fishing Boat
+  propName: boat
   emotions:
   - name: stimulating
     major: 3
