@@ -125,6 +125,16 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<Sound Name="New Sound Voice" ID="{037AE8C1-D34C-42AF-A2D7-55B0EFE35D17}" ShortID="304898324" Type="Voice">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{82EE5EB1-A18C-4E43-A4D6-CA79FCAE30B5}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{EBE9FEA5-3852-4324-BB8A-FFDCA89FF5E3}"/>
+								</Reference>
+							</ReferenceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
