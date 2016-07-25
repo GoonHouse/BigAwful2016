@@ -1166,6 +1166,18 @@ Prefab:
       propertyPath: nextSceneName
       value: Genergreater
       objectReference: {fileID: 0}
+    - target: {fileID: 453980, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.24192192
+      objectReference: {fileID: 0}
+    - target: {fileID: 453980, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9702957
+      objectReference: {fileID: 0}
+    - target: {fileID: 453980, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
   m_IsPrefabParent: 0
