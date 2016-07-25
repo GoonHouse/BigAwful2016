@@ -689,7 +689,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476792, guid: 3c9956783330f734cb443df5cb595ca7, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c9956783330f734cb443df5cb595ca7, type: 2}
@@ -1054,7 +1054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22413450, guid: 49d8711d3cec31149a471e4b6e8a77dc, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22413450, guid: 49d8711d3cec31149a471e4b6e8a77dc, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1136,7 +1136,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432486, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400274, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
       propertyPath: isChangeFog
@@ -1354,6 +1354,10 @@ Prefab:
       propertyPath: thinkText
       value: 
       objectReference: {fileID: 501999723}
+    - target: {fileID: 490100, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
   m_IsPrefabParent: 0
@@ -1394,7 +1398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428864, guid: 60762d9e9fe350a4c92ae9517e4cdf09, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60762d9e9fe350a4c92ae9517e4cdf09, type: 2}
