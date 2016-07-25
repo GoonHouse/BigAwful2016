@@ -59,10 +59,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104950}
-  m_LocalRotation: {x: 0.25881907, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: 0.24192192, y: 0, z: 0, w: 0.9702957}
   m_LocalPosition: {x: 0, y: 16, z: -28}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 432486}
   m_RootOrder: 0
@@ -247,9 +247,20 @@ MonoBehaviour:
   - {fileID: 160206, guid: f1862929407e8ae4abd9368f3ecdc8d4, type: 2}
   - {fileID: 171920, guid: d6e6708553d0fe54bb5df426fd385deb, type: 2}
   - {fileID: 187250, guid: 7257f76ddaf7db1409a37ee9c290c24c, type: 2}
-  crazyDecorationPhotos: []
-  crazyDecorationFloor: []
-  crazyDecorationOversize: []
+  crazyDecorationPhotos:
+  - {fileID: 145596, guid: 34102269ffadddd4eb0554d1d62aa83a, type: 2}
+  crazyDecorationFloor:
+  - {fileID: 101324, guid: dc7ff29db51a3514b9a6d9e47da845b2, type: 2}
+  - {fileID: 166248, guid: e5d7999fa7f95604ab86b164d242508e, type: 2}
+  - {fileID: 152530, guid: 7fff4159502fe24499788c33509c1401, type: 2}
+  crazyDecorationOversize:
+  - {fileID: 171920, guid: d6e6708553d0fe54bb5df426fd385deb, type: 2}
+  - {fileID: 189586, guid: 0dbf680fcc263774d970d0114ad84adc, type: 2}
+  - {fileID: 167520, guid: b636f1d723ae0c24ca8b8a9b39416816, type: 2}
+  - {fileID: 187250, guid: 7257f76ddaf7db1409a37ee9c290c24c, type: 2}
+  - {fileID: 160206, guid: f1862929407e8ae4abd9368f3ecdc8d4, type: 2}
+  - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
+  - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
 --- !u!124 &12442316
 Behaviour:
   m_ObjectHideFlags: 1
