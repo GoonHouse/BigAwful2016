@@ -276,6 +276,12 @@ public class Grandpa : MonoBehaviour {
             controller.SimpleMove(moveDirection * Time.deltaTime);
         } else {
             m_Animator.SetBool("Walking", !isWalking);
+
+            // finish translating the camera if TomR tries to break it when opening a door
+            if (Time.fixedTime <= cameraTurnStopTime) {
+                cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnDirection * cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
+            }
+
             // player not in control, lerp to position
             if ( moveTimeSpent <= moveTime && !doneMove ) {
                 moveTimeSpent += Time.deltaTime;
