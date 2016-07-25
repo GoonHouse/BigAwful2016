@@ -34,7 +34,11 @@ public class LookGrandpa : MonoBehaviour {
             var dex = Random.Range(0, lt.thoughts.Count);
             var thought = lt.thoughts[dex];
             thinkText.text = thought.text;
-            AkSoundEngine.PostEvent("think_"+lt.propName+"_"+dex, gameObject);
+            try {
+                AkSoundEngine.PostEvent("think_" + lt.propName + "_" + dex, gameObject);
+            } catch(System.Exception e) {
+                Debug.LogWarning(e);
+            }
         } else {
             Debug.LogError("YOU GOT ME ALL FUCKED UP. HOLD ON.");
         }

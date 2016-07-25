@@ -32,8 +32,16 @@ public class MonitorHeadLookBack : MonoBehaviour {
     }
 
     protected void rotateTowards(Vector3 to, Vector3 eyes) {
-        Quaternion lookRotation = Quaternion.LookRotation((to - myHead.transform.position).normalized);
-        Quaternion ahead = Quaternion.LookRotation((eyes - myHead.transform.position).normalized);
+        var doink = (to - myHead.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.identity;
+        if( doink != Vector3.zero) {
+            lookRotation = Quaternion.LookRotation(doink);
+        }
+        var dink = (eyes - myHead.transform.position).normalized;
+        Quaternion ahead = Quaternion.identity;
+        if( dink != Vector3.zero) {
+            ahead = Quaternion.LookRotation(dink);
+        }
         float diff = Quaternion.Dot(lookRotation, ahead);
         diff = Mathf.Abs(diff);
         if (diff > maxAngle) {
