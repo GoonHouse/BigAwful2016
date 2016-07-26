@@ -214,7 +214,27 @@ MonoBehaviour:
   propName: medicalreadout
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: "Don\u2019t you beep at me like that. The last confusing medical machine
+      that beeped at me like that didn\u2019t live to see tomorrow. Or live at all
+      for that matter. Robots aren\u2019t alive."
+    sound: {fileID: 0}
+  - text: That looks scary. Like a metal dragon or a spooky purse
+    sound: {fileID: 0}
+  - text: Yeah yeah, beep boop right back at you.
+    sound: {fileID: 0}
+  - text: I wonder what this button does! I... I should NOT have pressed that.
+    sound: {fileID: 0}
+  - text: "Come here shiny baby. Shhh, shhh. Stop your beep-y crying. Grandpappy\u2019s
+      here."
+    sound: {fileID: 0}
+  - text: This etch-a-sketch is drawing on its own!
+    sound: {fileID: 0}
+  - text: "This line look like a mountain, and a valley, and a mountain, and a valley,
+      and a mountain, and a valley, and a\u2026"
+    sound: {fileID: 0}
+  - text: What would happen if I unplugged this?
+    sound: {fileID: 0}
 --- !u!135 &13537126
 SphereCollider:
   m_ObjectHideFlags: 1

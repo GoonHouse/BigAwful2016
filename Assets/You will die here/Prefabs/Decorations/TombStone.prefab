@@ -121,7 +121,11 @@ MonoBehaviour:
   propName: tombstone
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: 'What is this doing here? '
+    sound: {fileID: 0}
+  - text: Now is not the time for a pizza.
+    sound: {fileID: 0}
 --- !u!135 &13581804
 SphereCollider:
   m_ObjectHideFlags: 1

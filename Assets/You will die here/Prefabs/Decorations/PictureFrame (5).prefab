@@ -121,7 +121,11 @@ MonoBehaviour:
   propName: pictureframe5
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: This baby is looking very sickly and grey.
+    sound: {fileID: 0}
+  - text: Have you seen my son? He looks like you but in color.
+    sound: {fileID: 0}
 --- !u!135 &13556846
 SphereCollider:
   m_ObjectHideFlags: 1

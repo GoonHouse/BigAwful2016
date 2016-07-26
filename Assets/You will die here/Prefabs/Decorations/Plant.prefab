@@ -126,6 +126,17 @@ MonoBehaviour:
   thoughts:
   - text: What an ugly plant
     sound: {fileID: 0}
+  - text: Tis the season!
+    sound: {fileID: 0}
+  - text: "When I was a wee lad, my papa would always take me out to the woods behind
+      our house to pick the best pine tree so we could cut it down for Christmas.
+      After several years I had grown tired of going out into the cold snow with him.
+      I remember the words very clearly that I said to him, \u201CI hate tromping
+      in the snow to cut down a tree we will just throw out in a few days!\u201D The
+      face my papa made when I uttered those words haunts me to this day. I could
+      see the soul crushing realization in his eyes that his boy was no longer a boy
+      but a young man. A young man tired of childish whimsy and no time for his father."
+    sound: {fileID: 0}
 --- !u!135 &13503364
 SphereCollider:
   m_ObjectHideFlags: 1

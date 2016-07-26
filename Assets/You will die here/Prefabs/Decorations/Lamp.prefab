@@ -128,7 +128,28 @@ MonoBehaviour:
   - name: respect_by_others
     need: 4
     strength: 0.5
-  thoughts: []
+  thoughts:
+  - text: "Who turned on the lights?! Oh, wait. That\u2019s just a baby sun."
+    sound: {fileID: 0}
+  - text: Excuse me lady, your hair is blinding me.
+    sound: {fileID: 0}
+  - text: I think this mop is upside down. And old. And shiny... This is not a mop.
+    sound: {fileID: 0}
+  - text: "Excuse me sir, I can\u2019t help but notice that you\u2019re shining exactly
+      where I want to look. Could ya stop that?"
+    sound: {fileID: 0}
+  - text: "If you put on a little weight, the boys might like ya. Sorry, I\u2019m
+      a little too old for you."
+    sound: {fileID: 0}
+  - text: Can you point me in the right direction? Your flashlight would make a great
+      pointer.
+    sound: {fileID: 0}
+  - text: "Ma\u2019am, you as skinny as a pole, loosen that corset. "
+    sound: {fileID: 0}
+  - text: "No, I am not hitting on you. I\u2019m married... Right?"
+    sound: {fileID: 0}
+  - text: How many lamps do I have? I think I could use one more.
+    sound: {fileID: 0}
 --- !u!135 &13528618
 SphereCollider:
   m_ObjectHideFlags: 1

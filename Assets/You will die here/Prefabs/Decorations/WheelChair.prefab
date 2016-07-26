@@ -122,7 +122,11 @@ MonoBehaviour:
   propName: wheelchair
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: Not you again! Get outta here!
+    sound: {fileID: 0}
+  - text: "Who need wheels when you\u2019ve got legs like th-AH! My back... "
+    sound: {fileID: 0}
 --- !u!135 &13579790
 SphereCollider:
   m_ObjectHideFlags: 1

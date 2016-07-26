@@ -133,7 +133,13 @@ MonoBehaviour:
   - name: family
     need: 3
     strength: 1
-  thoughts: []
+  thoughts:
+  - text: Fancy moves, young lady.
+    sound: {fileID: 0}
+  - text: Care to dance?
+    sound: {fileID: 0}
+  - text: What a pretty outfit. Who bought that for you?
+    sound: {fileID: 0}
 --- !u!135 &13535336
 SphereCollider:
   m_ObjectHideFlags: 1
