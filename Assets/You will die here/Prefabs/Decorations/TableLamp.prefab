@@ -125,6 +125,14 @@ MonoBehaviour:
   thoughts:
   - text: I love lamp
     sound: {fileID: 0}
+  - text: Hey sonny, is your mother around?
+    sound: {fileID: 0}
+  - text: So Sonny, Have I ever told you about the plant that was hungry?
+    sound: {fileID: 0}
+  - text: He needed a light snack.
+    sound: {fileID: 0}
+  - text: HA.
+    sound: {fileID: 0}
 --- !u!135 &13518500
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -125,6 +125,10 @@ MonoBehaviour:
   thoughts:
   - text: That's strange
     sound: {fileID: 0}
+  - text: Now is not the time for a shower.
+    sound: {fileID: 0}
+  - text: My coworkers really liked this thing. They need to work harder.
+    sound: {fileID: 0}
 --- !u!135 &13583424
 SphereCollider:
   m_ObjectHideFlags: 1

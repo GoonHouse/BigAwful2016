@@ -125,6 +125,11 @@ MonoBehaviour:
   thoughts:
   - text: I'd like to stay and have a drink
     sound: {fileID: 0}
+  - text: A whiskey would help ease my pains.
+    sound: {fileID: 0}
+  - text: "A sampling of some stools! Get it? I am such a jokester! My doctor didn\u2019t
+      like that joke when there was blood."
+    sound: {fileID: 0}
 --- !u!135 &13588340
 SphereCollider:
   m_ObjectHideFlags: 1

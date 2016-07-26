@@ -121,7 +121,12 @@ MonoBehaviour:
   propName: tv
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: I think the remote is under the cushion.
+    sound: {fileID: 0}
+  - text: These contraptions are too hard for people my age to understand. But not
+      me. Nope.
+    sound: {fileID: 0}
 --- !u!135 &13515504
 SphereCollider:
   m_ObjectHideFlags: 1

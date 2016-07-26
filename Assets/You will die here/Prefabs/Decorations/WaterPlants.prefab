@@ -236,7 +236,9 @@ MonoBehaviour:
   propName: waterplant
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: These taste just like the ones the fair had!
+    sound: {fileID: 0}
 --- !u!135 &13535006
 SphereCollider:
   m_ObjectHideFlags: 1

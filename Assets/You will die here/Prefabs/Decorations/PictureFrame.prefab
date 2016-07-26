@@ -133,7 +133,11 @@ MonoBehaviour:
   - name: family
     need: 3
     strength: 1
-  thoughts: []
+  thoughts:
+  - text: "It\u2019s way past your bedtime young man! Get outta there!"
+    sound: {fileID: 0}
+  - text: How did ya skadoo in there?
+    sound: {fileID: 0}
 --- !u!135 &13513734
 SphereCollider:
   m_ObjectHideFlags: 1

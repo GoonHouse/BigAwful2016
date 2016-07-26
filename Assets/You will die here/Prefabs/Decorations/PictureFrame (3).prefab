@@ -121,7 +121,11 @@ MonoBehaviour:
   propName: pictureframe3
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: She looked so beautiful that day.
+    sound: {fileID: 0}
+  - text: I wonder where these people are now.
+    sound: {fileID: 0}
 --- !u!135 &13556224
 SphereCollider:
   m_ObjectHideFlags: 1

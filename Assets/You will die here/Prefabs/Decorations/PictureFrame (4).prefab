@@ -121,7 +121,11 @@ MonoBehaviour:
   propName: pictureframe4
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: What a tiny kitchen! I wonder where she gets all those tiny forks!
+    sound: {fileID: 0}
+  - text: Are we baking a delicious pie, granny?
+    sound: {fileID: 0}
 --- !u!135 &13518282
 SphereCollider:
   m_ObjectHideFlags: 1
