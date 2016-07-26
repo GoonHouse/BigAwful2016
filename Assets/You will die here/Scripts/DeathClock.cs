@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class DeathClock : MonoBehaviour {
     public float timeToDie = 600.0f; // Ten Minutes
     public float remainingDeathLerp = 60.0f; // At one minute left, do weird lerp shit.
     public bool didNotTrigger = true;
+    public bool didDie = false;
     private UnityEngine.UI.Text timeText;
 
     void GetUI() {
@@ -19,7 +20,7 @@ public class DeathClock : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         GetUI();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,9 +36,11 @@ public class DeathClock : MonoBehaviour {
             //Mathf.Lerp(0.0f, 0.0f, timeToDie / remainingDeathLerp);
         }
 
-        if( timeToDie <= 0.0f) {
-            AkSoundEngine.PostEvent("grandpaDied", gameObject);
+        if( !didDie && timeToDie <= 0.0f ) {
             // We're fucking dead, yo.
+            var grandpa = GetComponent<Grandpa>();
+            grandpa.Die();
+            didDie = true;
         }
 
         timeText.text = timeToDie.FormatTime();

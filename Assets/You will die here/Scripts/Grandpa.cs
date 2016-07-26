@@ -100,6 +100,19 @@ public class Grandpa : MonoBehaviour {
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
     }
 
+    public void Die() {
+        Debug.LogWarning("WE FUCKING DIED");
+        whenDoneDo = DeathStage_Start;
+        moveTime = 0.1f;
+
+        startPos = transform.position;
+        startRot = character.transform.rotation;
+        inControl = false;
+        doneMove = false;
+        moveTarget = null;
+        moveTimeSpent = 0.0f;
+    }
+
     // How rude
     public void FocusOnKnob(Knob knob) {
         focusKnob = knob;
@@ -200,6 +213,66 @@ public class Grandpa : MonoBehaviour {
         grandpa.whenDoneDo = null;
     }
 
+    public static void DeathStage_Start(Grandpa grandpa) {
+        Debug.LogWarning("DEATH STARTED");
+        //AkSoundEngine.PostEvent("grandpaDied", grandpa.gameObject);
+        grandpa.m_Animator.SetBool("Dead", true);
+
+        var lg = grandpa.gameObject.GetComponentInChildren<LookGrandpa>();
+        lg.enabled = false;
+
+        var timeToShit = 5.0f;
+
+        grandpa.whenDoneDo = DeathStage_Out;
+        grandpa.moveTime = timeToShit;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+        
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        snap.color = Color.black;
+        snap.startDistance = 1.0f;
+        snap.endDistance = 4.0f;
+        snap.fov = 17.0f;
+        fc.Change(snap, timeToShit, timeToShit);
+
+        grandpa.isWalking = false;
+        grandpa.inControl = false;
+    }
+
+    public static void DeathStage_Out(Grandpa grandpa) {
+        Debug.LogWarning("WE OUTIE");
+        var timeToShit = 2.0f;
+
+        grandpa.whenDoneDo = DeathStage_Gone;
+        grandpa.moveTime = timeToShit;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+
+        var fc = Camera.main.GetComponent<FogController>();
+        var snap = fc.GetFogSnapshot();
+        snap.color = Color.black;
+        snap.startDistance = 0.0f;
+        snap.endDistance = 0.0f;
+        fc.Change(snap, timeToShit, timeToShit);
+
+        grandpa.isWalking = false;
+        grandpa.inControl = false;
+    }
+
+    public static void DeathStage_Gone(Grandpa grandpa) {
+        Debug.LogWarning("YEEHAW WE HERE");
+        grandpa.controller.enabled = true;
+        grandpa.isWalking = false;
+        grandpa.moveTime = 0.1f;
+        grandpa.moveTimeSpent = 0.0f;
+        grandpa.doneMove = false;
+
+        SceneManager.LoadScene("TheEnd");
+
+        grandpa.whenDoneDo = null;
+    }
+
     public void OnInMoveTarget() {
 
     }
@@ -232,6 +305,11 @@ public class Grandpa : MonoBehaviour {
 
             // Are we moving?
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
+
+            if (Input.GetKeyDown(KeyCode.R)) {
+                var dc = GetComponent<DeathClock>();
+                dc.timeToDie = 0.1f;
+            }
 
             if( Time.fixedTime <= cameraTurnStopTime ){
                 cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnDirection * cameraTurnAmount * Time.deltaTime) / cameraTurnRate);

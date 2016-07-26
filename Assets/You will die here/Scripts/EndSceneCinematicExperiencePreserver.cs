@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -30,6 +30,8 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         grandpa.skipFreeze = true;
         grandpa.UnFreeze();
         grandpa.transform.position = new Vector3(12.0f, 1.0f, 9.0f);
+        var animator = grandpa.GetComponentInChildren<Animator>();
+        animator.SetBool("Dead", false);
 
         var meshRenderers = grandpa.gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer mr in meshRenderers) {
@@ -61,6 +63,8 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         cameraHolder.transform.localRotation = rot;
 
         grandpa.cameraTargetDirection = 0.0f;
+        var lg = grandpa.gameObject.GetComponentInChildren<LookGrandpa>();
+        lg.enabled = true;
     }
         // Use this for initialization
     void Awake () {
