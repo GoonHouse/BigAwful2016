@@ -36,13 +36,15 @@ public class DeathClock : MonoBehaviour {
             //Mathf.Lerp(0.0f, 0.0f, timeToDie / remainingDeathLerp);
         }
 
-        if( !didDie && timeToDie <= 0.0f ) {
-            // We're fucking dead, yo.
-            var grandpa = GetComponent<Grandpa>();
-            grandpa.Die();
-            didDie = true;
+        if( !didDie ){
+            timeText.text = timeToDie.FormatTime();
+            if (timeToDie <= 0.0f) {
+                // We're fucking dead, yo.
+                var grandpa = GetComponent<Grandpa>();
+                grandpa.Die();
+                didDie = true;
+                timeText.text = "";
+            }
         }
-
-        timeText.text = timeToDie.FormatTime();
 	}
 }
