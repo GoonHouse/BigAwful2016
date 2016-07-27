@@ -235,7 +235,8 @@ Event	ID	Name			Wwise Object Path	Notes
 	4097746671	think_plant_7			\Default Work Unit\plant\think_plant_7	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	141767909	Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656	C:\Users\Topher\Documents\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656_C3E96754.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Footstep\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656		38716
-	238404047	door_buildup	C:\Users\Topher\Documents\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\door_buildup_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Door Buildup\door_buildup		505920
-	1018976445	door_unlock	C:\Users\Topher\Documents\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\door_unlock_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Door Unlock\door_unlock		153664
+	141767909	Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656	C:\Users\Tom\Documents\Awful\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656_C3E96754.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Footstep\Tennis shoe footsteps on wood jump_BLASTWAVEFX_02656		38716
+	629002316	Unlock	C:\Users\Tom\Documents\Awful\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\Unlock_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Door Unlock\Unlock		10208
+	885516937	Look	C:\Users\Tom\Documents\Awful\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\Look_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Think\Look		10208
+	893198729	Buildup	C:\Users\Tom\Documents\Awful\BigAwful2016\WwiseGrandpa\.cache\Windows\SFX\Buildup_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Sounds\Door Buildup\Buildup		100006
 
