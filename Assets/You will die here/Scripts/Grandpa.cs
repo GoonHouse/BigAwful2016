@@ -53,6 +53,9 @@ public class Grandpa : MonoBehaviour {
     public bool isFrozen = false;
 
     public bool skipFreeze = false;
+    public bool shouldDie = false;
+
+    private DeathClock dc;
 
     public void Freeze() {
         isFrozen = true;
@@ -100,7 +103,7 @@ public class Grandpa : MonoBehaviour {
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
     }
 
-    public void Die() {
+    public void ActuallyDie() {
         Debug.LogWarning("WE FUCKING DIED");
         whenDoneDo = DeathStage_Start;
         moveTime = 0.1f;
@@ -111,6 +114,10 @@ public class Grandpa : MonoBehaviour {
         doneMove = false;
         moveTarget = null;
         moveTimeSpent = 0.0f;
+    }
+
+    public void Die() {
+        shouldDie = true;
     }
 
     // How rude
@@ -290,6 +297,7 @@ public class Grandpa : MonoBehaviour {
     void Start() {
         m_Animator = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
+        dc = GetComponent<DeathClock>();
         character = GameObject.Find("GrandFatherContainmentUnit");
 		cameraHolder = GameObject.Find ("CameraHolder");
         cameraTurnStopTime = Time.fixedTime-1.0f;
@@ -351,6 +359,12 @@ public class Grandpa : MonoBehaviour {
             // Cancel gravity, move to position.
             //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
             controller.SimpleMove(moveDirection * Time.deltaTime);
+
+            // Consider our own mortality.
+            dc.Update();
+            if ( shouldDie ){
+                ActuallyDie();
+            }
         } else {
             m_Animator.SetBool("Walking", !isWalking);
 
