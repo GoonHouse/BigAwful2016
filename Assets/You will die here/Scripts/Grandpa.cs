@@ -299,17 +299,16 @@ public class Grandpa : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            var dc = GetComponent<DeathClock>();
+            dc.timeToDie = 0.1f;
+        }
         if ( inControl ){
             float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
             float moveVertical = Input.GetAxis("Vertical") * mitigation;
 
             // Are we moving?
             m_Animator.SetBool("Walking", (moveVertical == 0 && moveHorizontal == 0));
-
-            if (Input.GetKeyDown(KeyCode.R)) {
-                var dc = GetComponent<DeathClock>();
-                dc.timeToDie = 0.1f;
-            }
 
             if( Time.fixedTime <= cameraTurnStopTime ){
                 cameraHolder.transform.RotateAround(transform.position, Vector3.up, (cameraTurnDirection * cameraTurnAmount * Time.deltaTime) / cameraTurnRate);
