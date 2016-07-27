@@ -361,7 +361,7 @@ public class Grandpa : MonoBehaviour {
             controller.SimpleMove(moveDirection * Time.deltaTime);
 
             // Consider our own mortality.
-            dc.Update();
+            dc.SecretUpdate();
             if ( shouldDie ){
                 ActuallyDie();
             }

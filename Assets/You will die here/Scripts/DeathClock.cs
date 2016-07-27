@@ -23,7 +23,7 @@ public class DeathClock : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	public void Update () {
+	public void SecretUpdate () {
         timeToDie -= Time.deltaTime;
 
         if( timeToDie <= remainingDeathLerp) {
