@@ -100,6 +100,8 @@ public class Sanity : MonoBehaviour {
         // Increase the number of floors we've traversed.
         ascentions++;
 
+        Debug.Log("LOOKED AT: " + epu.thingsSeen + "/" + rg.spawnedFurniture + "(" + (epu.thingsSeen / rg.spawnedFurniture) + ")");
+
         if( ascentions > 0 ){
             // We got to level 2.
 

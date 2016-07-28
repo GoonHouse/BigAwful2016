@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FloorMaker : MonoBehaviour {
@@ -124,7 +124,6 @@ public class FloorMaker : MonoBehaviour {
             tilesLeft--;
             rg.SpawnPart("Floor", writeHead);
         } else {
-            Debug.Log("GREATOR HAS: " + rg.rooms.Count);
             Destroy(gameObject);
         }
     }

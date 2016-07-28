@@ -39,6 +39,10 @@ public class RoomGenergreater : MonoBehaviour {
     private List<float> roomDistances = new List<float>();
     private float maxDistanceFromOrigin = 0.0f;
     private float sumOfDistancesFromOrigin = 0.0f;
+    private int maxTileRunners = 0;
+
+    public int totalSpawnedFurniture = 0;
+    public int spawnedFurniture = 0;
 
     void OnLevelWasLoaded() {
         rooms = new Dictionary<string, RoomObject>();
@@ -48,11 +52,15 @@ public class RoomGenergreater : MonoBehaviour {
         worldMin = new Vector2();
         worldMax = new Vector2();
         tileRunners = 0;
+        maxTileRunners = 0;
+        totalSpawnedFurniture += spawnedFurniture;
+        spawnedFurniture = 0;
         isDone = false;
     }
 
     public void NewTileRunner() {
         tileRunners++;
+        maxTileRunners++;
     }
 
     public void AnalyzeRooms() {
@@ -81,6 +89,8 @@ public class RoomGenergreater : MonoBehaviour {
             tileRunners--;
         }
         if ( tileRunners <= 0 ) {
+            Debug.Log("TOTAL RUNNERS THIS FLOOR: " + maxTileRunners);
+            Debug.Log("FINAL NUMBER OF ROOMS: " + rooms.Count);
             tileRunners = 0;
             AnalyzeRooms();
             EnforceDarkRooms();
@@ -387,10 +397,13 @@ public class RoomGenergreater : MonoBehaviour {
         // Actually spawn the object.
         var go = Instantiate(prefab, parent.transform.position, parent.transform.rotation) as GameObject;
         go.transform.SetParent(parent.transform, true);
+
         //go.transform.localPosition = pos;
         //go.transform.rotation = GameObject.Find("World/Rooms").transform.rotation;
 
         //go.name = coord + " " + partPath;
+
+        spawnedFurniture++;
 
         return go;
     }
