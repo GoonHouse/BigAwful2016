@@ -97,6 +97,7 @@ GameObject:
   - 143: {fileID: 14302576}
   - 114: {fileID: 11410604}
   - 114: {fileID: 11470546}
+  - 114: {fileID: 11471344}
   m_Layer: 0
   m_Name: GrampsHolder
   m_TagString: Untagged
@@ -916,6 +917,7 @@ MonoBehaviour:
   spawnPos: {x: 0, y: 50, z: 0}
   isFrozen: 0
   skipFreeze: 0
+  shouldDie: 0
 --- !u!114 &11440234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -954,6 +956,7 @@ MonoBehaviour:
   targets: []
   emotions: []
   needs: []
+  thingsSeen: 0
 --- !u!114 &11470546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -968,6 +971,22 @@ MonoBehaviour:
   timeToDie: 600
   remainingDeathLerp: 60
   didNotTrigger: 1
+  didDie: 0
+--- !u!114 &11471344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea611f1f0fc6e6c49bf67567115958d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ascentions: -1
+  tileGrowthRate: 3
+  minRadiusGrowth: 1.33
+  maxRadiusGrowth: 1.44
 --- !u!114 &11477056
 MonoBehaviour:
   m_ObjectHideFlags: 1
