@@ -912,12 +912,16 @@ MonoBehaviour:
   moveTime: 1
   moveTimeSpent: 0
   mitigation: 1
-  timesToSnapY: 100
+  timesToSnapY: 10
   timesSnappedY: 0
   spawnPos: {x: 0, y: 50, z: 0}
   isFrozen: 0
   skipFreeze: 0
   shouldDie: 0
+  totalTimeInControl: 0
+  totalTimeNotMoving: 0
+  timeInControl: 0
+  timeNotMoving: 0
 --- !u!114 &11440234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -956,6 +960,7 @@ MonoBehaviour:
   targets: []
   emotions: []
   needs: []
+  totalThingsSeen: 0
   thingsSeen: 0
 --- !u!114 &11470546
 MonoBehaviour:
@@ -987,6 +992,7 @@ MonoBehaviour:
   tileGrowthRate: 3
   minRadiusGrowth: 1.33
   maxRadiusGrowth: 1.44
+  minSlothRatio: 0.8
 --- !u!114 &11477056
 MonoBehaviour:
   m_ObjectHideFlags: 1
