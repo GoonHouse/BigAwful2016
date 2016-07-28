@@ -55,6 +55,8 @@ public class Grandpa : MonoBehaviour {
     public bool skipFreeze = false;
     public bool shouldDie = false;
 
+    public float totalTimeInControl = 0.0f;
+    public float totalTimeNotMoving = 0.0f;
     public float timeInControl = 0.0f;
     public float timeNotMoving = 0.0f;
 
@@ -103,6 +105,12 @@ public class Grandpa : MonoBehaviour {
             fc.Change(snap, 3.0f, 3.0f);
             lastGoodPos = spawnPos;
         }
+
+        // Reset stats used for generation.
+        totalTimeInControl += timeInControl;
+        totalTimeNotMoving += timeNotMoving;
+        timeInControl = 0.0f;
+        timeNotMoving = 0.0f;
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
     }
 
