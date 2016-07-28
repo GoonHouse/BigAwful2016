@@ -11,11 +11,6 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
     private GameObject title;
     private GameObject titleAnchor;
 
-    void OnLevelWasLoaded() {
-        ThinkYeah();
-        God.main.UploadLog();
-    }
-
     void ThinkYeah() {
         deadGrandpa = GameObject.Find("DeadGrandpa");
         grandpa = GameObject.Find("GrampsHolder").GetComponent<Grandpa>();
@@ -65,13 +60,14 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         grandpa.cameraTargetDirection = 0.0f;
         var lg = grandpa.gameObject.GetComponentInChildren<LookGrandpa>();
         lg.enabled = true;
+
+        var epu = grandpa.gameObject.GetComponentInChildren<EmotionProcessor>();
+        epu.Analyze();
+
+        God.main.UploadLog();
     }
         // Use this for initialization
     void Awake () {
-        ThinkYeah();
-    }
-
-    void Start() {
         ThinkYeah();
     }
 	

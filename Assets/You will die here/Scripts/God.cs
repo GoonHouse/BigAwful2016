@@ -46,14 +46,19 @@ public class HasteResponse : System.Object {
     }
 
     public void UploadLog() {
-        SetClipboard("http://hastebin.com/" + HasteBin( runningLog ) + ".log");
+        StartCoroutine(HasteBin(runningLog));
     }
 
-    public string HasteBin(string doc){
-        byte[] pData = System.Text.Encoding.ASCII.GetBytes(doc.ToCharArray());
+    public IEnumerator HasteBin(string doc){
+        byte[] pData = System.Text.Encoding.ASCII.GetBytes(doc);
         WWW www = new WWW("http://hastebin.com/documents", pData);
-        var resp = JsonUtility.FromJson<HasteResponse>(www.bytes.ToString());
-        return resp.key;
+        while( !www.isDone ){
+            yield return www;
+        }
+        var data = System.Text.Encoding.ASCII.GetString(www.bytes);
+        Debug.Log(data);
+        var resp = JsonUtility.FromJson<HasteResponse>(data.Trim());
+        SetClipboard("http://hastebin.com/" + resp.key + ".log");
     }
 
     public static void SetClipboard(string text) {
