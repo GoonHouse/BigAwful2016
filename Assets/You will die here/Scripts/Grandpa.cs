@@ -425,17 +425,19 @@ public class Grandpa : MonoBehaviour {
 
         // No more floor grandpas.
         var pos =  transform.position;
-        if( pos.y < 0.0f) {
-            God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos);
+        if (controller.isGrounded && pos.y > 0.0f) {
+            timesSnappedY = 0;
+            lastGoodPos = pos;
+        } else {
+            God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos + " (" + timesSnappedY + "/" + timesToSnapY + ")");
             pos.y += Mathf.Abs(pos.y);
             transform.position = pos;
             timesSnappedY++;
             if( timesSnappedY >= timesToSnapY) {
+                God.main.LogWarning("TELEPORTING PLAYER BACK TO: " + lastGoodPos + " FROM " + pos);
                 transform.position = lastGoodPos;
+                timesSnappedY = 0;
             }
-        } else if( controller.isGrounded ) {
-            timesSnappedY = 0;
-            lastGoodPos = pos;
         }
     }
 
