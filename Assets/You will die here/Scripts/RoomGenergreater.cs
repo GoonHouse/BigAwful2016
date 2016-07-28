@@ -18,8 +18,8 @@ public class RoomGenergreater : MonoBehaviour {
 
     public int minDarkRooms = 1;
 
-    public float minDarkRoomRadius = 10.0f;
-    public float maxDarkRoomRadius = 80.0f;
+    public float minDarkRoomRadius = 0.625f; // 0.625f
+    public float maxDarkRoomRadius = 0.9375f; // 0.9375f
 
     public float chanceOfPhoto = 0.25f;
     public float chanceOfWallFloor = 0.33f;
@@ -36,9 +36,15 @@ public class RoomGenergreater : MonoBehaviour {
     public List<GameObject> crazyDecorationFloor;
     public List<GameObject> crazyDecorationOversize;
 
+    private List<float> roomDistances = new List<float>();
+    private float maxDistanceFromOrigin = 0.0f;
+    private float sumOfDistancesFromOrigin = 0.0f;
+
     void OnLevelWasLoaded() {
         rooms = new Dictionary<string, RoomObject>();
         walls = new Dictionary<string, WallObject>();
+        roomDistances = new List<float>();
+        maxDistanceFromOrigin = 0.0f;
         worldMin = new Vector2();
         worldMax = new Vector2();
         tileRunners = 0;
@@ -49,12 +55,34 @@ public class RoomGenergreater : MonoBehaviour {
         tileRunners++;
     }
 
+    public void AnalyzeRooms() {
+        foreach (KeyValuePair<string, RoomObject> item in rooms) {
+            var room = item.Value;
+
+            if (room.isWalkable) {
+                var dist = Vector2.Distance(Vector2.zero, room.pos);
+                roomDistances.Add(dist);
+
+                sumOfDistancesFromOrigin += dist;
+
+                if( dist > maxDistanceFromOrigin ){
+                    maxDistanceFromOrigin = dist;
+                }
+            }
+        }
+        var avg = sumOfDistancesFromOrigin / roomDistances.Count;
+        Debug.Log("MAX DISTANCE: " + maxDistanceFromOrigin + "; AVG DISTANCE: " + avg);
+        Debug.Log("MIN: " + (minDarkRoomRadius * maxDistanceFromOrigin));
+        Debug.Log("MAX: " + (maxDarkRoomRadius * maxDistanceFromOrigin));
+    }
+
     public void LessTileRunner() {
         if( tileRunners > 0) {
             tileRunners--;
         }
         if ( tileRunners <= 0 ) {
             tileRunners = 0;
+            AnalyzeRooms();
             EnforceDarkRooms();
             //DestroyRoomAt(God.NORTH + God.NORTH);
             //SpawnPart("BlackRoom", God.NORTH + God.NORTH);
@@ -93,7 +121,7 @@ public class RoomGenergreater : MonoBehaviour {
 
             if (room.isDarkRoom) {
                 var dist = Vector2.Distance(room.pos, Vector2.zero);
-                if ( dist > maxDarkRoomRadius || dist < minDarkRoomRadius ){
+                if ( dist > (maxDarkRoomRadius * maxDistanceFromOrigin) || dist < (minDarkRoomRadius * maxDistanceFromOrigin)  ){
                     Debug.LogWarning("ROOM OUT OF RANGE, " + room.pos);
                     badPoints.Add(room.pos);
                 } else {
@@ -107,7 +135,7 @@ public class RoomGenergreater : MonoBehaviour {
         Dictionary<string, Vector2> candidates = new Dictionary<string, Vector2>();
         if( numDarkRooms < minDarkRooms) {
             for( int d = 0; d <= 360; d++ ){
-                for( float i = minDarkRoomRadius; i < maxDarkRoomRadius; i++) {
+                for( float i = (minDarkRoomRadius * maxDistanceFromOrigin); i < (maxDarkRoomRadius * maxDistanceFromOrigin); i++) {
                     var loc = Vector2.zero.PointOnCircle(i, d);
                     var coord = God.Key(loc);
                     if (!candidates.ContainsKey(coord) && !rooms.ContainsKey(coord) && HasNeighbor(loc)) {
@@ -118,9 +146,6 @@ public class RoomGenergreater : MonoBehaviour {
             List<Vector2> possible = new List<Vector2>(candidates.Values);
             possible.Shuffle();
 
-            var roomsLeft = minDarkRooms - numDarkRooms;
-            var emergencyRooms = roomsLeft - possible.Count;
-            
             foreach( Vector2 pos in possible ) {
                 SpawnPart("BlackRoom", pos);
                 numDarkRooms++;
@@ -129,9 +154,17 @@ public class RoomGenergreater : MonoBehaviour {
                 }
             }
 
+            var roomsLeft = minDarkRooms - numDarkRooms;
+            var emergencyRooms = roomsLeft - possible.Count;
+
+            if( emergencyRooms > 0) {
+                Debug.LogWarning("everybody knows shit's fucked");
+            }
+
+            /*
             while( emergencyRooms > 0) {
                 Debug.LogWarning("CREATING EMERGENCY ROOMS");
-                var mag = Random.Range(minDarkRoomRadius, maxDarkRoomRadius);
+                var mag = Random.Range((minDarkRoomRadius * maxDistanceFromOrigin), (maxDarkRoomRadius * maxDistanceFromOrigin));
                 var rad = Vector2.zero.RandomCircle(mag);
                 // var dist = Vector2.Distance(rad, Vector2.zero);
 
@@ -143,6 +176,7 @@ public class RoomGenergreater : MonoBehaviour {
                     emergencyRooms--;
                 }
             }
+            */
         }
     }
 
