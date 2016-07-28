@@ -7,17 +7,20 @@ public class Sanity : MonoBehaviour {
     public float tileGrowthRate = 3.0f;
     public float minRadiusGrowth = 1.33f;
     public float maxRadiusGrowth = 1.44f;
+    public float minSlothRatio = 0.80f;
 
     private EmotionProcessor epu;
     private RoomGenergreater rg;
     private FloorMaker fm;
     private Corrupt c;
+    private Grandpa g;
 
     // Use this for initialization
     void Start() {
         epu = GetComponentInChildren<EmotionProcessor>();
         rg = FindObjectOfType<RoomGenergreater>();
         c = Camera.main.GetComponent<Corrupt>();
+        g = GetComponent<Grandpa>();
     }
 
     /*
@@ -104,6 +107,10 @@ public class Sanity : MonoBehaviour {
             fm = FindObjectOfType<FloorMaker>();
             if( fm ) {
                 fm.tilesLeft += Mathf.Pow(ascentions, tileGrowthRate);
+                var ratioOfMovement = (g.timeNotMoving / g.timeInControl);
+                if( ratioOfMovement <= minSlothRatio) {
+                    fm.tilesLeft *= ratioOfMovement;
+                }
             } else {
                 Debug.LogWarning("NO FUCKIN' FLOOR MAKER WHAT THE SHIT");
             }

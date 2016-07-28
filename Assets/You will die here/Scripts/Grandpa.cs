@@ -55,6 +55,9 @@ public class Grandpa : MonoBehaviour {
     public bool skipFreeze = false;
     public bool shouldDie = false;
 
+    public float timeInControl = 0.0f;
+    public float timeNotMoving = 0.0f;
+
     private DeathClock dc;
 
     public void Freeze() {
@@ -345,6 +348,8 @@ public class Grandpa : MonoBehaviour {
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= moveSpeed;
 
+                timeInControl += Time.deltaTime;
+
                 // Turn if we need to turn.
                 if (moveVertical != 0 || moveHorizontal != 0) {
                     lookDirection = new Vector3(-moveHorizontal, 0, -moveVertical);
@@ -352,6 +357,8 @@ public class Grandpa : MonoBehaviour {
                     float step = turnSpeed * Time.deltaTime;
                     var lookRot = Quaternion.LookRotation(lookDirection.normalized);
                     character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
+                } else {
+                    timeNotMoving += Time.deltaTime;
                 }
             } else {
                 moveDirection = Vector3.zero;
