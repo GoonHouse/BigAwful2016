@@ -107,6 +107,7 @@ public class Grandpa : MonoBehaviour {
         Debug.LogWarning("WE FUCKING DIED");
         whenDoneDo = DeathStage_Start;
         moveTime = 0.1f;
+        shouldDie = false;
 
         startPos = transform.position;
         startRot = character.transform.rotation;
