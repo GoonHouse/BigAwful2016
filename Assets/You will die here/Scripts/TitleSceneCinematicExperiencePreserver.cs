@@ -16,10 +16,11 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
     private Corrupt corrupt;
 
     void OnLevelWasLoaded() {
+        // This triggers corruption on every level that isn't the first one.
         corrupt.doCorrupt = true;
     }
 
-        // Use this for initialization
+    // Use this for initialization
     void Awake () {
         navs = new List<NavLine>( GameObject.Find("Rooms").GetComponentsInChildren<NavLine>() );
         grandpa = GameObject.Find("GrampsHolder").GetComponentInChildren<Grandpa>();

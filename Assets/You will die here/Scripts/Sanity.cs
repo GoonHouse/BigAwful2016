@@ -94,13 +94,17 @@ public class Sanity : MonoBehaviour {
 
     */
     // Process all our emotions and play with room generator settings.
-    void OnLevelWasLoaded() {
+    public void Ascend() {
         // Increase the number of floors we've traversed.
         ascentions++;
 
-        God.main.Log("LOOKED AT: " + epu.thingsSeen + "/" + rg.spawnedFurniture + "(" + (epu.thingsSeen / rg.spawnedFurniture) + ")");
+        God.main.Log(
+            "Entering Floor #" + ascentions +
+            "Things Seen: " + epu.thingsSeen + "/" + rg.spawnedFurniture + " (" + ((float)epu.thingsSeen / (float)rg.spawnedFurniture) + ")" +
+            "Time Spent Moving: " + g.timeNotMoving + "/" + g.timeInControl + " (" + (g.timeNotMoving / g.timeInControl) + ")"
+        );
 
-        if( ascentions > 0 ){
+        if ( ascentions > 0 ){
             // We got to level 2.
 
             // Get ahold of the FloorMakers
@@ -143,6 +147,21 @@ public class Sanity : MonoBehaviour {
             // corruptTime (increase for longer spells of corruption)
             // # these basically undo each-other
         }
+
+        FlushStats();
+    }
+
+    public void FlushStats() {
+        epu.totalThingsSeen += epu.thingsSeen;
+        epu.thingsSeen = 0;
+
+        g.totalTimeInControl += g.timeInControl;
+        g.totalTimeNotMoving += g.timeNotMoving;
+        g.timeInControl = 0.0f;
+        g.timeNotMoving = 0.0f;
+
+        rg.totalSpawnedFurniture += rg.spawnedFurniture;
+        rg.spawnedFurniture = 0;
     }
 
     // == EMOTION PROCESSING METHODS ==

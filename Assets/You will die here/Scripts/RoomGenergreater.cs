@@ -53,8 +53,6 @@ public class RoomGenergreater : MonoBehaviour {
         worldMax = new Vector2();
         tileRunners = 0;
         maxTileRunners = 0;
-        totalSpawnedFurniture += spawnedFurniture;
-        spawnedFurniture = 0;
         isDone = false;
     }
 

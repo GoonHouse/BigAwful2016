@@ -41,6 +41,7 @@ public class Grandpa : MonoBehaviour {
     private CharacterController controller;
     private GameObject character;
 	private GameObject cameraHolder;
+    private Sanity sanity;
 
     private Knob focusKnob;
     private OnDoneTarget whenDoneDo;
@@ -74,20 +75,20 @@ public class Grandpa : MonoBehaviour {
     }
 
     public void UnFreeze() {
-        isFrozen = false;
-        controller.enabled = true;
-        //var rb = GetComponent<Rigidbody>();
-        //rb.useGravity = true;
-        //rb.isKinematic = true;
-        inControl = true;
-        doneMove = true;
-        moveTarget = null;
+        if( shouldDie ){
+            isFrozen = false;
+            controller.enabled = true;
+            //var rb = GetComponent<Rigidbody>();
+            //rb.useGravity = true;
+            //rb.isKinematic = true;
+            inControl = true;
+            doneMove = true;
+            moveTarget = null;
+        }
     }
 
     void OnLevelWasLoaded() {
-        if( skipFreeze ){
-            God.main.LogError("EntranceJew forgot if this is ever used so it raises an error now.");
-        } else {
+        if( !skipFreeze ){
             moveTarget = null;
             Freeze();
             transform.position = spawnPos;
@@ -104,11 +105,6 @@ public class Grandpa : MonoBehaviour {
             lastGoodPos = spawnPos;
         }
 
-        // Reset stats used for generation.
-        totalTimeInControl += timeInControl;
-        totalTimeNotMoving += timeNotMoving;
-        timeInControl = 0.0f;
-        timeNotMoving = 0.0f;
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
     }
 
@@ -224,6 +220,7 @@ public class Grandpa : MonoBehaviour {
 
         var w = GameObject.FindObjectOfType<RoomGenergreater>();
 
+        grandpa.sanity.Ascend();
         SceneManager.LoadScene(w.nextSceneName);
 
         grandpa.whenDoneDo = null;
@@ -281,6 +278,7 @@ public class Grandpa : MonoBehaviour {
         grandpa.moveTimeSpent = 0.0f;
         grandpa.doneMove = false;
 
+        grandpa.sanity.Ascend();
         SceneManager.LoadScene("TheEnd");
 
         grandpa.whenDoneDo = null;
@@ -307,6 +305,7 @@ public class Grandpa : MonoBehaviour {
 		cameraHolder = GameObject.Find ("CameraHolder");
         cameraTurnStopTime = Time.fixedTime-1.0f;
         lastGoodPos = transform.position;
+        sanity = GetComponent<Sanity>();
         // If for any reason the player is not at the world origin or the camera isn't facing it, this will break. \o/
         //cameraOffset = Camera.main.transform.position;
     }

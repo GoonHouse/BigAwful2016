@@ -25,7 +25,7 @@ public class HasteResponse : System.Object {
         return loc.x.ToString() + "_" + loc.y.ToString();
     }
 
-    private string runningLog;
+    private string runningLog = "# YouWillDieHere.log";
 
     public void Log(string text) {
         Debug.Log(text);
@@ -56,7 +56,6 @@ public class HasteResponse : System.Object {
             yield return www;
         }
         var data = System.Text.Encoding.ASCII.GetString(www.bytes);
-        Debug.Log(data);
         var resp = JsonUtility.FromJson<HasteResponse>(data.Trim());
         SetClipboard("http://hastebin.com/" + resp.key + ".log");
     }

@@ -23,11 +23,6 @@ public class EmotionProcessor : MonoBehaviour {
 	
 	}
 
-    void OnLevelWasLoaded() {
-        totalThingsSeen += thingsSeen;
-        thingsSeen = 0;
-    }
-
     public void Analyze() {
         float masNoneScore, masPhysScore, masSafeScore, masLoveScore, masEsteemScore, masSelfScore;
         needScore.TryGetValue(MaslowNeed.None, out masNoneScore);
