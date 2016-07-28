@@ -15,6 +15,8 @@ public class EmotionProcessor : MonoBehaviour {
     public List<EmotionFragment> emotions = new List<EmotionFragment>();
     public List<NeedFragment> needs = new List<NeedFragment>();
 
+    public int thingsSeen = 0;
+
     // Use this for initialization
     void Start () {
 	
@@ -71,6 +73,9 @@ public class EmotionProcessor : MonoBehaviour {
     public bool Commit(LookTarget lt) {
         if (!targets.Contains(lt)) {
             targets.Add(lt);
+
+            thingsSeen++;
+
             foreach (EmotionFragment emotion in lt.emotions) {
                 emotions.Add(emotion);
 
