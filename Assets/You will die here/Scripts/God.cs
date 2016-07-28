@@ -92,7 +92,6 @@ public class God : MonoBehaviour {
 	}
 }
 
-
 public static class BeeCoExtensions {
 
 
@@ -114,6 +113,14 @@ public static class BeeCoExtensions {
     public static float Round(this float value, int digits = 2) {
         float mult = Mathf.Pow(10.0f, (float)digits);
         return Mathf.Round(value * mult) / mult;
+    }
+
+    public static float LerpOutExpo(float b, float e, float p) {
+        return (p == 0) ? b : (e-b) * Mathf.Pow(2, 10 * (p - 1)) + b;
+    }
+
+    public static float easeOutExpo(float t, float b, float c, float d) {
+        return (t == 0) ? b : c * Mathf.Pow(2, 10 * (t / d - 1)) + b;
     }
 
     public static string FormatTime(this float time) {

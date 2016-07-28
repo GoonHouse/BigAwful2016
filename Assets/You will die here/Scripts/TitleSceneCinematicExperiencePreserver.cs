@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,6 +9,7 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
     public bool  isChanging = true;
     public float timeToChange = 16.0f;
     public float currentTimeToChange = 0.0f;
+    public float timeToChangeBonusWait = 3.0f;
 
     private List<NavLine> navs;
     private Grandpa grandpa;
@@ -35,9 +36,9 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
         if (isChanging) {
             currentTimeToChange += Time.deltaTime;
             foreach( NavLine nav in navs) {
-                nav.mitigation = Mathf.LerpUnclamped(mitigationStart, mitigationEnd, currentTimeToChange / timeToChange);
+                nav.mitigation = Mathf.Lerp(mitigationStart, mitigationEnd, currentTimeToChange / timeToChange);
             }
-            grandpa.mitigation = Mathf.LerpUnclamped(mitigationStart, mitigationEnd, currentTimeToChange / timeToChange);
+            grandpa.mitigation = BeeCoExtensions.LerpOutExpo(mitigationStart, mitigationEnd, currentTimeToChange / timeToChange);
             if (currentTimeToChange >= timeToChange) {
                 currentTimeToChange = 0.0f;
                 isChanging = false;
@@ -45,7 +46,6 @@ public class TitleSceneCinematicExperiencePreserver : MonoBehaviour {
                     nav.mitigation = mitigationEnd;
                 }
                 grandpa.mitigation = mitigationEnd;
-                Debug.Log("YOU CAN MOVE NOW, YOU OLD COOT!");
             }
         }
 	}
