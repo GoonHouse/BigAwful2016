@@ -7,7 +7,12 @@ public enum Direction {
     North, East, South, West,
 }
 
-public class God : MonoBehaviour {
+[System.Serializable]
+public class HasteResponse : System.Object {
+    public string key;
+}
+
+ public class God : MonoBehaviour {
     public static God main;
 
     public static Vector2 NORTH = new Vector2(-1,  0);
@@ -18,6 +23,44 @@ public class God : MonoBehaviour {
     public static string Key(Vector2 loc) {
         loc = loc.Round(0);
         return loc.x.ToString() + "_" + loc.y.ToString();
+    }
+
+    private string runningLog;
+
+    public void Log(string text) {
+        Debug.Log(text);
+        runningLog += "\n" + text;
+        SetClipboard(runningLog);
+    }
+
+    public void LogWarning(string text) {
+        Debug.LogWarning(text);
+        runningLog += "\n[WARN]" + text;
+        SetClipboard(runningLog);
+    }
+
+    public void LogError(string text) {
+        Debug.LogError(text);
+        runningLog += "\n[ERROR]" + text;
+        SetClipboard(runningLog);
+    }
+
+    public void UploadLog() {
+        SetClipboard("http://hastebin.com/" + HasteBin( runningLog ) + ".log");
+    }
+
+    public string HasteBin(string doc){
+        byte[] pData = System.Text.Encoding.ASCII.GetBytes(doc.ToCharArray());
+        WWW www = new WWW("http://hastebin.com/documents", pData);
+        var resp = JsonUtility.FromJson<HasteResponse>(www.bytes.ToString());
+        return resp.key;
+    }
+
+    public static void SetClipboard(string text) {
+        TextEditor te = new TextEditor();
+        te.text = text;
+        te.SelectAll();
+        te.Copy();
     }
 
     public static Vector2 RandomDirection() {

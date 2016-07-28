@@ -49,7 +49,15 @@ public class EmotionProcessor : MonoBehaviour {
             needScore.TryGetValue(MaslowNeed.Esteem, out masEsteemScore);
             needScore.TryGetValue(MaslowNeed.Self_Actualization, out masSelfScore);
 
-            Debug.Log("MASLOW INDEX: \nSelf: " + masSelfScore + "\nEsteem: " + masEsteemScore + "\nLove: " + masLoveScore + "\nSafe: " + masSafeScore + "\nPhys: " + masPhysScore + "\nNone: " + masNoneScore);
+            God.main.Log(
+                "MASLOW INDEX: " +
+                "\nSelf: " + masSelfScore + 
+                "\nEsteem: " + masEsteemScore + 
+                "\nLove: " + masLoveScore + 
+                "\nSafe: " + masSafeScore + 
+                "\nPhys: " + masPhysScore + 
+                "\nNone: " + masNoneScore
+            );
         }
         if( Input.GetKeyDown(KeyCode.G)) {
             /* 
@@ -72,7 +80,16 @@ public class EmotionProcessor : MonoBehaviour {
             emotionScore.TryGetValue(MajorEmotions.Peaceful, out needPeaceScore);
             emotionScore.TryGetValue(MajorEmotions.Sad, out needSadScore);
 
-            Debug.Log("NEED INDEX: \nSad: " + needSadScore + "\nPeace: " + needPeaceScore + "\nPower: " + needPowerScore + "\nJoy: " + needJoyScore + "\nScared: " + needJoyScore + "\nScared: " + needScareScore + "\nMad: " + needMadScore + "\nNone: " + needNoneScore);
+            God.main.Log(
+                "NEED INDEX: " +
+                "\nSad: " + needSadScore +
+                "\nPeace: " + needPeaceScore + 
+                "\nPower: " + needPowerScore + 
+                "\nJoy: " + needJoyScore + 
+                "\nScared: " + needScareScore + 
+                "\nMad: " + needMadScore + 
+                "\nNone: " + needNoneScore
+            );
         }
 	}
 

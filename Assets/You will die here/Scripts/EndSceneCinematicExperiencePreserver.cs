@@ -12,8 +12,8 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
     private GameObject titleAnchor;
 
     void OnLevelWasLoaded() {
-        Debug.Log("Got here through natural means. Neat.");
         ThinkYeah();
+        God.main.UploadLog();
     }
 
     void ThinkYeah() {

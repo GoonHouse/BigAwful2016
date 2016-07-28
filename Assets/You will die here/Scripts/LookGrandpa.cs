@@ -34,13 +34,9 @@ public class LookGrandpa : MonoBehaviour {
             var dex = Random.Range(0, lt.thoughts.Count);
             var thought = lt.thoughts[dex];
             thinkText.text = thought.text;
-            try {
-                AkSoundEngine.PostEvent("think_" + lt.propName + "_" + dex, gameObject);
-            } catch(System.Exception e) {
-                Debug.LogWarning(e);
-            }
+            AkSoundEngine.PostEvent("think_" + lt.propName + "_" + dex, gameObject);
         } else {
-            Debug.LogError("YOU GOT ME ALL FUCKED UP. HOLD ON.");
+            God.main.LogError("YOU GOT ME ALL FUCKED UP. HOLD ON.");
         }
     }
 
@@ -159,7 +155,6 @@ public class LookGrandpa : MonoBehaviour {
         } else {
             rotateTowards(eyeTarget.transform.position, eyeTarget.transform.position);
         }
-		//transform.LookAt(thingToLookAt);
 	}
 
 	void OnCollisionEnter(Collision collision){

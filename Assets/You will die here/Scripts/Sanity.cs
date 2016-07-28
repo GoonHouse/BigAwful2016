@@ -5,8 +5,6 @@ public class Sanity : MonoBehaviour {
 
     public int ascentions = -1;
     public float tileGrowthRate = 3.0f;
-    public float minRadiusGrowth = 1.33f;
-    public float maxRadiusGrowth = 1.44f;
     public float minSlothRatio = 0.80f;
 
     private EmotionProcessor epu;
@@ -100,7 +98,7 @@ public class Sanity : MonoBehaviour {
         // Increase the number of floors we've traversed.
         ascentions++;
 
-        Debug.Log("LOOKED AT: " + epu.thingsSeen + "/" + rg.spawnedFurniture + "(" + (epu.thingsSeen / rg.spawnedFurniture) + ")");
+        God.main.Log("LOOKED AT: " + epu.thingsSeen + "/" + rg.spawnedFurniture + "(" + (epu.thingsSeen / rg.spawnedFurniture) + ")");
 
         if( ascentions > 0 ){
             // We got to level 2.
@@ -114,7 +112,7 @@ public class Sanity : MonoBehaviour {
                     fm.tilesLeft *= ratioOfMovement;
                 }
             } else {
-                Debug.LogWarning("NO FUCKIN' FLOOR MAKER WHAT THE SHIT");
+                God.main.LogWarning("NO FUCKIN' FLOOR MAKER WHAT THE SHIT");
             }
 
             // == EMOTION PROCESSOR FACTORS ==
@@ -139,15 +137,6 @@ public class Sanity : MonoBehaviour {
             // chanceOf[Photo/WallFloor/Floor/Oversize] (0-1 prop per anchor when decorating)
             // decoration[Photos/Floor/Oversize] (list of props to potentially spawn in each position)
             // crazyDecoration[Photos/Floor/Oversize] (list of props to populate regular spawnlist with due to sanity)
-
-            /*
-            if( rg ) {
-                rg.minDarkRoomRadius = Mathf.Pow(rg.minDarkRoomRadius, minRadiusGrowth);
-                rg.maxDarkRoomRadius = Mathf.Pow(rg.maxDarkRoomRadius, maxRadiusGrowth);
-            } else {
-                Debug.LogWarning("NO RG CALL FOR DAD");
-            }
-            */
 
             // == VISUAL CORRUPTION ==
             // corruptFactor (increase to make corruptions more frequent)

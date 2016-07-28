@@ -86,7 +86,7 @@ public class Grandpa : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         if( skipFreeze ){
-            Debug.LogError("EntranceJew forgot if this is ever used so it raises an error now.");
+            God.main.LogError("EntranceJew forgot if this is ever used so it raises an error now.");
         } else {
             moveTarget = null;
             Freeze();
@@ -425,7 +425,7 @@ public class Grandpa : MonoBehaviour {
         // No more floor grandpas.
         var pos =  transform.position;
         if( pos.y < 0.0f) {
-            Debug.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos);
+            God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos);
             pos.y += Mathf.Abs(pos.y);
             transform.position = pos;
             timesSnappedY++;

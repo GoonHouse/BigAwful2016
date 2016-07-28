@@ -79,7 +79,7 @@ public class RoomGenergreater : MonoBehaviour {
             }
         }
         var avg = sumOfDistancesFromOrigin / roomDistances.Count;
-        Debug.Log(
+        God.main.Log(
             "ROOM STATISTICS: " + rooms.Count +
             "\nTotal Runners: " + maxTileRunners +
             "\nFurthest Room: " + maxDistanceFromOrigin +
@@ -170,12 +170,11 @@ public class RoomGenergreater : MonoBehaviour {
             var emergencyRooms = roomsLeft - possible.Count;
 
             if( emergencyRooms > 0) {
-                Debug.LogWarning("DarkRoom Error: There were " + emergencyRooms + " remaining!");
+                God.main.LogWarning("DarkRoom Error: There were " + emergencyRooms + " remaining!");
             }
 
             /*
             while( emergencyRooms > 0) {
-                Debug.LogWarning("CREATING EMERGENCY ROOMS");
                 var mag = Random.Range((minDarkRoomRadius * maxDistanceFromOrigin), (maxDarkRoomRadius * maxDistanceFromOrigin));
                 var rad = Vector2.zero.RandomCircle(mag);
                 // var dist = Vector2.Distance(rad, Vector2.zero);
@@ -273,7 +272,7 @@ public class RoomGenergreater : MonoBehaviour {
     }
 
     public void EmergencyDoor(RoomObject room) {
-        Debug.LogWarning("EMERGENCY STATE: ATTEMPTING TO DETECT");
+        God.main.LogWarning("EmergencyDoors deployed @: " + room.pos);
         var doors = 0;
         if (!IsFree(room.pos + God.WEST)) {
             SpawnThing("DoorFrame", room.pos + God.WEST, "E");
@@ -292,7 +291,7 @@ public class RoomGenergreater : MonoBehaviour {
             doors++;
         }
         if( doors <= 0 ){
-            Debug.LogWarning("EMERGENCY FAILED I'M SORRY");
+            God.main.LogError("EmergencyDoors FAILED TO PLACE @: " + room.pos);
         }
     }
 
@@ -340,12 +339,12 @@ public class RoomGenergreater : MonoBehaviour {
                             // We spawned at least one door, so break.
                             break;
                         } else {
-                            Debug.LogError("THERE WAS NO FUCKING WALL AT " + coord);
+                            God.main.LogError("THERE WAS NO FUCKING WALL AT " + coord);
                         }
                     }
                 }
                 if( !didSpawn ) {
-                    Debug.LogError("COULDN'T FUCKIN PUT A DOOR ON " + God.Key(room.pos));
+                    God.main.LogError("COULDN'T FUCKIN PUT A DOOR ON " + God.Key(room.pos));
                 }
             }
         }
@@ -509,7 +508,6 @@ public class RoomGenergreater : MonoBehaviour {
         var coord = God.Key(loc) + "_" + dir;
 
         if (walls.ContainsKey(coord) || partName == null) {
-            Debug.LogWarning("EITHER " + coord + " ALREADY EXISTS OR " + partName + " ISN'T A PART!");
             return null;
         }
 
