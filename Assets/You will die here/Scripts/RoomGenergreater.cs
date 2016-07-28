@@ -79,9 +79,14 @@ public class RoomGenergreater : MonoBehaviour {
             }
         }
         var avg = sumOfDistancesFromOrigin / roomDistances.Count;
-        Debug.Log("MAX DISTANCE: " + maxDistanceFromOrigin + "; AVG DISTANCE: " + avg);
-        Debug.Log("MIN: " + (minDarkRoomRadius * maxDistanceFromOrigin));
-        Debug.Log("MAX: " + (maxDarkRoomRadius * maxDistanceFromOrigin));
+        Debug.Log(
+            "ROOM STATISTICS: " + rooms.Count +
+            "\nTotal Runners: " + maxTileRunners +
+            "\nFurthest Room: " + maxDistanceFromOrigin +
+            "\nAverage Room Distance: " + avg +
+            "\nMinimum DR Distance: " + (minDarkRoomRadius * maxDistanceFromOrigin) +
+            "\nMaximum DR Distance: " + (maxDarkRoomRadius * maxDistanceFromOrigin)
+        );
     }
 
     public void LessTileRunner() {
@@ -89,8 +94,6 @@ public class RoomGenergreater : MonoBehaviour {
             tileRunners--;
         }
         if ( tileRunners <= 0 ) {
-            Debug.Log("TOTAL RUNNERS THIS FLOOR: " + maxTileRunners);
-            Debug.Log("FINAL NUMBER OF ROOMS: " + rooms.Count);
             tileRunners = 0;
             AnalyzeRooms();
             EnforceDarkRooms();
@@ -132,7 +135,6 @@ public class RoomGenergreater : MonoBehaviour {
             if (room.isDarkRoom) {
                 var dist = Vector2.Distance(room.pos, Vector2.zero);
                 if ( dist > (maxDarkRoomRadius * maxDistanceFromOrigin) || dist < (minDarkRoomRadius * maxDistanceFromOrigin)  ){
-                    Debug.LogWarning("ROOM OUT OF RANGE, " + room.pos);
                     badPoints.Add(room.pos);
                 } else {
                     numDarkRooms++;
@@ -168,7 +170,7 @@ public class RoomGenergreater : MonoBehaviour {
             var emergencyRooms = roomsLeft - possible.Count;
 
             if( emergencyRooms > 0) {
-                Debug.LogWarning("everybody knows shit's fucked");
+                Debug.LogWarning("DarkRoom Error: There were " + emergencyRooms + " remaining!");
             }
 
             /*
@@ -550,7 +552,6 @@ public class RoomGenergreater : MonoBehaviour {
         var coord = God.Key(loc);
 
         if (rooms.ContainsKey(coord) || partName == null) {
-            Debug.LogWarning("EITHER " + coord + " ALREADY EXISTS OR " + partName + " ISN'T A PART!");
             return null;
         }
 

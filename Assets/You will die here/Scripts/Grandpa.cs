@@ -85,10 +85,8 @@ public class Grandpa : MonoBehaviour {
     }
 
     void OnLevelWasLoaded() {
-        Debug.Log("I'M IN A NEW SCENE YEHAW");
-        
         if( skipFreeze ){
-            Debug.Log("I was told to skip freezing so I did.");
+            Debug.LogError("EntranceJew forgot if this is ever used so it raises an error now.");
         } else {
             moveTarget = null;
             Freeze();
@@ -115,7 +113,6 @@ public class Grandpa : MonoBehaviour {
     }
 
     public void ActuallyDie() {
-        Debug.LogWarning("WE FUCKING DIED");
         whenDoneDo = DeathStage_Start;
         moveTime = 0.1f;
         shouldDie = false;
@@ -233,7 +230,6 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void DeathStage_Start(Grandpa grandpa) {
-        Debug.LogWarning("DEATH STARTED");
         //AkSoundEngine.PostEvent("grandpaDied", grandpa.gameObject);
         grandpa.m_Animator.SetBool("Dead", true);
 
@@ -260,7 +256,6 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void DeathStage_Out(Grandpa grandpa) {
-        Debug.LogWarning("WE OUTIE");
         var timeToShit = 2.0f;
 
         grandpa.whenDoneDo = DeathStage_Gone;
@@ -280,7 +275,6 @@ public class Grandpa : MonoBehaviour {
     }
 
     public static void DeathStage_Gone(Grandpa grandpa) {
-        Debug.LogWarning("YEEHAW WE HERE");
         grandpa.controller.enabled = true;
         grandpa.isWalking = false;
         grandpa.moveTime = 0.1f;
@@ -301,7 +295,6 @@ public class Grandpa : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             main = this;
         } else if (main != this) {
-            Debug.LogWarning("KILLED GRANDPA TO MAKE ROOM");
             DestroyImmediate(gameObject);
         }
     }
@@ -363,7 +356,10 @@ public class Grandpa : MonoBehaviour {
                     lookDirection = new Vector3(-moveHorizontal, 0, -moveVertical);
                     lookDirection = Quaternion.AngleAxis(cameraTargetDirection, Vector3.up) * lookDirection;
                     float step = turnSpeed * Time.deltaTime;
-                    var lookRot = Quaternion.LookRotation(lookDirection.normalized);
+                    var lookRot = Quaternion.identity;
+                    if( lookDirection.normalized != Vector3.zero) {
+                        lookRot = Quaternion.LookRotation(lookDirection.normalized);
+                    }
                     character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
                 } else {
                     timeNotMoving += Time.deltaTime;
