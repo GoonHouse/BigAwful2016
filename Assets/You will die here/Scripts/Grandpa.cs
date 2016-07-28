@@ -64,18 +64,20 @@ public class Grandpa : MonoBehaviour {
     private DeathClock dc;
 
     public void Freeze() {
-        isFrozen = true;
-        controller.enabled = false;
-        //var rb = GetComponent<Rigidbody>();
-        //rb.useGravity = false;
-        //rb.isKinematic = false;
-        inControl = false;
-        doneMove = true;
-        moveTarget = null;
+        if (!shouldDie) {
+            isFrozen = true;
+            controller.enabled = false;
+            //var rb = GetComponent<Rigidbody>();
+            //rb.useGravity = false;
+            //rb.isKinematic = false;
+            inControl = false;
+            doneMove = true;
+            moveTarget = null;
+        }
     }
 
     public void UnFreeze() {
-        if( shouldDie ){
+        if( !shouldDie ){
             isFrozen = false;
             controller.enabled = true;
             //var rb = GetComponent<Rigidbody>();

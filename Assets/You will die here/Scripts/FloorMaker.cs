@@ -111,8 +111,6 @@ public class FloorMaker : MonoBehaviour {
     public void OnTurnAround() {
         if( Random.value <= chanceOfBlackRoom ){
             rg.SpawnPart("BlackRoom", writeHead);
-        } else {
-            rg.SpawnPart("VoidRoom", writeHead);
         }
     }
     

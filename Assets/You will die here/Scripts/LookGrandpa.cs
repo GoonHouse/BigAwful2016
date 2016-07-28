@@ -16,7 +16,7 @@ public class LookGrandpa : MonoBehaviour {
     public bool didCommitYet = false;
 
     private EmotionProcessor epu;
-    private bool hasThought = false;
+    private bool hasThought = true;
     private bool fadeDone = false;
     private float timeToFadeIn = 0.5f;
     private float currentFadeTime = 0.0f;
