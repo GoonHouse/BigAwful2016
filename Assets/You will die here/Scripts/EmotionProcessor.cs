@@ -15,15 +15,21 @@ public class EmotionProcessor : MonoBehaviour {
     public List<EmotionFragment> emotions = new List<EmotionFragment>();
     public List<NeedFragment> needs = new List<NeedFragment>();
 
+    public int totalThingsSeen = 0;
     public int thingsSeen = 0;
 
     // Use this for initialization
     void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnLevelWasLoaded() {
+        totalThingsSeen += thingsSeen;
+        thingsSeen = 0;
+    }
+
+        // Update is called once per frame
+    void Update () {
 	    if( Input.GetKeyDown(KeyCode.F)) {
             /*
             public enum MaslowNeed {
