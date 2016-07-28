@@ -57,9 +57,7 @@ public class LookGrandpa : MonoBehaviour {
                 } else {
                     thinkText.color = withAlpha;
                     currentExposeTime += Time.deltaTime;
-                    if (currentExposeTime <= timeToExpose) {
-                        // i love you
-                    } else {
+                    if (currentExposeTime >= timeToExpose) {
                         fadeDone = true;
                         currentFadeTime = 0.0f;
                         currentExposeTime = 0.0f;
@@ -83,6 +81,10 @@ public class LookGrandpa : MonoBehaviour {
         thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
         thinkText.text = "";
         initColor = thinkText.color;
+        hasThought = false;
+        fadeDone = false;
+        currentFadeTime = 0.0f;
+        currentExposeTime = 0.0f;
         noAlpha = initColor;
         noAlpha.a = 0.0f;
         withAlpha = initColor;
@@ -102,6 +104,10 @@ public class LookGrandpa : MonoBehaviour {
             thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
             thinkText.text = "";
             initColor = thinkText.color;
+            hasThought = false;
+            fadeDone = false;
+            currentFadeTime = 0.0f;
+            currentExposeTime = 0.0f;
             noAlpha = initColor;
             noAlpha.a = 0.0f;
             withAlpha = initColor;
