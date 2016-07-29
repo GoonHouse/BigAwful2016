@@ -126,6 +126,13 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: I wonder where these people are now.
     sound: {fileID: 0}
+  - text: Was there no color that day?
+    sound: {fileID: 0}
+  - text: They made everyone wear the same colors as the bride and groom, even the
+      scenery!
+    sound: {fileID: 0}
+  - text: What a wonderful reception. (Lots of pretty women there.)
+    sound: {fileID: 0}
 --- !u!135 &13556224
 SphereCollider:
   m_ObjectHideFlags: 1

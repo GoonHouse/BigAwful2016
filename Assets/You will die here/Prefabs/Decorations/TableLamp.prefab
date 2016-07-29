@@ -131,7 +131,11 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: He needed a light snack.
     sound: {fileID: 0}
-  - text: HA.
+  - text: I had five of these in my bedroom.
+    sound: {fileID: 0}
+  - text: My favorite book to read under the lamp light was always a good spooky one.
+    sound: {fileID: 0}
+  - text: An hour before bed me and the missus would always read together in bed.
     sound: {fileID: 0}
 --- !u!135 &13518500
 SphereCollider:

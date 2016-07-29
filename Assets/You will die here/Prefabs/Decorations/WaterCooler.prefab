@@ -214,7 +214,24 @@ MonoBehaviour:
   propName: watercooler
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: Now is not the time for a shower.
+    sound: {fileID: 0}
+  - text: My coworkers really liked this thing. They need to work harder.
+    sound: {fileID: 0}
+  - text: These little paper cups will never quench my thirst!
+    sound: {fileID: 0}
+  - text: Bill, the man who restocks these is a really nice fellow. Bill had some
+      great stories. Like the time he went to the store to buy some milk and actually
+      got that fake soy milk stuff instead. He said he never tasted something so foul.
+      Man, that Bill. What a nice italiano.
+    sound: {fileID: 0}
+  - text: Many a sports talk was had around this thing.
+    sound: {fileID: 0}
+  - text: So how about that pig skins.
+    sound: {fileID: 0}
+  - text: Welcome to the watering hole. You come here to wet your whistle?
+    sound: {fileID: 0}
 --- !u!135 &13556528
 SphereCollider:
   m_ObjectHideFlags: 1

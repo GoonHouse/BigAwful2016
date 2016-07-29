@@ -361,6 +361,8 @@ MonoBehaviour:
   - text: "Ok, listen, kid. Me and you are getting out of this joint. You distract
       the guards, and I\u2019ll leave through the door."
     sound: {fileID: 0}
+  - text: What would happen if I unplugged this?
+    sound: {fileID: 0}
 --- !u!135 &13531978
 SphereCollider:
   m_ObjectHideFlags: 1

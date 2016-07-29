@@ -127,6 +127,13 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: "Who need wheels when you\u2019ve got legs like th-AH! My back... "
     sound: {fileID: 0}
+  - text: My old friend. May we never meet again.
+    sound: {fileID: 0}
+  - text: "These should be made to be more comfy if I\u2019m going to spend a lot
+      of time in one."
+    sound: {fileID: 0}
+  - text: Give me my cane any day.
+    sound: {fileID: 0}
 --- !u!135 &13579790
 SphereCollider:
   m_ObjectHideFlags: 1

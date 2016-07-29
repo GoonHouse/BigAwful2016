@@ -126,6 +126,12 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: "She loves me, she loves me not, she loves me, she loves me not, she \u2026 "
     sound: {fileID: 0}
+  - text: How did she get them to stay like that?
+    sound: {fileID: 0}
+  - text: Daisies were my favorite.
+    sound: {fileID: 0}
+  - text: I forgot where I put the one she gave me.
+    sound: {fileID: 0}
 --- !u!135 &13564360
 SphereCollider:
   m_ObjectHideFlags: 1

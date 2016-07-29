@@ -140,6 +140,10 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: What a pretty outfit. Who bought that for you?
     sound: {fileID: 0}
+  - text: You call that a silly pose? I wrote the book on silly poses!
+    sound: {fileID: 0}
+  - text: I knew a woman who looked like you.
+    sound: {fileID: 0}
 --- !u!135 &13535336
 SphereCollider:
   m_ObjectHideFlags: 1

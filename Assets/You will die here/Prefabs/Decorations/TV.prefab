@@ -127,6 +127,15 @@ MonoBehaviour:
   - text: These contraptions are too hard for people my age to understand. But not
       me. Nope.
     sound: {fileID: 0}
+  - text: I wonder if the Dick Van Dyke show is on.
+    sound: {fileID: 0}
+  - text: The wife would always take the tv remote away from me when Lucy was on.
+      I never hated a woman more.
+    sound: {fileID: 0}
+  - text: "\u201CWinston tastes good like a cigarette should\u201D"
+    sound: {fileID: 0}
+  - text: Those Flintstones are a laugh riot!
+    sound: {fileID: 0}
 --- !u!135 &13515504
 SphereCollider:
   m_ObjectHideFlags: 1

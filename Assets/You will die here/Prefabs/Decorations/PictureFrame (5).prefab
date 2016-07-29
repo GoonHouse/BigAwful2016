@@ -126,6 +126,12 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Have you seen my son? He looks like you but in color.
     sound: {fileID: 0}
+  - text: "Who\u2019s a chubby little baby!?"
+    sound: {fileID: 0}
+  - text: You reminded me I needed a nap.
+    sound: {fileID: 0}
+  - text: "Look at those tiny hands, couldn\u2019t wrap them around my finger."
+    sound: {fileID: 0}
 --- !u!135 &13556846
 SphereCollider:
   m_ObjectHideFlags: 1

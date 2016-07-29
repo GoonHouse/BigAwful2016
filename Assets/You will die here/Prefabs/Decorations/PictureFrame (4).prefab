@@ -126,6 +126,13 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Are we baking a delicious pie, granny?
     sound: {fileID: 0}
+  - text: "Where\u2019s grandpa, granny? Is he out in his shed again?"
+    sound: {fileID: 0}
+  - text: My grandma would always take care of me when I was sick while my pa and
+      ma were working.
+    sound: {fileID: 0}
+  - text: Granny was always good at crosswords.
+    sound: {fileID: 0}
 --- !u!135 &13518282
 SphereCollider:
   m_ObjectHideFlags: 1

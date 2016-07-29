@@ -126,6 +126,16 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Now is not the time for a pizza.
     sound: {fileID: 0}
+  - text: Always prefered cremation.
+    sound: {fileID: 0}
+  - text: "I wanted my tombstone to say \u201Csexy granpap\u201D but the missus would
+      not allow that."
+    sound: {fileID: 0}
+  - text: Visiting the National Cemetery to see my old war buddies would always bring
+      a tear to my eye.
+    sound: {fileID: 0}
+  - text: "I can\u2019t make out what it says."
+    sound: {fileID: 0}
 --- !u!135 &13581804
 SphereCollider:
   m_ObjectHideFlags: 1

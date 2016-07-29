@@ -138,6 +138,12 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: How did ya skadoo in there?
     sound: {fileID: 0}
+  - text: This mirror makes me look 50, erm 60, uh 70 years younger!
+    sound: {fileID: 0}
+  - text: "I think it\u2019s framed in oak."
+    sound: {fileID: 0}
+  - text: "I remember this day\u2026 It was a friday."
+    sound: {fileID: 0}
 --- !u!135 &13513734
 SphereCollider:
   m_ObjectHideFlags: 1
