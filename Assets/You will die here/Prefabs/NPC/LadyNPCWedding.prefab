@@ -184,23 +184,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &158442
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 458572}
-  - 33: {fileID: 3329194}
-  - 23: {fileID: 2309332}
-  m_Layer: 0
-  m_Name: GrampsBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &159582
 GameObject:
   m_ObjectHideFlags: 1
@@ -236,24 +219,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &185626
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 420242}
-  - 33: {fileID: 3359294}
-  - 23: {fileID: 2371986}
-  - 65: {fileID: 6537994}
-  m_Layer: 0
-  m_Name: LadyBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &401642
 Transform:
   m_ObjectHideFlags: 1
@@ -347,19 +312,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 484510}
   m_RootOrder: 1
---- !u!4 &420242
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 483392}
-  m_RootOrder: 2
 --- !u!4 &439686
 Transform:
   m_ObjectHideFlags: 1
@@ -372,7 +324,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 483392}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &440450
 Transform:
   m_ObjectHideFlags: 1
@@ -400,19 +352,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 484510}
   m_RootOrder: 5
---- !u!4 &458572
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158442}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 483392}
-  m_RootOrder: 1
 --- !u!4 &483392
 Transform:
   m_ObjectHideFlags: 1
@@ -425,8 +364,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 405726}
-  - {fileID: 458572}
-  - {fileID: 420242}
   - {fileID: 439686}
   m_Father: {fileID: 440450}
   m_RootOrder: 0
@@ -500,32 +437,6 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 5c391c2d8410fee4db7ae1b7a84ad917, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!23 &2309332
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158442}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 824100eae87ef6e4684c54ca759cf25a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -723,32 +634,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2371986
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185626}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: be6b2e9875d1c424d978dc9b7872f6c7, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!33 &3300590
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -784,13 +669,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150962}
   m_Mesh: {fileID: 4300000, guid: 4d6931f154a7c0445ac27978c1d80e4e, type: 3}
---- !u!33 &3329194
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158442}
-  m_Mesh: {fileID: 4300000, guid: 3ede1f6a2702ce1498af5fc08092c671, type: 3}
 --- !u!33 &3331326
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -805,13 +683,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155732}
   m_Mesh: {fileID: 4300000, guid: 03bea05d2845a8443a43520855bfbf07, type: 3}
---- !u!33 &3359294
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185626}
-  m_Mesh: {fileID: 4300000, guid: 289ceb4c9617c3a4caea8ba40d5f3bf1, type: 3}
 --- !u!33 &3360910
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -826,18 +697,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102556}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6537994
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185626}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000004, y: 1.5, z: 0.75000024}
-  m_Center: {x: 0.000000059604645, y: 0.75, z: -0.00000010430813}
 --- !u!65 &6582656
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -912,11 +771,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propName: Lady
+  propName: Bride
   emotions: []
   needs: []
   thoughts:
-  - text: Getting Married
+  - text: Brings a tear to my eye.
+    sound: {fileID: 0}
+  - text: She looked beautiful that day.
+    sound: {fileID: 0}
+  - text: "She said she wanted a pink dress but her mother and I made her pick white.
+      It\u2019s more traditional."
+    sound: {fileID: 0}
+  - text: "Having a wedding ain\u2019t no big deal."
+    sound: {fileID: 0}
+  - text: You seem busy but can you show me the right way?
     sound: {fileID: 0}
 --- !u!135 &13513430
 SphereCollider:

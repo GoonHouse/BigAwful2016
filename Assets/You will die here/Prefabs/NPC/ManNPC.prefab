@@ -558,11 +558,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb8b9b284dfd3f4d90199d9258007a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propName: Lady
+  propName: Man
   emotions: []
   needs: []
   thoughts:
-  - text: I used to know a girl like that
+  - text: "Say something. I ain\u2019t no spook, ghost, or spectre! "
+    sound: {fileID: 0}
+  - text: "It\u2019s like looking into a mirror. "
+    sound: {fileID: 0}
+  - text: "Tag! You\u2019re it! "
+    sound: {fileID: 0}
+  - text: That you, good buddy?
+    sound: {fileID: 0}
+  - text: Take it easy, young man.
+    sound: {fileID: 0}
+  - text: "What was this guy\u2019s name again? Bingle? Bangle? Bangalo? I\u2019ll
+      get it right some day."
     sound: {fileID: 0}
 --- !u!114 &11447564
 MonoBehaviour:
@@ -582,6 +593,7 @@ MonoBehaviour:
   - {fileID: 132590, guid: d95660942cc1ad540a0877c28e3dc93f, type: 2}
   - {fileID: 132590, guid: 74c6f0e7dc5dc254890d449ce7c9f709, type: 2}
   chanceOfSpawn: 0.25
+  doScale: 0
 --- !u!114 &11460098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -596,6 +608,7 @@ MonoBehaviour:
   possibleSpawns:
   - {fileID: 196694, guid: 93d8ffd6bd241de449d6fc606e80f1c6, type: 2}
   chanceOfSpawn: 0.1
+  doScale: 0
 --- !u!114 &11464204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -614,6 +627,7 @@ MonoBehaviour:
   - {fileID: 188116, guid: ce3198b484ccafb42bbb22cf634a75f3, type: 2}
   - {fileID: 188116, guid: 3744287bc4415ef42a429458b132d9c6, type: 2}
   chanceOfSpawn: 1
+  doScale: 0
 --- !u!114 &11478086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -633,6 +647,7 @@ MonoBehaviour:
   - {fileID: 111038, guid: 6a9da19ea8b8bb44cb337a9e4e68ac96, type: 2}
   - {fileID: 111038, guid: be4d334f4a48e39478bef9ef91351b6f, type: 2}
   chanceOfSpawn: 0.9
+  doScale: 0
 --- !u!135 &13543152
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -17,23 +17,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &108378
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 478252}
-  - 33: {fileID: 3357864}
-  - 23: {fileID: 2369116}
-  m_Layer: 0
-  m_Name: GrampsBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &109770
 GameObject:
   m_ObjectHideFlags: 1
@@ -305,10 +288,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159600}
-  m_LocalRotation: {x: 0, y: 0.60898614, z: 0, w: 0.7931809}
-  m_LocalPosition: {x: -1.4901527, y: 0, z: -1.2322056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 75.0325, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 476724}
   m_Father: {fileID: 0}
@@ -325,23 +308,9 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 450860}
-  - {fileID: 478252}
   - {fileID: 494380}
   m_Father: {fileID: 473444}
   m_RootOrder: 0
---- !u!4 &478252
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 476724}
-  m_RootOrder: 1
 --- !u!4 &478960
 Transform:
   m_ObjectHideFlags: 1
@@ -386,7 +355,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 476724}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &495178
 Transform:
   m_ObjectHideFlags: 1
@@ -556,32 +525,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!23 &2369116
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108378}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 824100eae87ef6e4684c54ca759cf25a, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!23 &2371032
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -676,13 +619,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106744}
   m_Mesh: {fileID: 4300000, guid: 997de6f8fb9411d41bff027ba13b55a2, type: 3}
---- !u!33 &3357864
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108378}
-  m_Mesh: {fileID: 4300000, guid: 3ede1f6a2702ce1498af5fc08092c671, type: 3}
 --- !u!33 &3365192
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -775,7 +711,17 @@ MonoBehaviour:
   emotions: []
   needs: []
   thoughts:
-  - text: I had a good time here
+  - text: I had a good time here.
+    sound: {fileID: 0}
+  - text: Such a nice pretty lady.
+    sound: {fileID: 0}
+  - text: Are you waiting for someone?
+    sound: {fileID: 0}
+  - text: "You aren\u2019t here with me, are you? I\u2019m alone."
+    sound: {fileID: 0}
+  - text: Care for an escort?
+    sound: {fileID: 0}
+  - text: You gussy up real well, miss.
     sound: {fileID: 0}
 --- !u!135 &13578730
 SphereCollider:

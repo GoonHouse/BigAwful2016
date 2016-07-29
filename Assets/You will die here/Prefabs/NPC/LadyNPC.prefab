@@ -564,6 +564,7 @@ MonoBehaviour:
   - {fileID: 109878, guid: d13584492de0e6249a52ba88562dfbd1, type: 2}
   - {fileID: 109878, guid: 3789714416f5ff444966a4cf679ac298, type: 2}
   chanceOfSpawn: 1
+  doScale: 0
 --- !u!114 &11484528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,6 +579,7 @@ MonoBehaviour:
   possibleSpawns:
   - {fileID: 186160, guid: d8d3e5b1d882ab44da7946d035acdd39, type: 2}
   chanceOfSpawn: 0.1
+  doScale: 0
 --- !u!114 &11488038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,6 +594,7 @@ MonoBehaviour:
   possibleSpawns:
   - {fileID: 196694, guid: 93d8ffd6bd241de449d6fc606e80f1c6, type: 2}
   chanceOfSpawn: 0.1
+  doScale: 0
 --- !u!114 &11495032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,7 +610,16 @@ MonoBehaviour:
   emotions: []
   needs: []
   thoughts:
-  - text: I used to know a girl like that
+  - text: I used to know a girl like that.
+    sound: {fileID: 0}
+  - text: You look like her. I loved her right? Or maybe I hated her?
+    sound: {fileID: 0}
+  - text: Heeey sexy giiiirlfriend!
+    sound: {fileID: 0}
+  - text: Can you show me around, young lady?
+    sound: {fileID: 0}
+  - text: "Am I too old to be your suitor? Just joshing, little lady. Of course I\u2019m
+      not."
     sound: {fileID: 0}
 --- !u!114 &11498286
 MonoBehaviour:
@@ -625,6 +637,7 @@ MonoBehaviour:
   - {fileID: 159760, guid: 050d563dce98c3a42a397d2dfc1b57ad, type: 2}
   - {fileID: 159760, guid: d5c60aa7196994944ac04856758b8e3b, type: 2}
   chanceOfSpawn: 1
+  doScale: 0
 --- !u!135 &13584152
 SphereCollider:
   m_ObjectHideFlags: 1

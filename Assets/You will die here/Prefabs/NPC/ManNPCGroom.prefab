@@ -841,6 +841,17 @@ MonoBehaviour:
   thoughts:
   - text: Congratulations
     sound: {fileID: 0}
+  - text: "Congratulations! Let\u2019s party!"
+    sound: {fileID: 0}
+  - text: "Who\u2019s the lucky lady?"
+    sound: {fileID: 0}
+  - text: Are you wearing my old suit?
+    sound: {fileID: 0}
+  - text: "It\u2019s easier just to run. I regret not doing so."
+    sound: {fileID: 0}
+  - text: I noticed a banner out front that said something about a wedding. It is
+      yours?
+    sound: {fileID: 0}
 --- !u!135 &13565174
 SphereCollider:
   m_ObjectHideFlags: 1
