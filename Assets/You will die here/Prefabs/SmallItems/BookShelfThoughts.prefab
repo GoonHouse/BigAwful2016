@@ -59,6 +59,17 @@ MonoBehaviour:
   thoughts:
   - text: I fucking love fishing. Hell yeah.
     sound: {fileID: 0}
+  - text: I meant to fill this with more pictures of my silly grandkids!
+    sound: {fileID: 0}
+  - text: "How many copies of \u201CHow to Fix A Broken Hip\u201D do I need? Well,
+      how many does it take to fill the shelf?"
+    sound: {fileID: 0}
+  - text: There were books here. They are gone now.
+    sound: {fileID: 0}
+  - text: Empty. Like a lot of things in life.
+    sound: {fileID: 0}
+  - text: Good place for my novels.
+    sound: {fileID: 0}
 --- !u!135 &13578622
 SphereCollider:
   m_ObjectHideFlags: 1

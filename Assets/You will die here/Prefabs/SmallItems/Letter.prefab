@@ -108,7 +108,17 @@ MonoBehaviour:
   propName: 
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: "Where\u2019s my letter opener?"
+    sound: {fileID: 0}
+  - text: I can still taste the glue.
+    sound: {fileID: 0}
+  - text: "I remember, the contents of this\u2026 it wasn\u2019t good."
+    sound: {fileID: 0}
+  - text: "It\u2019s dated 17 years earlier\u2026"
+    sound: {fileID: 0}
+  - text: It feels heavy.
+    sound: {fileID: 0}
 --- !u!135 &13582534
 SphereCollider:
   m_ObjectHideFlags: 1

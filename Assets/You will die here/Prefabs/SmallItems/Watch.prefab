@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.06799996, z: 0}
+  m_LocalPosition: {x: 0, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -128,7 +128,18 @@ MonoBehaviour:
   - name: 
     need: 0
     strength: 0
-  thoughts: []
+  thoughts:
+  - text: "Tick. Tick. Tick. Where\u2019s the tock?"
+    sound: {fileID: 0}
+  - text: This looks like the one granpappy gave me.
+    sound: {fileID: 0}
+  - text: How much does the world change every time you click, little man?
+    sound: {fileID: 0}
+  - text: "Engraved on the bottom, \u201CToo my son.\u201D Huh, I never noticed the
+      misspell."
+    sound: {fileID: 0}
+  - text: Leather straps are all the rage.
+    sound: {fileID: 0}
 --- !u!135 &13517392
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -57,7 +57,15 @@ MonoBehaviour:
     need: 1
     strength: 1
   thoughts:
-  - text: I fucking love fishing. Hell yeah.
+  - text: I could curl up with a nice book easily.
+    sound: {fileID: 0}
+  - text: A spooky story in bed would be nice.
+    sound: {fileID: 0}
+  - text: Hm. My wife is usually in bed before me.
+    sound: {fileID: 0}
+  - text: "A nap? Don\u2019t mind if I do."
+    sound: {fileID: 0}
+  - text: In my restless dreams...
     sound: {fileID: 0}
 --- !u!135 &13578622
 SphereCollider:

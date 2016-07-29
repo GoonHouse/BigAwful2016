@@ -108,7 +108,17 @@ MonoBehaviour:
   propName: 
   emotions: []
   needs: []
-  thoughts: []
+  thoughts:
+  - text: Better than a tombstone.
+    sound: {fileID: 0}
+  - text: "I can\u2019t read what it says on it."
+    sound: {fileID: 0}
+  - text: "It\u2019s hotter than hell in here."
+    sound: {fileID: 0}
+  - text: "\u201CEveryone can master a grief, but he that has it.\u201D"
+    sound: {fileID: 0}
+  - text: Life goes on.
+    sound: {fileID: 0}
 --- !u!135 &13571312
 SphereCollider:
   m_ObjectHideFlags: 1

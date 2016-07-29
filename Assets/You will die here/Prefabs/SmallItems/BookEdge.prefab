@@ -128,7 +128,18 @@ MonoBehaviour:
   - name: creativity
     need: 5
     strength: 0
-  thoughts: []
+  thoughts:
+  - text: What a generic book.
+    sound: {fileID: 0}
+  - text: "Can\u2019t let the missus see this one."
+    sound: {fileID: 0}
+  - text: "A photo album. It\u2019s empty."
+    sound: {fileID: 0}
+  - text: A crossword puzzle! Granny loved these.
+    sound: {fileID: 0}
+  - text: "\u201CIn the end, it\u2019s not the years of your life that count. It\u2019s
+      the life in your years.\u201D Lincoln Log said that once."
+    sound: {fileID: 0}
 --- !u!135 &13591914
 SphereCollider:
   m_ObjectHideFlags: 1
