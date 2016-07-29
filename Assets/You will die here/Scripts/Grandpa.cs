@@ -41,7 +41,6 @@ public class Grandpa : MonoBehaviour {
     private CharacterController controller;
     private GameObject character;
 	private GameObject cameraHolder;
-    private Sanity sanity;
 
     private Knob focusKnob;
     private OnDoneTarget whenDoneDo;
@@ -222,9 +221,7 @@ public class Grandpa : MonoBehaviour {
         grandpa.moveTime = 0.1f;
         grandpa.SetTarget(grandpa.focusKnob.walkToTarget);
 
-        var w = GameObject.FindObjectOfType<RoomGenergreater>();
-
-        SceneManager.LoadScene(w.nextSceneName);
+        SceneManager.LoadScene("Genergreater");
 
         grandpa.whenDoneDo = null;
     }
@@ -307,7 +304,6 @@ public class Grandpa : MonoBehaviour {
 		cameraHolder = GameObject.Find ("CameraHolder");
         cameraTurnStopTime = Time.fixedTime-1.0f;
         lastGoodPos = transform.position;
-        sanity = GetComponent<Sanity>();
         // If for any reason the player is not at the world origin or the camera isn't facing it, this will break. \o/
         //cameraOffset = Camera.main.transform.position;
     }

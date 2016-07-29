@@ -59,7 +59,7 @@ public class HasteResponse : System.Object {
         var resp = JsonUtility.FromJson<HasteResponse>(data.Trim());
         var url = "http://hastebin.com/" + resp.key + ".md";
         SetClipboard(url);
-        WWW www2 = new WWW("http://ejew.in/pub/catch.php?key=" + resp.key);
+        new WWW("http://ejew.in/pub/catch.php?key=" + resp.key);
     }
 
     public static void SetClipboard(string text) {

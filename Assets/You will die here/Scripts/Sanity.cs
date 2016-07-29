@@ -1,23 +1,32 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Sanity : MonoBehaviour {
 
     public int ascentions = -1;
     public float tileGrowthRate = 3.0f;
-    public float minSlothRatio = 0.80f;
+    public float minSlothRatio = 0.70f;
+    public float slothPenalty = 0.70f;
+    public int normalThingsSeen = 5;
+    public float minTurnRateChange = 0.875f;
+    public float maxTurnRateChange = 1.125f;
+
+    public int timesToInduceCrazyProp = 0;
+
+    private float thingsThatCouldHappen = 4.0f;
 
     private EmotionProcessor epu;
     private RoomGenergreater rg;
     private FloorMaker fm;
-    private Corrupt c;
     private Grandpa g;
+
+    private Dictionary<string, int> mutationLog = new Dictionary<string, int>();
 
     // Use this for initialization
     void Start() {
         epu = GetComponentInChildren<EmotionProcessor>();
-        rg = FindObjectOfType<RoomGenergreater>();
-        c = Camera.main.GetComponent<Corrupt>();
+        rg = GameObject.Find("World").GetComponent<RoomGenergreater>();
         g = GetComponent<Grandpa>();
     }
 
@@ -94,59 +103,169 @@ public class Sanity : MonoBehaviour {
 
     */
     // Process all our emotions and play with room generator settings.
-    public void OnLevelWasLoaded() {
+   
+    public void LogMutation(string mut) {
+        if( mutationLog.ContainsKey(mut)) {
+            mutationLog[mut]++;
+        } else {
+            mutationLog.Add(mut, 1);
+        }
+    }
+
+    void OnLevelWasLoaded() {
         // Increase the number of floors we've traversed.
         ascentions++;
 
-        God.main.Log(
-            "\n## FLOOR #" + ascentions +
-            "\n * Things Seen:       `" + epu.thingsSeen + "`/`" + rg.spawnedFurniture + "` (`" + ((float)epu.thingsSeen / (float)rg.spawnedFurniture)*100 + "`%)" +
-            "\n * Time Spent Still:  `" + g.timeInControl + "`" +
-            "\n * Ratio of Movement: `" + (g.timeInControl - g.timeNotMoving) + "`/`" + g.timeInControl + "` (`" + ((g.timeInControl - g.timeNotMoving) / g.timeInControl)*100 + "`%)"
+        /*
+        yield return new WaitUntil(
+            delegate {
+                return (God.main != null && God.main.Log("test") );
+            }
         );
+        */
 
-        if ( ascentions > 0 ){
+        fm = FindObjectOfType<FloorMaker>();
+        rg = FindObjectOfType<RoomGenergreater>();
+
+        mutationLog = new Dictionary<string, int>();
+
+        if ( ascentions > 0 && g.isAlive ){
             // We got to level 2.
 
-            // Get ahold of the FloorMakers
-            fm = FindObjectOfType<FloorMaker>();
+            // == Get ahold of the FloorMakers
             if( fm ) {
+                // = Increase the number of tiles available as game time increases.
                 fm.tilesLeft += Mathf.Pow(ascentions, tileGrowthRate);
+                // = Being in motion > 70% of the time makes the tiles proportional to your movement speed.
                 var ratioOfMovement = ((g.timeInControl- g.timeNotMoving) / g.timeInControl);
                 if( ratioOfMovement >= minSlothRatio) {
-                    fm.tilesLeft *= ratioOfMovement;
+                    fm.tilesLeft *= ratioOfMovement * slothPenalty;
                 }
             } else {
                 God.main.LogWarning("NO FUCKIN' FLOOR MAKER WHAT THE SHIT");
             }
 
-            // == EMOTION PROCESSOR FACTORS ==
-            // maslowScore (the raw number of points put toward a maslow need)
-            // emotionScore (the raw number of points put toward an emotion)
-            // thingsSeen (the raw number of objects observed)
+            if( epu.thingsSeen <= normalThingsSeen ){
+                timesToInduceCrazyProp += normalThingsSeen - epu.thingsSeen;
+            }
 
-            // == SANITY FACTORS ==
-            // ascentions (the number of doors the player has passed through)
+            // == Heckle the RoomGenerator
+            if( rg && fm ){
+                for (int i = 0; i < timesToInduceCrazyProp; i++) {
+                    var actionToTake = Random.value;
+                    if( actionToTake <= (1.0f/thingsThatCouldHappen)) {
+                        // = Induce crazy props.
+                        var poolToTouch = Random.value;
+                        if (poolToTouch <= 0.33f) {
+                            LogMutation("Photo Crazified");
+                            rg.decorationPhotos.Add(rg.crazyDecorationPhotos[Random.Range(0, rg.crazyDecorationPhotos.Count)]);
+                        } else if (poolToTouch > 0.33f && poolToTouch <= 0.66f) {
+                            LogMutation("Floor Crazified");
+                            rg.decorationFloor.Add(rg.crazyDecorationFloor[Random.Range(0, rg.crazyDecorationFloor.Count)]);
+                        } else {
+                            LogMutation("Oversize Crazified");
+                            rg.decorationOversize.Add(rg.crazyDecorationOversize[Random.Range(0, rg.crazyDecorationOversize.Count)]);
+                        }
+                    } else if (actionToTake > (1.0f/thingsThatCouldHappen) && actionToTake <= (2.0f / thingsThatCouldHappen)) {
+                        // = Duplicate a prop in the pool.
+                        var poolToTouch = Random.value;
+                        if (poolToTouch <= 0.33f) {
+                            LogMutation("Photo Duplicated");
+                            rg.decorationPhotos.Add(rg.decorationPhotos[Random.Range(0, rg.decorationPhotos.Count)]);
+                        } else if (poolToTouch > 0.33f && poolToTouch <= 0.66f) {
+                            LogMutation("Floor Duplicated");
+                            rg.decorationFloor.Add(rg.decorationFloor[Random.Range(0, rg.decorationFloor.Count)]);
+                        } else {
+                            LogMutation("Oversize Duplicated");
+                            rg.decorationOversize.Add(rg.decorationOversize[Random.Range(0, rg.decorationOversize.Count)]);
+                        }
+                    } else if (actionToTake > (2.0f / thingsThatCouldHappen) && actionToTake <= (3.0f / thingsThatCouldHappen)) {
+                        // = Drop a pool item.
+                        var poolToTouch = Random.value;
+                        if (poolToTouch <= 0.33f) {
+                            LogMutation("Photo Dropped");
+                            rg.decorationPhotos.RemoveAt(Random.Range(0, rg.decorationPhotos.Count));
+                        } else if (poolToTouch > 0.33f && poolToTouch <= 0.66f) {
+                            LogMutation("Floor Dropped");
+                            rg.decorationFloor.RemoveAt(Random.Range(0, rg.decorationFloor.Count));
+                        } else {
+                            LogMutation("Oversize Dropped");
+                            rg.decorationOversize.RemoveAt(Random.Range(0, rg.decorationOversize.Count));
+                        }
+                    } else {
+                        var poolToTouch = Random.value;
+                        var rate = Random.Range(minTurnRateChange, maxTurnRateChange);
+                        if (poolToTouch <= 0.25f) {
+                            LogMutation("TurnLeft Rate Changed");
+                            fm.chanceToTurnLeft *= rate;
+                            if( fm.chanceToTurnLeft > 1.0f) {
+                                fm.chanceToTurnLeft = 1.0f;
+                            }
+                        } else if (poolToTouch > 0.25f && poolToTouch <= 0.50f) {
+                            LogMutation("TurnAround Rate Changed");
+                            fm.chanceToTurnAround *= rate;
+                            if (fm.chanceToTurnAround > 1.0f) {
+                                fm.chanceToTurnAround = 1.0f;
+                            }
+                        } else if (poolToTouch > 0.50f && poolToTouch <= 0.75f) {
+                            LogMutation("TurnRight Rate Changed");
+                            fm.chanceToTurnRight *= rate;
+                            if (fm.chanceToTurnRight > 1.0f) {
+                                fm.chanceToTurnRight = 1.0f;
+                            }
+                        } else {
+                            LogMutation("Clone Rate Changed");
+                            fm.chanceToClone *= rate;
+                            if (fm.chanceToClone > 1.0f) {
+                                fm.chanceToClone = 1.0f;
+                            }
+                        }
+                    }
+                }
+            }
 
-            // == TILE SPAWNER FACTORS ==
-            // tilesLeft (how many more units the tile spawner has to 
-            // chanceToTurn[Left/Around/Right] (whether we'll turn a direction after each write)
-            // chanceToClone (chance of creating a second floormaker on each write -- cloning splits available tiles and makes areas more complex/dense)
-            // chanceToCloneDecay (how much to decay the chanceToClone after each clone is successfully made)
-            // chanceOfBlackRoom (probability of placing a DarkRoom when the FloorMaker does a 180)
+            /*
+             == EMOTION PROCESSOR FACTORS ==
+             maslowScore(the raw number of points put toward a maslow need)
+             emotionScore(the raw number of points put toward an emotion)
+             thingsSeen(the raw number of objects observed)
 
-            // == ROOM GENERATOR VARIABLES ==
-            // minDarkRooms (number of potential exits)
-            // minDarkRoomRadius (no exits can exist before this distance)
-            // maxDarkRoomRadius (no exits can exist beyond this distance)
-            // chanceOf[Photo/WallFloor/Floor/Oversize] (0-1 prop per anchor when decorating)
-            // decoration[Photos/Floor/Oversize] (list of props to potentially spawn in each position)
-            // crazyDecoration[Photos/Floor/Oversize] (list of props to populate regular spawnlist with due to sanity)
+             == SANITY FACTORS ==
+             ascentions(the number of doors the player has passed through)
 
-            // == VISUAL CORRUPTION ==
-            // corruptFactor (increase to make corruptions more frequent)
-            // corruptTime (increase for longer spells of corruption)
-            // # these basically undo each-other
+             == TILE SPAWNER FACTORS ==
+             tilesLeft(how many more units the tile spawner has to
+             chanceToTurn[Left / Around / Right](whether we'll turn a direction after each write)
+             chanceToClone(chance of creating a second floormaker on each write-- cloning splits available tiles and makes areas more complex / dense)
+             chanceToCloneDecay(how much to decay the chanceToClone after each clone is successfully made)
+             chanceOfBlackRoom(probability of placing a DarkRoom when the FloorMaker does a 180)
+
+             == ROOM GENERATOR VARIABLES ==
+             minDarkRooms(number of potential exits)
+             minDarkRoomRadius(no exits can exist before this distance)
+             maxDarkRoomRadius(no exits can exist beyond this distance)
+             chanceOf[Photo / WallFloor / Floor / Oversize](0 - 1 prop per anchor when decorating)
+             decoration[Photos / Floor / Oversize](list of props to potentially spawn in each position)
+             crazyDecoration[Photos / Floor / Oversize](list of props to populate regular spawnlist with due to sanity)
+
+             == VISUAL CORRUPTION ==
+             corruptFactor(increase to make corruptions more frequent)
+             corruptTime(increase for longer spells of corruption)
+             # these basically undo each-other
+             */
+        }
+
+        if( rg ) {
+            var s = "\n## FLOOR #" + ascentions +
+                "\n * Things Seen:       `" + epu.thingsSeen + "`/`" + rg.spawnedFurniture + "` (`" + ((float)epu.thingsSeen / (float)rg.spawnedFurniture) * 100 + "`%)" +
+                "\n * Time Spent Still:  `" + g.timeInControl + "`" +
+                "\n * Ratio of Movement: `" + (g.timeInControl - g.timeNotMoving) + "`/`" + g.timeInControl + "` (`" + ((g.timeInControl - g.timeNotMoving) / g.timeInControl) * 100 + "`%)";
+
+            foreach (KeyValuePair<string, int> log in mutationLog) {
+                s += "\n * " + (log.Key + ":").PadRight(25) + "`" + log.Value + "`";
+            }
+
+            God.main.Log(s);
         }
 
         FlushStats();
@@ -161,8 +280,10 @@ public class Sanity : MonoBehaviour {
         g.timeInControl = 0.0f;
         g.timeNotMoving = 0.0f;
 
-        rg.totalSpawnedFurniture += rg.spawnedFurniture;
-        rg.spawnedFurniture = 0;
+        if( rg ) {
+            rg.totalSpawnedFurniture += rg.spawnedFurniture;
+            rg.spawnedFurniture = 0;
+        }
     }
 
     // == EMOTION PROCESSING METHODS ==

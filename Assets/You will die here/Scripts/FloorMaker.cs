@@ -63,7 +63,7 @@ public class FloorMaker : MonoBehaviour {
     // Use this for initialization
     void Start () {
         writeDirection = God.RandomDirection();
-        rg = God.main.GetComponent<RoomGenergreater>();
+        rg = GameObject.Find("World").GetComponent<RoomGenergreater>();
         rg.NewTileRunner();
     }
 	
