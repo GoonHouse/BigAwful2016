@@ -136,7 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleSpawns:
   - {fileID: 101844, guid: 78d9a0727e2db774aab2ddb665ce5a18, type: 2}
-  chanceOfSpawn: 0.9
+  chanceOfSpawn: 0.7
+  doScale: 0
 --- !u!136 &13623726
 CapsuleCollider:
   m_ObjectHideFlags: 1
