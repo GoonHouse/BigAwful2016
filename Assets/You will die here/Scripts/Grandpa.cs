@@ -45,6 +45,7 @@ public class Grandpa : MonoBehaviour {
 
     private Knob focusKnob;
     private OnDoneTarget whenDoneDo;
+    private bool wasGrounded = true;
 
     private Vector3 lastGoodPos;
     public int timesToSnapY = 100;
@@ -94,6 +95,7 @@ public class Grandpa : MonoBehaviour {
             moveTarget = null;
             Freeze();
             transform.position = spawnPos;
+            wasGrounded = false;
 
             var fc = Camera.main.GetComponent<FogController>();
             fc.SetNow(fc.GetDarkness());
@@ -222,7 +224,6 @@ public class Grandpa : MonoBehaviour {
 
         var w = GameObject.FindObjectOfType<RoomGenergreater>();
 
-        grandpa.sanity.Ascend();
         SceneManager.LoadScene(w.nextSceneName);
 
         grandpa.whenDoneDo = null;
@@ -280,7 +281,6 @@ public class Grandpa : MonoBehaviour {
         grandpa.moveTimeSpent = 0.0f;
         grandpa.doneMove = false;
 
-        grandpa.sanity.Ascend();
         SceneManager.LoadScene("TheEnd");
 
         grandpa.whenDoneDo = null;
@@ -317,7 +317,13 @@ public class Grandpa : MonoBehaviour {
             var dc = GetComponent<DeathClock>();
             dc.timeToDie = 0.1f;
         }
-        if ( inControl ){
+        if (Input.GetKeyDown(KeyCode.T)) {
+            Freeze();
+            if( isFrozen ){
+                SceneManager.LoadScene("Genergreater");
+            }
+        }
+        if ( inControl && !isFrozen ) {
             float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
             float moveVertical = Input.GetAxis("Vertical") * mitigation;
 
@@ -344,7 +350,7 @@ public class Grandpa : MonoBehaviour {
                 }
             }
 
-            if (controller.isGrounded) {
+            if (controller.isGrounded && (controller.collisionFlags & CollisionFlags.Below) != 0 && wasGrounded) {
                 moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
                 moveDirection = Quaternion.AngleAxis(cameraTargetDirection, Vector3.up) * moveDirection;
                 moveDirection = transform.TransformDirection(moveDirection);
@@ -371,7 +377,7 @@ public class Grandpa : MonoBehaviour {
 
             // Cancel gravity, move to position.
             //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
-            controller.SimpleMove(moveDirection * Time.deltaTime);
+            wasGrounded = controller.SimpleMove(moveDirection * Time.deltaTime);
 
             // Consider our own mortality.
             dc.SecretUpdate();
@@ -411,7 +417,7 @@ public class Grandpa : MonoBehaviour {
             if( controller.enabled) {
                 moveDirection = Vector3.zero;
                 //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
-                controller.SimpleMove(moveDirection * Time.deltaTime);
+                wasGrounded = controller.SimpleMove(moveDirection * Time.deltaTime);
             }
         }
 
@@ -424,18 +430,21 @@ public class Grandpa : MonoBehaviour {
         }
 
         // No more floor grandpas.
-        var pos =  transform.position;
-        if (controller.isGrounded && pos.y > 0.0f) {
+        var pos = transform.position;
+        if ( isAlive && !isFrozen && inControl && !shouldDie && controller.isGrounded && pos.y > 0.0f && wasGrounded){
+            pos.y += 0.5f;
             timesSnappedY = 0;
             lastGoodPos = pos;
-        } else {
+        }
+        if (pos.y < 0.0f) {
             God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos + " (" + timesSnappedY + "/" + timesToSnapY + ")");
             pos.y += Mathf.Abs(pos.y);
             transform.position = pos;
             timesSnappedY++;
-            if( timesSnappedY >= timesToSnapY) {
+            if (timesSnappedY >= timesToSnapY) {
                 God.main.LogWarning("TELEPORTING PLAYER BACK TO: " + lastGoodPos + " FROM " + pos);
                 transform.position = lastGoodPos;
+                controller.SimpleMove(Vector3.zero);
                 timesSnappedY = 0;
             }
         }

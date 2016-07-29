@@ -94,14 +94,15 @@ public class Sanity : MonoBehaviour {
 
     */
     // Process all our emotions and play with room generator settings.
-    public void Ascend() {
+    public void OnLevelWasLoaded() {
         // Increase the number of floors we've traversed.
         ascentions++;
 
         God.main.Log(
-            "Entering Floor #" + ascentions +
-            "Things Seen: " + epu.thingsSeen + "/" + rg.spawnedFurniture + " (" + ((float)epu.thingsSeen / (float)rg.spawnedFurniture) + ")" +
-            "Time Spent Moving: " + g.timeNotMoving + "/" + g.timeInControl + " (" + (g.timeNotMoving / g.timeInControl) + ")"
+            "\n## FLOOR #" + ascentions +
+            "\n * Things Seen:       `" + epu.thingsSeen + "`/`" + rg.spawnedFurniture + "` (`" + ((float)epu.thingsSeen / (float)rg.spawnedFurniture)*100 + "`%)" +
+            "\n * Time Spent Still:  `" + g.timeInControl + "`" +
+            "\n * Ratio of Movement: `" + (g.timeInControl - g.timeNotMoving) + "`/`" + g.timeInControl + "` (`" + ((g.timeInControl - g.timeNotMoving) / g.timeInControl)*100 + "`%)"
         );
 
         if ( ascentions > 0 ){
@@ -111,8 +112,8 @@ public class Sanity : MonoBehaviour {
             fm = FindObjectOfType<FloorMaker>();
             if( fm ) {
                 fm.tilesLeft += Mathf.Pow(ascentions, tileGrowthRate);
-                var ratioOfMovement = (g.timeNotMoving / g.timeInControl);
-                if( ratioOfMovement <= minSlothRatio) {
+                var ratioOfMovement = ((g.timeInControl- g.timeNotMoving) / g.timeInControl);
+                if( ratioOfMovement >= minSlothRatio) {
                     fm.tilesLeft *= ratioOfMovement;
                 }
             } else {

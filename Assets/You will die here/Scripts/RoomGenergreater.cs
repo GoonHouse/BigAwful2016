@@ -78,12 +78,11 @@ public class RoomGenergreater : MonoBehaviour {
         }
         var avg = sumOfDistancesFromOrigin / roomDistances.Count;
         God.main.Log(
-            "ROOM STATISTICS: " + rooms.Count +
-            "\nTotal Runners: " + maxTileRunners +
-            "\nFurthest Room: " + maxDistanceFromOrigin +
-            "\nAverage Room Distance: " + avg +
-            "\nMinimum DR Distance: " + (minDarkRoomRadius * maxDistanceFromOrigin) +
-            "\nMaximum DR Distance: " + (maxDarkRoomRadius * maxDistanceFromOrigin)
+            " * Tiles Spawned:      `" + rooms.Count + "`" +
+            "\n * Total Runners:     `" + maxTileRunners + "`" +
+            "\n * Furthest Room:     `" + maxDistanceFromOrigin + "`" +
+            "\n * Avg Tile Distance: `" + avg + "`" +
+            "\n * DarkRoom Ranges:   `" + (minDarkRoomRadius * maxDistanceFromOrigin) + "` - `" + (maxDarkRoomRadius * maxDistanceFromOrigin) + "`"
         );
     }
 

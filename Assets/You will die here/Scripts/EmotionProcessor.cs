@@ -42,21 +42,21 @@ public class EmotionProcessor : MonoBehaviour {
         emotionScore.TryGetValue(MajorEmotions.Sad, out needSadScore);
 
         God.main.Log(
-            "NEED INDEX: " +
-            "\nSad: " + needSadScore +
-            "\nPeace: " + needPeaceScore +
-            "\nPower: " + needPowerScore +
-            "\nJoy: " + needJoyScore +
-            "\nScared: " + needScareScore +
-            "\nMad: " + needMadScore +
-            "\nNone: " + needNoneScore +
-            "\nMASLOW INDEX: " +
-            "\nSelf: " + masSelfScore +
-            "\nEsteem: " + masEsteemScore +
-            "\nLove: " + masLoveScore +
-            "\nSafe: " + masSafeScore +
-            "\nPhys: " + masPhysScore +
-            "\nNone: " + masNoneScore
+            "\n# Need Analysis" +
+            "\n * Sad:    `" + needSadScore + "`" +
+            "\n * Peace:  `" + needPeaceScore + "`" +
+            "\n * Power:  `" + needPowerScore + "`" +
+            "\n * Joy:    `" + needJoyScore + "`" +
+            "\n * Scared: `" + needScareScore + "`" +
+            "\n * Mad:    `" + needMadScore + "`" +
+            "\n * None:   `" + needNoneScore + "`" +
+            "\n\n# Maslow Analysis " +
+            "\n * Self:   `" + masSelfScore + "`" +
+            "\n * Esteem: `" + masEsteemScore + "`" +
+            "\n * Love:   `" + masLoveScore + "`" +
+            "\n * Safe:   `" + masSafeScore + "`" +
+            "\n * Phys:   `" + masPhysScore + "`" +
+            "\n * None:   `" + masNoneScore + "`"
         );
     }
 
