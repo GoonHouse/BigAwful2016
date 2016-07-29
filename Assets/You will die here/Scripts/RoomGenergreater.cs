@@ -145,6 +145,7 @@ public class RoomGenergreater : MonoBehaviour {
         }
         foreach( Vector2 pos in badPoints) {
             DestroyRoomAt( pos );
+            SpawnPart("Floor", pos);
         }
         Dictionary<string, Vector2> candidates = new Dictionary<string, Vector2>();
         if( numDarkRooms < minDarkRooms) {
