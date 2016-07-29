@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Sanity : MonoBehaviour {
-
-    public int ascentions = -1;
     public float tileGrowthRate = 3.0f;
     public float minSlothRatio = 0.70f;
     public float slothPenalty = 0.70f;
@@ -14,11 +12,14 @@ public class Sanity : MonoBehaviour {
 
     public int timesToInduceCrazyProp = 0;
 
+    public string levelLog = "";
+
     private float thingsThatCouldHappen = 4.0f;
 
     private EmotionProcessor epu;
     private RoomGenergreater rg;
     private FloorMaker fm;
+    private Corrupt c;
     private Grandpa g;
 
     private Dictionary<string, int> mutationLog = new Dictionary<string, int>();
@@ -27,6 +28,7 @@ public class Sanity : MonoBehaviour {
     void Start() {
         epu = GetComponentInChildren<EmotionProcessor>();
         rg = GameObject.Find("World").GetComponent<RoomGenergreater>();
+        c = Camera.main.GetComponent<Corrupt>();
         g = GetComponent<Grandpa>();
     }
 
@@ -113,29 +115,18 @@ public class Sanity : MonoBehaviour {
     }
 
     void OnLevelWasLoaded() {
-        // Increase the number of floors we've traversed.
-        ascentions++;
-
-        /*
-        yield return new WaitUntil(
-            delegate {
-                return (God.main != null && God.main.Log("test") );
-            }
-        );
-        */
-
         fm = FindObjectOfType<FloorMaker>();
         rg = FindObjectOfType<RoomGenergreater>();
 
         mutationLog = new Dictionary<string, int>();
 
-        if ( ascentions > 0 && g.isAlive ){
+        if ( g.ascentions >= 0 && g.isAlive ){
             // We got to level 2.
 
             // == Get ahold of the FloorMakers
             if( fm ) {
                 // = Increase the number of tiles available as game time increases.
-                fm.tilesLeft += Mathf.Pow(ascentions, tileGrowthRate);
+                fm.tilesLeft += Mathf.Pow(g.ascentions, tileGrowthRate);
                 // = Being in motion > 70% of the time makes the tiles proportional to your movement speed.
                 var ratioOfMovement = ((g.timeInControl- g.timeNotMoving) / g.timeInControl);
                 if( ratioOfMovement >= minSlothRatio) {
@@ -151,7 +142,22 @@ public class Sanity : MonoBehaviour {
 
             // == Heckle the RoomGenerator
             if( rg && fm ){
-                for (int i = 0; i < timesToInduceCrazyProp; i++) {
+                for (int i = 0; i < (timesToInduceCrazyProp + g.ascentions); i++) {
+                    c.corruptTime *= Random.Range(minTurnRateChange, maxTurnRateChange);
+                    c.minCorrupt *= Random.Range(minTurnRateChange, maxTurnRateChange);
+                    c.maxCorrupt *= Random.Range(minTurnRateChange, maxTurnRateChange);
+
+                    if (c.minCorrupt > c.maxCorrupt) {
+                        var min = c.minCorrupt;
+                        var max = c.maxCorrupt;
+                        c.minCorrupt = max;
+                        c.maxCorrupt = min;
+                    }
+
+                    if (c.maxCorrupt > 1.0f) {
+                        c.maxCorrupt = 1.0f;
+                    }
+
                     var actionToTake = Random.value;
                     if( actionToTake <= (1.0f/thingsThatCouldHappen)) {
                         // = Induce crazy props.
@@ -255,20 +261,29 @@ public class Sanity : MonoBehaviour {
              */
         }
 
-        if( rg ) {
-            var s = "\n## FLOOR #" + ascentions +
-                "\n * Things Seen:       `" + epu.thingsSeen + "`/`" + rg.spawnedFurniture + "` (`" + ((float)epu.thingsSeen / (float)rg.spawnedFurniture) * 100 + "`%)" +
-                "\n * Time Spent Still:  `" + g.timeInControl + "`" +
-                "\n * Ratio of Movement: `" + (g.timeInControl - g.timeNotMoving) + "`/`" + g.timeInControl + "` (`" + ((g.timeInControl - g.timeNotMoving) / g.timeInControl) * 100 + "`%)";
+        if( g.ascentions >= 1) {
+            var s = levelLog +
+            "\n * Things Seen:       `" + epu.thingsSeen + "`/`" + g.spawnedFurniture + "` (`" + ((float)epu.thingsSeen / (float)g.spawnedFurniture) * 100 + "`%)" +
+            "\n * Time Spent Still:  `" + g.timeInControl + "`" +
+            "\n * Ratio of Movement: `" + (g.timeInControl - g.timeNotMoving) + "`/`" + g.timeInControl + "` (`" + ((g.timeInControl - g.timeNotMoving) / g.timeInControl) * 100 + "`%)";
 
             foreach (KeyValuePair<string, int> log in mutationLog) {
                 s += "\n * " + (log.Key + ":").PadRight(25) + "`" + log.Value + "`";
             }
 
+            if( !g.isAlive ) {
+                s += epu.Analyze();
+            }
+
             God.main.Log(s);
+
+            if( !g.isAlive ) {
+                God.main.UploadLog();
+            }
         }
 
         FlushStats();
+        levelLog = "";
     }
 
     public void FlushStats() {
@@ -279,11 +294,9 @@ public class Sanity : MonoBehaviour {
         g.totalTimeNotMoving += g.timeNotMoving;
         g.timeInControl = 0.0f;
         g.timeNotMoving = 0.0f;
-
-        if( rg ) {
-            rg.totalSpawnedFurniture += rg.spawnedFurniture;
-            rg.spawnedFurniture = 0;
-        }
+        g.spawnedFurniture = 0;
+        g.totalSpawnedFurniture += g.spawnedFurniture;
+        g.spawnedFurniture = 0;
     }
 
     // == EMOTION PROCESSING METHODS ==

@@ -81,6 +81,7 @@ public class RoomGenergreater : MonoBehaviour {
     public string GetAnalysis() {
         var avg = sumOfDistancesFromOrigin / roomDistances.Count;
         return
+            "\n## FLOOR #" + FindObjectOfType<Grandpa>().ascentions +
             "\n * Tiles Spawned:     `" + rooms.Count + "`" +
             "\n * Total Runners:     `" + maxTileRunners + "`" +
             "\n * Furthest Room:     `" + maxDistanceFromOrigin + "`" +
@@ -107,6 +108,7 @@ public class RoomGenergreater : MonoBehaviour {
 
     public void OnDone() {
         var gramps = GameObject.Find("GrampsHolder").GetComponent<Grandpa>();
+        gramps.spawnedFurniture = spawnedFurniture;
         gramps.UnFreeze();
         var fc = Camera.main.GetComponent<FogController>();
         var snap = fc.GetFogSnapshot();
@@ -114,6 +116,7 @@ public class RoomGenergreater : MonoBehaviour {
         snap.startDistance = 8.0f;
         snap.endDistance = 16.0f;
         fc.Change(snap, 2.0f, 2.0f);
+        FindObjectOfType<Sanity>().levelLog = GetAnalysis();
     }
 
     public void DestroyRoomAt(Vector2 pos) {

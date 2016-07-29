@@ -23,7 +23,7 @@ public class EmotionProcessor : MonoBehaviour {
 	
 	}
 
-    public void Analyze() {
+    public string Analyze() {
         float masNoneScore, masPhysScore, masSafeScore, masLoveScore, masEsteemScore, masSelfScore;
         needScore.TryGetValue(MaslowNeed.None, out masNoneScore);
         needScore.TryGetValue(MaslowNeed.Physiological, out masPhysScore);
@@ -41,8 +41,8 @@ public class EmotionProcessor : MonoBehaviour {
         emotionScore.TryGetValue(MajorEmotions.Peaceful, out needPeaceScore);
         emotionScore.TryGetValue(MajorEmotions.Sad, out needSadScore);
 
-        God.main.Log(
-            "\n# Need Analysis" +
+        return
+            "\n\n# Need Analysis" +
             "\n * Sad:    `" + needSadScore + "`" +
             "\n * Peace:  `" + needPeaceScore + "`" +
             "\n * Power:  `" + needPowerScore + "`" +
@@ -56,8 +56,7 @@ public class EmotionProcessor : MonoBehaviour {
             "\n * Love:   `" + masLoveScore + "`" +
             "\n * Safe:   `" + masSafeScore + "`" +
             "\n * Phys:   `" + masPhysScore + "`" +
-            "\n * None:   `" + masNoneScore + "`"
-        );
+            "\n * None:   `" + masNoneScore + "`";
     }
 
     public bool Commit(LookTarget lt) {

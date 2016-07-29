@@ -61,6 +61,11 @@ public class Grandpa : MonoBehaviour {
     public float timeInControl = 0.0f;
     public float timeNotMoving = 0.0f;
 
+
+    public int ascentions = -1;
+    public float totalSpawnedFurniture = 0;
+    public float spawnedFurniture = 0;
+
     private DeathClock dc;
 
     public void Freeze() {
@@ -106,6 +111,7 @@ public class Grandpa : MonoBehaviour {
             snap.fov = 30.0f;
             fc.Change(snap, 3.0f, 3.0f);
             lastGoodPos = spawnPos;
+            ascentions++;
         }
 
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
@@ -308,7 +314,7 @@ public class Grandpa : MonoBehaviour {
         //cameraOffset = Camera.main.transform.position;
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (Input.GetKeyDown(KeyCode.R)) {
             var dc = GetComponent<DeathClock>();
             dc.timeToDie = 0.1f;
@@ -352,20 +358,20 @@ public class Grandpa : MonoBehaviour {
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= moveSpeed;
 
-                timeInControl += Time.deltaTime;
+                timeInControl += Time.fixedDeltaTime;
 
                 // Turn if we need to turn.
                 if (moveVertical != 0 || moveHorizontal != 0) {
                     lookDirection = new Vector3(-moveHorizontal, 0, -moveVertical);
                     lookDirection = Quaternion.AngleAxis(cameraTargetDirection, Vector3.up) * lookDirection;
-                    float step = turnSpeed * Time.deltaTime;
+                    float step = turnSpeed * Time.fixedDeltaTime;
                     var lookRot = Quaternion.identity;
                     if( lookDirection.normalized != Vector3.zero) {
                         lookRot = Quaternion.LookRotation(lookDirection.normalized);
                     }
                     character.transform.rotation = Quaternion.RotateTowards(character.transform.rotation, lookRot, step);
                 } else {
-                    timeNotMoving += Time.deltaTime;
+                    timeNotMoving += Time.fixedDeltaTime;
                 }
             } else {
                 moveDirection = Vector3.zero;
@@ -373,7 +379,7 @@ public class Grandpa : MonoBehaviour {
 
             // Cancel gravity, move to position.
             //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
-            wasGrounded = controller.SimpleMove(moveDirection * Time.deltaTime);
+            wasGrounded = controller.SimpleMove(moveDirection * Time.fixedDeltaTime);
 
             // Consider our own mortality.
             dc.SecretUpdate();
@@ -390,7 +396,7 @@ public class Grandpa : MonoBehaviour {
 
             // player not in control, lerp to position
             if ( moveTimeSpent <= moveTime && !doneMove ) {
-                moveTimeSpent += Time.deltaTime;
+                moveTimeSpent += Time.fixedDeltaTime;
                 if( moveTarget) {
                     transform.position = Vector3.Lerp(startPos, moveTarget.position, moveTimeSpent / moveTime);
                     character.transform.rotation = Quaternion.Lerp(startRot, moveTarget.rotation, moveTimeSpent / moveTime);
@@ -413,7 +419,7 @@ public class Grandpa : MonoBehaviour {
             if( controller.enabled) {
                 moveDirection = Vector3.zero;
                 //moveDirection.y -= Physics.gravity.y * Time.deltaTime;
-                wasGrounded = controller.SimpleMove(moveDirection * Time.deltaTime);
+                wasGrounded = controller.SimpleMove(moveDirection * Time.fixedDeltaTime);
             }
         }
 

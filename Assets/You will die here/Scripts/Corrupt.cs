@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Corrupt : MonoBehaviour {
     public bool  doCorrupt = false;
     public float corruptFactor = 0.01F;
     public float corruptTime = 1.0F;
+    public float minCorrupt = 0.01f;
+    public float maxCorrupt = 0.33f;
     public float corruption;
 
     void Awake() {
@@ -15,7 +17,7 @@ public class Corrupt : MonoBehaviour {
 
     void Update() {
         if( doCorrupt ){
-            corruption = Mathf.PingPong(Time.time * corruptFactor, corruptTime);
+            corruption = Mathf.Lerp( minCorrupt, maxCorrupt, Mathf.PingPong(Time.time * corruptFactor, corruptTime));
             Shader.SetGlobalFloat("_AltValue", corruption);
             Shader.SetGlobalColor("_FloorColor", Color.Lerp(new Color32(189, 189, 189, 255), Color.black, corruption));
         }

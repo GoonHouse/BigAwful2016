@@ -60,11 +60,6 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         grandpa.cameraTargetDirection = 0.0f;
         var lg = grandpa.gameObject.GetComponentInChildren<LookGrandpa>();
         lg.enabled = true;
-
-        var epu = grandpa.gameObject.GetComponentInChildren<EmotionProcessor>();
-        epu.Analyze();
-
-        God.main.UploadLog();
     }
         // Use this for initialization
     void Awake () {

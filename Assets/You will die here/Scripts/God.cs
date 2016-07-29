@@ -25,7 +25,7 @@ public class HasteResponse : System.Object {
         return loc.x.ToString() + "_" + loc.y.ToString();
     }
 
-    private string runningLog = "# YouWillDieHere.log";
+    private string runningLog = "# YouWillDieHere.log " + System.IO.Path.GetFileName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
 
     public void Log(string text) {
         Debug.Log(text);
