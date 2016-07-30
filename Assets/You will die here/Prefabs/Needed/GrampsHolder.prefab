@@ -899,9 +899,12 @@ MonoBehaviour:
   jumpSpeed: 8
   cameraTurnAmount: 90
   cameraTurnDirection: 1
+  moveDirection: {x: 0, y: 0, z: 0}
   lookDirection: {x: 0, y: 0, z: 0}
   cameraTargetDirection: 0
   cameraTurnRate: 1
+  cameraTurnStopTime: 0
+  targetCameraDirection: 0
   isWalking: 0
   isAlive: 1
   inControl: 1
@@ -912,6 +915,9 @@ MonoBehaviour:
   moveTime: 1
   moveTimeSpent: 0
   mitigation: 1
+  focusKnob: {fileID: 0}
+  wasGrounded: 1
+  lastGoodPos: {x: 0, y: 0, z: 0}
   timesToSnapY: 10
   timesSnappedY: 0
   spawnPos: {x: 0, y: 50, z: 0}
@@ -922,6 +928,9 @@ MonoBehaviour:
   totalTimeNotMoving: 0
   timeInControl: 0
   timeNotMoving: 0
+  ascentions: -1
+  totalSpawnedFurniture: 0
+  spawnedFurniture: 0
 --- !u!114 &11440234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -973,6 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83a6139594748a489e0fa0e94469d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalTimeToDie: 600
   timeToDie: 600
   remainingDeathLerp: 60
   didNotTrigger: 1
@@ -988,11 +998,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea611f1f0fc6e6c49bf67567115958d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ascentions: -1
   tileGrowthRate: 3
-  minRadiusGrowth: 1.33
-  maxRadiusGrowth: 1.44
   minSlothRatio: 0.8
+  slothPenalty: 0.7
+  normalThingsSeen: 5
+  minTurnRateChange: 0.875
+  maxTurnRateChange: 1.125
+  timesToInduceCrazyProp: 0
+  levelLog: 
 --- !u!114 &11477056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1014,6 +1027,16 @@ MonoBehaviour:
   timeOnMind: 0
   timeToCommit: 0.33
   didCommitYet: 0
+  epu: {fileID: 0}
+  hasThought: 1
+  fadeDone: 0
+  timeToFadeIn: 0.5
+  currentFadeTime: 0
+  timeToExpose: 4
+  currentExposeTime: 0
+  initColor: {r: 0, g: 0, b: 0, a: 0}
+  noAlpha: {r: 0, g: 0, b: 0, a: 0}
+  withAlpha: {r: 0, g: 0, b: 0, a: 0}
 --- !u!143 &14302576
 CharacterController:
   m_ObjectHideFlags: 1
@@ -1028,7 +1051,7 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 1
-  m_SkinWidth: 0.0001
+  m_SkinWidth: 0.05
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!1001 &100100000
