@@ -15,14 +15,14 @@ public class Grandpa : MonoBehaviour {
     //public Vector3 cameraOffset = new Vector3(0.0f, 16.0f, -28.0f);
     public float cameraTurnAmount = 90.0f;
     public int cameraTurnDirection = 1;
-    private Vector3 moveDirection = Vector3.zero;
+    public Vector3 moveDirection = Vector3.zero;
     public Vector3 lookDirection = Vector3.zero;
 	public float cameraTargetDirection = 0;
 
     public float cameraTurnRate = 2.0f;
 
-    private float cameraTurnStopTime;
-    private float targetCameraDirection;
+    public float cameraTurnStopTime;
+    public float targetCameraDirection;
 
     public bool isWalking = false;
 
@@ -41,12 +41,13 @@ public class Grandpa : MonoBehaviour {
     private CharacterController controller;
     private GameObject character;
 	private GameObject cameraHolder;
+    private DeathClock dc;
 
-    private Knob focusKnob;
-    private OnDoneTarget whenDoneDo;
-    private bool wasGrounded = true;
+    public Knob focusKnob;
+    public OnDoneTarget whenDoneDo;
+    public bool wasGrounded = true;
 
-    private Vector3 lastGoodPos;
+    public Vector3 lastGoodPos;
     public int timesToSnapY = 100;
     public int timesSnappedY = 0;
 
@@ -65,8 +66,6 @@ public class Grandpa : MonoBehaviour {
     public int ascentions = -1;
     public float totalSpawnedFurniture = 0;
     public float spawnedFurniture = 0;
-
-    private DeathClock dc;
 
     public void Freeze() {
         if (!shouldDie) {
@@ -382,7 +381,9 @@ public class Grandpa : MonoBehaviour {
             wasGrounded = controller.SimpleMove(moveDirection * Time.fixedDeltaTime);
 
             // Consider our own mortality.
-            dc.SecretUpdate();
+            if( isAlive) {
+                dc.SecretUpdate();
+            }
             if ( shouldDie ){
                 ActuallyDie();
             }

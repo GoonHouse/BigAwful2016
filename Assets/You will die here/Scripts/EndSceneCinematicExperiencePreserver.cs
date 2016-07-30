@@ -64,9 +64,15 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         var c = Camera.main.GetComponent<Corrupt>();
         c.corruption = 0.0f;
         c.doCorrupt = false;
+        Shader.SetGlobalFloat("_AltValue", 0.0f);
+        Shader.SetGlobalColor("_FloorColor", Color.Lerp(new Color32(189, 189, 189, 255), Color.black, 0.0f));
     }
         // Use this for initialization
     void Awake () {
+        ThinkYeah();
+    }
+
+    void Start() {
         ThinkYeah();
     }
 	

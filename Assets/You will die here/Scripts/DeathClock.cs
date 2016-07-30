@@ -2,15 +2,18 @@ using UnityEngine;
 using System.Collections;
 
 public class DeathClock : MonoBehaviour {
+    public float totalTimeToDie = 600.0f;
     public float timeToDie = 600.0f; // Ten Minutes
     public float remainingDeathLerp = 60.0f; // At one minute left, do weird lerp shit.
     public bool didNotTrigger = true;
     public bool didDie = false;
     private UnityEngine.UI.Text timeText;
+    private Corrupt c;
 
     void GetUI() {
         timeText = GameObject.Find("Canvas/TimeLeft").GetComponent<UnityEngine.UI.Text>();
         timeText.text = "";
+        c = Camera.main.GetComponent<Corrupt>();
     }
 
     void OnLevelWasLoaded() {
@@ -25,6 +28,8 @@ public class DeathClock : MonoBehaviour {
 	// Update is called once per frame
 	public void SecretUpdate () {
         timeToDie -= Time.deltaTime;
+
+        c.minCorrupt = Mathf.Lerp(1.0f, 0.0f, ( timeToDie / (totalTimeToDie+(remainingDeathLerp * 2.0f))));
 
         if( timeToDie <= remainingDeathLerp) {
             // Do some interesting effects when this happens.

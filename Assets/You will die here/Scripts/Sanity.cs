@@ -21,6 +21,7 @@ public class Sanity : MonoBehaviour {
     private FloorMaker fm;
     private Corrupt c;
     private Grandpa g;
+    private DeathClock dc;
 
     private Dictionary<string, int> mutationLog = new Dictionary<string, int>();
 
@@ -30,6 +31,7 @@ public class Sanity : MonoBehaviour {
         rg = GameObject.Find("World").GetComponent<RoomGenergreater>();
         c = Camera.main.GetComponent<Corrupt>();
         g = GetComponent<Grandpa>();
+        dc = GetComponent<DeathClock>();
     }
 
     /*
@@ -143,6 +145,7 @@ public class Sanity : MonoBehaviour {
             // Adjust Corruption
             if( c && g ){
                 c.corruptTime *= Random.Range(minTurnRateChange, maxTurnRateChange);
+                /*
                 c.minCorrupt = Mathf.Pow(g.ascentions+1, 0.5f) * 0.25f ;
                 c.maxCorrupt = Mathf.Pow(c.minCorrupt, 2.0f);
 
@@ -159,6 +162,7 @@ public class Sanity : MonoBehaviour {
                 if (c.minCorrupt > 1.0f) {
                     c.minCorrupt = 1.0f;
                 }
+                */
             }
 
             // == Heckle the RoomGenerator
