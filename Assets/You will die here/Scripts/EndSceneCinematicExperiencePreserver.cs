@@ -60,6 +60,10 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         grandpa.cameraTargetDirection = 0.0f;
         var lg = grandpa.gameObject.GetComponentInChildren<LookGrandpa>();
         lg.enabled = true;
+
+        var c = Camera.main.GetComponent<Corrupt>();
+        c.corruption = 0.0f;
+        c.doCorrupt = false;
     }
         // Use this for initialization
     void Awake () {
