@@ -21,7 +21,6 @@ public class Sanity : MonoBehaviour {
     private FloorMaker fm;
     private Corrupt c;
     private Grandpa g;
-    private DeathClock dc;
 
     private Dictionary<string, int> mutationLog = new Dictionary<string, int>();
 
@@ -31,7 +30,6 @@ public class Sanity : MonoBehaviour {
         rg = GameObject.Find("World").GetComponent<RoomGenergreater>();
         c = Camera.main.GetComponent<Corrupt>();
         g = GetComponent<Grandpa>();
-        dc = GetComponent<DeathClock>();
     }
 
     /*

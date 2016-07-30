@@ -36,7 +36,7 @@ public class DeathClock : MonoBehaviour {
             if( didNotTrigger ){
                 // Do one-time things here. What a shitty bool name.
                 didNotTrigger = false;
-                AkSoundEngine.PostEvent("grandpaDeathWarning", gameObject);
+                //AkSoundEngine.PostEvent("grandpaDeathWarning", gameObject);
             }
             //Mathf.Lerp(0.0f, 0.0f, timeToDie / remainingDeathLerp);
         }

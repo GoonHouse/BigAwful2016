@@ -25,18 +25,4 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 *.validationcache
-
-Assets/Wwise/Deployment/Plugins/Windows_new.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86/Debug.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86/DSP.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86/Profile.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86/Release.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86_64.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86_64/Debug.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86_64/DSP.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86_64/Profile.meta
-Assets/Wwise/Deployment/Plugins/Windows_new/x86_64/Release.meta
-Assets/Wwise/Editor/ProjectData/AkWwiseProjectData 1.asset
-Assets/Wwise/Editor/ProjectData/AkWwiseProjectData 1.asset.meta
 *.prof

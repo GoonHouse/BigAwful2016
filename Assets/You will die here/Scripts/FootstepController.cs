@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FootstepController : MonoBehaviour {
@@ -18,7 +18,7 @@ public class FootstepController : MonoBehaviour {
         if (isStepping == true)
         {
             isStepping = false;
-            AkSoundEngine.PostEvent("grandpaStep", gameObject);
+            //AkSoundEngine.PostEvent("grandpaStep", gameObject);
         }
 	}
 }

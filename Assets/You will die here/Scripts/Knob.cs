@@ -23,11 +23,11 @@ public class Knob : MonoBehaviour {
 	}
 
     public void Buildup() {
-        AkSoundEngine.PostEvent("buildupSound", gameObject);
+        //AkSoundEngine.PostEvent("buildupSound", gameObject);
     }
 
     public void Unlock() {
-        AkSoundEngine.PostEvent("unlockSound", gameObject);
+        //AkSoundEngine.PostEvent("unlockSound", gameObject);
     }
 
     public void OpenDoor() {

@@ -10,6 +10,8 @@ public class LookGrandpa : MonoBehaviour {
     public UnityEngine.UI.Text thinkText;
 	public float tooFar = 10f;
 	public float maxAngle = 0.75f;
+    public AudioSource aus;
+    public AudioClip ac;
 
     public float timeOnMind = 0.0f;
     public float timeToCommit = 0.33f;
@@ -34,7 +36,17 @@ public class LookGrandpa : MonoBehaviour {
             var dex = Random.Range(0, lt.thoughts.Count);
             var thought = lt.thoughts[dex];
             thinkText.text = thought.text;
-            AkSoundEngine.PostEvent("think_" + lt.propName + "_" + dex, gameObject);
+
+            var snd = ac;
+            if( thought.sound != null ){
+                snd = thought.sound;
+            }
+            if( !aus.isPlaying ){
+                Debug.LogWarning("guhyuk");
+                aus.clip = ac;
+                aus.Play();
+            }
+            //AkSoundEngine.PostEvent("think_" + lt.propName + "_" + dex, gameObject);
         } else {
             God.main.LogError("YOU GOT ME ALL FUCKED UP. HOLD ON.");
         }
