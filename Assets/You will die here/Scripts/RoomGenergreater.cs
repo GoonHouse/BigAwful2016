@@ -200,7 +200,7 @@ public class RoomGenergreater : MonoBehaviour {
 
             if (room.isWalkable) {
                 foreach (GameObject fa in room.floorAnchors) {
-                    if (Random.value <= chanceOfFloor) {
+                    if (Random.value <= chanceOfFloor && decorationFloor.Count >= 1) {
                         var i = Random.Range(0, decorationFloor.Count);
                         SpawnFurniture(decorationFloor[i], fa);
                     }
@@ -209,7 +209,7 @@ public class RoomGenergreater : MonoBehaviour {
                 // No huge props at spawn coordinates.
                 if( room.pos != Vector2.zero) {
                     foreach (GameObject oa in room.oversizeAnchors) {
-                        if (Random.value <= chanceOfOversize) {
+                        if (Random.value <= chanceOfOversize && decorationOversize.Count >= 1) {
                             var i = Random.Range(0, decorationOversize.Count);
                             SpawnFurniture(decorationOversize[i], oa);
                         }
@@ -244,13 +244,13 @@ public class RoomGenergreater : MonoBehaviour {
 
             if (inside) {
                 foreach (GameObject ipa in wall.insidePhotoAnchors) {
-                    if (Random.value <= chanceOfPhoto) {
+                    if (Random.value <= chanceOfPhoto && decorationPhotos.Count >= 1) {
                         var i = Random.Range(0, decorationPhotos.Count);
                         SpawnFurniture(decorationPhotos[i], ipa);
                     }
                 }
                 foreach (GameObject ifa in wall.insideFloorAnchors) {
-                    if (Random.value <= chanceOfWallFloor) {
+                    if (Random.value <= chanceOfWallFloor && decorationFloor.Count >= 1) {
                         var i = Random.Range(0, decorationFloor.Count);
                         SpawnFurniture(decorationFloor[i], ifa);
                     }
@@ -259,13 +259,13 @@ public class RoomGenergreater : MonoBehaviour {
 
             if (outside) {
                 foreach (GameObject opa in wall.outsidePhotoAnchors) {
-                    if (Random.value <= chanceOfPhoto) {
+                    if (Random.value <= chanceOfPhoto && decorationPhotos.Count >= 1) {
                         var i = Random.Range(0, decorationPhotos.Count);
                         SpawnFurniture(decorationPhotos[i], opa);
                     }
                 }
                 foreach (GameObject ofa in wall.outsideFloorAnchors) {
-                    if (Random.value <= chanceOfWallFloor) {
+                    if (Random.value <= chanceOfWallFloor && decorationFloor.Count >= 1) {
                         var i = Random.Range(0, decorationFloor.Count);
                         SpawnFurniture(decorationFloor[i], ofa);
                     }

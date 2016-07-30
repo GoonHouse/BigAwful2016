@@ -197,6 +197,7 @@ MonoBehaviour:
   isChanging: 1
   timeToChange: 16
   currentTimeToChange: 0
+  timeToChangeBonusWait: 3
 --- !u!1 &186517135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,6 +1175,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 11425432, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
+      propertyPath: corruptFactor
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c630fd2524edbe408256f3f3183d4d1, type: 2}
   m_IsPrefabParent: 0
@@ -1369,6 +1374,10 @@ Prefab:
     - target: {fileID: 490100, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477056, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}
+      propertyPath: hasThought
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d059bb078ae2c0f4caba20520cd34bb9, type: 2}

@@ -140,24 +140,30 @@ public class Sanity : MonoBehaviour {
                 timesToInduceCrazyProp += normalThingsSeen - epu.thingsSeen;
             }
 
+            // Adjust Corruption
+            if( c && g ){
+                c.corruptTime *= Random.Range(minTurnRateChange, maxTurnRateChange);
+                c.minCorrupt = Mathf.Pow(g.ascentions+1, 0.5f) * 0.25f ;
+                c.maxCorrupt = Mathf.Pow(c.minCorrupt, 2.0f);
+
+                if (c.minCorrupt > c.maxCorrupt) {
+                    var min = c.minCorrupt;
+                    var max = c.maxCorrupt;
+                    c.minCorrupt = max;
+                    c.maxCorrupt = min;
+                }
+
+                if (c.maxCorrupt > 1.0f) {
+                    c.maxCorrupt = 1.0f;
+                }
+                if (c.minCorrupt > 1.0f) {
+                    c.minCorrupt = 1.0f;
+                }
+            }
+
             // == Heckle the RoomGenerator
             if( rg && fm ){
                 for (int i = 0; i < (timesToInduceCrazyProp + g.ascentions); i++) {
-                    c.corruptTime *= Random.Range(minTurnRateChange, maxTurnRateChange);
-                    c.minCorrupt *= Random.Range(minTurnRateChange, maxTurnRateChange);
-                    c.maxCorrupt *= Random.Range(minTurnRateChange, maxTurnRateChange);
-
-                    if (c.minCorrupt > c.maxCorrupt) {
-                        var min = c.minCorrupt;
-                        var max = c.maxCorrupt;
-                        c.minCorrupt = max;
-                        c.maxCorrupt = min;
-                    }
-
-                    if (c.maxCorrupt > 1.0f) {
-                        c.maxCorrupt = 1.0f;
-                    }
-
                     var actionToTake = Random.value;
                     if( actionToTake <= (1.0f/thingsThatCouldHappen)) {
                         // = Induce crazy props.
@@ -177,26 +183,38 @@ public class Sanity : MonoBehaviour {
                         var poolToTouch = Random.value;
                         if (poolToTouch <= 0.33f) {
                             LogMutation("Photo Duplicated");
-                            rg.decorationPhotos.Add(rg.decorationPhotos[Random.Range(0, rg.decorationPhotos.Count)]);
+                            if (rg.decorationPhotos.Count >= 1) {
+                                rg.decorationPhotos.Add(rg.decorationPhotos[Random.Range(0, rg.decorationPhotos.Count)]);
+                            }
                         } else if (poolToTouch > 0.33f && poolToTouch <= 0.66f) {
                             LogMutation("Floor Duplicated");
-                            rg.decorationFloor.Add(rg.decorationFloor[Random.Range(0, rg.decorationFloor.Count)]);
+                            if (rg.decorationFloor.Count >= 1) {
+                                rg.decorationFloor.Add(rg.decorationFloor[Random.Range(0, rg.decorationFloor.Count)]);
+                            }
                         } else {
                             LogMutation("Oversize Duplicated");
-                            rg.decorationOversize.Add(rg.decorationOversize[Random.Range(0, rg.decorationOversize.Count)]);
+                            if (rg.decorationOversize.Count >= 1) {
+                                rg.decorationOversize.Add(rg.decorationOversize[Random.Range(0, rg.decorationOversize.Count)]);
+                            }
                         }
                     } else if (actionToTake > (2.0f / thingsThatCouldHappen) && actionToTake <= (3.0f / thingsThatCouldHappen)) {
                         // = Drop a pool item.
                         var poolToTouch = Random.value;
                         if (poolToTouch <= 0.33f) {
                             LogMutation("Photo Dropped");
-                            rg.decorationPhotos.RemoveAt(Random.Range(0, rg.decorationPhotos.Count));
+                            if (rg.decorationPhotos.Count >= 1) {
+                                rg.decorationPhotos.RemoveAt(Random.Range(0, rg.decorationPhotos.Count));
+                            }
                         } else if (poolToTouch > 0.33f && poolToTouch <= 0.66f) {
                             LogMutation("Floor Dropped");
-                            rg.decorationFloor.RemoveAt(Random.Range(0, rg.decorationFloor.Count));
+                            if (rg.decorationFloor.Count >= 1) {
+                                rg.decorationFloor.RemoveAt(Random.Range(0, rg.decorationFloor.Count));
+                            }
                         } else {
                             LogMutation("Oversize Dropped");
-                            rg.decorationOversize.RemoveAt(Random.Range(0, rg.decorationOversize.Count));
+                            if (rg.decorationOversize.Count >= 1) {
+                                rg.decorationOversize.RemoveAt(Random.Range(0, rg.decorationOversize.Count));
+                            }
                         }
                     } else {
                         var poolToTouch = Random.value;

@@ -15,16 +15,16 @@ public class LookGrandpa : MonoBehaviour {
     public float timeToCommit = 0.33f;
     public bool didCommitYet = false;
 
-    private EmotionProcessor epu;
-    private bool hasThought = true;
-    private bool fadeDone = false;
-    private float timeToFadeIn = 0.5f;
-    private float currentFadeTime = 0.0f;
-    private float timeToExpose = 4.0f;
-    private float currentExposeTime = 0.0f;
-    private Color initColor;
-    private Color noAlpha;
-    private Color withAlpha;
+    public EmotionProcessor epu;
+    public bool hasThought = false;
+    public bool fadeDone = false;
+    public float timeToFadeIn = 0.5f;
+    public float currentFadeTime = 0.0f;
+    public float timeToExpose = 4.0f;
+    public float currentExposeTime = 0.0f;
+    public Color initColor;
+    public Color noAlpha;
+    public Color withAlpha;
 
     void Think(LookTarget lt, Thought t) {
         if( lt != null && lt.thoughts.Count > 0 && !hasThought ) {
@@ -97,24 +97,23 @@ public class LookGrandpa : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        thingToLookAt = null;
-        if( thinkText != null) {
-            thinkText.text = "";
-        } else {
-            thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
-            thinkText.text = "";
-            initColor = thinkText.color;
-            hasThought = false;
-            fadeDone = false;
-            currentFadeTime = 0.0f;
-            currentExposeTime = 0.0f;
-            noAlpha = initColor;
-            noAlpha.a = 0.0f;
-            withAlpha = initColor;
-            withAlpha.a = 1.0f;
-            thinkText.color = noAlpha;
-        }
         epu = GetComponent<EmotionProcessor>();
+        thingToLookAt = null;
+        thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
+        thinkText.text = "";
+        initColor = thinkText.color;
+        hasThought = false;
+        fadeDone = false;
+        currentFadeTime = 0.0f;
+        currentExposeTime = 0.0f;
+        noAlpha = initColor;
+        noAlpha.a = 0.0f;
+        withAlpha = initColor;
+        withAlpha.a = 1.0f;
+        thinkText.color = noAlpha;
+        // you can't forget yourself, grandpa!
+        // like hell I can't
+        Forget(gameObject);
 	}
 
     void Notice(GameObject go) {

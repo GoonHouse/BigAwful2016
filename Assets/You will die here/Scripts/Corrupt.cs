@@ -6,7 +6,7 @@ public class Corrupt : MonoBehaviour {
     public float corruptFactor = 0.01F;
     public float corruptTime = 1.0F;
     public float minCorrupt = 0.01f;
-    public float maxCorrupt = 0.33f;
+    public float maxCorrupt = 1.0f;
     public float corruption;
 
     void Awake() {
