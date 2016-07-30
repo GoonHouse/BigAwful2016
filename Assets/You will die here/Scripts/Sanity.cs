@@ -146,7 +146,7 @@ public class Sanity : MonoBehaviour {
             if( c && g ){
                 c.corruptTime *= Random.Range(minTurnRateChange, maxTurnRateChange);
                 /*
-                c.minCorrupt = Mathf.Pow(g.ascentions+1, 0.5f) * 0.25f ;
+                c.minCorrupt = Mathf.Pow(g.ascentions+1, 0.6f) * 0.25f ;
                 c.maxCorrupt = Mathf.Pow(c.minCorrupt, 2.0f);
 
                 if (c.minCorrupt > c.maxCorrupt) {
