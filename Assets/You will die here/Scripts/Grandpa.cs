@@ -441,7 +441,6 @@ public class Grandpa : MonoBehaviour {
             timesSnappedY = 0;
             lastGoodPos = pos;
         }
-        pos = transform.position;
         if (pos.y < clipTolerance) {
             God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos + " (" + timesSnappedY + "/" + timesToSnapY + ")");
             pos.y += Mathf.Abs(pos.y);

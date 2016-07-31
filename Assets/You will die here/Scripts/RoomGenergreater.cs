@@ -37,7 +37,7 @@ public class RoomGenergreater : MonoBehaviour {
     public List<GameObject> crazyDecorationOversize;
 
     private List<float> roomDistances = new List<float>();
-    private float maxDistanceFromOrigin = 0.0f;
+    public float maxDistanceFromOrigin = 0.0f;
     private float sumOfDistancesFromOrigin = 0.0f;
     private int maxTileRunners = 0;
 
