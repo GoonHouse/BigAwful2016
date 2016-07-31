@@ -8,7 +8,8 @@ public class LookGrandpa : MonoBehaviour {
 	public Transform eyeTarget;
 	public Transform grampsHead;
     public UnityEngine.UI.Text thinkText;
-	public float tooFar = 10f;
+    public UnityEngine.UI.Text thinkText2;
+    public float tooFar = 10f;
 	public float maxAngle = 0.75f;
     public AudioSource aus;
     public AudioClip ac;
@@ -27,6 +28,9 @@ public class LookGrandpa : MonoBehaviour {
     public Color initColor;
     public Color noAlpha;
     public Color withAlpha;
+    public Color initColor2;
+    public Color noAlpha2;
+    public Color withAlpha2;
     public List<AudioClip> thinkNoises = new List<AudioClip>();
 
     void Think(LookTarget lt, Thought t) {
@@ -37,6 +41,7 @@ public class LookGrandpa : MonoBehaviour {
             var dex = Random.Range(0, lt.thoughts.Count);
             var thought = lt.thoughts[dex];
             thinkText.text = thought.text;
+            thinkText2.text = thought.text;
 
             var snd = thinkNoises[Random.Range(0, thinkNoises.Count)];
             if( thought.sound != null ){
@@ -66,8 +71,10 @@ public class LookGrandpa : MonoBehaviour {
                 currentFadeTime += Time.deltaTime;
                 if (currentFadeTime <= timeToFadeIn) {
                     thinkText.color = Color.Lerp(noAlpha, withAlpha, currentFadeTime / timeToFadeIn);
+                    thinkText2.color = Color.Lerp(noAlpha2, withAlpha2, currentFadeTime / timeToFadeIn);
                 } else {
                     thinkText.color = withAlpha;
+                    thinkText2.color = withAlpha2;
                     currentExposeTime += Time.deltaTime;
                     if (currentExposeTime >= timeToExpose) {
                         fadeDone = true;
@@ -79,9 +86,12 @@ public class LookGrandpa : MonoBehaviour {
                 currentFadeTime += Time.deltaTime;
                 if (currentFadeTime <= timeToFadeIn) {
                     thinkText.color = Color.Lerp(withAlpha, noAlpha, currentFadeTime / timeToFadeIn);
+                    thinkText2.color = Color.Lerp(withAlpha2, noAlpha2, currentFadeTime / timeToFadeIn);
                 } else {
                     thinkText.color = noAlpha;
+                    thinkText2.color = noAlpha2;
                     thinkText.text = "";
+                    thinkText2.text = "";
                     hasThought = false;
                     fadeDone = false;
                 }
@@ -91,17 +101,24 @@ public class LookGrandpa : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
+        thinkText2 = GameObject.Find("Canvas/GrandpaThoughts2").GetComponent<UnityEngine.UI.Text>();
         thinkText.text = "";
+        thinkText2.text = "";
         initColor = thinkText.color;
+        initColor2 = thinkText2.color;
         hasThought = false;
         fadeDone = false;
         currentFadeTime = 0.0f;
         currentExposeTime = 0.0f;
         noAlpha = initColor;
+        noAlpha2 = initColor2;
         noAlpha.a = 0.0f;
+        noAlpha2.a = 0.0f;
         withAlpha = initColor;
+        withAlpha2 = initColor2;
         withAlpha.a = 1.0f;
         thinkText.color = noAlpha;
+        thinkText2.color = noAlpha2;
         // you can't forget yourself, grandpa!
         // like hell I can't
         Forget(gameObject);
@@ -112,21 +129,28 @@ public class LookGrandpa : MonoBehaviour {
         epu = GetComponent<EmotionProcessor>();
         thingToLookAt = null;
         thinkText = GameObject.Find("Canvas/GrandpaThoughts").GetComponent<UnityEngine.UI.Text>();
+        thinkText2 = GameObject.Find("Canvas/GrandpaThoughts2").GetComponent<UnityEngine.UI.Text>();
         thinkText.text = "";
+        thinkText2.text = "";
         initColor = thinkText.color;
+        initColor2 = thinkText2.color;
         hasThought = false;
         fadeDone = false;
         currentFadeTime = 0.0f;
         currentExposeTime = 0.0f;
         noAlpha = initColor;
+        noAlpha2 = initColor2;
         noAlpha.a = 0.0f;
+        noAlpha2.a = 0.0f;
         withAlpha = initColor;
+        withAlpha2 = initColor2;
         withAlpha.a = 1.0f;
         thinkText.color = noAlpha;
+        thinkText2.color = noAlpha2;
         // you can't forget yourself, grandpa!
         // like hell I can't
         Forget(gameObject);
-	}
+    }
 
     void Notice(GameObject go) {
         thingToLookAt = go.transform;

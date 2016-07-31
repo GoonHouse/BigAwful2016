@@ -35,13 +35,13 @@ public class HasteResponse : System.Object {
 
     public void LogWarning(string text) {
         Debug.LogWarning(text);
-        runningLog += "\n[WARN]" + text;
+        runningLog += "\n[WARN] " + text;
         SetClipboard(runningLog);
     }
 
     public void LogError(string text) {
         Debug.LogError(text);
-        runningLog += "\n[ERROR]" + text;
+        runningLog += "\n[ERROR] " + text;
         SetClipboard(runningLog);
     }
 
