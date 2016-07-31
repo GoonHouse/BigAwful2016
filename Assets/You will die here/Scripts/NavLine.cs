@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NavLine : MonoBehaviour {
 	private GameObject gramps;
@@ -21,15 +22,28 @@ public class NavLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
-		//lineRenderer.SetPosition (0, transform.position+grampsHeight);
-
+        var navlines = FindObjectsOfType<NavLine>();
+        var minDist = Mathf.Infinity;
+        var maxDist = Mathf.NegativeInfinity;
+        foreach( NavLine nav in navlines ) {
+            var dist = Vector3.Distance(gramps.transform.position, nav.transform.position);
+            if( dist < minDist ){
+                minDist = dist;
+            }
+            if( dist > maxDist) {
+                maxDist = dist;
+            }
+        }
+        
         var nang = Vector3.MoveTowards(gramps.transform.position, transform.position, maxDistDelta);
         lineRenderer.SetPosition (1, Vector3.Lerp(transform.position+grampsHeight, nang-Vector3.up+grampsHeight, mitigation * grampsLerp));
         var mxdist = 3.0f;
         if( rg != null ) {
             mxdist = rg.maxDistanceFromOrigin;
         }
-        var gigy = Mathf.Lerp(minTriDist, maxTriDist, Vector3.Distance(gramps.transform.position, transform.position) / mxdist);
+        var bdist = Vector3.Distance(gramps.transform.position, transform.position);
+        var gigy = bdist.Scale(minDist, maxDist, minTriDist, maxTriDist);
+
 		nang = Vector3.MoveTowards(gramps.transform.position, transform.position, maxDistDelta + gigy + triOff);
 		lineRenderer.SetPosition (0, Vector3.Lerp(transform.position+grampsHeight, nang-Vector3.up+grampsHeight, mitigation * grampsLerp));
 	}
