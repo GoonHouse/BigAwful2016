@@ -27,6 +27,7 @@ public class LookGrandpa : MonoBehaviour {
     public Color initColor;
     public Color noAlpha;
     public Color withAlpha;
+    public List<AudioClip> thinkNoises = new List<AudioClip>();
 
     void Think(LookTarget lt, Thought t) {
         if( lt != null && lt.thoughts.Count > 0 && !hasThought ) {
@@ -37,7 +38,7 @@ public class LookGrandpa : MonoBehaviour {
             var thought = lt.thoughts[dex];
             thinkText.text = thought.text;
 
-            var snd = ac;
+            var snd = thinkNoises[Random.Range(0, thinkNoises.Count)];
             if( thought.sound != null ){
                 snd = thought.sound;
             }
