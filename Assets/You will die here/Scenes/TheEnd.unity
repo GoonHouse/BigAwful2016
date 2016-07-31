@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toApplyToPlayer: {fileID: 2100000, guid: 3521d900e1841bf4a8f0d37363fcd0e9, type: 2}
+  deathEnvironment: {fileID: 8300000, guid: c6783b67accbe714ab846e5c01ba0b3b, type: 3}
 --- !u!1 &325650835
 GameObject:
   m_ObjectHideFlags: 0

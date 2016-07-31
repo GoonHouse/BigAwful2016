@@ -6,11 +6,14 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
 
     public Material toApplyToPlayer;
     public AudioClip deathEnvironment;
+    public float timeToFadeIn = 15.0f;
+    public float timeFadingIn = 0.0f;
     private GameObject deadGrandpa;
     private GameObject cameraHolder;
     private Grandpa grandpa;
     private GameObject title;
     private GameObject titleAnchor;
+    private AudioSource mus;
 
     void ThinkYeah() {
         deadGrandpa = GameObject.Find("DeadGrandpa");
@@ -68,9 +71,10 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         Shader.SetGlobalFloat("_AltValue", 0.0f);
         Shader.SetGlobalColor("_FloorColor", Color.Lerp(new Color32(189, 189, 189, 255), Color.black, 0.0f));
 
-        var mus = Camera.main.GetComponent<AudioSource>();
+        mus = Camera.main.GetComponent<AudioSource>();
         mus.Stop();
         mus.clip = deathEnvironment;
+        mus.volume = 0.0f;
         mus.Play();
     }
         // Use this for initialization
@@ -91,5 +95,12 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         // Set the camera's position.
         var cpos = deadGrandpa.transform.position;
         cameraHolder.transform.position = cpos;
+
+        if( timeFadingIn < timeToFadeIn) {
+            timeFadingIn += Time.deltaTime;
+            mus.volume = Mathf.Lerp(0.0f, 1.0f, timeFadingIn / timeToFadeIn);
+        } else {
+            mus.volume = 1.0f;
+        }
     }
 }
