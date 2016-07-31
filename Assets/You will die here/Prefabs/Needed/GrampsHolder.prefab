@@ -294,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.356135, y: 0, z: 8.838834}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1151,11 +1151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTimeToDie: 600
-  timeToDie: 123
+  timeToDie: 600
   remainingDeathLerp: 120
   didNotTrigger: 1
   didDie: 0
   aus: {fileID: 8269064}
+  deathNoise: {fileID: 8300000, guid: e008f3dc702a544499bcbef6e84f2326, type: 3}
 --- !u!114 &11471344
 MonoBehaviour:
   m_ObjectHideFlags: 1

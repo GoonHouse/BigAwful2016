@@ -10,6 +10,7 @@ public class DeathClock : MonoBehaviour {
     private UnityEngine.UI.Text timeText;
     private Corrupt c;
     public AudioSource aus;
+    public AudioClip deathNoise;
 
     void GetUI() {
         timeText = GameObject.Find("Canvas/TimeLeft").GetComponent<UnityEngine.UI.Text>();
@@ -56,6 +57,9 @@ public class DeathClock : MonoBehaviour {
                 grandpa.Die();
                 didDie = true;
                 timeText.text = "";
+                aus.Stop();
+                aus.clip = deathNoise;
+                aus.Play();
             }
         }
 	}
