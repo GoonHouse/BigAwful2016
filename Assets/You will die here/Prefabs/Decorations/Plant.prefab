@@ -137,10 +137,9 @@ MonoBehaviour:
       see the soul crushing realization in his eyes that his boy was no longer a boy
       but a young man. A young man tired of childish whimsy and no time for his father."
     sound: {fileID: 0}
-  - text: Where is your decorations?
+  - text: Where did your decorations go?
     sound: {fileID: 0}
-  - text: "I forgot to put up a tree this year. I\'m glad someone else did it
-      for me."
+  - text: I forgot to put up a tree this year. I'm glad someone else did it for me.
     sound: {fileID: 0}
   - text: Does anyone smell cookies?
     sound: {fileID: 0}
