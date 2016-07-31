@@ -123,14 +123,13 @@ MonoBehaviour:
   emotions: []
   needs: []
   thoughts:
-  - text: That's strange
+  - text: That's strange.
     sound: {fileID: 0}
-  - text: How did they fit that tv in the tv?
+  - text: How did they fit that TV in the TV?
     sound: {fileID: 0}
   - text: Wacky.
     sound: {fileID: 0}
-  - text: "Is this one of those Picture in Picture that\'s been all the craze
-      lately?"
+  - text: Is this one of those Picture in Picture that's been all the craze lately?
     sound: {fileID: 0}
   - text: This is not my regularly scheduled programming.
     sound: {fileID: 0}
