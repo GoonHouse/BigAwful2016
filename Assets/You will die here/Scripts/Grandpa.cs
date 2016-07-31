@@ -34,6 +34,8 @@ public class Grandpa : MonoBehaviour {
     public Transform moveTarget;
     public float moveTime = 1.0f;
     public float moveTimeSpent = 0.0f;
+    public float clipTolerance = -0.01f;
+    public float clipToleranceGrowth = -0.015f;
 
     public float mitigation = 1.0f;
 
@@ -439,13 +441,15 @@ public class Grandpa : MonoBehaviour {
             timesSnappedY = 0;
             lastGoodPos = pos;
         }
-        if (pos.y < -0.003f) {
+        pos = transform.position;
+        if (pos.y < clipTolerance) {
             God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos + " (" + timesSnappedY + "/" + timesToSnapY + ")");
             pos.y += Mathf.Abs(pos.y);
             transform.position = pos;
             timesSnappedY++;
             if (timesSnappedY >= timesToSnapY) {
-                God.main.LogWarning("TELEPORTING PLAYER BACK TO: " + lastGoodPos + " FROM " + pos);
+                God.main.LogWarning("TELEPORTING PLAYER BACK TO: " + lastGoodPos + " FROM " + pos + "; TOLERANCE: " + clipTolerance);
+                clipTolerance += clipToleranceGrowth;
                 transform.position = lastGoodPos;
                 controller.SimpleMove(Vector3.zero);
                 timesSnappedY = 0;
