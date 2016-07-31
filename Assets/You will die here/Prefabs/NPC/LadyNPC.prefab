@@ -614,12 +614,12 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: You look like her. I loved her right? Or maybe I hated her?
     sound: {fileID: 0}
-  - text: Heeey sexy giiiirlfriend!
+  - text: You are his daughter, he would do anything for you.
     sound: {fileID: 0}
   - text: Can you show me around, young lady?
     sound: {fileID: 0}
-  - text: "Am I too old to be your suitor? Just joshing, little lady. Of course I\'m
-      not."
+  - text: Am I too old to be your suitor? Just joshing, little lady. Of course I'm
+      not.
     sound: {fileID: 0}
 --- !u!114 &11498286
 MonoBehaviour:
