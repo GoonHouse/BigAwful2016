@@ -439,7 +439,7 @@ public class Grandpa : MonoBehaviour {
             timesSnappedY = 0;
             lastGoodPos = pos;
         }
-        if (pos.y < 0.0f) {
+        if (pos.y < -0.003f) {
             God.main.LogWarning("FLOORCLIP: " + pos.y + " AT " + pos + " (" + timesSnappedY + "/" + timesToSnapY + ")");
             pos.y += Mathf.Abs(pos.y);
             transform.position = pos;
