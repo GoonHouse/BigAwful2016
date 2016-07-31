@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
 
     public Material toApplyToPlayer;
+    public AudioClip deathEnvironment;
     private GameObject deadGrandpa;
     private GameObject cameraHolder;
     private Grandpa grandpa;
@@ -66,6 +67,11 @@ public class EndSceneCinematicExperiencePreserver : MonoBehaviour {
         c.doCorrupt = false;
         Shader.SetGlobalFloat("_AltValue", 0.0f);
         Shader.SetGlobalColor("_FloorColor", Color.Lerp(new Color32(189, 189, 189, 255), Color.black, 0.0f));
+
+        var mus = Camera.main.GetComponent<AudioSource>();
+        mus.Stop();
+        mus.clip = deathEnvironment;
+        mus.Play();
     }
         // Use this for initialization
     void Awake () {
