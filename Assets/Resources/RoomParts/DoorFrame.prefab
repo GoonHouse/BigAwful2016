@@ -407,7 +407,7 @@ MonoBehaviour:
   emotions: []
   needs: []
   thoughts:
-  - text: I don't want to die here
+  - text: I don't want to die here.
     sound: {fileID: 0}
 --- !u!135 &13593942
 SphereCollider:

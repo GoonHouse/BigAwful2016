@@ -102,9 +102,8 @@ public class Grandpa : MonoBehaviour {
             transform.position = spawnPos;
             lastGoodPos = spawnPos;
             startPos = spawnPos;
-            Debug.LogWarning("(LOAD) PLAYER SNAPPED TO: " + transform.position);
             if( transform.position != spawnPos ) {
-                Debug.LogError("SOMETHING IS REALLY HECKED UP.");
+                God.main.LogError( "SOMETHING IS REALLY HECKED UP.  PLAYER: " + transform.position + "; WAS NOT: " + spawnPos );
             }
             wasGrounded = false;
 
@@ -120,8 +119,8 @@ public class Grandpa : MonoBehaviour {
             lastGoodPos = spawnPos;
             ascentions++;
         }
-        if (transform.position != spawnPos) {
-            Debug.LogError("SOMETHING IS *EXTREMELY* HECKED UP. PLAYER: " + transform.position + "; WAS NOT: " + spawnPos );
+        if ( transform.position != spawnPos && isAlive ){
+            God.main.LogError("SOMETHING IS *EXTREMELY* HECKED UP. PLAYER: " + transform.position + "; WAS NOT: " + spawnPos );
         }
 
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
@@ -325,6 +324,7 @@ public class Grandpa : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        /*
         if (Input.GetKeyDown(KeyCode.R)) {
             var dc = GetComponent<DeathClock>();
             dc.timeToDie = 0.1f;
@@ -344,6 +344,7 @@ public class Grandpa : MonoBehaviour {
             );
             God.main.UploadLog();
         }
+        */
         if ( inControl && !isFrozen ) {
             float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
             float moveVertical = Input.GetAxis("Vertical") * mitigation;

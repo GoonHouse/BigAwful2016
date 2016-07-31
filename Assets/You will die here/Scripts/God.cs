@@ -27,6 +27,8 @@ public class HasteResponse : System.Object {
 
     private string runningLog = "# YouWillDieHere.log " + System.IO.Path.GetFileName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
 
+    private bool doLock = true;
+
     public void Log(string text) {
         Debug.Log(text);
         runningLog += "\n" + text;
@@ -46,7 +48,7 @@ public class HasteResponse : System.Object {
     }
 
     public void UploadLog() {
-        StartCoroutine(HasteBin(runningLog));
+        //StartCoroutine(HasteBin(runningLog));
     }
 
     public IEnumerator HasteBin(string doc){
@@ -113,13 +115,23 @@ public class HasteResponse : System.Object {
 
     void Awake() {
         // appease JonTerp
-        Cursor.lockState = CursorLockMode.Locked;
+        CheckLock();
 
         if (main == null) {
             DontDestroyOnLoad(gameObject);
             main = this;
         } else if (main != this) {
             DestroyImmediate(gameObject);
+        }
+    }
+
+    void CheckLock() {
+        if ( doLock ) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        } else {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -132,11 +144,8 @@ public class HasteResponse : System.Object {
 	void Update () {
         // appease JonTerp
 	    if( Input.GetKeyDown(KeyCode.F11) || Input.GetKeyDown(KeyCode.Escape)){
-            if( Cursor.lockState == CursorLockMode.Locked) {
-                Cursor.lockState = CursorLockMode.None;
-            } else if( Cursor.lockState == CursorLockMode.None) {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+            doLock = !doLock;
+            CheckLock();
         }
 	}
 }
