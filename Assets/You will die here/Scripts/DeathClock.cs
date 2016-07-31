@@ -15,7 +15,7 @@ public class DeathClock : MonoBehaviour {
 
     void GetUI() {
         timeText = GameObject.Find("Canvas/TimeLeft").GetComponent<UnityEngine.UI.Text>();
-        timeText2 = GameObject.Find("Canvas/TimeLeft").GetComponent<UnityEngine.UI.Text>();
+        timeText2 = GameObject.Find("Canvas/TimeLeft2").GetComponent<UnityEngine.UI.Text>();
         timeText.text = "";
         timeText2.text = "";
         c = Camera.main.GetComponent<Corrupt>();
