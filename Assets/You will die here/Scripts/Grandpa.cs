@@ -454,7 +454,7 @@ public class Grandpa : MonoBehaviour {
 
         // No more floor grandpas.
         var pos = transform.position;
-        if ( isAlive && !isFrozen && inControl && !shouldDie && controller.isGrounded && pos.y > 0.0f && wasGrounded){
+        if ( isAlive && !isFrozen && inControl && !shouldDie && controller.isGrounded && pos.y > 0.0f && wasGrounded && ((controller.collisionFlags & CollisionFlags.Sides) != 0) ){
             pos.y += 0.5f;
             timesSnappedY = 0;
             lastGoodPos = pos;
