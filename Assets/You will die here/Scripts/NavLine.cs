@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class NavLine : MonoBehaviour {
 	private GameObject gramps;
     private Vector3 grampsHeight = new Vector3(0.0f, 4.5f, 0.0f);
-    private RoomGenergreater rg;
     public float grampsLerp = 1.0f;
     public float mitigation = 1.0f;
     public float maxDistDelta = 8.0f;
@@ -15,7 +14,6 @@ public class NavLine : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        rg = FindObjectOfType<RoomGenergreater>();
 		gramps = GameObject.Find("GrampsHolder");
 	}
 	

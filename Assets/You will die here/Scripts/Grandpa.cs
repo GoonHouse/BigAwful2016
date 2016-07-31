@@ -100,6 +100,12 @@ public class Grandpa : MonoBehaviour {
             moveTarget = null;
             Freeze();
             transform.position = spawnPos;
+            lastGoodPos = spawnPos;
+            startPos = spawnPos;
+            Debug.LogWarning("(LOAD) PLAYER SNAPPED TO: " + transform.position);
+            if( transform.position != spawnPos ) {
+                Debug.LogError("SOMETHING IS REALLY HECKED UP.");
+            }
             wasGrounded = false;
 
             var fc = Camera.main.GetComponent<FogController>();
@@ -113,6 +119,9 @@ public class Grandpa : MonoBehaviour {
             fc.Change(snap, 3.0f, 3.0f);
             lastGoodPos = spawnPos;
             ascentions++;
+        }
+        if (transform.position != spawnPos) {
+            Debug.LogError("SOMETHING IS *EXTREMELY* HECKED UP. PLAYER: " + transform.position + "; WAS NOT: " + spawnPos );
         }
 
         //Camera.main.backgroundColor = (Color)(new Color32(189, 189, 189, 255));
@@ -325,6 +334,15 @@ public class Grandpa : MonoBehaviour {
             if( isFrozen ){
                 SceneManager.LoadScene("Genergreater");
             }
+        }
+        if (Input.GetKeyDown(KeyCode.L)) {
+            var s = GetComponent<Sanity>().levelLog;
+            God.main.Log(
+                "\n### Emergency LogDump Sector Start" +
+                s +
+                "\n### Emergency LogDump Sector End\n"
+            );
+            God.main.UploadLog();
         }
         if ( inControl && !isFrozen ) {
             float moveHorizontal = Input.GetAxis("Horizontal") * mitigation;
