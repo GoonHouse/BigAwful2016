@@ -8,13 +8,16 @@ public class DeathClock : MonoBehaviour {
     public bool didNotTrigger = true;
     public bool didDie = false;
     private UnityEngine.UI.Text timeText;
+    private UnityEngine.UI.Text timeText2;
     private Corrupt c;
     public AudioSource aus;
     public AudioClip deathNoise;
 
     void GetUI() {
         timeText = GameObject.Find("Canvas/TimeLeft").GetComponent<UnityEngine.UI.Text>();
+        timeText2 = GameObject.Find("Canvas/TimeLeft2").GetComponent<UnityEngine.UI.Text>();
         timeText.text = "";
+        timeText2.text = "";
         c = Camera.main.GetComponent<Corrupt>();
     }
 
@@ -51,6 +54,7 @@ public class DeathClock : MonoBehaviour {
 
         if( !didDie ){
             timeText.text = timeToDie.FormatTime();
+            timeText2.text = timeToDie.FormatTime();
             if (timeToDie <= 0.0f) {
                 // We're fucking dead, yo.
                 var grandpa = GetComponent<Grandpa>();
@@ -59,6 +63,7 @@ public class DeathClock : MonoBehaviour {
                 grandpa.Die();
                 didDie = true;
                 timeText.text = "";
+                timeText2.text = "";
                 aus.Stop();
                 aus.clip = deathNoise;
                 aus.Play();
