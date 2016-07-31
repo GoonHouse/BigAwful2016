@@ -43,7 +43,7 @@ public class LookGrandpa : MonoBehaviour {
             }
             if( !aus.isPlaying ){
                 Debug.LogWarning("guhyuk");
-                aus.clip = ac;
+                aus.clip = snd;
                 aus.Play();
             }
             //AkSoundEngine.PostEvent("think_" + lt.propName + "_" + dex, gameObject);
