@@ -42,7 +42,6 @@ public class LookGrandpa : MonoBehaviour {
                 snd = thought.sound;
             }
             if( !aus.isPlaying ){
-                Debug.LogWarning("guhyuk");
                 aus.clip = snd;
                 aus.Play();
             }
