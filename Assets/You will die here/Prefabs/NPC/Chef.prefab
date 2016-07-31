@@ -587,11 +587,11 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: How do I like my eggs? Cooked!
     sound: {fileID: 0}
-  - text: "I think I\u2019ve seen this person at a hotel buffet once."
+  - text: "I think I\'ve seen this person at a hotel buffet once."
     sound: {fileID: 0}
   - text: Nice hat.
     sound: {fileID: 0}
-  - text: "Are you going to cater my daughter\u2019s wedding?"
+  - text: "Are you going to cater my daughter\'s wedding?"
     sound: {fileID: 0}
   - text: Omelette du Fromage.
     sound: {fileID: 0}

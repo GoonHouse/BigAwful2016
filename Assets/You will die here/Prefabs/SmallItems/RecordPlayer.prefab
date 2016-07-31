@@ -126,11 +126,11 @@ MonoBehaviour:
   thoughts:
   - text: The world keeps turning but you always stay the same.
     sound: {fileID: 0}
-  - text: "Huh? Record player? What\u2019s going on with that Record Player?"
+  - text: "Huh? Record player? What\'s going on with that Record Player?"
     sound: {fileID: 0}
   - text: I never liked the Beatles.
     sound: {fileID: 0}
-  - text: "Give me some Duran Duran, baby. I\u2019m hungry like a canine."
+  - text: "Give me some Duran Duran, baby. I\'m hungry like a canine."
     sound: {fileID: 0}
   - text: This is not my phonograph!
     sound: {fileID: 0}

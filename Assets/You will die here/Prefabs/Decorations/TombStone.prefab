@@ -134,7 +134,7 @@ MonoBehaviour:
   - text: Visiting the National Cemetery to see my old war buddies would always bring
       a tear to my eye.
     sound: {fileID: 0}
-  - text: "I can\u2019t make out what it says."
+  - text: "I can\'t make out what it says."
     sound: {fileID: 0}
 --- !u!135 &13581804
 SphereCollider:

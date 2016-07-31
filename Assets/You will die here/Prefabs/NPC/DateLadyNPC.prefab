@@ -717,7 +717,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Are you waiting for someone?
     sound: {fileID: 0}
-  - text: "You aren\u2019t here with me, are you? I\u2019m alone."
+  - text: "You aren\'t here with me, are you? I\'m alone."
     sound: {fileID: 0}
   - text: Care for an escort?
     sound: {fileID: 0}

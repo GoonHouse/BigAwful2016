@@ -127,7 +127,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: A whiskey would help ease my pains.
     sound: {fileID: 0}
-  - text: "A sampling of some stools! Get it? I am such a jokester! My doctor didn\u2019t
+  - text: "A sampling of some stools! Get it? I am such a jokester! My doctor didn\'t
       like that joke when there was blood."
     sound: {fileID: 0}
   - text: This could be softer. Many days of numb butts with this.

@@ -780,9 +780,9 @@ MonoBehaviour:
   - text: She looked beautiful that day.
     sound: {fileID: 0}
   - text: "She said she wanted a pink dress but her mother and I made her pick white.
-      It\u2019s more traditional."
+      It\'s more traditional."
     sound: {fileID: 0}
-  - text: "Having a wedding ain\u2019t no big deal."
+  - text: "Having a wedding ain\'t no big deal."
     sound: {fileID: 0}
   - text: You seem busy but can you show me the right way?
     sound: {fileID: 0}

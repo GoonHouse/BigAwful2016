@@ -111,9 +111,9 @@ MonoBehaviour:
   thoughts:
   - text: Better than a tombstone.
     sound: {fileID: 0}
-  - text: "I can\u2019t read what it says on it."
+  - text: "I can\'t read what it says on it."
     sound: {fileID: 0}
-  - text: "It\u2019s hotter than hell in here."
+  - text: "It\'s hotter than hell in here."
     sound: {fileID: 0}
   - text: "\u201CEveryone can master a grief, but he that has it.\u201D"
     sound: {fileID: 0}

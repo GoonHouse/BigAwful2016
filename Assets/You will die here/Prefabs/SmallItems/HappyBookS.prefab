@@ -162,7 +162,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: This one has a caterpillar that needs to eat on it.
     sound: {fileID: 0}
-  - text: "I don\u2019t remember getting this one."
+  - text: "I don\'t remember getting this one."
     sound: {fileID: 0}
   - text: This one always brings a smile to me.
     sound: {fileID: 0}

@@ -129,7 +129,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Wacky.
     sound: {fileID: 0}
-  - text: "Is this one of those Picture in Picture that\u2019s been all the craze
+  - text: "Is this one of those Picture in Picture that\'s been all the craze
       lately?"
     sound: {fileID: 0}
   - text: This is not my regularly scheduled programming.

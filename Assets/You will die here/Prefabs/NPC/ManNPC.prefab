@@ -562,17 +562,17 @@ MonoBehaviour:
   emotions: []
   needs: []
   thoughts:
-  - text: "Say something. I ain\u2019t no spook, ghost, or spectre! "
+  - text: "Say something. I ain\'t no spook, ghost, or spectre! "
     sound: {fileID: 0}
-  - text: "It\u2019s like looking into a mirror. "
+  - text: "It\'s like looking into a mirror. "
     sound: {fileID: 0}
-  - text: "Tag! You\u2019re it! "
+  - text: "Tag! You\'re it! "
     sound: {fileID: 0}
   - text: That you, good buddy?
     sound: {fileID: 0}
   - text: Take it easy, young man.
     sound: {fileID: 0}
-  - text: "What was this guy\u2019s name again? Bingle? Bangle? Bangalo? I\u2019ll
+  - text: "What was this guy\'s name again? Bingle? Bangle? Bangalo? I\'ll
       get it right some day."
     sound: {fileID: 0}
 --- !u!114 &11447564

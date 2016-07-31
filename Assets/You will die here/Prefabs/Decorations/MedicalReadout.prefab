@@ -215,9 +215,9 @@ MonoBehaviour:
   emotions: []
   needs: []
   thoughts:
-  - text: "Don\u2019t you beep at me like that. The last confusing medical machine
-      that beeped at me like that didn\u2019t live to see tomorrow. Or live at all
-      for that matter. Robots aren\u2019t alive."
+  - text: "Don\'t you beep at me like that. The last confusing medical machine
+      that beeped at me like that didn\'t live to see tomorrow. Or live at all
+      for that matter. Robots aren\'t alive."
     sound: {fileID: 0}
   - text: That looks scary. Like a metal dragon or a spooky purse
     sound: {fileID: 0}
@@ -225,7 +225,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: I wonder what this button does! I... I should NOT have pressed that.
     sound: {fileID: 0}
-  - text: "Come here shiny baby. Shhh, shhh. Stop your beep-y crying. Grandpappy\u2019s
+  - text: "Come here shiny baby. Shhh, shhh. Stop your beep-y crying. Grandpappy\'s
       here."
     sound: {fileID: 0}
   - text: This etch-a-sketch is drawing on its own!

@@ -194,7 +194,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Silly wooden hat, get back in the water!
     sound: {fileID: 0}
-  - text: "What a lovely bed! I\u2019ll give it to my grandson! He hates his!"
+  - text: "What a lovely bed! I\'ll give it to my grandson! He hates his!"
     sound: {fileID: 0}
   - text: If only I had my oars. And a fishing partner. And my rod. And some water.
       Then THAT would make for a good day!
@@ -202,9 +202,9 @@ MonoBehaviour:
   - text: A refreshing trip on the lake always made my weekend. Actually, the whole
       week!
     sound: {fileID: 0}
-  - text: "I had a hole in my boat once. I\u2019ll miss that boat."
+  - text: "I had a hole in my boat once. I\'ll miss that boat."
     sound: {fileID: 0}
-  - text: "I always prefered the small ponds to the big ones. Was always more relaxin\u2019"
+  - text: "I always prefered the small ponds to the big ones. Was always more relaxin\'"
     sound: {fileID: 0}
 --- !u!120 &12059136
 LineRenderer:

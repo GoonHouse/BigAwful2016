@@ -63,7 +63,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Hm. My wife is usually in bed before me.
     sound: {fileID: 0}
-  - text: "A nap? Don\u2019t mind if I do."
+  - text: "A nap? Don\'t mind if I do."
     sound: {fileID: 0}
   - text: In my restless dreams...
     sound: {fileID: 0}

@@ -1209,6 +1209,20 @@ MonoBehaviour:
   initColor: {r: 0, g: 0, b: 0, a: 0}
   noAlpha: {r: 0, g: 0, b: 0, a: 0}
   withAlpha: {r: 0, g: 0, b: 0, a: 0}
+  thinkNoises:
+  - {fileID: 8300000, guid: f5a808464ec0c7d40a33ee20e9d6efbd, type: 3}
+  - {fileID: 8300000, guid: 804336a63536a8842ba36efd2c477781, type: 3}
+  - {fileID: 8300000, guid: a139cb233d6b0594a93393b127a3f647, type: 3}
+  - {fileID: 8300000, guid: a9f7e3cdf6639684e91a4833b498229e, type: 3}
+  - {fileID: 8300000, guid: a07c77d2202980f4a9e0aba1129de9f5, type: 3}
+  - {fileID: 8300000, guid: 697361ba8f31f2c4bbc71f4027c87196, type: 3}
+  - {fileID: 8300000, guid: 2ea3fb53047f33f44ac380e22cc428aa, type: 3}
+  - {fileID: 8300000, guid: 14e6b2aed7a6bf249b0820ce3407ca7d, type: 3}
+  - {fileID: 8300000, guid: 786055d746831ae4cbac0800e8e97380, type: 3}
+  - {fileID: 8300000, guid: 836a319da0e9bba47884c8669d54657d, type: 3}
+  - {fileID: 8300000, guid: 320d06e35da5dc24fb66fdb055ce06e0, type: 3}
+  - {fileID: 8300000, guid: 709305d610ceb0a4dac98222667a0337, type: 3}
+  - {fileID: 8300000, guid: e6ea3163404086e4a966907abb5bf883, type: 3}
 --- !u!143 &14302576
 CharacterController:
   m_ObjectHideFlags: 1

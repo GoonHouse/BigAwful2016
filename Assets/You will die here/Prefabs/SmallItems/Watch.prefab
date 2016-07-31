@@ -129,7 +129,7 @@ MonoBehaviour:
     need: 0
     strength: 0
   thoughts:
-  - text: "Tick. Tick. Tick. Where\u2019s the tock?"
+  - text: "Tick. Tick. Tick. Where\'s the tock?"
     sound: {fileID: 0}
   - text: This looks like the one granpappy gave me.
     sound: {fileID: 0}

@@ -125,11 +125,11 @@ MonoBehaviour:
   thoughts:
   - text: Not you again! Get outta here!
     sound: {fileID: 0}
-  - text: "Who need wheels when you\u2019ve got legs like th-AH! My back... "
+  - text: "Who need wheels when you\'ve got legs like th-AH! My back... "
     sound: {fileID: 0}
   - text: My old friend. May we never meet again.
     sound: {fileID: 0}
-  - text: "These should be made to be more comfy if I\u2019m going to spend a lot
+  - text: "These should be made to be more comfy if I\'m going to spend a lot
       of time in one."
     sound: {fileID: 0}
   - text: Give me my cane any day.

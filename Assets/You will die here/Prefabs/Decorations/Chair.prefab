@@ -130,13 +130,13 @@ MonoBehaviour:
   thoughts:
   - text: I'm going to sit in you. With my ass.
     sound: {fileID: 0}
-  - text: "Now\u2019s not the time for sitting, I\u2019m on an adventure!"
+  - text: "Now\'s not the time for sitting, I\'m on an adventure!"
     sound: {fileID: 0}
   - text: Chairs? In MY house? This is exactly what I wanted!
     sound: {fileID: 0}
   - text: This looks like a good place to sit down and not think about anything!
     sound: {fileID: 0}
-  - text: "Oh! A thinking chair! Let\u2019s think. Think. Think."
+  - text: "Oh! A thinking chair! Let\'s think. Think. Think."
     sound: {fileID: 0}
   - text: A nice comfy place to put my buttocks.
     sound: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: I always wanted a green one, but the wife hates green.
     sound: {fileID: 0}
-  - text: "Didn\u2019t I want this in another color?"
+  - text: "Didn\'t I want this in another color?"
     sound: {fileID: 0}
   - text: I always sat on the couch anyways.
     sound: {fileID: 0}

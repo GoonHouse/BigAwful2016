@@ -241,7 +241,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Welcome to the watering hole.
     sound: {fileID: 0}
-  - text: "These look nothing like cat tails. Trust me. I\u2019ve had some cats."
+  - text: "These look nothing like cat tails. Trust me. I\'ve had some cats."
     sound: {fileID: 0}
   - text: These have many uses. Me and my granpappy used to harvest them for cattle
       feed!

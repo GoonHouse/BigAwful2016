@@ -618,7 +618,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Can you show me around, young lady?
     sound: {fileID: 0}
-  - text: "Am I too old to be your suitor? Just joshing, little lady. Of course I\u2019m
+  - text: "Am I too old to be your suitor? Just joshing, little lady. Of course I\'m
       not."
     sound: {fileID: 0}
 --- !u!114 &11498286

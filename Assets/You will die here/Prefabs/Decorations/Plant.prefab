@@ -139,7 +139,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   - text: Where is your decorations?
     sound: {fileID: 0}
-  - text: "I forgot to put up a tree this year. I\u2019m glad someone else did it
+  - text: "I forgot to put up a tree this year. I\'m glad someone else did it
       for me."
     sound: {fileID: 0}
   - text: Does anyone smell cookies?

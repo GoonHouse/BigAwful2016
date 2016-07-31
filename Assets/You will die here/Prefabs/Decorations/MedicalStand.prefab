@@ -344,22 +344,22 @@ MonoBehaviour:
   needs: []
   thoughts:
   - text: "I asked if I could fill this with gummy worms. They said no. So instead
-      I filled it with sour gummy worms. They didn\u2019t like that."
+      I filled it with sour gummy worms. They didn\'t like that."
     sound: {fileID: 0}
-  - text: "Hey! My kids\u2019 got one just like this!"
+  - text: "Hey! My kids\' got one just like this!"
     sound: {fileID: 0}
   - text: Remember when juice came in boxes and not bags? Easier to put the straw
       in.
     sound: {fileID: 0}
-  - text: "Don\u2019t understand why they jam these into your arms instead of just
+  - text: "Don\'t understand why they jam these into your arms instead of just
       letting you use a straw."
     sound: {fileID: 0}
   - text: Drip. Drip. Drip.
     sound: {fileID: 0}
-  - text: "I\u2019m going to call you Drippy."
+  - text: "I\'m going to call you Drippy."
     sound: {fileID: 0}
   - text: "Ok, listen, kid. Me and you are getting out of this joint. You distract
-      the guards, and I\u2019ll leave through the door."
+      the guards, and I\'ll leave through the door."
     sound: {fileID: 0}
   - text: What would happen if I unplugged this?
     sound: {fileID: 0}
