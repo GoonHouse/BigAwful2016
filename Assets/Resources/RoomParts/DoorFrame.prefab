@@ -391,7 +391,7 @@ MonoBehaviour:
   walkToTarget: {fileID: 488224}
   walkFromTarget: {fileID: 483152}
   unlockSound: {fileID: 8300000, guid: 2c6a9e1c108440946b04b5a7c96bede1, type: 3}
-  buildupSound: {fileID: 8300000, guid: aafbeb16c9de3ff4da27e94ce33a0021, type: 3}
+  buildupSound: {fileID: 8300000, guid: 08d5b899d1ad46f4b9349d50c7c94f5e, type: 3}
 --- !u!114 &11483606
 MonoBehaviour:
   m_ObjectHideFlags: 1
