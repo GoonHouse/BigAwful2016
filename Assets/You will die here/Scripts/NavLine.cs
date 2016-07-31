@@ -16,9 +16,11 @@ public class NavLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		LineRenderer lineRenderer = GetComponent<LineRenderer>();
-		lineRenderer.SetPosition (0, transform.position+grampsHeight);
+		//lineRenderer.SetPosition (0, transform.position+grampsHeight);
 
         var nang = Vector3.MoveTowards(gramps.transform.position, transform.position, maxDistDelta);
         lineRenderer.SetPosition (1, Vector3.Lerp(transform.position+grampsHeight, nang-Vector3.up+grampsHeight, mitigation * grampsLerp));
+		nang = Vector3.MoveTowards(gramps.transform.position, transform.position, maxDistDelta + 2f);
+		lineRenderer.SetPosition (0, Vector3.Lerp(transform.position+grampsHeight, nang-Vector3.up+grampsHeight, mitigation * grampsLerp));
 	}
 }
