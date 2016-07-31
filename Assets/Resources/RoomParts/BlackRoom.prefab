@@ -129,7 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grampsLerp: 1
   mitigation: 1
-  maxDistDelta: 8
+  maxDistDelta: 6
+  minTriDist: 2
+  maxTriDist: 6
+  triOff: 0
 --- !u!120 &12067804
 LineRenderer:
   m_ObjectHideFlags: 1

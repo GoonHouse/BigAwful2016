@@ -80,6 +80,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _AltTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _SpecGlossMap
         second:
           m_Texture: {fileID: 0}
@@ -143,6 +150,10 @@ Material:
         second: 0
       data:
         first:
+          name: _alphaValue
+        second: -0.451
+      data:
+        first:
           name: _Outline
         second: 0.005
     m_Colors:
@@ -153,12 +164,20 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _SpecColor
         second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
       data:
         first:
+          name: _FogColor
+        second: {r: 0.29999998, g: 0.39999998, b: 0.7, a: 1}
+      data:
+        first:
           name: _OutlineColor
         second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _ColorT
+        second: {r: 1, g: 1, b: 1, a: 1}
