@@ -328,6 +328,7 @@ MonoBehaviour:
   - {fileID: 160206, guid: f1862929407e8ae4abd9368f3ecdc8d4, type: 2}
   - {fileID: 168358, guid: 508441c8ecd99a345b7266fb34305fee, type: 2}
   - {fileID: 192696, guid: f6c372b1df9ba5741b344785882ac963, type: 2}
+  maxDistanceFromOrigin: 0
   totalSpawnedFurniture: 0
   spawnedFurniture: 0
 --- !u!114 &11494238
