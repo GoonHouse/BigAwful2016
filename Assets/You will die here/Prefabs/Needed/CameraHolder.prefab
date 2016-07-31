@@ -107,7 +107,7 @@ AudioSource:
   m_GameObject: {fileID: 104950}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24395496, guid: ced0c1a63137f55409419df0c04983b0,
+  OutputAudioMixerGroup: {fileID: 24300001, guid: b0a392958b8c947449e763bd38d8526c,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 60932cd10cf21734ba632aedf1d1b624, type: 3}
   m_PlayOnAwake: 1
@@ -202,12 +202,12 @@ MonoBehaviour:
     endDistance: 16
     color: {r: 1, g: 1, b: 1, a: 0}
     fov: 30
-  isChangeFog: 0
+  isChangeFog: 1
   currentTimeToChangeFog: 0
-  timeToChangeFog: 1
-  isChangeColor: 0
+  timeToChangeFog: 16
+  isChangeColor: 1
   currentTimeToChangeColor: 0
-  timeToChangeColor: 1
+  timeToChangeColor: 16
 --- !u!114 &11425432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doCorrupt: 0
-  corruptFactor: 0.05
+  corruptFactor: 0.01
   corruptTime: 1
   minCorrupt: 0.01
   maxCorrupt: 1

@@ -29,7 +29,7 @@ public class DeathClock : MonoBehaviour {
 	public void SecretUpdate () {
         timeToDie -= Time.deltaTime;
 
-        c.minCorrupt = Mathf.Lerp(1.0f, 0.0f, ( timeToDie / (totalTimeToDie+(remainingDeathLerp * 2.0f))));
+        c.minCorrupt = Mathf.Lerp(1.0f, 0.0f, ( timeToDie / totalTimeToDie ));
 
         if( timeToDie <= remainingDeathLerp) {
             // Do some interesting effects when this happens.

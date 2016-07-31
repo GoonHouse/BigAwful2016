@@ -7,6 +7,8 @@ public class Corrupt : MonoBehaviour {
     public float corruptTime = 1.0F;
     public float minCorrupt = 0.01f;
     public float maxCorrupt = 1.0f;
+    public float corruptTimer = 0.0f;
+    public float corruptDirection = 1.0f;
     public float corruption;
 
     void Awake() {
@@ -17,7 +19,15 @@ public class Corrupt : MonoBehaviour {
 
     void Update() {
         if( doCorrupt ){
-            corruption = Mathf.Lerp( minCorrupt, maxCorrupt, Mathf.PingPong(Time.time * corruptFactor, corruptTime));
+            corruptTimer += Time.deltaTime * corruptFactor * corruptDirection;
+            if (corruptDirection == 1.0f && corruptTimer >= corruptTime) {
+                corruptTimer = corruptTime;
+                corruptDirection *= -1.0f;
+            } else if (corruptDirection == -1.0f && corruptTimer <= 0.0f) {
+                corruptTimer = 0.0f;
+                corruptDirection *= -1.0f;
+            }
+            corruption = Mathf.Lerp( minCorrupt, maxCorrupt, (corruptTimer / corruptTime) );
             Shader.SetGlobalFloat("_AltValue", corruption);
             Shader.SetGlobalColor("_FloorColor", Color.Lerp(new Color32(189, 189, 189, 255), Color.black, corruption));
         }
