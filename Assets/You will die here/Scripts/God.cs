@@ -113,7 +113,7 @@ public class HasteResponse : System.Object {
 
     void Awake() {
         // appease JonTerp
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
 
         if (main == null) {
             DontDestroyOnLoad(gameObject);

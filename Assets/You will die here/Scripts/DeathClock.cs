@@ -54,6 +54,8 @@ public class DeathClock : MonoBehaviour {
             if (timeToDie <= 0.0f) {
                 // We're fucking dead, yo.
                 var grandpa = GetComponent<Grandpa>();
+                var music = Camera.main.GetComponent<AudioSource>();
+                music.Stop();
                 grandpa.Die();
                 didDie = true;
                 timeText.text = "";
