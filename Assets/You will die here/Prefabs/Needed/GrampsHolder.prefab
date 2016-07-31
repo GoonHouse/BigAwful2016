@@ -294,7 +294,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalPosition: {x: 11.356135, y: 0, z: 8.838834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -464,7 +464,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 487210}
   - {fileID: 405324}
@@ -947,7 +947,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24304488, guid: b0a392958b8c947449e763bd38d8526c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3dd97501eabb73047be8b55c095ecae6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ca97b52d2975cb04d8ebc5836ce8c775, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTimeToDie: 600
-  timeToDie: 600
+  timeToDie: 123
   remainingDeathLerp: 120
   didNotTrigger: 1
   didDie: 0
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   timeToCommit: 0.33
   didCommitYet: 0
   epu: {fileID: 11469848}
-  hasThought: 1
+  hasThought: 0
   fadeDone: 0
   timeToFadeIn: 0.5
   currentFadeTime: 0

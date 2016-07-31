@@ -40,10 +40,11 @@ public class DeathClock : MonoBehaviour {
                 didNotTrigger = false;
                 //AkSoundEngine.PostEvent("grandpaDeathWarning", gameObject);
             }
-            if( timeToDie <= (remainingDeathLerp / 2.0f)){
-                aus.volume = Mathf.Lerp(1.0f, 0.0f, timeToDie / (remainingDeathLerp / 2.0f));
-            } else {
+            var dink = (timeToDie-60f) / (remainingDeathLerp / 2.0f);
+            if (timeToDie <= (remainingDeathLerp / 2.0f)) {
                 aus.volume = 1.0f;
+            } else {
+                aus.volume = Mathf.Lerp(1.0f, 0.0f, dink);
             }
         }
 
